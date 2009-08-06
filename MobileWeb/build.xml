@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="MCA_Server" default="compile" basedir=".">
+
+    <!-- source directories -->
+    <property name="src.main.java.dir" value="src/main/java" description="Java source code"/>
+    <property name="src.test.java.dir" value="src/test/java" description="Test java source code"/>
+    <property name="src.main.resources.dir" value="src/main/resources"
+              description="Resources used by the Java code"/>
+    <property name="src.test.resources.dir" value="src/test/resources"
+              description="Resources used by the test Java code"/>
+    <property name="src.main.webapp.dir" value="src/main/webapp"
+              description="Web application configuraion files"/>
+
+    <!-- generated directories -->
+    <property name="lib.dir" value="lib" description="The root library directory"/>
+    <property name="compile.lib.dir" value="${lib.dir}/compile"
+              description="Compile time dependencies"/>
+    <property name="runtime.lib.dir" value="${lib.dir}/runtime" description="Runtime dependencies"/>
+    <property name="test.lib.dir" value="${lib.dir}/test" description="Test dependencies"/>
+    <property name="target.dir" value="target"
+              description="Directory for compiled classes and war file creation"/>
+    <property name="classes.dir" value="${target.dir}/classes" description="Compiled classes"/>
+    <property name="test.classes.dir" value="${target.dir}/test-classes"
+              description="Compiled test classes"/>
+
+    <!-- set up the classpath -->
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${classes.dir}">
+            <include name="**/*.classes"/>
+        </fileset>
+        <fileset dir="${test.classes.dir}">
+            <include name="**/*.classes"/>
+        </fileset>
+        <fileset dir="${src.main.resources.dir}">
+            <include name="**/*"/>
+        </fileset>
+        <fileset dir="${src.test.resources.dir}">
+            <include name="**/*"/>
+        </fileset>
+    </path>
+
+    <!-- initialize the project -->
+    <target name="init">
+        <mkdir dir="${target.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${test.classes.dir}"/>
+        <mkdir dir="${lib.dir}"/>
+    </target>
+
+    <!-- resolve the dependencies -->
+    <target name="resolve" depends="init">
+        <ivy:settings file="ivysettings.xml"/>
+        <ivy:retrieve pattern="${compile.lib.dir}/[artifact]-[revision].[ext]" conf="compile"/>
+        <ivy:retrieve pattern="${runtime.lib.dir}/[artifact]-[revision].[ext]" conf="runtime"/>
+        <ivy:retrieve pattern="${test.lib.dir}/[artifact]-[revision].[ext]" conf="test"/>
+    </target>
+
+    <!-- compile the java source -->
+    <target name="compile" depends="resolve">
+        <javac classpathref="classpath" srcdir="${src.main.java.dir}" destdir="${classes.dir}"
+               debug="true" source="1.6" target="1.6"/>
+    </target>
+
+    <!-- clean the project -->
+    <target name="clean">
+        <delete dir="${target.dir}"/>
+        <delete dir="${lib.dir}"/>
+    </target>
+
+</project>

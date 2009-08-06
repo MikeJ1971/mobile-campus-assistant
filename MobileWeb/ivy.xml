@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+    <info organisation="org.ilrt.mca" module="rest-server"/>
+    <configurations defaultconfmapping="default->default">
+        <conf name="compile"/>
+        <conf name="runtime"/>
+        <conf name="test"/>
+    </configurations>
+    <dependencies>
+        <dependency org="com.sun.jersey" name="jersey-server" rev="1.0.2" conf="compile->default"/>
+        <dependency org="javax.servlet" name="servlet-api" rev="2.5" conf="runtime->default"/>
+        <dependency org="junit" name="junit" rev="4.6" conf="test->default"/>
+        <dependency org="com.sun.grizzly" name="grizzly-servlet-webserver" rev="1.8.3"
+                    conf="test->default"/>
+        <dependency org="org.freemarker" name="freemarker" rev="2.3.15" conf="compile->default"/>
+        <dependency org="log4j" name="log4j" rev="1.2.15" conf="compile->default">
+            <exclude module="jms"/>
+            <exclude module="jmxtools"/>
+            <exclude module="jmxri"/>  
+        </dependency>
+    </dependencies>
+</ivy-module>
