@@ -7,7 +7,7 @@
         <conf name="test"/>
     </configurations>
     <dependencies>
-        <dependency org="com.sun.jersey" name="jersey-server" rev="1.0.2" conf="compile->default"/>
+        <dependency org="com.sun.jersey" name="jersey-server" rev="1.1.1-ea" conf="compile->default"/>
         <dependency org="javax.servlet" name="servlet-api" rev="2.5" conf="runtime->default"/>
         <dependency org="junit" name="junit" rev="4.6" conf="test->default"/>
         <dependency org="com.sun.grizzly" name="grizzly-servlet-webserver" rev="1.8.3"
