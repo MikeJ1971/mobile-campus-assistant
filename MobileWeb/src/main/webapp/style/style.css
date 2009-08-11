@@ -1,65 +1,69 @@
 body {
-	background: #e5e5e5;
-	margin: 0;
-	padding: 0;
-	-webkit-text-size-adjust: none;
+    background: #e5e5e5;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
 }
 
 #header {
-	background: #2858BB url(../images/uob-logo.png) no-repeat; overflow: hidden; padding: 12px; background-position: right;
+    background: #2858BB url(../images/uob-logo.png) no-repeat;
+    overflow: hidden;
+    padding: 12px;
+    background-position: right;
 }
 
 #footer {
-	background: #2858BB;
-	padding: 10px;
-	font-family: Helvetica;
-	color: #FFFFFF;
-	font-size: 12px;
+    background: #2858BB;
+    padding: 10px;
+    font-family: Helvetica;
+    color: #FFFFFF;
+    font-size: 12px;
 }
 
 #mainContent {
-	margin-left: 5px;
-	margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 ul {
-	background: #FFFFFF;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	-border-radius: 10px;
-	font-size: 17px;
-	font-family: Helvetica;
-	font-weight: bold;
-	color: #000000;
-	border-width: 1px;
-	border-style:solid ;
-	border-color: #999999;
-	padding: 0;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -border-radius: 10px;
+    font-size: 17px;
+    font-family: Helvetica;
+    font-weight: bold;
+    color: #000000;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #999999;
+    padding: 0;
 }
 
 li {
-	list-style: none;
-	padding: 15px 10px 15px 10px;
-	border-top-width: 1px;
-	border-top-style: solid;
-	border-top-color: #999999;
-	background: url(../images/chevron.png) no-repeat; overflow: hidden; background-position: right;
-	background-position: 99% 50%;
+    list-style: none;
+    padding: 15px 10px 15px 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #999999;
+    background: url(../images/chevron.png) no-repeat;
+    overflow: hidden;
+    background-position: right;
+    background-position: 99% 50%;
 }
 
-li:first-child
-{
-	border-top:0;
+li:first-child {
+    border-top: 0;
 }
 
 .group p {
-	font-family: Helvetica;
-	font-size: 16px;
-	padding-left: 6px;
+    font-family: Helvetica;
+    font-size: 16px;
+    padding-left: 6px;
 }
 
 a {
-	display: block;
-	text-decoration: none;
-	color: #000000;
+    display: block;
+    text-decoration: none;
+    color: #000000;
 }

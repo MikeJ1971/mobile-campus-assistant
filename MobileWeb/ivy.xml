@@ -18,5 +18,7 @@
             <exclude module="jmxtools"/>
             <exclude module="jmxri"/>  
         </dependency>
+        <dependency org="com.hp.hpl.jena" name="jena" rev="2.6.0" conf="compile->default"/>
+        <dependency org="org.slf4j" name="slf4j-simple" rev="1.5.8" conf="compile->default"/>
     </dependencies>
 </ivy-module>

@@ -1,0 +1,26 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix mca:        <http://org.ilrt.mca/schema#> .
+@prefix mcareg:     <http://org.ilrt.mca/registry#> .
+@prefix dc:         <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+
+[]  rdf:type mca:Registry ;
+    rdfs:label "MCA Registry" ;
+    dc:description "Registry for the Mobile Campus Assistant, University of Bristol" ;
+    mca:group mcareg:campusMapsGroup ;
+    .
+
+mcareg:campsMapsGroup rdf:type mca:Group ;
+    rdf:type mca:Group ;
+    rdfs:label "Campus Maps" ;
+    mca:hasItem mcareg:wirelessMaps ;
+    mcareg:order "1"^^xsd:integer ;
+    .
+
+mcareg:wirelessMaps rdf:type mca:KmlMapSource ;
+    rdfs:label "Wireless Hotspots" ;
+    mcareg:hasPath <mca://maps/wireless> ;
+    mcareg:order "1"^^xsd:integer ;
+    .
