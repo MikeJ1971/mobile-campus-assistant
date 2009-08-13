@@ -201,6 +201,9 @@ public class FreemarkerTemplateProvider implements TemplateProcessor
             vars.putAll( extraVars );
         }
 
+        // added by Mike - help avoid absolute paths for finding static resources
+        vars.put("contextPath", servletContext.getContextPath());
+
         final OutputStreamWriter writer = new OutputStreamWriter( out );
 
         try {

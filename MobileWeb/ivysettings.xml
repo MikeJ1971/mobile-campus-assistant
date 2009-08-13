@@ -7,6 +7,7 @@
             <ibiblio name="ibiblio" m2compatible="true"/>
             <ibiblio name="java-net-maven1" root="http://download.java.net/maven/1" pattern="${java.net.maven.pattern}" m2compatible="false"/>
             <ibiblio name="java-net-maven2" root="http://download.java.net/maven/2/" m2compatible="true"/>
+            <ibiblio name="gson-maven2" root="http://google-gson.googlecode.com/svn/mavenrepo" m2compatible="true"/>
         </chain>
     </resolvers>
 </ivysettings>
