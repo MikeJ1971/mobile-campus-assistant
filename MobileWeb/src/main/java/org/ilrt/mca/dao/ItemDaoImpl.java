@@ -1,7 +1,6 @@
 package org.ilrt.mca.dao;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
@@ -12,9 +11,6 @@ import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.rdf.ModelRepository;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ItemDaoImpl implements ItemDao {
 
@@ -39,31 +35,6 @@ public class ItemDaoImpl implements ItemDao {
 
         return getItem(results.getResource("mca://registry/"));
     }
-
-    @Override
-    public List<Item> findItemByType(String type) {
-
-        List<Item> results = new ArrayList<Item>();
-
-        Model model = modelRepository.findByType(MCA_REGISTRY.Group.getURI());
-
-        // look for Groups
-        ResIterator groupsIter = model.listResourcesWithProperty(RDF.type,
-                MCA_REGISTRY.Group);
-
-        // iterate over the groups and get the basic details
-        while (groupsIter.hasNext()) {
-
-            Resource groupResource = groupsIter.nextResource();
-
-            Item groupItem = getItem(groupResource);
-            results.add(groupItem);
-
-        }
-
-        return results;
-    }
-
 
     private BaseItem getItem(Resource resource) {
 

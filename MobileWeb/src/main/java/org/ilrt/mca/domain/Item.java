@@ -1,5 +1,7 @@
 package org.ilrt.mca.domain;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.List;
 
 

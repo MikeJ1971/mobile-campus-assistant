@@ -3,19 +3,29 @@ body {
     margin: 0;
     padding: 0;
     -webkit-text-size-adjust: none;
+    font-family: Helvetica, serif;
+}
+
+h1 {
+    font-size: 14px;
+}
+
+p {
+    font-family: Helvetica, serif;
+    font-size: 12px;
 }
 
 #header {
-    background: #2858BB url(../images/uob-logo.png) no-repeat;
+    background: #2858BB url(../images/uob-logo.png) no-repeat right;
     overflow: hidden;
     padding: 12px;
-    background-position: right;
+
 }
 
 #footer {
     background: #2858BB;
     padding: 10px;
-    font-family: Helvetica;
+    font-family: Helvetica, serif;
     color: #FFFFFF;
     font-size: 12px;
 }
@@ -31,7 +41,7 @@ ul {
     -moz-border-radius: 10px;
     -border-radius: 10px;
     font-size: 17px;
-    font-family: Helvetica;
+    font-family: Helvetica, serif;
     font-weight: bold;
     color: #000000;
     border-width: 1px;
@@ -57,7 +67,7 @@ li:first-child {
 }
 
 .group p {
-    font-family: Helvetica;
+    font-family: Helvetica, serif;
     font-size: 16px;
     padding-left: 6px;
 }
@@ -66,4 +76,14 @@ a {
     display: block;
     text-decoration: none;
     color: #000000;
+}
+
+#map {
+    width: 300px;
+    height: 300px;
+}
+
+.gmap-popup {
+    padding: 0px;
+    margin: 0px;
 }

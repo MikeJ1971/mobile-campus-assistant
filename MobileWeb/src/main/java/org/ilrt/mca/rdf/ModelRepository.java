@@ -11,8 +11,7 @@ public class ModelRepository extends AbstractRepository {
         try {
 
             model = FileManager.get().loadModel("registry.ttl");
-            findGroupsSparql = loadSparql("/findItems.rql");
-            findItemSparql = loadSparql("/findItem.rql");
+            findItemsSparql = loadSparql("/findItems.rql");
             findHomepageSparql = loadSparql("/homepage.rql");
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -28,18 +27,11 @@ public class ModelRepository extends AbstractRepository {
 
         QuerySolutionMap qs = new QuerySolutionMap();
         qs.add("id", ResourceFactory.createResource(id));
-        return executeConstructQuery(findGroupsSparql, model, qs);
+        return executeConstructQuery(findItemsSparql, model, qs);
     }
 
-    public Model findByType(String id) {
-
-        QuerySolutionMap qs = new QuerySolutionMap();
-        qs.add("type", ResourceFactory.createResource(id));
-        return executeConstructQuery(findGroupsSparql, model, qs);
-    }
 
     private Model model = null;
-    private String findGroupsSparql = null;
-    private String findItemSparql = null;
+    private String findItemsSparql = null;
     private String findHomepageSparql = null;
 }
