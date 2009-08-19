@@ -5,7 +5,7 @@
 <p>${it.description}</p>
 
 <script type="text/javascript"
-         src="http://www.google.com/jsapi?key=ABQIAAAAdUlVnqcMy8dOraexYlBKqxRh1v5iCDAAhGHF-igx4vbWbsh0pRS3YUsdA6b16GnF-aM73UdjjBvVSA&sensor=true"></script>
+         src="http://www.google.com/jsapi?key=ABQIAAAAdUlVnqcMy8dOraexYlBKqxTjPSaaEJVc4G5y4wKsZE4UoG3L1hRdcwFcZ2_Cpcpc4Lj8nGsd7ZHLsw&sensor=true"></script>
 
  <script type="text/javascript">
 
@@ -25,7 +25,7 @@
 	function showMap(latitude, longitude) {
 		var map = new google.maps.Map2(document.getElementById("map"));
         var point = new google.maps.LatLng(latitude, longitude);
-        map.setCenter(point, 16);
+        map.setCenter(point, 15);
 		map.addOverlay(new GMarker(point));
 		map.openInfoWindow(map.getCenter(), "<p class='bubble'>You are here</p>");
 		var gx = new GGeoXml("${it.otherSource}");
