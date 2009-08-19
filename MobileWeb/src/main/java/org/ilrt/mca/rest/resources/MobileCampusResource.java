@@ -1,9 +1,9 @@
 package org.ilrt.mca.rest.resources;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.sun.jersey.api.view.Viewable;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.sun.jersey.api.view.Viewable;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
@@ -44,11 +44,10 @@ public class MobileCampusResource {
 
         if (item != null) {
             return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).entity(new Viewable("/404.ftl",
+                    "Unable to resolve the requested path: " + path)).build();
         }
-
-        // default to not found
-        return Response.status(Response.Status.NOT_FOUND).build();
-
     }
 
 
