@@ -23,6 +23,10 @@ public class ItemDaoImpl implements ItemDao {
 
         Model model = modelRepository.findItem(id);
 
+        if (model.isEmpty()) {
+            return null;
+        }
+
         Resource resource = model.getResource(id);
 
         return getItem(resource);
@@ -33,7 +37,11 @@ public class ItemDaoImpl implements ItemDao {
 
         Model results = modelRepository.findHomePage();
 
-        return getItem(results.getResource("mca://registry/"));
+        if (results.isEmpty()) {
+            return null;
+        } else {
+            return getItem(results.getResource("mca://registry/"));
+        }
     }
 
     private BaseItem getItem(Resource resource) {
