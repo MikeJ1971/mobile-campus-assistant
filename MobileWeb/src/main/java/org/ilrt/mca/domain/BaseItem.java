@@ -5,6 +5,8 @@ import org.ilrt.mca.Common;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.google.gson.annotations.Expose;
+
 public class BaseItem implements Item {
 
     public BaseItem() {
@@ -75,12 +77,12 @@ public class BaseItem implements Item {
         return items;
     }
 
-    private String id;
-    private String label;
-    private Integer order;
-    private String description;
+    @Expose private String id;
+    @Expose private String label;
+    @Expose private Integer order;
+    @Expose private String description;
     private String template;
-    private String type;
-    private String otherSource;
-    List<BaseItem> items = new ArrayList<BaseItem>();
+    @Expose private String type;
+    @Expose private String otherSource;
+    @Expose List<BaseItem> items = new ArrayList<BaseItem>();
 }

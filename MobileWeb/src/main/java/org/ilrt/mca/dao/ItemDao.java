@@ -9,6 +9,4 @@ public interface ItemDao {
     Item findItem(String id);
 
     Item findHomePage();
-
-    List<Item> findItemByType(String type);
 }

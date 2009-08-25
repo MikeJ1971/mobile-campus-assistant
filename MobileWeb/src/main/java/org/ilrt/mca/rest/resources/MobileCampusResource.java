@@ -1,10 +1,15 @@
 package org.ilrt.mca.rest.resources;
 
+import com.hp.hpl.jena.rdf.model.Model;
+import com.sun.jersey.api.view.Viewable;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.ilrt.mca.Common;
+import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
 import org.ilrt.mca.dao.ItemDaoImpl;
+import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.rdf.ModelRepository;
-import org.ilrt.mca.rest.HtmlResponseResolverImpl;
-import org.ilrt.mca.rest.ResponseResolver;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,51 +23,93 @@ public class MobileCampusResource {
 
     public MobileCampusResource() {
 
-        ModelRepository modelRepository = new ModelRepository();
-        ItemDao itemDao = new ItemDaoImpl(modelRepository);
-        htmlResponseResolver = new HtmlResponseResolverImpl(itemDao);
+        modelRepository = new ModelRepository();
+        itemDao = new ItemDaoImpl(modelRepository);
     }
 
     @GET
     @Produces(MediaType.TEXT_HTML)
     public Response getGroupsAsHtml(@PathParam("path") String path) {
 
-        return htmlResponseResolver.reponse(path);
-        /**
-         System.out.println(path);
+        // are we just after the root?
+        if (isRoot(path)) {
 
-         if (path == null || path.equals("")) {
-         List<Group> results = registryManager.findGroups(model);
-         return Response.ok(new Viewable("/groups.ftl", results)).build();
-         } else {
+            Item item = itemDao.findHomePage();
+            return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
+        }
 
-         String uri = Common.MCA_STUB + path;
+        String uri = Common.MCA_STUB + path;
 
-         Model itemModel = registryManager.findItem(uri);
-         Item  item = registryManager.findItem(uri, itemModel);
+        Item item = itemDao.findItem(uri);
 
-         return Response.ok(new Viewable("/kmlMap.ftl", item)).build();
-         }
+        if (item != null) {
+            return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
+        }
 
-         **/
-
+        // default to not found
+        return Response.status(Response.Status.NOT_FOUND).build();
 
     }
 
-    /**
-     * @GET
-     * @Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3})
-     * public Response getModelAsRdf(@PathParam("path") String path) {
-     * return Response.ok(model).build();
-     * }
-     * @GET
-     * @Produces(MediaType.APPLICATION_JSON) public Response getGroupAsJson(@PathParam("path") String path) {
-     * List<Group> results = registryManager.findGroups(model);
-     * Gson gson = new Gson();
-     * return Response.ok(gson.toJson(results)).build();
-     * }
-     */
 
-    ResponseResolver htmlResponseResolver;
-    //private Model model;
+    @GET
+    @Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3})
+    public Response getModelAsRdf(@PathParam("path") String path) {
+
+
+        // are we just after the root?
+        if (isRoot(path)) {
+            Model model = modelRepository.findHomePage();
+            return Response.ok(model).build();
+        }
+
+        String uri = Common.MCA_STUB + path;
+
+        Model model = modelRepository.findItem(uri);
+
+        if (!model.isEmpty()) {
+            return Response.ok(model).build();
+        }
+
+        // default to not found
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getGroupAsJson(@PathParam("path") String path) {
+
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
+        // are we just after the root?
+        if (isRoot(path)) {
+
+            Item item = itemDao.findHomePage();
+            return Response.ok(gson.toJson(item)).build();
+        }
+
+        String uri = Common.MCA_STUB + path;
+
+        Item item = itemDao.findItem(uri);
+
+        if (item != null) {
+            return Response.ok(gson.toJson(item)).build();
+        }
+
+        // default to not found
+        return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+
+    private String getTemplatePath(String templatePath) {
+        return "/" + templatePath.substring(Common.TEMPLATE_STUB.length());
+    }
+
+    private boolean isRoot(String path) {
+        return (path == null || path.equals("") || path.equals("/"));
+    }
+
+    private ModelRepository modelRepository;
+    private ItemDao itemDao;
 }

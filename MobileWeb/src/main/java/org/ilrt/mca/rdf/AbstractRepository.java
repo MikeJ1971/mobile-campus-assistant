@@ -17,7 +17,7 @@ public abstract class AbstractRepository {
 
         QueryExecution qe = QueryExecutionFactory.create(query, model, bindings);
         Model results = qe.execConstruct();
-        results.write(System.out);
+        //results.write(System.out);
         qe.close();
         return results;
     }
@@ -26,7 +26,7 @@ public abstract class AbstractRepository {
 
         QueryExecution qe = QueryExecutionFactory.create(query, model);
         Model results = qe.execConstruct();
-        results.write(System.out);
+        //results.write(System.out);
         qe.close();
         return results;
     }
