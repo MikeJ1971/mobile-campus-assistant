@@ -4,6 +4,8 @@
 @prefix mca:        <http://org.ilrt.mca/registry#> .
 @prefix dc:         <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix geo:        <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
 
 <mca://registry/>  rdf:type mca:Registry ;
     rdfs:label "Mobile Campus Assistant" ;
@@ -26,4 +28,6 @@
     rdfs:seeAlso <http://wireless.bris.ac.uk/maps/wireless-core.kml> ;
     mca:template <template://kmlMap.ftl> ;
     mca:order "1"^^xsd:integer ;
+    geo:lat "51.4585695818037"^^xsd:float ;
+    geo:long "-2.60187349563486"^^xsd:float ;
     .

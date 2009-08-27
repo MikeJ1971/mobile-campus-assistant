@@ -1,0 +1,16 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mca:     <http://org.ilrt.mca/registry#>
+PREFIX dc:      <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#>
+CONSTRUCT {
+    $id rdfs:seeAlso $otherSource .
+    $id geo:lat $latitude .
+    $id geo:long $longitude .
+} WHERE {
+    $id rdfs:seeAlso $otherSource .
+    $id geo:lat $latitude .
+    $id geo:long $longitude .
+}

@@ -32,17 +32,12 @@ public class MobileCampusResource {
     public Response getGroupsAsHtml(@PathParam("path") String path) {
 
         // are we just after the root?
-        if (isRoot(path)) {
-
-            Item item = itemDao.findHomePage();
-            return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
-        }
-
-        String uri = Common.MCA_STUB + path;
+        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
         Item item = itemDao.findItem(uri);
 
         if (item != null) {
+
             return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity(new Viewable("/404.ftl",
@@ -57,12 +52,7 @@ public class MobileCampusResource {
 
 
         // are we just after the root?
-        if (isRoot(path)) {
-            Model model = modelRepository.findHomePage();
-            return Response.ok(model).build();
-        }
-
-        String uri = Common.MCA_STUB + path;
+        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
         Model model = modelRepository.findItem(uri);
 
@@ -82,13 +72,7 @@ public class MobileCampusResource {
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
         // are we just after the root?
-        if (isRoot(path)) {
-
-            Item item = itemDao.findHomePage();
-            return Response.ok(gson.toJson(item)).build();
-        }
-
-        String uri = Common.MCA_STUB + path;
+        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
         Item item = itemDao.findItem(uri);
 

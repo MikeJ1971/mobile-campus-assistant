@@ -10,9 +10,12 @@ CONSTRUCT {
     $id dc:description $description .
     $id rdf:type $type .
     $id mca:hasItem $itemId .
-    $id rdfs:seeAlso $otherSource .
     $itemId rdfs:label $itemLabel .
     $itemId mca:order $itemOrder .
+    $itemId mca:hasItem $subItemId .
+    $subItemId rdfs:label $subItemLabel .
+    $subItemId mca:order $subItemOrder .
+    $id rdfs:seeAlso $otherSource .
 } WHERE {
     $id mca:template $template .
     $id rdfs:label $label .
@@ -25,5 +28,10 @@ CONSTRUCT {
         $id mca:hasItem $itemId .
         $itemId rdfs:label $itemLabel .
         $itemId mca:order $itemOrder .
+        OPTIONAL {
+            $itemId mca:hasItem $subItemId .
+            $subItemId rdfs:label $subItemLabel .
+            $subItemId mca:order $subItemOrder .
+        } .
     } .
 }

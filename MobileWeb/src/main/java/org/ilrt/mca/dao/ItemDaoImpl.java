@@ -9,7 +9,9 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
+import org.ilrt.mca.domain.map.KmlMapItemImpl;
 import org.ilrt.mca.rdf.ModelRepository;
+import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 public class ItemDaoImpl implements ItemDao {
@@ -29,24 +31,27 @@ public class ItemDaoImpl implements ItemDao {
 
         Resource resource = model.getResource(id);
 
-        return getItem(resource);
-    }
+        // are we a specific type
+        if (resource.hasProperty(RDF.type)) {
 
-    @Override
-    public Item findHomePage() {
-
-        Model results = modelRepository.findHomePage();
-
-        if (results.isEmpty()) {
-            return null;
-        } else {
-            return getItem(results.getResource("mca://registry/"));
+            // kml map source ?
+            if (resource.getProperty(RDF.type).getResource().getURI()
+                    .equals(MCA_REGISTRY.KmlMapSource.getURI())) {
+                KmlMapItemImpl item = new KmlMapItemImpl();
+                getBasicDetails(resource, item);
+                findMapDetails(item);
+                return item;
+            }
         }
+
+        // fallback item
+        BaseItem item = new BaseItem();
+        getBasicDetails(resource, item);
+        return item;
+
     }
 
-    private BaseItem getItem(Resource resource) {
-
-        BaseItem item = new BaseItem();
+    private void getBasicDetails(Resource resource, BaseItem item) {
 
         // identifier
         item.setId(resource.getURI());
@@ -89,12 +94,29 @@ public class ItemDaoImpl implements ItemDao {
             Statement stmt = iter.nextStatement();
 
             Resource r = stmt.getResource();
-            BaseItem h = getItem(r);
-            item.getItems().add(h);
+            BaseItem link = new BaseItem();
+            getBasicDetails(r, link);
+            item.getItems().add(link);
         }
-        return item;
+
     }
 
+
+    private void findMapDetails(KmlMapItemImpl item) {
+
+
+        Model model = modelRepository.findMapDetails(item.getId());
+
+        Resource resource = model.getResource(item.getId());
+
+        if (resource.hasProperty(GEO.latitude)) {
+            item.setLatitude(resource.getProperty(GEO.latitude).getFloat());
+        }
+
+        if (resource.hasProperty(GEO.longitude)) {
+            item.setLongitude(resource.getProperty(GEO.longitude).getFloat());
+        }
+    }
 
     ModelRepository modelRepository = new ModelRepository();
 }

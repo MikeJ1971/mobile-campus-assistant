@@ -12,15 +12,11 @@ public class ModelRepository extends AbstractRepository {
 
             model = FileManager.get().loadModel("registry.ttl");
             findItemsSparql = loadSparql("/findItems.rql");
-            findHomepageSparql = loadSparql("/homepage.rql");
+            kmlMapDetailsSparql = loadSparql("/findKmlMapDetails.rql");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-    }
-
-    public Model findHomePage() {
-        return executeConstructQuery(findHomepageSparql, model);
     }
 
     public Model findItem(String id) {
@@ -30,8 +26,14 @@ public class ModelRepository extends AbstractRepository {
         return executeConstructQuery(findItemsSparql, model, qs);
     }
 
+    public Model findMapDetails(String id) {
+
+        QuerySolutionMap qs = new QuerySolutionMap();
+        qs.add("id", ResourceFactory.createResource(id));
+        return executeConstructQuery(kmlMapDetailsSparql, model, qs);
+    }
 
     private Model model = null;
     private String findItemsSparql = null;
-    private String findHomepageSparql = null;
+    private String kmlMapDetailsSparql = null;
 }

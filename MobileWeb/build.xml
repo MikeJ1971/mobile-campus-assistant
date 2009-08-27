@@ -23,7 +23,7 @@
     <property name="test.classes.dir" value="${target.dir}/test-classes"
               description="Compiled test classes"/>
     <property name="war.dir" value="${target.dir}/war" description="War file directory"/>
-    <property name="war.file" value="MobileWeb.war" description="War file"/>
+    <property name="war.file" value="ROOT.war" description="War file"/>
 
     <!-- set up the classpath -->
     <path id="classpath">
