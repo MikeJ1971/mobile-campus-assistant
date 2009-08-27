@@ -80,8 +80,8 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
     private String rootPath;
     private ServletContext servletContext;
 
-    @Context
-    UriInfo uriInfo;
+//    @Context
+//    UriInfo uriInfo;
 
     public FreemarkerTemplateProvider() {
     }
@@ -202,14 +202,14 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
         }
 
         // added by Mike - help avoid absolute paths for finding static resources
-        //vars.put("contextPath", servletContext.getContextPath());
+        vars.put("contextPath", servletContext.getContextPath());
 
-        String contextPath = uriInfo.getBaseUri().getPath();
+        //String contextPath = uriInfo.getBaseUri().getPath();
 
-        if (contextPath.endsWith("/")) {
-            contextPath = contextPath.substring(0, contextPath.length() - 1);
-        }
-        vars.put("contextPath", contextPath);
+        //if (contextPath.endsWith("/")) {
+        //    contextPath = contextPath.substring(0, contextPath.length() - 1);
+        //}
+        //vars.put("contextPath", contextPath);
 
         final OutputStreamWriter writer = new OutputStreamWriter(out);
 

@@ -30,7 +30,7 @@
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-            <param-value>/(style|images)/.*|/robots.txt</param-value>
+            <param-value>/(style|images|js)/.*|/robots.txt</param-value>
         </init-param>
     </filter>
 
