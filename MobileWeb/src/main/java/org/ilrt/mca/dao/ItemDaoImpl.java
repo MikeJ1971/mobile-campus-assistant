@@ -110,11 +110,11 @@ public class ItemDaoImpl implements ItemDao {
         Resource resource = model.getResource(item.getId());
 
         if (resource.hasProperty(GEO.latitude)) {
-            item.setLatitude(resource.getProperty(GEO.latitude).getFloat());
+            item.setLatitude(resource.getProperty(GEO.latitude).getDouble());
         }
 
         if (resource.hasProperty(GEO.longitude)) {
-            item.setLongitude(resource.getProperty(GEO.longitude).getFloat());
+            item.setLongitude(resource.getProperty(GEO.longitude).getDouble());
         }
     }
 

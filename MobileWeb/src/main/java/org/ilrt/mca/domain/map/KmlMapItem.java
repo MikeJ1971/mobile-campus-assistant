@@ -4,9 +4,9 @@ import org.ilrt.mca.domain.Item;
 
 public interface KmlMapItem extends Item {
 
-    float getLongitude();
+    double getLongitude();
 
-    float getLatitude();
+    double getLatitude();
 
     String getKmlUrl();
 

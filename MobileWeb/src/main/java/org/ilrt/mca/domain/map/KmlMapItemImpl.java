@@ -1,22 +1,22 @@
 package org.ilrt.mca.domain.map;
 
 import org.ilrt.mca.domain.BaseItem;
-import org.ilrt.mca.domain.Item;
+import com.google.gson.annotations.Expose;
 
 public class KmlMapItemImpl extends BaseItem implements KmlMapItem {
 
     public KmlMapItemImpl() {
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
@@ -24,7 +24,7 @@ public class KmlMapItemImpl extends BaseItem implements KmlMapItem {
         this.kmlUrl = kmlUrl;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
@@ -32,7 +32,7 @@ public class KmlMapItemImpl extends BaseItem implements KmlMapItem {
         return kmlUrl;
     }
 
-    private float longitude = -1;
-    private float latitude = -1;
-    private String kmlUrl = null;
+    @Expose private double longitude = -1;
+    @Expose private double latitude = -1;
+    @Expose private String kmlUrl = null;
 }

@@ -3,13 +3,17 @@ package org.ilrt.mca.rest.resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 import com.sun.jersey.api.view.Viewable;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
 import org.ilrt.mca.dao.ItemDaoImpl;
 import org.ilrt.mca.domain.Item;
+import org.ilrt.mca.domain.map.KmlMapItem;
 import org.ilrt.mca.rdf.ModelRepository;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -56,12 +60,23 @@ public class MobileCampusResource {
 
         Model model = modelRepository.findItem(uri);
 
-        if (!model.isEmpty()) {
-            return Response.ok(model).build();
+        if (model.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        // default to not found
-        return Response.status(Response.Status.NOT_FOUND).build();
+
+        // type checking
+        Resource resource = model.getResource(uri);
+
+        if (resource.getProperty(RDF.type).getResource().getURI()
+                .equals(MCA_REGISTRY.KmlMapSource.getURI())) {
+
+            Model additional = modelRepository.findMapDetails(uri);
+            model = model.add(additional);
+        }
+
+
+        return Response.ok(model).build();
     }
 
 
@@ -77,6 +92,12 @@ public class MobileCampusResource {
         Item item = itemDao.findItem(uri);
 
         if (item != null) {
+
+            if (item instanceof KmlMapItem) {
+                return Response.ok(gson.toJson((KmlMapItem) item)).build();
+            }
+
+
             return Response.ok(gson.toJson(item)).build();
         }
 

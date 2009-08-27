@@ -28,6 +28,6 @@
     rdfs:seeAlso <http://wireless.bris.ac.uk/maps/wireless-core.kml> ;
     mca:template <template://kmlMap.ftl> ;
     mca:order "1"^^xsd:integer ;
-    geo:lat "51.4585695818037"^^xsd:float ;
-    geo:long "-2.60187349563486"^^xsd:float ;
+    geo:lat "51.4585695818037"^^xsd:double ;
+    geo:long "-2.60187349563486"^^xsd:double ;
     .
