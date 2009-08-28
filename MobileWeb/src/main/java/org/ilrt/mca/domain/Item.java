@@ -21,7 +21,5 @@ public interface Item {
 
     String getType();
 
-    String getOtherSource();
-
     List<BaseItem> getItems();
 }

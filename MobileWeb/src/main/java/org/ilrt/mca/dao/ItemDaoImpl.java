@@ -14,6 +14,8 @@ import org.ilrt.mca.rdf.ModelRepository;
 import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
+import java.util.Collections;
+
 public class ItemDaoImpl implements ItemDao {
 
     public ItemDaoImpl(ModelRepository modelRepository) {
@@ -81,11 +83,6 @@ public class ItemDaoImpl implements ItemDao {
             item.setType(resource.getProperty(RDF.type).getResource().getURI());
         }
 
-        // other
-        if (resource.hasProperty(RDFS.seeAlso)) {
-            item.setOtherSource(resource.getProperty(RDFS.seeAlso).getResource().getURI());
-        }
-
         // items
         StmtIterator iter = resource.listProperties(MCA_REGISTRY.hasItem);
 
@@ -99,6 +96,7 @@ public class ItemDaoImpl implements ItemDao {
             item.getItems().add(link);
         }
 
+        Collections.sort(item.getItems());
     }
 
 
@@ -115,6 +113,10 @@ public class ItemDaoImpl implements ItemDao {
 
         if (resource.hasProperty(GEO.longitude)) {
             item.setLongitude(resource.getProperty(GEO.longitude).getDouble());
+        }
+
+        if (resource.hasProperty(RDFS.seeAlso)) {
+            item.setKmlUrl(resource.getProperty(RDFS.seeAlso).getResource().getURI());
         }
     }
 

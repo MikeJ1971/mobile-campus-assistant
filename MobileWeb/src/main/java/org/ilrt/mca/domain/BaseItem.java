@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import com.google.gson.annotations.Expose;
 
-public class BaseItem implements Item {
+public class BaseItem implements Item, Comparable<Item> {
 
     public BaseItem() {
     }
@@ -61,14 +61,6 @@ public class BaseItem implements Item {
         return type;
     }
 
-    public String getOtherSource() {
-        return otherSource;
-    }
-
-    public void setOtherSource(String otherSource) {
-        this.otherSource = otherSource;
-    }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -83,6 +75,14 @@ public class BaseItem implements Item {
     @Expose private String description;
     private String template;
     @Expose private String type;
-    @Expose private String otherSource;
     @Expose List<BaseItem> items = new ArrayList<BaseItem>();
+
+
+    @Override
+    public int compareTo(Item item) {
+
+        System.out.println(item.getOrder() + " " + this.getOrder());
+
+        return this.getOrder().compareTo(item.getOrder());
+    }
 }
