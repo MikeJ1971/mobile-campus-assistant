@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
 
-initializeMap("map", ${it.latitude?string.computer}, ${it.longitude?string.computer}, 10, 200, 1000, 3000, 17, "http://wireless.bris.ac.uk/maps/wireless-core.kml");
+initializeMap("map", ${it.latitude?string.computer}, ${it.longitude?string.computer}, 10, 200, 1000, 3000, 17, "${it.kmlUrl}");
 
 </script>
 
