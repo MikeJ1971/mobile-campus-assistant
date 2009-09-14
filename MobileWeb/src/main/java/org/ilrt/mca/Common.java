@@ -1,5 +1,9 @@
 package org.ilrt.mca;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class Common {
 
     private Common() {

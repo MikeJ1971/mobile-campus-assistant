@@ -1,10 +1,11 @@
 package org.ilrt.mca.domain;
 
-import com.google.gson.annotations.Expose;
-
 import java.util.List;
 
-
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public interface Item {
 
     String getId();

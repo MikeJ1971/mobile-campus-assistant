@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 import com.google.gson.annotations.Expose;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class BaseItem implements Item, Comparable<Item> {
 
     public BaseItem() {

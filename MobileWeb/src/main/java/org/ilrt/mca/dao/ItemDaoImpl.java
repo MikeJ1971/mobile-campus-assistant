@@ -16,6 +16,10 @@ import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.util.Collections;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class ItemDaoImpl implements ItemDao {
 
     public ItemDaoImpl(ModelRepository modelRepository) {

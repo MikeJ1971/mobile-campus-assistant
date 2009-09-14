@@ -2,6 +2,10 @@ package org.ilrt.mca;
 
 import javax.ws.rs.core.MediaType;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class RdfMediaType {
 
     private RdfMediaType() {
