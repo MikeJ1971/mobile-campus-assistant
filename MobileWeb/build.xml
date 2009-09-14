@@ -13,13 +13,14 @@
 
     <!-- generated directories -->
     <property name="lib.dir" value="lib" description="The root library directory"/>
-    <property name="compile.lib.dir" value="${lib.dir}/compile"
+    <property name="compile.lib.dir" value="${src.main.webapp.dir}/WEB-INF/lib/"
               description="Compile time dependencies"/>
     <property name="runtime.lib.dir" value="${lib.dir}/runtime" description="Runtime dependencies"/>
     <property name="test.lib.dir" value="${lib.dir}/test" description="Test dependencies"/>
     <property name="target.dir" value="target"
               description="Directory for compiled classes and war file creation"/>
-    <property name="classes.dir" value="${target.dir}/classes" description="Compiled classes"/>
+    <property name="classes.dir" value="${src.main.webapp.dir}/WEB-INF/classes/"
+              description="Compiled classes"/>
     <property name="test.classes.dir" value="${target.dir}/test-classes"
               description="Compiled test classes"/>
     <property name="war.dir" value="${target.dir}/war" description="War file directory"/>
@@ -30,6 +31,9 @@
         <fileset dir="${lib.dir}">
             <include name="**/*.jar"/>
         </fileset>
+        <fileset dir="${compile.lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>        
         <fileset dir="${classes.dir}">
             <include name="**/*.classes"/>
         </fileset>
@@ -96,6 +100,8 @@
     <target name="clean">
         <delete dir="${target.dir}"/>
         <delete dir="${lib.dir}"/>
+        <delete dir="${compile.lib.dir}"/>
+        <delete dir="${classes.dir}"/>
     </target>
 
 </project>
