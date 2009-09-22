@@ -9,7 +9,7 @@ import com.hp.hpl.jena.util.FileManager;
  *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class ModelRepository extends AbstractRepository {
+public class ModelRepository extends AbstractRepository implements Repository {
 
     public ModelRepository() {
         try {

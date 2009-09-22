@@ -11,6 +11,7 @@ import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.KmlMapItemImpl;
 import org.ilrt.mca.rdf.ModelRepository;
+import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
@@ -22,14 +23,14 @@ import java.util.Collections;
  */
 public class ItemDaoImpl implements ItemDao {
 
-    public ItemDaoImpl(ModelRepository modelRepository) {
-        this.modelRepository = modelRepository;
+    public ItemDaoImpl(Repository repository) {
+        this.repository = repository;
     }
 
     @Override
     public Item findItem(String id) {
 
-        Model model = modelRepository.findItem(id);
+        Model model = repository.findItem(id);
 
         if (model.isEmpty()) {
             return null;
@@ -107,7 +108,7 @@ public class ItemDaoImpl implements ItemDao {
     private void findMapDetails(KmlMapItemImpl item) {
 
 
-        Model model = modelRepository.findMapDetails(item.getId());
+        Model model = repository.findMapDetails(item.getId());
 
         Resource resource = model.getResource(item.getId());
 
@@ -124,5 +125,5 @@ public class ItemDaoImpl implements ItemDao {
         }
     }
 
-    ModelRepository modelRepository = new ModelRepository();
+    Repository repository = new ModelRepository();
 }

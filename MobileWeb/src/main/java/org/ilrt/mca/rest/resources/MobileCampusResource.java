@@ -13,6 +13,7 @@ import org.ilrt.mca.dao.ItemDaoImpl;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.KmlMapItem;
 import org.ilrt.mca.rdf.ModelRepository;
+import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.GET;
@@ -31,8 +32,8 @@ public class MobileCampusResource {
 
     public MobileCampusResource() {
 
-        modelRepository = new ModelRepository();
-        itemDao = new ItemDaoImpl(modelRepository);
+        repository = new ModelRepository();
+        itemDao = new ItemDaoImpl(repository);
     }
 
     @GET
@@ -62,7 +63,7 @@ public class MobileCampusResource {
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Model model = modelRepository.findItem(uri);
+        Model model = repository.findItem(uri);
 
         if (model.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -75,7 +76,7 @@ public class MobileCampusResource {
         if (resource.getProperty(RDF.type).getResource().getURI()
                 .equals(MCA_REGISTRY.KmlMapSource.getURI())) {
 
-            Model additional = modelRepository.findMapDetails(uri);
+            Model additional = repository.findMapDetails(uri);
             model = model.add(additional);
         }
 
@@ -118,6 +119,6 @@ public class MobileCampusResource {
         return (path == null || path.equals("") || path.equals("/"));
     }
 
-    private ModelRepository modelRepository;
+    private Repository repository;
     private ItemDao itemDao;
 }
