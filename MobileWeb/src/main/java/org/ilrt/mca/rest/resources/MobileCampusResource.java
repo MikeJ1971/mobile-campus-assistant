@@ -3,18 +3,17 @@ package org.ilrt.mca.rest.resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
 import com.sun.jersey.api.view.Viewable;
+import com.sun.jersey.spi.resource.Singleton;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
 import org.ilrt.mca.dao.ItemDaoImpl;
 import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.domain.map.KmlMapItem;
-import org.ilrt.mca.rdf.ModelRepository;
 import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
+import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.StoreWrapperManager;
+import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,15 +23,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
+@Singleton
 @Path("{path:.*}")
 public class MobileCampusResource {
 
-    public MobileCampusResource() {
+    public MobileCampusResource() throws Exception {
 
-        repository = new ModelRepository();
+        StoreWrapperManager manager = new StoreWrapperManagerImpl(CONFIG);
+        Repository repository = new SdbRepositoryImpl(manager);
         itemDao = new ItemDaoImpl(repository);
     }
 
@@ -63,23 +63,11 @@ public class MobileCampusResource {
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Model model = repository.findItem(uri);
+        Model model = itemDao.findModel(uri);
 
         if (model.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-
-
-        // type checking
-        Resource resource = model.getResource(uri);
-
-        if (resource.getProperty(RDF.type).getResource().getURI()
-                .equals(MCA_REGISTRY.KmlMapSource.getURI())) {
-
-            Model additional = repository.findMapDetails(uri);
-            model = model.add(additional);
-        }
-
 
         return Response.ok(model).build();
     }
@@ -97,12 +85,6 @@ public class MobileCampusResource {
         Item item = itemDao.findItem(uri);
 
         if (item != null) {
-
-            if (item instanceof KmlMapItem) {
-                return Response.ok(gson.toJson((KmlMapItem) item)).build();
-            }
-
-
             return Response.ok(gson.toJson(item)).build();
         }
 
@@ -119,6 +101,6 @@ public class MobileCampusResource {
         return (path == null || path.equals("") || path.equals("/"));
     }
 
-    private Repository repository;
     private ItemDao itemDao;
+    final String CONFIG = "/sdb.ttl";
 }

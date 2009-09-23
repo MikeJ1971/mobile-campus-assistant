@@ -1,6 +1,7 @@
 package org.ilrt.mca.rdf;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.query.QuerySolutionMap;
 
 /**
  *
@@ -8,7 +9,13 @@ import com.hp.hpl.jena.rdf.model.Model;
  */
 public interface Repository {
 
-    Model findItem(String id);
+    Model find(String sparql);
 
-    Model findMapDetails(String id);
+    Model find(String bindingId, String id, String sparql);
+
+    Model find(QuerySolutionMap bindings, String sparql);
+
+    void add(Model model);
+
+    void delete(Model model);
 }

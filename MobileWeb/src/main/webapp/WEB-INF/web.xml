@@ -12,6 +12,20 @@
         <param-value>/WEB-INF/templates/</param-value>
     </context-param>
 
+    <servlet>
+        <servlet-name>registry</servlet-name>
+        <servlet-class>org.ilrt.mca.servlet.RegistryInitServlet</servlet-class>
+        <init-param>
+            <param-name>configLocation</param-name>
+            <param-value>/sdb.ttl</param-value>
+        </init-param>
+        <init-param>
+            <param-name>registryLocation</param-name>
+            <param-value>registry.ttl</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
 
     <filter>
         <filter-name>JerseyFilter</filter-name>
