@@ -9,6 +9,10 @@ import com.hp.hpl.jena.sdb.util.StoreUtils;
 import java.io.InputStream;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class StoreWrapperManagerImpl implements StoreWrapperManager {
 
     /**

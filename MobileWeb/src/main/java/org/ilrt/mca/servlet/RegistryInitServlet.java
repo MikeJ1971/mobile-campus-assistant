@@ -11,6 +11,10 @@ import javax.servlet.ServletConfig;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class RegistryInitServlet extends HttpServlet {
 
     @Override

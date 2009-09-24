@@ -8,6 +8,10 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.sdb.SDBFactory;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class SdbRepositoryImpl implements Repository {
 
     public SdbRepositoryImpl(final StoreWrapperManager manager) {
