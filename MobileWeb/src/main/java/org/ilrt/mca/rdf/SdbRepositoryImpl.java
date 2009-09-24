@@ -61,6 +61,22 @@ public class SdbRepositoryImpl implements Repository {
     }
 
     @Override
+    public void add(String graphUri, Model model) {
+        StoreWrapper storeWrapper = manager.getStoreWrapper();
+        Model sdbModel = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
+        sdbModel.add(model);        
+        storeWrapper.close();
+    }
+
+    @Override
+    public void delete(String graphUri, Model model) {
+        StoreWrapper storeWrapper = manager.getStoreWrapper();
+        Model sdbModel = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
+        sdbModel.remove(model);        
+        storeWrapper.close();
+    }
+
+    @Override
     public void delete(Model model) {
         StoreWrapper storeWrapper = manager.getStoreWrapper();
         Model sdbModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());

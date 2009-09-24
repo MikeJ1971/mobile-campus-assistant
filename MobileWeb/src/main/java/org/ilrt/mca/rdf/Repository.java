@@ -17,5 +17,9 @@ public interface Repository {
 
     void add(Model model);
 
+    void add(String graphUri, Model model);
+
     void delete(Model model);
+
+    void delete(String graphUri, Model model);
 }
