@@ -1,5 +1,6 @@
 package org.ilrt.mca.rdf;
 
+import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -25,6 +26,7 @@ public class SdbRepositoryImplTest {
         storeWrapper.close();
     }
 
+
     @Test
     public void addModel() throws Exception {
 
@@ -39,6 +41,45 @@ public class SdbRepositoryImplTest {
         // test that the database is not empty
         Model afterModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
         assertEquals("The model should not be empty", 1, afterModel.size());
+    }
+
+
+    @Test
+    public void addModelToGraph() throws Exception {
+
+        // test that the graph isn't stored
+        Dataset dataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
+        Model beforeModel = dataset.getNamedModel(graphUri);
+        assertEquals("The model should be empty", 0, beforeModel.size());
+
+        // add some data to the graph
+        Repository repository = getRepository();
+        repository.add(graphUri, getTestData());
+
+        // test that the graph is stored
+        Dataset afterDataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
+        Model afterModel = afterDataset.getNamedModel(graphUri);
+        assertEquals("The model should not be empty", 1, afterModel.size());
+    }
+
+
+    @Test
+    public void deleteModelFromGraph() throws Exception {
+
+        // test that the graph is stored
+        Dataset dataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
+        dataset.getNamedModel(graphUri).add(getTestData());
+        Model beforeModel = dataset.getNamedModel(graphUri);
+        assertEquals("The model should not be empty", 1, beforeModel.size());
+
+        // remove data from the graph
+        Repository repository = getRepository();
+        repository.delete(graphUri, getTestData());
+
+        // test that the graph isn't stored
+        Dataset afterDataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
+        Model afterModel = afterDataset.getNamedModel(graphUri);
+        assertEquals("The model should be empty", 0, afterModel.size());
     }
 
     @Test
@@ -158,6 +199,8 @@ public class SdbRepositoryImplTest {
     final String TEST_CONFIG = "/test-sdb.ttl";
 
     String uri = "http://example.org";
+
+    String graphUri = "http://example.org/graph1";
 
     String query = "PREFIX dc: <http://purl.org/dc/elements/1.1/> " +
             "CONSTRUCT { ?id dc:title ?title } WHERE { ?id dc:title ?title }";
