@@ -39,9 +39,9 @@ public class FeedHarvesterImplTest {
         // having an oldish last visited date
         GregorianCalendar lastVisited = new GregorianCalendar(2008, Calendar.SEPTEMBER, 24);
 
-        // harvest!
-        Harvester harvester = new HttpHarvesterImpl();
-        Model model = harvester.harvest(host + ":" + port + context, lastVisited.getTime(),
+        // resolve!
+        Resolver resolver = new HttpResolverImpl();
+        Model model = resolver.resolve(host + ":" + port + context, lastVisited.getTime(),
                 new FeedResponseHandlerImpl());
 
         assertNotNull("The model should not be null", model);

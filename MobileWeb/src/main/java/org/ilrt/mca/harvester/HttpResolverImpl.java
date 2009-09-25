@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class HttpHarvesterImpl implements Harvester {
+public class HttpResolverImpl implements Resolver {
 
     /**
      * @param url             the URL of the source we want to harvest.
@@ -21,13 +21,13 @@ public class HttpHarvesterImpl implements Harvester {
      * @param responseHandler handles the response and creates a model
      * @return a model
      */
-    public Model harvest(String url, Date lastVisited, ResponseHandler responseHandler) {
+    public Model resolve(String url, Date lastVisited, ResponseHandler responseHandler) {
 
 
         HttpClient httpClient = new HttpClient();
         HttpMethod httpMethod = new GetMethod(url);
 
-        // only harvest if the source has been updated
+        // only resolve if the source has been updated
         if (lastVisited != null) {
             httpMethod.addRequestHeader("If-Modified-Since", getDateFormat(lastVisited));
         }
@@ -87,5 +87,5 @@ public class HttpHarvesterImpl implements Harvester {
     }
 
 
-    Logger log = Logger.getLogger(HttpHarvesterImpl.class);
+    Logger log = Logger.getLogger(HttpResolverImpl.class);
 }
