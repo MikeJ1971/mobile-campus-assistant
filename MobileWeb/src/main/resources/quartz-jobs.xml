@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<quartz xmlns="http://www.quartzscheduler.org/ns/quartz"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.quartzscheduler.org/ns/quartz
+        http://www.quartzscheduler.org/ns/quartz/job_scheduling_data_1_1.xsd
+        http://www.quartzscheduler.org/ns/quartz" version="1.1">
+    <job>
+        <job-detail>
+            <name>HarvestFeedsJob</name>
+            <group>Harvester</group>
+            <job-class>org.ilrt.mca.quartz.HarvestFeedJob</job-class>
+            <volatility>false</volatility>
+            <durability>false</durability>
+            <recover>false</recover>
+        </job-detail>
+        <trigger>
+            <cron>
+                <name>HarvestFeedsTrigger</name>
+                <group>Harvester</group>
+                <job-name>HarvestFeedsJob</job-name>
+                <job-group>Harvester</job-group>
+                <cron-expression>0 0/5 * * * ?</cron-expression>
+            </cron>
+        </trigger>
+    </job>
+</quartz>
