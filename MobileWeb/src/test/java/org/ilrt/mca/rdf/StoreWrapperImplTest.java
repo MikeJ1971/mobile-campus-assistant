@@ -7,6 +7,10 @@ import org.junit.Test;
 
 import java.sql.SQLException;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class StoreWrapperImplTest {
 
     @Test

@@ -8,6 +8,10 @@ import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
 import static org.junit.Assert.assertTrue;
 import com.hp.hpl.jena.sdb.util.StoreUtils;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class AbstractTest {
 
     protected void setUpStore() throws Exception {

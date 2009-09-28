@@ -16,6 +16,10 @@ import java.util.GregorianCalendar;
 import java.net.InetSocketAddress;
 import java.io.IOException;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class FeedHarvesterImplTest {
 
     @Before
@@ -32,7 +36,7 @@ public class FeedHarvesterImplTest {
     }
 
     @Test
-    public void harvestFeed() {
+    public void harvestFeed() throws IOException {
 
         httpServer.createContext(context, new RssHandler());
 

@@ -10,6 +10,10 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class ItemDaoTest extends AbstractTest {
 
     @Before

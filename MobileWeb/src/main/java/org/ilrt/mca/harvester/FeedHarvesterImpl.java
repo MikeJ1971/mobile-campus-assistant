@@ -4,6 +4,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 import java.util.GregorianCalendar;
 import java.util.Calendar;
+import java.io.IOException;
 
 import org.apache.log4j.Logger;
 
@@ -13,7 +14,7 @@ import org.apache.log4j.Logger;
  */
 public class FeedHarvesterImpl implements Harvester {
 
-    public FeedHarvesterImpl() {
+    public FeedHarvesterImpl() throws IOException {
         resolver = new HttpResolverImpl();
     }
 

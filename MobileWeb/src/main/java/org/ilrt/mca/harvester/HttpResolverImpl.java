@@ -5,15 +5,23 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.TimeZone;
 
 public class HttpResolverImpl implements Resolver {
+
+    public HttpResolverImpl() throws IOException {
+
+        properties = new Properties();
+        properties.load(this.getClass().getResourceAsStream("/httpResolver.properties"));
+    }
 
     /**
      * @param url             the URL of the source we want to harvest.
@@ -25,6 +33,14 @@ public class HttpResolverImpl implements Resolver {
 
 
         HttpClient httpClient = new HttpClient();
+
+        // set the user agent (default provide by the apache client if null)
+        if (properties.getProperty("user.agent") != null) {
+            httpClient.getParams().setParameter(HttpMethodParams.USER_AGENT,
+                    properties.getProperty("user.agent"));
+        }
+
+
         HttpMethod httpMethod = new GetMethod(url);
 
         // only resolve if the source has been updated
@@ -88,4 +104,5 @@ public class HttpResolverImpl implements Resolver {
 
 
     Logger log = Logger.getLogger(HttpResolverImpl.class);
+    Properties properties;
 }
