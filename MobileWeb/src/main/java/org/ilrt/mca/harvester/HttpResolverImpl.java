@@ -15,6 +15,10 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.TimeZone;
 
+/**
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class HttpResolverImpl implements Resolver {
 
     public HttpResolverImpl() throws IOException {
@@ -24,12 +28,11 @@ public class HttpResolverImpl implements Resolver {
     }
 
     /**
-     * @param url             the URL of the source we want to harvest.
-     * @param lastVisited     the date the source was list visited.
+     * @param source          source we want to resolve
      * @param responseHandler handles the response and creates a model
      * @return a model
      */
-    public Model resolve(String url, Date lastVisited, ResponseHandler responseHandler) {
+    public Model resolve(Source source, ResponseHandler responseHandler) {
 
 
         HttpClient httpClient = new HttpClient();
@@ -41,11 +44,12 @@ public class HttpResolverImpl implements Resolver {
         }
 
 
-        HttpMethod httpMethod = new GetMethod(url);
+        HttpMethod httpMethod = new GetMethod(source.getUrl());
 
         // only resolve if the source has been updated
-        if (lastVisited != null) {
-            httpMethod.addRequestHeader("If-Modified-Since", getDateFormat(lastVisited));
+        if (source.getLastVisited() != null) {
+            httpMethod.addRequestHeader("If-Modified-Since",
+                    getDateFormat(source.getLastVisited()));
         }
 
 
@@ -57,7 +61,7 @@ public class HttpResolverImpl implements Resolver {
 
         } catch (IOException e) {
 
-            log.error("Error trying to GET " + url + " : " + e.getMessage());
+            log.error("Error trying to GET " + source.getUrl() + " : " + e.getMessage());
             return null;
         }
 
@@ -66,13 +70,16 @@ public class HttpResolverImpl implements Resolver {
 
         if (status != HttpStatus.SC_OK) {
 
+            // TODO - what about access to feeds that need authentication?
             if (status > 400) {
-                log.info("The requested resource " + url + " failed to return with the "
+                log.info("The requested resource " + source.getUrl() + " failed to return with the "
                         + "following response code: " + status + ")");
                 return null;
             }
         }
 
+        log.info("The requested resource " + source.getUrl()
+                + " returned the following response code: " + status);
 
         // get the content type
         String contentType = httpMethod.getResponseHeader("Content-Type").getValue();

@@ -42,3 +42,19 @@
     geo:lat "51.4585695818037"^^xsd:double ;
     geo:long "-2.60187349563486"^^xsd:double ;
     .
+
+<mca://registry/news> rdf:type mca:Group ;
+    rdfs:label "News" ;
+    dc:description "University news items" ;
+    mca:hasItem <mca://registry/news/events/> ;
+    mca:order "2"^^xsd:integer ;
+    mca:template <template://item.ftl> ;
+    .
+
+<mca://registry/news/events/> rdf:type mca:FeedSource ;
+    rdfs:label "Latest news" ;
+    dc:description "Latest news from the University of Bristol" ;
+    rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    .

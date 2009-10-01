@@ -1,103 +1,64 @@
 package org.ilrt.mca.harvester;
 
+import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.Headers;
-import static junit.framework.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.sdb.SDBFactory;
+import com.hp.hpl.jena.util.FileManager;
+import com.hp.hpl.jena.vocabulary.DC;
+import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
+import org.ilrt.mca.harvester.feeds.FeedHarvesterImpl;
+import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.StoreWrapperManager;
+import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
+import org.ilrt.mca.Common;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
-import org.junit.After;
+import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.net.InetSocketAddress;
-import java.io.IOException;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class FeedHarvesterImplTest {
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
 
-        InetSocketAddress address = new InetSocketAddress(port);
-        httpServer = HttpServer.create(address, 0);
-        httpServer.start();
-    }
+        // load the data
+        StoreWrapperManager manager = new StoreWrapperManagerImpl("/test-sdb.ttl");
+        Dataset dataset = SDBFactory.connectDataset(manager.getStoreWrapper().getStore());
+        dataset.getDefaultModel().add(FileManager.get().loadModel("test-registry.ttl"));
 
-    @After
-    public void tearDown() throws Exception {
-        httpServer.stop(0);
+        // create a last visited date and add it to a graph
+        Model model = dataset.getNamedModel(Common.AUDIT_GRAPH_URI);
+        Resource resource = ResourceFactory.createResource(uri);
+        Calendar calendar = new GregorianCalendar(2009, Calendar.SEPTEMBER, 30, 11, 38);
+        String date = Common.parseDate(calendar.getTime());
+        model.add(model.createStatement(resource, DC.date,
+                model.createTypedLiteral(date, XSDDatatype.XSDdateTime)));
+
+        repository = new SdbRepositoryImpl(manager);
     }
 
     @Test
-    public void harvestFeed() throws IOException {
+    public void harvest() throws Exception {
 
-        httpServer.createContext(context, new RssHandler());
 
-        // having an oldish last visited date
-        GregorianCalendar lastVisited = new GregorianCalendar(2008, Calendar.SEPTEMBER, 24);
+        Harvester harvester = new FeedHarvesterImpl(repository);
+        harvester.harvest();
 
-        // resolve!
-        Resolver resolver = new HttpResolverImpl();
-        Model model = resolver.resolve(host + ":" + port + context, lastVisited.getTime(),
-                new FeedResponseHandlerImpl());
-
-        assertNotNull("The model should not be null", model);
-        assertFalse("The model should not be empty", model.isEmpty());
+        assertTrue(true);
     }
 
-    HttpServer httpServer;
+    Repository repository;
 
-    private String getRssFeed() {
+    // these need to be in the test-registry.ttl file
+    String feedUrl = "http://www.bris.ac.uk/news/news-feed.rss";
+    String uri = "mca://registry/news/events/";
 
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-        buffer.append("<rss xmlns:dc=\"http://purl.org/dc/elements/1.1/\" ");
-        buffer.append("xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" version=\"2.0\">");
-        buffer.append("<channel>");
-        buffer.append("<title>University of Bristol news</title>");
-        buffer.append("<link>http://www.bris.ac.uk/news/</link>");
-        buffer.append("<description>Latest news from the University of Bristol</description>");
-        buffer.append("<item>");
-        buffer.append("<title>Record turnout for David Attenborough lecture</title>");
-        buffer.append("<link>http://www.bris.ac.uk/news/2009/6565.html</link>");
-        buffer.append("<description>Last night [24 September] Sir David Attenborough delivered a ");
-        buffer.append("lecture on Alfred Russel Wallace and the Birds of Paradise to a capacity ");
-        buffer.append("audience at the University. More than 850 people packed the Great Hall in ");
-        buffer.append("the Wills Memorial Building to hear the legendary and much-loved ");
-        buffer.append("broadcaster speak.</description>");
-        buffer.append("<pubDate>Fri, 25 Sep 2009 06:00:00 +0000</pubDate>");
-        buffer.append("<guid>http://www.bris.ac.uk/news/2009/6565.html</guid>");
-        buffer.append("<category>Press releases</category>");
-        buffer.append("</item>");
-        buffer.append("</channel>");
-        buffer.append("</rss>");
-        return buffer.toString();
-    }
-
-
-    public class RssHandler implements HttpHandler {
-
-        @Override
-        public void handle(HttpExchange httpExchange) throws IOException {
-
-            String feed = getRssFeed();
-            System.out.println(feed);
-            Headers responseHeaders = httpExchange.getResponseHeaders();
-            responseHeaders.set("Content-Type", "application/rss+xml");
-            httpExchange.sendResponseHeaders(200, feed.length());
-            httpExchange.getResponseBody().write(feed.getBytes());
-            httpExchange.close();
-        }
-    }
-
-    private String host = "http://localhost";
-    private int port = 8090;
-    private String context = "/feed/";
 }

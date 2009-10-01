@@ -1,13 +1,14 @@
 package org.ilrt.mca.dao;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
+import org.ilrt.mca.Common;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.KmlMapItemImpl;
@@ -15,10 +16,6 @@ import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Collections;
 
 /**
@@ -29,8 +26,9 @@ public class ItemDaoImpl implements ItemDao {
     public ItemDaoImpl(Repository repository) throws Exception {
         this.repository = repository;
 
-        findItemsSparql = loadSparql("/findItems.rql");
-        kmlMapDetailsSparql = loadSparql("/findKmlMapDetails.rql");
+        Common common = new Common();
+        findItemsSparql = common.loadSparql("/sparql/findItems.rql");
+        kmlMapDetailsSparql = common.loadSparql("/sparql/findKmlMapDetails.rql");
     }
 
     @Override
@@ -150,22 +148,6 @@ public class ItemDaoImpl implements ItemDao {
         if (resource.hasProperty(RDFS.seeAlso)) {
             item.setKmlUrl(resource.getProperty(RDFS.seeAlso).getResource().getURI());
         }
-    }
-
-
-    String loadSparql(String path) throws IOException {
-
-        StringBuffer buffer = new StringBuffer();
-        InputStream is = getClass().getResourceAsStream(path);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-        String line;
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
-            buffer.append("\n");
-        }
-
-        return buffer.toString();
     }
 
 

@@ -1,4 +1,4 @@
-package org.ilrt.mca.harvester;
+package org.ilrt.mca.harvester.feeds;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
+
+import org.ilrt.mca.harvester.ResponseHandler;
 
 /**
  *

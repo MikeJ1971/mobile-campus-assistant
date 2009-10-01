@@ -9,5 +9,5 @@ import java.util.Date;
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public interface Resolver {
-    Model resolve(String url, Date lastVisited, ResponseHandler responseHandler);
+    Model resolve(Source source, ResponseHandler responseHandler);
 }

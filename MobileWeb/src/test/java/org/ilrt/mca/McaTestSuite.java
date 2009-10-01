@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.ilrt.mca.dao.ItemDaoTest;
 import org.ilrt.mca.rdf.StoreWrapperImplTest;
 import org.ilrt.mca.rdf.SdbRepositoryImplTest;
-import org.ilrt.mca.harvester.FeedHarvesterImplTest;
+import org.ilrt.mca.harvester.FeedResponseHandlerImplTest;
 
 /**
  *
@@ -16,7 +16,7 @@ import org.ilrt.mca.harvester.FeedHarvesterImplTest;
         StoreWrapperImplTest.class,
         ItemDaoTest.class,
         SdbRepositoryImplTest.class,
-        FeedHarvesterImplTest.class
+        FeedResponseHandlerImplTest.class
 })
 public class McaTestSuite {
     // all done in the annotations ...
