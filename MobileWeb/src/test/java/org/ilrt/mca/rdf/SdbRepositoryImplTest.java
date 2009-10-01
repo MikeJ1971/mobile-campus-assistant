@@ -1,5 +1,6 @@
 package org.ilrt.mca.rdf;
 
+import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -10,13 +11,19 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.sdb.util.StoreUtils;
 import com.hp.hpl.jena.vocabulary.DC;
+import org.ilrt.mca.Common;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import static junit.framework.Assert.assertFalse;
+
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class SdbRepositoryImplTest {
@@ -35,16 +42,20 @@ public class SdbRepositoryImplTest {
     public void addModel() throws Exception {
 
         // test that the database is empty
-        Model beforeModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Model beforeModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should be empty", 0, beforeModel.size());
+        storeWrapper.close();
 
         // add some data
         Repository repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
-        Model afterModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        storeWrapper = getStoreWrapper();
+        Model afterModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should not be empty", 1, afterModel.size());
+        storeWrapper.close();
     }
 
 
@@ -52,18 +63,22 @@ public class SdbRepositoryImplTest {
     public void addModelToGraph() throws Exception {
 
         // test that the graph isn't stored
-        Dataset dataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Dataset dataset = SDBFactory.connectDataset(storeWrapper.getStore());
         Model beforeModel = dataset.getNamedModel(graphUri);
         assertEquals("The model should be empty", 0, beforeModel.size());
+        storeWrapper.close();
 
         // add some data to the graph
         Repository repository = getRepository();
         repository.add(graphUri, getTestData());
 
         // test that the graph is stored
-        Dataset afterDataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
+        storeWrapper = getStoreWrapper();
+        Dataset afterDataset = SDBFactory.connectDataset(storeWrapper.getStore());
         Model afterModel = afterDataset.getNamedModel(graphUri);
         assertEquals("The model should not be empty", 1, afterModel.size());
+        storeWrapper.close();
     }
 
 
@@ -71,42 +86,52 @@ public class SdbRepositoryImplTest {
     public void deleteModelFromGraph() throws Exception {
 
         // test that the graph is stored
-        Dataset dataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Dataset dataset = SDBFactory.connectDataset(storeWrapper.getStore());
         dataset.getNamedModel(graphUri).add(getTestData());
         Model beforeModel = dataset.getNamedModel(graphUri);
         assertEquals("The model should not be empty", 1, beforeModel.size());
+        storeWrapper.close();
 
         // remove data from the graph
         Repository repository = getRepository();
         repository.delete(graphUri, getTestData());
 
         // test that the graph isn't stored
+        storeWrapper = getStoreWrapper();
         Dataset afterDataset = SDBFactory.connectDataset(getStoreWrapper().getStore());
         Model afterModel = afterDataset.getNamedModel(graphUri);
         assertEquals("The model should be empty", 0, afterModel.size());
+        storeWrapper.close();
     }
 
     @Test
     public void deleteModel() throws Exception {
 
         // test that the database is empty
-        Model beforeModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Model beforeModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should be empty", 0, beforeModel.size());
+        storeWrapper.close();
 
         // add some data
         Repository repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
-        Model afterModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        storeWrapper = getStoreWrapper();
+        Model afterModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should not be empty", 1, afterModel.size());
+        storeWrapper.close();
 
         // try deleting
         repository.delete(getTestData());
 
         // test that the database is now empty
-        Model afterDeleteModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        storeWrapper = getStoreWrapper();
+        Model afterDeleteModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should be empty", 0, afterDeleteModel.size());
+        storeWrapper.close();
     }
 
 
@@ -118,7 +143,8 @@ public class SdbRepositoryImplTest {
         repository.add(getTestData());
 
         // test that the database is not empty
-        Model afterModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Model afterModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should not be empty", 1, afterModel.size());
 
         QuerySolutionMap bindings = new QuerySolutionMap();
@@ -126,6 +152,7 @@ public class SdbRepositoryImplTest {
         Model results = repository.find(bindings, query);
 
         assertEquals("The results should not be empty", 1, results.size());
+        storeWrapper.close();
     }
 
     @Test
@@ -136,12 +163,14 @@ public class SdbRepositoryImplTest {
         repository.add(getTestData());
 
         // test that the database is not empty
-        Model afterModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Model afterModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should not be empty", 1, afterModel.size());
 
         Model results = repository.find(query);
 
         assertEquals("The results should not be empty", 1, results.size());
+        storeWrapper.close();
     }
 
     @Test
@@ -152,12 +181,64 @@ public class SdbRepositoryImplTest {
         repository.add(getTestData());
 
         // test that the database is not empty
-        Model afterModel = SDBFactory.connectDefaultModel(getStoreWrapper().getStore());
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Model afterModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should not be empty", 1, afterModel.size());
 
         Model results = repository.find("id", uri, query);
 
         assertEquals("The results should not be empty", 1, results.size());
+        storeWrapper.close();
+    }
+
+
+    @Test
+    public void updatePropertyValueInGraph() {
+
+        // test data
+        String uri = "mca://registry/news/events/";
+        String graph = "mca://audit/";
+
+        Calendar calendar = new GregorianCalendar(2009, Calendar.SEPTEMBER, 30, 11, 38);
+        String date = Common.parseDate(calendar.getTime());
+
+        // add some data
+        StoreWrapper storeWrapper = getStoreWrapper();
+
+        Model beforeModel = SDBFactory.connectDataset(storeWrapper.getStore())
+                .getNamedModel(graph);
+        Resource resource = beforeModel.getResource(uri);
+        beforeModel.add(beforeModel.createStatement(resource, DC.date,
+                beforeModel.createTypedLiteral(date, XSDDatatype.XSDdateTime)));
+
+        // check we have expected data
+        assertTrue("The model should have a dc:date", beforeModel.getResource(uri)
+                .hasProperty(DC.date));
+        assertEquals("Unexpected date value", date, beforeModel.getResource(uri)
+                .getProperty(DC.date).getLiteral().getLexicalForm());
+
+        // clean up
+        beforeModel.close();
+        storeWrapper.close();
+
+        Repository repository = getRepository();
+
+        String newdate = Common.parseDate(new Date());
+
+        repository.updatePropertyInGraph(graph, uri, DC.date,
+                ModelFactory.createDefaultModel().createTypedLiteral(newdate,
+                        XSDDatatype.XSDdateTime));
+
+        storeWrapper = getStoreWrapper();
+        Model afterModel = SDBFactory.connectDataset(storeWrapper.getStore())
+                .getNamedModel(graph);
+
+        String changedDate = afterModel.getResource(uri).getProperty(DC.date).getLiteral()
+                .getLexicalForm();
+
+        assertFalse("The dates should be different", changedDate.equals(date));
+        storeWrapper.close();
+
     }
 
     // -- Utility methods

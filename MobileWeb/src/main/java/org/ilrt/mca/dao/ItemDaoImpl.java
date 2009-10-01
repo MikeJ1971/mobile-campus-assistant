@@ -8,7 +8,6 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
-import org.ilrt.mca.Common;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.KmlMapItemImpl;
@@ -21,14 +20,12 @@ import java.util.Collections;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class ItemDaoImpl implements ItemDao {
+public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
     public ItemDaoImpl(Repository repository) throws Exception {
         this.repository = repository;
-
-        Common common = new Common();
-        findItemsSparql = common.loadSparql("/sparql/findItems.rql");
-        kmlMapDetailsSparql = common.loadSparql("/sparql/findKmlMapDetails.rql");
+        findItemsSparql = loadSparql("/sparql/findItems.rql");
+        kmlMapDetailsSparql = loadSparql("/sparql/findKmlMapDetails.rql");
     }
 
     @Override

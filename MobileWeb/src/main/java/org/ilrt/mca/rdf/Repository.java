@@ -2,6 +2,8 @@ package org.ilrt.mca.rdf;
 
 import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -21,4 +23,7 @@ public interface Repository {
     void delete(Model model);
 
     void delete(String graphUri, Model model);
+
+    void updatePropertyInGraph(String graphUri, String uri,
+                               Property property, RDFNode object);
 }

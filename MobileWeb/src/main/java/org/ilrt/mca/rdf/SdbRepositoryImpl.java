@@ -5,11 +5,13 @@ import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.sdb.SDBFactory;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class SdbRepositoryImpl implements Repository {
@@ -50,6 +52,8 @@ public class SdbRepositoryImpl implements Repository {
 
         Model results = qe.execConstruct();
 
+        //results.write(System.out);
+
         // clean up and returm
         qe.close();
         storeWrapper.close();
@@ -68,7 +72,7 @@ public class SdbRepositoryImpl implements Repository {
     public void add(String graphUri, Model model) {
         StoreWrapper storeWrapper = manager.getStoreWrapper();
         Model sdbModel = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
-        sdbModel.add(model);        
+        sdbModel.add(model);
         storeWrapper.close();
     }
 
@@ -76,7 +80,7 @@ public class SdbRepositoryImpl implements Repository {
     public void delete(String graphUri, Model model) {
         StoreWrapper storeWrapper = manager.getStoreWrapper();
         Model sdbModel = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
-        sdbModel.remove(model);        
+        sdbModel.remove(model);
         storeWrapper.close();
     }
 
@@ -85,6 +89,24 @@ public class SdbRepositoryImpl implements Repository {
         StoreWrapper storeWrapper = manager.getStoreWrapper();
         Model sdbModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         sdbModel.remove(model);
+        sdbModel.close();
+        storeWrapper.close();
+    }
+
+    @Override
+    public void updatePropertyInGraph(String graphUri, String uri, Property property,
+                                      RDFNode value) {
+
+        StoreWrapper storeWrapper = manager.getStoreWrapper();
+        Model sdbModel = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
+        Resource resource = sdbModel.getResource(uri);
+
+        if (resource.hasProperty(property)) {
+            resource.getProperty(property).changeObject(value);
+        } else {
+            resource.addProperty(property, value);
+        }
+
         sdbModel.close();
         storeWrapper.close();
     }

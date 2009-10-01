@@ -1,9 +1,5 @@
 package org.ilrt.mca;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,24 +9,8 @@ import java.util.Date;
  */
 public class Common {
 
-    public Common() {
+    private Common() {
     }
-
-    public String loadSparql(String path) throws IOException {
-
-        StringBuffer buffer = new StringBuffer();
-        InputStream is = getClass().getResourceAsStream(path);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-        String line;
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
-            buffer.append("\n");
-        }
-
-        return buffer.toString();
-    }
-
 
     public static String parseDate(final Date date) {
 
@@ -45,9 +25,7 @@ public class Common {
         String temp = XsdDate.substring(0, XsdDate.length() - 3)
                 + XsdDate.substring(XsdDate.length() - 2, XsdDate.length());
 
-        Date date = new SimpleDateFormat(DATE_FORMAT_STRING).parse(temp);
-
-        return date;
+        return new SimpleDateFormat(DATE_FORMAT_STRING).parse(temp);
     }
 
     private static String DATE_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ssZ";

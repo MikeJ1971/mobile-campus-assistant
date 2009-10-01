@@ -8,9 +8,8 @@ import java.util.Date;
  */
 public class Source {
 
-    public Source(String url, String label, Date lastVisited) {
+    public Source(String url, Date lastVisited) {
         this.url = url;
-        this.label = label;
         this.lastVisited = lastVisited;
     }
 
@@ -20,14 +19,6 @@ public class Source {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
     }
 
     public Date getLastVisited() {
@@ -40,6 +31,5 @@ public class Source {
 
     private String url;
     private Date lastVisited;
-    private String label;
 }
 
