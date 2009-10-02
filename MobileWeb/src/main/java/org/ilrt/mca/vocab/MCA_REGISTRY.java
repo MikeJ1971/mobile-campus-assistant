@@ -30,4 +30,6 @@ public class MCA_REGISTRY {
     public static final Property hasItem = model.createProperty(NS + "hasItem");
 
     public static final Property template = model.createProperty(NS + "template");
+
+    public static final Property lastVisitedDate = model.createProperty(NS + "lastVisitedDate");
 }

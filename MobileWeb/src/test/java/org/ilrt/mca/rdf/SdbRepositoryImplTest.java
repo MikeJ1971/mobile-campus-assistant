@@ -11,6 +11,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.sdb.util.StoreUtils;
 import com.hp.hpl.jena.vocabulary.DC;
+import static junit.framework.Assert.assertFalse;
 import org.ilrt.mca.Common;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -20,8 +21,6 @@ import org.junit.Test;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
-import static junit.framework.Assert.assertFalse;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -240,6 +239,59 @@ public class SdbRepositoryImplTest {
         storeWrapper.close();
 
     }
+
+
+    @Test
+    public void testDeleteDataInGraph() throws Exception {
+
+        setUpStore();
+        String graph = "http://example.org/graph";
+
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Model model = SDBFactory.connectNamedModel(storeWrapper.getStore(), graph);
+
+        assertTrue("The graph should be empty", model.isEmpty());
+
+        model.add(getTestData());
+
+        assertFalse("The model should not be empty", model.isEmpty());
+
+        model.close();
+
+        Repository repository = getRepository();
+        repository.deleteAllInGraph(graph);
+
+        storeWrapper = getStoreWrapper();
+        model = SDBFactory.connectNamedModel(storeWrapper.getStore(), graph);
+
+        assertTrue("The graph should be empty", model.isEmpty());
+    }
+
+    @Test
+    public void testDeleteDataInDefaultGraph() throws Exception {
+
+        setUpStore();
+
+        StoreWrapper storeWrapper = getStoreWrapper();
+        Model model = SDBFactory.connectDefaultModel(storeWrapper.getStore());
+
+        assertTrue("The graph should be empty", model.isEmpty());
+
+        model.add(getTestData());
+
+        assertFalse("The model should not be empty", model.isEmpty());
+
+        model.close();
+
+        Repository repository = getRepository();
+        repository.deleteAllInGraph(null);
+
+        storeWrapper = getStoreWrapper();
+        model = SDBFactory.connectDefaultModel(storeWrapper.getStore());
+
+        assertTrue("The graph should be empty", model.isEmpty());
+    }
+
 
     // -- Utility methods
 

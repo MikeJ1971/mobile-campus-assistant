@@ -4,6 +4,7 @@ import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.rdf.SdbRepositoryImpl;
 import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
+import org.ilrt.mca.rdf.StoreWrapper;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
+import com.hp.hpl.jena.sdb.SDBFactory;
 
 import java.io.IOException;
 
@@ -38,11 +40,15 @@ public class RegistryInitServlet extends HttpServlet {
         StoreWrapperManager manager = new StoreWrapperManagerImpl(configLocation);
         Repository repository = new SdbRepositoryImpl(manager);
 
-        // TODO - BLITZ THE DEFAULT MODEL BEFORE ADDING THE MODEL AGAIN
+        // clear existing registry
+        log.info("Clearing existing registry details");
+        repository.deleteAllInGraph(null);
 
         // load the registry and add it to the database
+        log.info("Loading registry details");
         Model model = FileManager.get().loadModel(registryLocation);
         repository.add(model);
+        log.info("Added " + model.size() + " triples.");
     }
 
     @Override

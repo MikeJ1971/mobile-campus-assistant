@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
+ * Test suite that will execute all tests for this project.
+ *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 @RunWith(Suite.class)

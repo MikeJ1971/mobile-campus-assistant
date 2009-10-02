@@ -111,5 +111,23 @@ public class SdbRepositoryImpl implements Repository {
         storeWrapper.close();
     }
 
+    @Override
+    public void deleteAllInGraph(String graphUri) {
+
+        StoreWrapper storeWrapper = manager.getStoreWrapper();
+
+        Model model;
+
+        if (graphUri != null) {
+            model = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
+        } else {
+            model = SDBFactory.connectDefaultModel(storeWrapper.getStore());
+        }
+
+        model.removeAll();
+        model.close();
+        storeWrapper.close();
+    }
+
     private final StoreWrapperManager manager;
 }

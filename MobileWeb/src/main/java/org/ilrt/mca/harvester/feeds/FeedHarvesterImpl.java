@@ -7,8 +7,10 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.DC;
+import com.hp.hpl.jena.vocabulary.RDFS;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
@@ -45,6 +47,8 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
         // get the date that they were last updated
         List<Source> sources = findSources();
 
+        log.info("Found " + sources.size() + " sources to harvest");
+
         // harvest each source
         for (Source source : sources) {
 
@@ -53,13 +57,15 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
             // harvest the data
             Model model = resolver.resolve(source, new FeedResponseHandlerImpl());
 
+            model.write(System.out);
+
             if (model != null) {
 
                 // delete the old data
                 repository.delete(source.getUrl(), model);
 
                 // add the harvested data
-                repository.delete(source.getUrl(), model);
+                repository.add(source.getUrl(), model);
 
                 // update the last visited date
                 RDFNode date = ModelFactory.createDefaultModel()
@@ -80,7 +86,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
         if (!m.isEmpty()) {
 
-            ResIterator iterator = m.listSubjects();
+            ResIterator iterator = m.listSubjectsWithProperty(RDFS.seeAlso);
 
             while (iterator.hasNext()) {
                 sources.add(getDetails(iterator.nextResource()));
@@ -95,11 +101,11 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
         Date lastVisited = null;
 
-        String uri = resource.getURI();
+        String uri = resource.getProperty(RDFS.seeAlso).getResource().getURI();
 
-        if (resource.hasProperty(DC.date)) {
+        if (resource.hasProperty(MCA_REGISTRY.lastVisitedDate)) {
             try {
-                lastVisited = Common.parseDate(resource.getProperty(DC.date)
+                lastVisited = Common.parseDate(resource.getProperty(MCA_REGISTRY.lastVisitedDate)
                         .getLiteral().getLexicalForm());
             } catch (ParseException e) {
                 log.error(e.getMessage());

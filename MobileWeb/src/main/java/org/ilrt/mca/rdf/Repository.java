@@ -10,11 +10,15 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
  */
 public interface Repository {
 
+    //----- execute CONSTRUCT queries
+
     Model find(String sparql);
 
     Model find(String bindingId, String id, String sparql);
 
     Model find(QuerySolutionMap bindings, String sparql);
+
+    //----- add and delete models
 
     void add(Model model);
 
@@ -24,6 +28,9 @@ public interface Repository {
 
     void delete(String graphUri, Model model);
 
+    void deleteAllInGraph(String graphUri);
+
     void updatePropertyInGraph(String graphUri, String uri,
                                Property property, RDFNode object);
+
 }
