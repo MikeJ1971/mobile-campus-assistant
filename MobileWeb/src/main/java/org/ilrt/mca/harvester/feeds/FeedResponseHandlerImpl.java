@@ -23,7 +23,7 @@ import org.ilrt.mca.harvester.ResponseHandler;
 public class FeedResponseHandlerImpl implements ResponseHandler {
 
     @Override
-    public Model getModel(InputStream inputStream) {
+    public Model getModel(String sourceUrl, InputStream inputStream) {
 
         try {
             
@@ -32,6 +32,8 @@ public class FeedResponseHandlerImpl implements ResponseHandler {
             SyndFeedInput synfeed = new SyndFeedInput();
             SyndFeed syndFeed = synfeed.build(reader);
             syndFeed.setFeedType("rss_1.0");
+            syndFeed.setUri(sourceUrl);
+            syndFeed.setEncoding("UTF-8");
 
             // write the feed to a string
             StringWriter writer = new StringWriter();

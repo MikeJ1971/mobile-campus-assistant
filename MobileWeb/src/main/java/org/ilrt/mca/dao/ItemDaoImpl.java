@@ -1,5 +1,6 @@
 package org.ilrt.mca.dao;
 
+import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -8,14 +9,20 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
+import com.hp.hpl.jena.vocabulary.RSS;
+import org.apache.log4j.Logger;
+import org.ilrt.mca.Common;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.KmlMapItemImpl;
+import org.ilrt.mca.feeds.FeedItemImpl;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
+import java.text.ParseException;
 import java.util.Collections;
+
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -26,6 +33,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         this.repository = repository;
         findItemsSparql = loadSparql("/sparql/findItems.rql");
         kmlMapDetailsSparql = loadSparql("/sparql/findKmlMapDetails.rql");
+        findFeedsSparql = loadSparql("/sparql/findAllItemsInGraph.rql");
     }
 
     @Override
@@ -48,6 +56,14 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
                 KmlMapItemImpl item = new KmlMapItemImpl();
                 getBasicDetails(resource, item);
                 findMapDetails(item, resource);
+                return item;
+            } else if (resource.getProperty(RDF.type).getResource().getURI()
+                    .equals(MCA_REGISTRY.FeedSource.getURI())) {
+
+                Resource graph = resource.getProperty(RDFS.seeAlso).getResource();
+                FeedItemImpl item = new FeedItemImpl();
+                getBasicDetails(resource, item);
+                feedDetails(item, graph);
                 return item;
             }
         }
@@ -73,12 +89,39 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         // are we a specific type
         if (resource.hasProperty(RDF.type)) {
 
+            log.debug("The resource type: "
+                    + resource.getProperty(RDF.type).getResource().getURI());
+
             // kml map source ?
             if (resource.getProperty(RDF.type).getResource().getURI()
                     .equals(MCA_REGISTRY.KmlMapSource.getURI())) {
 
+                log.debug("We are dealing with a map");
+
                 Model kmlModel = repository.find("id", id, kmlMapDetailsSparql);
                 model = ModelFactory.createUnion(model, kmlModel);
+            } else if (resource.getProperty(RDF.type).getResource().getURI()
+                    .equals(MCA_REGISTRY.FeedSource.getURI())) {
+
+                log.debug("We are dealing with a feed");
+
+                if (resource.hasProperty(RDFS.seeAlso)) {
+
+                    Resource graph = resource.getProperty(RDFS.seeAlso).getResource();
+
+                    QuerySolutionMap bindings = new QuerySolutionMap();
+                    bindings.add("graph", graph);
+
+                    Model feedModel = repository.find(bindings, findFeedsSparql);
+
+                    model = ModelFactory.createUnion(model, feedModel);
+                    //graph = resource.getProperty(RDFS.seeAlso).getResource();
+                    System.out.println("***********************");
+                    model.write(System.out);
+                    System.out.println("***********************");
+
+                }
+
             }
         }
 
@@ -92,6 +135,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
         // label
         if (resource.hasProperty(RDFS.label)) {
+            System.out.println(">>>>>> YES WE HAVE THAT!");
             item.setLabel(resource.getProperty(RDFS.label).getLiteral().getLexicalForm());
         }
 
@@ -148,7 +192,159 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
     }
 
 
+    private void feedDetails(FeedItemImpl item, Resource resource) {
+
+        if (resource.hasProperty(RSS.items)) {
+
+            StmtIterator stmtiter = resource.getModel().listStatements(null, RDF.type, RSS.item);
+
+
+            while (stmtiter.hasNext()) {
+
+                Statement statement = stmtiter.nextStatement();
+
+                Resource r = statement.getSubject();
+
+                FeedItemImpl feedItem = new FeedItemImpl();
+
+                feedItem.setId(r.getURI());
+
+                // item title
+                if (r.hasProperty(RSS.title)) {
+                    System.out.println("YES -------------> " + r.getProperty(RSS.title).getLiteral().getLexicalForm());
+                    feedItem.setLabel(r.getProperty(RSS.title).getLiteral().getLexicalForm());
+                }
+
+                // item description
+                if (r.hasProperty(RSS.description)) {
+                    feedItem.setDescription(r.getProperty(RSS.description).getLiteral()
+                            .getLexicalForm());
+                }
+
+                // item link
+                if (r.hasProperty(RSS.link)) {
+
+                    String link = null;
+
+                    if (r.getProperty(RSS.link).getObject().isResource()) {
+                        link = r.getProperty(RSS.link).getResource().getURI();
+                    } else if (r.getProperty(RSS.link).getObject().isLiteral()) {
+                        link = r.getProperty(RSS.link).getLiteral().getLexicalForm();
+                    }
+
+                    feedItem.setLink(link);
+                }
+
+                // item date
+                if (r.hasProperty(DC.date)) {
+
+                    String feedItemDate = null;
+
+                    try {
+
+                        feedItemDate = r.getProperty(DC.date).getLiteral().getLexicalForm();
+                        feedItem.setDate(Common.parseDate(feedItemDate));
+                    } catch (ParseException e) {
+                        log.error("Unable to parse: " + feedItemDate + " : " + e.getMessage());
+                    }
+                }
+
+                item.getItems().add(feedItem);
+
+
+                /**
+                 *
+                 *
+                 * Set an order by date - comparator on the date field
+                 *
+                 *
+                 *
+                 */
+
+
+            }
+
+
+        }
+
+    }
+
+
+    /**
+     * while (seqIter.hasNext()) {
+     * <p/>
+     * FeedItemImpl feedItem = new FeedItemImpl();
+     * <p/>
+     * Statement seqStmt = seqIter.nextStatement();
+     * <p/>
+     * Resource r = seqStmt.getResource();
+     * <p/>
+     * if (r.getProperty(RDF.type) == null) { // mmmm
+     * <p/>
+     * feedItem.setId(r.getURI());
+     * <p/>
+     * // item title
+     * if (r.hasProperty(RSS.title)) {
+     * System.out.println("YES -------------> " + r.getProperty(RSS.title).getLiteral().getLexicalForm());
+     * feedItem.setLabel(r.getProperty(RSS.title).getLiteral().getLexicalForm());
+     * }
+     * <p/>
+     * // item description
+     * if (r.hasProperty(RSS.description)) {
+     * feedItem.setDescription(r.getProperty(RSS.description).getLiteral()
+     * .getLexicalForm());
+     * }
+     * <p/>
+     * // item link
+     * if (r.hasProperty(RSS.link)) {
+     * <p/>
+     * String link = null;
+     * <p/>
+     * if (r.getProperty(RSS.link).getObject().isResource()) {
+     * link = r.getProperty(RSS.link).getResource().getURI();
+     * } else if (r.getProperty(RSS.link).getObject().isLiteral()) {
+     * link = r.getProperty(RSS.link).getLiteral().getLexicalForm();
+     * }
+     * <p/>
+     * feedItem.setLink(link);
+     * }
+     * <p/>
+     * // item date
+     * if (r.hasProperty(DC.date)) {
+     * <p/>
+     * String feedItemDate = null;
+     * <p/>
+     * try {
+     * <p/>
+     * feedItemDate = r.getProperty(DC.date).getLiteral().getLexicalForm();
+     * feedItem.setDate(Common.parseDate(feedItemDate));
+     * } catch (ParseException e) {
+     * log.error("Unable to parse: " + feedItemDate + " : " + e.getMessage());
+     * }
+     * }
+     * <p/>
+     * item.getItems().add(feedItem);
+     * }
+     * }
+     * <p/>
+     * }
+     * <p/>
+     * System.out.println(">>>>>>>> " + item.getItems().size());
+     * System.out.println(">>>>>>>> " + item.getLabel());
+     * <p/>
+     * for (Item i : item.getItems()) {
+     * System.out.println(">>>>>>>>>>>>> " + i.getId());
+     * }
+     * <p/>
+     * <p/>
+     * }
+     */
+
+
     private String findItemsSparql = null;
     private String kmlMapDetailsSparql = null;
+    private String findFeedsSparql = null;
     private Repository repository;
+
+    Logger log = Logger.getLogger(ItemDaoImpl.class);
 }

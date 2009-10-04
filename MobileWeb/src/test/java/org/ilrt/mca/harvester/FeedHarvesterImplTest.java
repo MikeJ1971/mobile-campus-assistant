@@ -46,7 +46,7 @@ public class FeedHarvesterImplTest extends AbstractTest {
         Model model = dataset.getNamedModel(Common.AUDIT_GRAPH_URI);
         Resource resource = ResourceFactory.createResource(feedUrl);
         Calendar calendar = new GregorianCalendar(2009, Calendar.SEPTEMBER, 30, 11, 38);
-        date = Common.parseDate(calendar.getTime());
+        date = Common.parseXsdDate(calendar.getTime());
         model.add(model.createStatement(resource, DC.date,
                 model.createTypedLiteral(date, XSDDatatype.XSDdateTime)));
 

@@ -13,7 +13,7 @@ import java.io.InputStream;
  */
 public interface ResponseHandler {
 
-    Model getModel(InputStream inputStream);
+    Model getModel(String sourceUri, InputStream inputStream);
 
     boolean isSupportedMediaType(String mediaType);
 }

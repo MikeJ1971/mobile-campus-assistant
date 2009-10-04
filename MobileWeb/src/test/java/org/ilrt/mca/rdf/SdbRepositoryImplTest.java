@@ -199,7 +199,7 @@ public class SdbRepositoryImplTest {
         String graph = "mca://audit/";
 
         Calendar calendar = new GregorianCalendar(2009, Calendar.SEPTEMBER, 30, 11, 38);
-        String date = Common.parseDate(calendar.getTime());
+        String date = Common.parseXsdDate(calendar.getTime());
 
         // add some data
         StoreWrapper storeWrapper = getStoreWrapper();
@@ -222,7 +222,7 @@ public class SdbRepositoryImplTest {
 
         Repository repository = getRepository();
 
-        String newdate = Common.parseDate(new Date());
+        String newdate = Common.parseXsdDate(new Date());
 
         repository.updatePropertyInGraph(graph, uri, DC.date,
                 ModelFactory.createDefaultModel().createTypedLiteral(newdate,

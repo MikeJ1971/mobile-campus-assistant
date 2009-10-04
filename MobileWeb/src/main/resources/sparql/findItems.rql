@@ -8,6 +8,7 @@ CONSTRUCT {
     $id mca:template $template .
     $id rdfs:label $label .
     $id dc:description $description .
+    $id rdfs:seeAlso $seeAlso .
     $id rdf:type $type .
     $id mca:hasItem $itemId .
     $itemId rdfs:label $itemLabel .
@@ -20,6 +21,7 @@ CONSTRUCT {
     $id rdfs:label $label .
     $id dc:description $description .
     $id rdf:type $type .
+    OPTIONAL { $id rdfs:seeAlso $seeAlso . } .
     OPTIONAL {
         $id mca:hasItem $itemId .
         $itemId rdfs:label $itemLabel .

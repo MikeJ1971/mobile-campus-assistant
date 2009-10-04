@@ -10,13 +10,13 @@ import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
 import org.ilrt.mca.harvester.Source;
 import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -59,20 +59,18 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
             model.write(System.out);
 
-            if (model != null) {
+            // delete the old data
+            repository.deleteAllInGraph(source.getUrl());
 
-                // delete the old data
-                repository.delete(source.getUrl(), model);
+            // add the harvested data
+            repository.add(source.getUrl(), model);
 
-                // add the harvested data
-                repository.add(source.getUrl(), model);
+            // update the last visited date
+            RDFNode date = ModelFactory.createDefaultModel()
+                    .createTypedLiteral(Common.parseXsdDate(lastVisited), XSDDatatype.XSDdateTime);
+            repository.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
+                    DC.date, date);
 
-                // update the last visited date
-                RDFNode date = ModelFactory.createDefaultModel()
-                        .createTypedLiteral(Common.parseDate(lastVisited), XSDDatatype.XSDdateTime);
-                repository.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
-                        DC.date, date);
-            }
         }
 
     }
@@ -105,7 +103,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
         if (resource.hasProperty(MCA_REGISTRY.lastVisitedDate)) {
             try {
-                lastVisited = Common.parseDate(resource.getProperty(MCA_REGISTRY.lastVisitedDate)
+                lastVisited = Common.parseXsdDate(resource.getProperty(MCA_REGISTRY.lastVisitedDate)
                         .getLiteral().getLexicalForm());
             } catch (ParseException e) {
                 log.error(e.getMessage());

@@ -25,6 +25,8 @@ public class MCA_REGISTRY {
 
     public static final Resource KmlMapSource = model.createResource(NS + "KmlMapSource");
 
+    public static final Resource FeedSource = model.createProperty(NS + "FeedSource");
+
     public static final Property order = model.createProperty(NS + "order");
 
     public static final Property hasItem = model.createProperty(NS + "hasItem");

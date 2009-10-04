@@ -11,6 +11,7 @@
     rdfs:label "Mobile Campus Assistant" ;
     dc:description "Registry for the Mobile Campus Assistant, University of Bristol" ;
     mca:hasItem <mca://registry/maps/> ;
+    mca:hasItem <mca://registry/news/> ;
     mca:template <template://homepage.ftl> ;
     .
 
@@ -43,7 +44,7 @@
     geo:long "-2.60187349563486"^^xsd:double ;
     .
 
-<mca://registry/news> rdf:type mca:Group ;
+<mca://registry/news/> rdf:type mca:Group ;
     rdfs:label "News" ;
     dc:description "University news items" ;
     mca:hasItem <mca://registry/news/events/> ;

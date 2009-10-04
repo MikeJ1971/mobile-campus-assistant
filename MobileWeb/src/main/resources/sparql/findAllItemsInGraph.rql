@@ -1,0 +1,14 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sy: <http://purl.org/rss/1.0/modules/syndication/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX taxo: <http://purl.org/rss/1.0/modules/taxonomy/>
+PREFIX content: <http://purl.org/rss/1.0/modules/content/>
+PREFIX rss: <http://purl.org/rss/1.0/>
+PREFIX mca: <http://org.ilrt.mca/registry#>
+CONSTRUCT {
+    ?s ?p ?o
+} WHERE {
+    GRAPH ?graph {
+        ?s ?p ?o
+    }
+}
