@@ -14,12 +14,13 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.domain.map.KmlMapItemImpl;
 import org.ilrt.mca.domain.feeds.FeedItemImpl;
+import org.ilrt.mca.domain.map.KmlMapItemImpl;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
+import javax.ws.rs.core.MultivaluedMap;
 import java.text.ParseException;
 import java.util.Collections;
 
@@ -37,9 +38,9 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
     }
 
     @Override
-    public Item findItem(String id) {
+    public Item findItem(String id, MultivaluedMap<String, String> parameters) {
 
-        Model model = findModel(id);
+        Model model = findModel(id, parameters);
 
         if (model.isEmpty()) {
             return null;
@@ -76,7 +77,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
     }
 
     @Override
-    public Model findModel(String id) {
+    public Model findModel(String id, MultivaluedMap<String, String> parameters) {
 
         Model model = repository.find("id", id, findItemsSparql);
 
@@ -105,14 +106,26 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
                 log.debug("We are dealing with a feed");
 
+
                 if (resource.hasProperty(RDFS.seeAlso)) {
 
-                    Resource graph = resource.getProperty(RDFS.seeAlso).getResource();
-
                     QuerySolutionMap bindings = new QuerySolutionMap();
+
+                    Resource graph = resource.getProperty(RDFS.seeAlso).getResource();
                     bindings.add("graph", graph);
 
+                    // check to see that we have a parameter value called "item"
+                    // if so, we want to run a CONSTRUCT query that pulls just that
+                    // news item and passes back the model for that. maybe give it
+                    // a type called ITEM or something so that the DAO deals with it
+                    // appropriately. also specify the template used? could be specified
+                    // in the sparql or in a seperate part of the registry maybe?
+                    // this area could do with a "buddy" review once we have an initial
+                    // implementation up. ripe for some re-factoring :-)
+
+
                     Model feedModel = repository.find(bindings, findFeedsSparql);
+
                     model = ModelFactory.createUnion(model, feedModel);
                 }
 

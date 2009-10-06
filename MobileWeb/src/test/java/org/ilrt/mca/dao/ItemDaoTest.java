@@ -16,6 +16,8 @@ import org.junit.Test;
  */
 public class ItemDaoTest extends AbstractTest {
 
+    // TODO upate tests for parameter values
+
     @Before
     public void setUp() {
 
@@ -33,7 +35,7 @@ public class ItemDaoTest extends AbstractTest {
 
         ItemDao itemDao = new ItemDaoImpl(getRepository());
 
-        Item item = itemDao.findItem(id);
+        Item item = itemDao.findItem(id, null);
 
         assertNotNull("The item should not be null", item);
     }
@@ -43,7 +45,7 @@ public class ItemDaoTest extends AbstractTest {
 
         ItemDao itemDao = new ItemDaoImpl(getRepository());
 
-        Model model = itemDao.findModel(id);
+        Model model = itemDao.findModel(id, null);
 
         assertTrue("The model should not be empty", model.size() > 0);
     }

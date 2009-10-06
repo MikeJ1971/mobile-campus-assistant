@@ -1,16 +1,14 @@
 <#include "header.ftl"/>
 
-<h3>${it.label}</h3>
-
-<p>${it.description}</p>
-
-<#list it.items as item>
-    <div class="newsItem">
-        <h4>${item.label}</h4>
-        <p>${item.date?string("dd MMMM yyyy hh:mm:ss")}</p>
-        <p>${item.description}</p>
-        <p><a href="${item.link}">More...</a></p>
-    </div>
-</#list>
+<div class="group">
+    <h3>${it.label}</h3>
+    <p>${it.description}</p>
+    <ul class="itemList">
+        <#list it.items as item>
+        <li class="newsItemTitle"><a href="./?item=${item.id}">${item.label}<br/>
+            <span class="publishDate">${item.date?string("dd MMMM yyyy hh:mm:ss")}</a></span></li>
+        </#list>
+    </ul>
+</div>
 
 <#include "footer.ftl"/>

@@ -19,8 +19,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -38,12 +41,12 @@ public class MobileCampusResource {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Response getGroupsAsHtml(@PathParam("path") String path) {
+    public Response getGroupsAsHtml(@PathParam("path") String path, @Context UriInfo ui) {
 
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Item item = itemDao.findItem(uri);
+        Item item = itemDao.findItem(uri, ui.getQueryParameters());
 
         if (item != null) {
 
@@ -63,7 +66,7 @@ public class MobileCampusResource {
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Model model = itemDao.findModel(uri);
+        Model model = itemDao.findModel(uri, null);
 
         if (model.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -82,7 +85,7 @@ public class MobileCampusResource {
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Item item = itemDao.findItem(uri);
+        Item item = itemDao.findItem(uri, null);
 
         if (item != null) {
             return Response.ok(gson.toJson(item)).build();
