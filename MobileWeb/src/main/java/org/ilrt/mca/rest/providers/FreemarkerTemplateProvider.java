@@ -210,7 +210,7 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
         //}
         //vars.put("contextPath", contextPath);
 
-        final OutputStreamWriter writer = new OutputStreamWriter(out);
+        final OutputStreamWriter writer = new OutputStreamWriter(out, "UTF-8");
 
         try {
             template.process(vars, writer);

@@ -16,7 +16,6 @@ import java.util.Properties;
 import java.util.TimeZone;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class HttpResolverImpl implements Resolver {
@@ -42,7 +41,7 @@ public class HttpResolverImpl implements Resolver {
             httpClient.getParams().setParameter(HttpMethodParams.USER_AGENT,
                     properties.getProperty("user.agent"));
             //TODO set in the properities file
-            httpClient.getParams().setParameter("http.protocol.content-charset", "UTF-8");
+            //httpClient.getParams().setParameter("http.protocol.content-charset", "UTF-8");
         }
 
 

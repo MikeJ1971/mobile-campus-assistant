@@ -15,7 +15,7 @@ import org.ilrt.mca.Common;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.KmlMapItemImpl;
-import org.ilrt.mca.feeds.FeedItemImpl;
+import org.ilrt.mca.domain.feeds.FeedItemImpl;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
@@ -113,13 +113,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
                     bindings.add("graph", graph);
 
                     Model feedModel = repository.find(bindings, findFeedsSparql);
-
                     model = ModelFactory.createUnion(model, feedModel);
-                    //graph = resource.getProperty(RDFS.seeAlso).getResource();
-                    System.out.println("***********************");
-                    model.write(System.out);
-                    System.out.println("***********************");
-
                 }
 
             }
@@ -135,7 +129,6 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
         // label
         if (resource.hasProperty(RDFS.label)) {
-            System.out.println(">>>>>> YES WE HAVE THAT!");
             item.setLabel(resource.getProperty(RDFS.label).getLiteral().getLexicalForm());
         }
 
@@ -211,7 +204,6 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
                 // item title
                 if (r.hasProperty(RSS.title)) {
-                    System.out.println("YES -------------> " + r.getProperty(RSS.title).getLiteral().getLexicalForm());
                     feedItem.setLabel(r.getProperty(RSS.title).getLiteral().getLexicalForm());
                 }
 
@@ -251,95 +243,12 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
                 item.getItems().add(feedItem);
 
-
-                /**
-                 *
-                 *
-                 * Set an order by date - comparator on the date field
-                 *
-                 *
-                 *
-                 */
-
-
             }
 
-
+            Collections.sort(item.getItems());
         }
 
     }
-
-
-    /**
-     * while (seqIter.hasNext()) {
-     * <p/>
-     * FeedItemImpl feedItem = new FeedItemImpl();
-     * <p/>
-     * Statement seqStmt = seqIter.nextStatement();
-     * <p/>
-     * Resource r = seqStmt.getResource();
-     * <p/>
-     * if (r.getProperty(RDF.type) == null) { // mmmm
-     * <p/>
-     * feedItem.setId(r.getURI());
-     * <p/>
-     * // item title
-     * if (r.hasProperty(RSS.title)) {
-     * System.out.println("YES -------------> " + r.getProperty(RSS.title).getLiteral().getLexicalForm());
-     * feedItem.setLabel(r.getProperty(RSS.title).getLiteral().getLexicalForm());
-     * }
-     * <p/>
-     * // item description
-     * if (r.hasProperty(RSS.description)) {
-     * feedItem.setDescription(r.getProperty(RSS.description).getLiteral()
-     * .getLexicalForm());
-     * }
-     * <p/>
-     * // item link
-     * if (r.hasProperty(RSS.link)) {
-     * <p/>
-     * String link = null;
-     * <p/>
-     * if (r.getProperty(RSS.link).getObject().isResource()) {
-     * link = r.getProperty(RSS.link).getResource().getURI();
-     * } else if (r.getProperty(RSS.link).getObject().isLiteral()) {
-     * link = r.getProperty(RSS.link).getLiteral().getLexicalForm();
-     * }
-     * <p/>
-     * feedItem.setLink(link);
-     * }
-     * <p/>
-     * // item date
-     * if (r.hasProperty(DC.date)) {
-     * <p/>
-     * String feedItemDate = null;
-     * <p/>
-     * try {
-     * <p/>
-     * feedItemDate = r.getProperty(DC.date).getLiteral().getLexicalForm();
-     * feedItem.setDate(Common.parseDate(feedItemDate));
-     * } catch (ParseException e) {
-     * log.error("Unable to parse: " + feedItemDate + " : " + e.getMessage());
-     * }
-     * }
-     * <p/>
-     * item.getItems().add(feedItem);
-     * }
-     * }
-     * <p/>
-     * }
-     * <p/>
-     * System.out.println(">>>>>>>> " + item.getItems().size());
-     * System.out.println(">>>>>>>> " + item.getLabel());
-     * <p/>
-     * for (Item i : item.getItems()) {
-     * System.out.println(">>>>>>>>>>>>> " + i.getId());
-     * }
-     * <p/>
-     * <p/>
-     * }
-     */
-
 
     private String findItemsSparql = null;
     private String kmlMapDetailsSparql = null;

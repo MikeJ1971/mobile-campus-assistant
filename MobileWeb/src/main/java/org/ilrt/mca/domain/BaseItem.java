@@ -84,9 +84,6 @@ public class BaseItem implements Item, Comparable<Item> {
 
     @Override
     public int compareTo(Item item) {
-
-        System.out.println(item.getOrder() + " " + this.getOrder());
-
         return this.getOrder().compareTo(item.getOrder());
     }
 }

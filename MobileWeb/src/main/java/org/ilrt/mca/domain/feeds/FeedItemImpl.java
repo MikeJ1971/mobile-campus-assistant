@@ -1,6 +1,7 @@
-package org.ilrt.mca.feeds;
+package org.ilrt.mca.domain.feeds;
 
 import org.ilrt.mca.domain.BaseItem;
+import org.ilrt.mca.domain.Item;
 
 import java.util.Date;
 
@@ -27,6 +28,11 @@ public class FeedItemImpl extends BaseItem implements FeedItem {
     @Override
     public String getLink() {
         return link;
+    }
+
+    @Override
+    public int compareTo(Item item) {
+        return ((FeedItem)item).getDate().compareTo(this.getDate());
     }
 
     @Expose private Date date = null;

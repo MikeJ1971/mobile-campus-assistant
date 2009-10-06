@@ -1,4 +1,4 @@
-package org.ilrt.mca.feeds;
+package org.ilrt.mca.domain.feeds;
 
 import org.ilrt.mca.domain.Item;
 
