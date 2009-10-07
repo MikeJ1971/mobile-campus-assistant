@@ -4,6 +4,7 @@ import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC;
@@ -66,6 +67,10 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
                 getBasicDetails(resource, item);
                 feedDetails(item, graph);
                 return item;
+            } else if (resource.getProperty(RDF.type).getResource().getURI().equals(RSS.item.getURI())) {
+
+                System.out.println("Its an Item!");
+                return feedItemDetails(resource);
             }
         }
 
@@ -123,10 +128,33 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
                     // this area could do with a "buddy" review once we have an initial
                     // implementation up. ripe for some re-factoring :-)
 
+                    if (parameters.containsKey("item")) {
+
+                        // specific item
+                        bindings.add("s", ResourceFactory.createResource(
+                                parameters.getFirst("item")));
+                        //Model feedModel = repository.find(bindings, findFeedsSparql);
+
+                    }
 
                     Model feedModel = repository.find(bindings, findFeedsSparql);
 
-                    model = ModelFactory.createUnion(model, feedModel);
+
+
+                    if (parameters.containsKey("item")) {
+
+                        System.out.println("YES, WE ARE HERE !!!?!!!??!!!!");
+
+                        feedModel.add(feedModel.getResource(parameters.getFirst("item")), MCA_REGISTRY.template, feedModel.createLiteral("grr.ftl"));
+
+                        feedModel.write(System.out);
+
+                        return feedModel;
+                    } else {
+
+                        return ModelFactory.createUnion(model, feedModel);
+                    }
+
                 }
 
             }
@@ -211,55 +239,61 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
                 Resource r = statement.getSubject();
 
-                FeedItemImpl feedItem = new FeedItemImpl();
-
-                feedItem.setId(r.getURI());
-
-                // item title
-                if (r.hasProperty(RSS.title)) {
-                    feedItem.setLabel(r.getProperty(RSS.title).getLiteral().getLexicalForm());
-                }
-
-                // item description
-                if (r.hasProperty(RSS.description)) {
-                    feedItem.setDescription(r.getProperty(RSS.description).getLiteral()
-                            .getLexicalForm());
-                }
-
-                // item link
-                if (r.hasProperty(RSS.link)) {
-
-                    String link = null;
-
-                    if (r.getProperty(RSS.link).getObject().isResource()) {
-                        link = r.getProperty(RSS.link).getResource().getURI();
-                    } else if (r.getProperty(RSS.link).getObject().isLiteral()) {
-                        link = r.getProperty(RSS.link).getLiteral().getLexicalForm();
-                    }
-
-                    feedItem.setLink(link);
-                }
-
-                // item date
-                if (r.hasProperty(DC.date)) {
-
-                    String feedItemDate = null;
-
-                    try {
-
-                        feedItemDate = r.getProperty(DC.date).getLiteral().getLexicalForm();
-                        feedItem.setDate(Common.parseDate(feedItemDate));
-                    } catch (ParseException e) {
-                        log.error("Unable to parse: " + feedItemDate + " : " + e.getMessage());
-                    }
-                }
-
-                item.getItems().add(feedItem);
+                item.getItems().add(feedItemDetails(r));
 
             }
 
             Collections.sort(item.getItems());
         }
+
+    }
+
+    private FeedItemImpl feedItemDetails(Resource resource) {
+
+        FeedItemImpl feedItem = new FeedItemImpl();
+
+        feedItem.setId(resource.getURI());
+
+        // item title
+        if (resource.hasProperty(RSS.title)) {
+            feedItem.setLabel(resource.getProperty(RSS.title).getLiteral().getLexicalForm());
+        }
+
+        // item description
+        if (resource.hasProperty(RSS.description)) {
+            feedItem.setDescription(resource.getProperty(RSS.description).getLiteral()
+                    .getLexicalForm());
+        }
+
+        // item link
+        if (resource.hasProperty(RSS.link)) {
+
+            String link = null;
+
+            if (resource.getProperty(RSS.link).getObject().isResource()) {
+                link = resource.getProperty(RSS.link).getResource().getURI();
+            } else if (resource.getProperty(RSS.link).getObject().isLiteral()) {
+                link = resource.getProperty(RSS.link).getLiteral().getLexicalForm();
+            }
+
+            feedItem.setLink(link);
+        }
+
+        // item date
+        if (resource.hasProperty(DC.date)) {
+
+            String feedItemDate = null;
+
+            try {
+
+                feedItemDate = resource.getProperty(DC.date).getLiteral().getLexicalForm();
+                feedItem.setDate(Common.parseDate(feedItemDate));
+            } catch (ParseException e) {
+                log.error("Unable to parse: " + feedItemDate + " : " + e.getMessage());
+            }
+        }
+
+        return feedItem;
 
     }
 

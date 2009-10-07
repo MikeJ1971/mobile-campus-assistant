@@ -57,7 +57,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
             // harvest the data
             Model model = resolver.resolve(source, new FeedResponseHandlerImpl());
 
-            model.write(System.out);
+            //model.write(System.out);
 
             // delete the old data
             repository.deleteAllInGraph(source.getUrl());
