@@ -24,7 +24,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collections;
 
-
+/**
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
     public FeedDelegateImpl(final Repository repository) {

@@ -6,6 +6,9 @@ import org.ilrt.mca.domain.Item;
 
 import javax.ws.rs.core.MultivaluedMap;
 
+/**
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public interface Delegate {
 
     Item createItem(Resource resource, MultivaluedMap<String, String> parameters);

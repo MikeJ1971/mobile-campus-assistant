@@ -22,6 +22,7 @@ public class KmlMapDelegateImpl extends AbstractDao implements Delegate {
         try {
             kmlMapDetailsSparql = loadSparql("/sparql/findKmlMapDetails.rql");
         } catch (IOException ex) {
+            Logger log = Logger.getLogger(KmlMapDelegateImpl.class);
             log.error("Unable to load SPARQL query: " + ex.getMessage());
             throw new RuntimeException(ex);
         }
@@ -57,7 +58,6 @@ public class KmlMapDelegateImpl extends AbstractDao implements Delegate {
     }
 
 
-    private Logger log = Logger.getLogger(KmlMapDelegateImpl.class);
     private String kmlMapDetailsSparql = null;
     private final Repository repository;
 }
