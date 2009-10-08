@@ -35,6 +35,10 @@ p {
     margin-right: 5px;
 }
 
+.group h4 {
+    padding-left: 6px;
+}
+
 .group ul {
     background: #FFFFFF;
     -webkit-border-radius: 10px;
@@ -69,7 +73,6 @@ p {
 .group p {
     font-family: Helvetica, serif;
     font-size: 16px;
-    padding-left: 6px;
 }
 
 a {

@@ -2,11 +2,10 @@ package org.ilrt.mca.vocab;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class MCA_REGISTRY {
@@ -19,6 +18,8 @@ public class MCA_REGISTRY {
         return NS;
     }
 
+    // ----- Resources
+
     public static final Resource NAMESPACE = model.createResource(NS);
 
     public static final Resource Group = model.createResource(NS + "Group");
@@ -26,6 +27,10 @@ public class MCA_REGISTRY {
     public static final Resource KmlMapSource = model.createResource(NS + "KmlMapSource");
 
     public static final Resource FeedSource = model.createProperty(NS + "FeedSource");
+
+    public static final Resource FeedItem = model.createProperty(NS + "NewsItem");
+
+    // ----- Properties
 
     public static final Property order = model.createProperty(NS + "order");
 

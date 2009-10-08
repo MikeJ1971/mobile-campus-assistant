@@ -57,19 +57,22 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
             // harvest the data
             Model model = resolver.resolve(source, new FeedResponseHandlerImpl());
 
-            //model.write(System.out);
+            if (model != null) {
 
-            // delete the old data
-            repository.deleteAllInGraph(source.getUrl());
+                // delete the old data
+                repository.deleteAllInGraph(source.getUrl());
 
-            // add the harvested data
-            repository.add(source.getUrl(), model);
+                // add the harvested data
+                repository.add(source.getUrl(), model);
 
-            // update the last visited date
-            RDFNode date = ModelFactory.createDefaultModel()
-                    .createTypedLiteral(Common.parseXsdDate(lastVisited), XSDDatatype.XSDdateTime);
-            repository.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
-                    DC.date, date);
+                // update the last visited date
+                RDFNode date = ModelFactory.createDefaultModel()
+                        .createTypedLiteral(Common.parseXsdDate(lastVisited), XSDDatatype.XSDdateTime);
+                repository.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
+                        DC.date, date);
+            } else {
+                log.info("Unable to cache " + source.getUrl());
+            }
 
         }
 

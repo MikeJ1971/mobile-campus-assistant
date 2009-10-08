@@ -54,9 +54,9 @@ public class FeedResponseHandlerImpl implements ResponseHandler {
     @Override
     public boolean isSupportedMediaType(String mediaType) {
 
-        return mediaType.equals("text/xml") || mediaType.equals("application/rss+xml")
-                || mediaType.equals("application/xml")
-                || mediaType.equals("application/atom+xml");
+        return mediaType.startsWith("text/xml") || mediaType.startsWith("application/rss+xml")
+                || mediaType.startsWith("application/xml")
+                || mediaType.startsWith("application/atom+xml");
 
     }
 

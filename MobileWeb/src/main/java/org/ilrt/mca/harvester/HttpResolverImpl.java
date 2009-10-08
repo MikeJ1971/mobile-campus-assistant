@@ -40,8 +40,6 @@ public class HttpResolverImpl implements Resolver {
         if (properties.getProperty("user.agent") != null) {
             httpClient.getParams().setParameter(HttpMethodParams.USER_AGENT,
                     properties.getProperty("user.agent"));
-            //TODO set in the properities file
-            //httpClient.getParams().setParameter("http.protocol.content-charset", "UTF-8");
         }
 
 
@@ -90,6 +88,8 @@ public class HttpResolverImpl implements Resolver {
 
             try {
 
+                log.info("Handler can respond to the content type: " + contentType);
+
                 InputStream is = httpMethod.getResponseBodyAsStream();
 
                 return responseHandler.getModel(source.getUrl(), is);
@@ -98,6 +98,8 @@ public class HttpResolverImpl implements Resolver {
                 log.error("Error occured when handling response: " + e.getMessage());
 
             }
+        } else {
+            log.info("Handler cannot handle the content type: " + contentType);
         }
 
         return null;

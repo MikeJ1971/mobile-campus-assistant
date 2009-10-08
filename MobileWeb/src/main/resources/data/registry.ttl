@@ -47,15 +47,34 @@
 <mca://registry/news/> rdf:type mca:Group ;
     rdfs:label "News" ;
     dc:description "University news items" ;
-    mca:hasItem <mca://registry/news/events/> ;
+    mca:hasItem <mca://registry/news/latest/> ;
+    mca:hasItem <mca://registry/news/is/> ;
+    mca:hasItem <mca://registry/news/sports/> ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://item.ftl> ;
     .
 
-<mca://registry/news/events/> rdf:type mca:FeedSource ;
+<mca://registry/news/latest/> rdf:type mca:FeedSource ;
     rdfs:label "Latest news" ;
     dc:description "Latest news from the University of Bristol" ;
     rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
     .
+
+<mca://registry/news/is/> rdf:type mca:FeedSource ;
+    rdfs:label "Information Services" ;
+    dc:description "News from Information Services" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/is/news/news.rss> ;
+    mca:order "2"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    .
+
+<mca://registry/news/sports/> rdf:type mca:FeedSource ;
+    rdfs:label "Sport, Exercise and Health" ;
+    dc:description "News from Sport, Exercise and Health" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/sport/news/news-feed.rss> ;
+    mca:order "3"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    .
+
