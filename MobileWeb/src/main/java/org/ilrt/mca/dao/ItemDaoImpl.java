@@ -82,7 +82,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
             if (type.equals(MCA_REGISTRY.KmlMapSource.getURI())) {
                 return new KmlMapDelegateImpl(repository);
-            } else if (type.equals(MCA_REGISTRY.FeedSource.getURI()) ||
+            } else if (type.equals(MCA_REGISTRY.News.getURI()) ||
                     type.equals(MCA_REGISTRY.FeedItem.getURI())) {
                 return new FeedDelegateImpl(repository);
             }

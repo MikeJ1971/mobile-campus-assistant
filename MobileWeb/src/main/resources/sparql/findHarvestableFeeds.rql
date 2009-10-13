@@ -5,15 +5,13 @@ PREFIX mca:     <http://org.ilrt.mca/registry#>
 PREFIX dc:      <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 CONSTRUCT {
-    $id rdfs:seeAlso $seeAlso .
-    $seeAlso mca:lastVisitedDate $lastVisited  .
+    $id rdf:type <http://org.ilrt.mca/registry#FeedSource> .
+    $id mca:lastVisitedDate $lastVisited  .
 } WHERE {
     $id rdf:type <http://org.ilrt.mca/registry#FeedSource> .
-    $id rdfs:label $label .
-    $id rdfs:seeAlso $seeAlso .
     OPTIONAL {
         GRAPH $graph {
-            OPTIONAL { $seeAlso mca:lastVisitedDate $lastVisited } .
+            OPTIONAL { $id mca:lastVisitedDate $lastVisited } .
         }
     }
 }

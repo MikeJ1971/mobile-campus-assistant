@@ -54,7 +54,7 @@
     mca:template <template://item.ftl> ;
     .
 
-<mca://registry/news/latest/> rdf:type mca:FeedSource ;
+<mca://registry/news/latest/> rdf:type mca:News ;
     rdfs:label "Latest news" ;
     dc:description "Latest news from the University of Bristol" ;
     rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
@@ -62,7 +62,7 @@
     mca:template <template://newsList.ftl> ;
     .
 
-<mca://registry/news/is/> rdf:type mca:FeedSource ;
+<mca://registry/news/is/> rdf:type mca:News ;
     rdfs:label "Information Services" ;
     dc:description "News from Information Services" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/is/news/news.rss> ;
@@ -70,7 +70,7 @@
     mca:template <template://newsList.ftl> ;
     .
 
-<mca://registry/news/sports/> rdf:type mca:FeedSource ;
+<mca://registry/news/sports/> rdf:type mca:News ;
     rdfs:label "Sport, Exercise and Health" ;
     dc:description "News from Sport, Exercise and Health" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/sport/news/news-feed.rss> ;
@@ -78,3 +78,10 @@
     mca:template <template://newsList.ftl> ;
     .
 
+# Below are URLs that will be harvested
+
+<http://www.bris.ac.uk/news/news-feed.rss> rdf:type mca:FeedSource .
+
+<http://www.bristol.ac.uk/is/news/news.rss> rdf:type mca:FeedSource .
+
+<http://www.bristol.ac.uk/sport/news/news-feed.rss> rdf:type mca:FeedSource .

@@ -7,7 +7,7 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.DC;
-import com.hp.hpl.jena.vocabulary.RDFS;
+import com.hp.hpl.jena.vocabulary.RDF;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
@@ -87,7 +87,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
         if (!m.isEmpty()) {
 
-            ResIterator iterator = m.listSubjectsWithProperty(RDFS.seeAlso);
+            ResIterator iterator = m.listSubjectsWithProperty(RDF.type);
 
             while (iterator.hasNext()) {
                 sources.add(getDetails(iterator.nextResource()));
@@ -102,7 +102,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
         Date lastVisited = null;
 
-        String uri = resource.getProperty(RDFS.seeAlso).getResource().getURI();
+        String uri = resource.getURI();
 
         if (resource.hasProperty(MCA_REGISTRY.lastVisitedDate)) {
             try {
