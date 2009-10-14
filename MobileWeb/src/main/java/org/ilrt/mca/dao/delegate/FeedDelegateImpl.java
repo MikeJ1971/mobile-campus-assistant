@@ -57,14 +57,15 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
             while (stmtiter.hasNext()) {
                 Statement statement = stmtiter.nextStatement();
                 Resource r = statement.getSubject();
-                item.getItems().add(feedItemDetails(r));
+                item.getItems().add(feedItemDetails(r, graphUri.getURI()));
             }
 
             Collections.sort(item.getItems());
 
         } else if (graphUri.hasProperty(MCA_REGISTRY.hasItem)) {    // dealing with an item
 
-            item = feedItemDetails(graphUri.getProperty(MCA_REGISTRY.hasItem).getResource());
+            item = feedItemDetails(graphUri.getProperty(MCA_REGISTRY.hasItem).getResource(),
+                    graphUri.getURI());
         }
 
         getBasicDetails(resource, item);
@@ -117,11 +118,13 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
         return null;
     }
 
-    private FeedItemImpl feedItemDetails(Resource resource) {
+    private FeedItemImpl feedItemDetails(Resource resource, String provenance) {
 
         FeedItemImpl feedItem = new FeedItemImpl();
 
         feedItem.setId(resource.getURI());
+
+        feedItem.setProvenance(provenance);
 
         // item title
         if (resource.hasProperty(RSS.title)) {

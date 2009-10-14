@@ -1,9 +1,12 @@
 <#include "header.ftl"/>
 <div class="group">
     <div class="newsItem">
-        <h4>${it.label}</h4>
+        <h3>${it.label}</h3>
+        <p class="smallPublishDate"><em>${it.date?string("dd MMMM yyyy hh:mm:ss")}</em></p>
         <p>${it.description}</p>
-        <p>Published: <em>${it.date?string("dd MMMM yyyy hh:mm:ss")}</em></p>
+        <p><strong><a href="${it.link}">Read more...</a></strong>
+            <span class="smallNote">(Note: Content might not be optimized for mobile devices.)</span></p>
+        <p>Original source: <a href="${it.provenance}">${it.provenance}</a></p>
     </div>
 </div>
 <#include "footer.ftl"/>

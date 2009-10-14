@@ -31,10 +31,20 @@ public class FeedItemImpl extends BaseItem implements FeedItem {
     }
 
     @Override
+    public String getProvenance() {
+        return provenance;
+    }
+
+    public void setProvenance(String provenance) {
+        this.provenance = provenance;
+    }
+
+    @Override
     public int compareTo(Item item) {
         return ((FeedItem)item).getDate().compareTo(this.getDate());
     }
 
     @Expose private Date date = null;
     @Expose private String link = null;
+    @Expose private String provenance;
 }

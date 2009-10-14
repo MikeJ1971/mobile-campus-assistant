@@ -76,7 +76,6 @@ p {
 }
 
 a {
-    display: block;
     text-decoration: none;
     color: #000000;
 }
@@ -99,6 +98,28 @@ a {
 
 .publishDate {
     font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.newsItem h3 {
+    padding: 10px 5px 5px 10px;
+    margin: 0px;
+}
+
+.newsItem p {
+    padding: 5px 5px 5px 10px;
+    margin: 0px;
+}
+
+.smallPublishDate {
+    font-size: 10px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.smallNote {
+    font-size: 9px;
     font-style: italic;
     font-weight: normal;
 }

@@ -44,6 +44,16 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>proxy</servlet-name>
+        <servlet-class>org.ilrt.mca.servlet.ProxyServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>proxy</servlet-name>
+        <url-pattern>/proxy/*</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>JerseyFilter</filter-name>
         <filter-class>com.sun.jersey.spi.container.servlet.ServletContainer</filter-class>
@@ -61,7 +71,7 @@
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-            <param-value>/(style|images|js)/.*|/robots.txt</param-value>
+            <param-value>/(style|images|js)/.*|/robots.txt|/proxy/*</param-value>
         </init-param>
     </filter>
 

@@ -9,4 +9,6 @@ public interface FeedItem extends Item {
     Date getDate();
 
     String getLink();
+
+    String getProvenance();
 }
