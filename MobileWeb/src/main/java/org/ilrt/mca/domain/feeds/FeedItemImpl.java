@@ -7,6 +7,9 @@ import java.util.Date;
 
 import com.google.gson.annotations.Expose;
 
+/**
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class FeedItemImpl extends BaseItem implements FeedItem {
 
     public FeedItemImpl() {

@@ -13,7 +13,9 @@ import org.quartz.JobExecutionException;
 
 import java.io.IOException;
 
-
+/**
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class HarvestFeedJob implements Job {
 
     @Override

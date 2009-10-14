@@ -14,7 +14,9 @@ import org.ilrt.mca.vocab.GEO;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 
-
+/**
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class KmlMapDelegateImpl extends AbstractDao implements Delegate {
 
     public KmlMapDelegateImpl(final Repository repository) {
