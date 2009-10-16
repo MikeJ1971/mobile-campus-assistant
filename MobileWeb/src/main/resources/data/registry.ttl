@@ -10,10 +10,27 @@
 <mca://registry/>  rdf:type mca:Registry ;
     rdfs:label "Mobile Campus Assistant" ;
     dc:description "Registry for the Mobile Campus Assistant, University of Bristol" ;
+    mca:hasItem <mca://registry/today/> ;
     mca:hasItem <mca://registry/maps/> ;
     mca:hasItem <mca://registry/news/> ;
     mca:hasItem <mca://registry/contacts/> ;
     mca:template <template://homepage.ftl> ;
+    .
+
+<mca://registry/today/> rdf:type mca:Group ;
+    rdfs:label "Today" ;
+    dc:description "Information for today" ;
+    mca:hasItem <mca://registry/today/weather/> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://item.ftl> ;
+    .
+
+<mca://registry/today/weather/> rdf:type mca:HtmlFragment ;
+    rdfs:label "Weather" ;
+    dc:description "Today's weather in Bristol" ;
+    rdfs:seeAlso <http://portal.bris.ac.uk/portal-weather/newXml> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://weather.ftl> ;
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;

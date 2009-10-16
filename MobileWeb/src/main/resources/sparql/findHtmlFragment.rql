@@ -1,0 +1,10 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX mca:     <http://org.ilrt.mca/registry#>
+CONSTRUCT {
+    $id mca:hasHtmlFragment $fragment .
+} WHERE {
+    GRAPH ?graph {
+        $id mca:hasHtmlFragment $fragment .
+    }
+}

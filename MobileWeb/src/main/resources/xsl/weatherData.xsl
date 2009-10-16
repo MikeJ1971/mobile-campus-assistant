@@ -11,7 +11,7 @@
 
     <!-- create key -->
     <xsl:key name='month' match='lookup:months/month' use='@id'/>
-    <xsl:variable name='months' select='document("")//lookup:months'/>
+    <xsl:variable name='months' select='lookup:months'/>
 
     <xsl:template match="/">
         <rdf:RDF>

@@ -50,8 +50,6 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
         if (graphUri.hasProperty(RSS.items)) {  // dealing with a whole feed
 
-
-
             StmtIterator stmtiter = graphUri.getModel().listStatements(null, RDF.type, RSS.item);
 
             while (stmtiter.hasNext()) {

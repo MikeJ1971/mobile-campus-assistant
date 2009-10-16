@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.delegate.Delegate;
 import org.ilrt.mca.dao.delegate.FeedDelegateImpl;
 import org.ilrt.mca.dao.delegate.KmlMapDelegateImpl;
+import org.ilrt.mca.dao.delegate.HtmlFragmentDelegateImpl;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.rdf.Repository;
@@ -85,6 +86,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
             } else if (type.equals(MCA_REGISTRY.News.getURI()) ||
                     type.equals(MCA_REGISTRY.FeedItem.getURI())) {
                 return new FeedDelegateImpl(repository);
+            } else if (type.equals(MCA_REGISTRY.HtmlFragment.getURI())) {
+                return new HtmlFragmentDelegateImpl(repository);
             }
         }
 

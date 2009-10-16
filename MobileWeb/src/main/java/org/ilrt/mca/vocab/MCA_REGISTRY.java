@@ -34,6 +34,8 @@ public class MCA_REGISTRY {
 
     public static final Resource XmlSource = model.createProperty(NS + "XmlSource");
 
+    public static final Resource HtmlFragment = model.createProperty(NS + "HtmlFragment");
+
     // ----- Properties
 
     public static final Property order = model.createProperty(NS + "order");
@@ -45,4 +47,6 @@ public class MCA_REGISTRY {
     public static final Property lastVisitedDate = model.createProperty(NS + "lastVisitedDate");
 
     public static final Property hasXslSource = model.createProperty(NS + "hasXslSource");
+
+    public static final Property hasHtmlFragment = model.createProperty(NS + "hasHtmlFragment");
 }
