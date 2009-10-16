@@ -8,6 +8,9 @@ import java.util.Date;
  */
 public class Source {
 
+    public Source() {
+    }
+
     public Source(String url, Date lastVisited) {
         this.url = url;
         this.lastVisited = lastVisited;

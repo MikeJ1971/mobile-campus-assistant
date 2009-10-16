@@ -57,14 +57,14 @@ public class AbstractTest {
         buffer.append("<description>Latest news from the University of Bristol</description>");
         buffer.append("<item>");
         buffer.append("<title>Record turnout for David Attenborough lecture</title>");
-        buffer.append("<link>http://www.bris.ac.uk/news/2009/6565.html</link>");
+        buffer.append("<link>http://www.bris.ac.uk/news/2009/6565.xml</link>");
         buffer.append("<description>Last night [24 September] Sir David Attenborough delivered a ");
         buffer.append("lecture on Alfred Russel Wallace and the Birds of Paradise to a capacity ");
         buffer.append("audience at the University. More than 850 people packed the Great Hall in ");
         buffer.append("the Wills Memorial Building to hear the legendary and much-loved ");
         buffer.append("broadcaster speak.</description>");
         buffer.append("<pubDate>Fri, 25 Sep 2009 06:00:00 +0000</pubDate>");
-        buffer.append("<guid>http://www.bris.ac.uk/news/2009/6565.html</guid>");
+        buffer.append("<guid>http://www.bris.ac.uk/news/2009/6565.xml</guid>");
         buffer.append("<category>Press releases</category>");
         buffer.append("</item>");
         buffer.append("</channel>");

@@ -1,4 +1,4 @@
-package org.ilrt.mca.harvester.feeds;
+package org.ilrt.mca.harvester.xml;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -14,7 +14,6 @@ import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
-import org.ilrt.mca.harvester.Source;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
@@ -28,14 +27,13 @@ import java.util.List;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class FeedHarvesterImpl extends AbstractDao implements Harvester {
+public class XmlSourceHarvesterImpl extends AbstractDao implements Harvester {
 
-    public FeedHarvesterImpl(Repository repository) throws IOException {
-        resolver = new HttpResolverImpl();
+    public XmlSourceHarvesterImpl(Repository repository) throws IOException {
         this.repository = repository;
-        findSources = loadSparql("/sparql/findHarvestableFeeds.rql");
+        resolver = new HttpResolverImpl();
+        findSources = loadSparql("/sparql/findHarvestableXml.rql");
     }
-
 
     @Override
     public void harvest() {
@@ -45,17 +43,19 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
         // query registry for list of feeds to harvest
         // get the date that they were last updated
-        List<Source> sources = findSources();
+        List<XmlSource> sources = findSources();
 
         log.info("Found " + sources.size() + " sources to harvest");
 
         // harvest each source
-        for (Source source : sources) {
+        for (XmlSource source : sources) {
 
             log.info("Request to harvest: <" + source.getUrl() + ">");
 
+            String xsl = "/" + source.getXsl().substring(6, source.getXsl().length());
+
             // harvest the data
-            Model model = resolver.resolve(source, new FeedResponseHandlerImpl());
+            Model model = resolver.resolve(source, new XmlSourceResponseHandlerImpl(xsl));
 
             if (model != null) {
 
@@ -73,15 +73,12 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
             } else {
                 log.info("Unable to cache " + source.getUrl());
             }
-
         }
-
     }
 
+    private List<XmlSource> findSources() {
 
-    private List<Source> findSources() {
-
-        List<Source> sources = new ArrayList<Source>();
+        List<XmlSource> sources = new ArrayList<XmlSource>();
 
         Model m = repository.find(findSources);
 
@@ -98,9 +95,10 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
     }
 
 
-    private Source getDetails(Resource resource) {
+    private XmlSource getDetails(Resource resource) {
 
         Date lastVisited = null;
+        String xsl = null;
 
         String uri = resource.getURI();
 
@@ -113,12 +111,16 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
             }
         }
 
-        return new Source(uri, lastVisited);
+        if (resource.hasProperty(MCA_REGISTRY.hasXslSource)) {
+            xsl = resource.getProperty(MCA_REGISTRY.hasXslSource).getResource().getURI();
+        }
+
+        return new XmlSource(uri, xsl, lastVisited);
     }
 
-    private Resolver resolver;
-    private Repository repository;
-    private String findSources;
+    final private Resolver resolver;
+    final private Repository repository;
+    final private String findSources;
 
-    final private Logger log = Logger.getLogger(FeedHarvesterImpl.class);
+    final private Logger log = Logger.getLogger(XmlSourceHarvesterImpl.class);
 }

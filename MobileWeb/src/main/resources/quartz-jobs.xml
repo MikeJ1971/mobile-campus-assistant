@@ -20,7 +20,7 @@
                 <group>Harvester</group>
                 <job-name>HarvestFeedsJob</job-name>
                 <job-group>Harvester</job-group>
-                <cron-expression>0 0/5 * * * ?</cron-expression>
+                <cron-expression>0 0/30 * * * ?</cron-expression>
             </cron>
         </trigger>
     </job>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site id="0003" lc="Bristol" cy="United Kingdom" ct="Europe" tp="City" hr="0600" day="Thu" dayn="15"
+      mon="10" yr="2009">
+    <day no="1" mx="14" mn="11" wx="7"/>
+    <day no="2" mx="15" mn="5" wx="7"/>
+    <day no="3" mx="12" mn="2" wx="1"/>
+    <day no="4" mx="13" mn="7" wx="1"/>
+    <day no="5" mx="13" mn="9" wx="3"/>
+</site>

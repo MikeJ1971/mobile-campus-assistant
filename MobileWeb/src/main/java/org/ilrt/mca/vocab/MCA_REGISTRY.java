@@ -32,6 +32,8 @@ public class MCA_REGISTRY {
 
     public static final Resource FeedItem = model.createProperty(NS + "NewsItem");
 
+    public static final Resource XmlSource = model.createProperty(NS + "XmlSource");
+
     // ----- Properties
 
     public static final Property order = model.createProperty(NS + "order");
@@ -41,4 +43,6 @@ public class MCA_REGISTRY {
     public static final Property template = model.createProperty(NS + "template");
 
     public static final Property lastVisitedDate = model.createProperty(NS + "lastVisitedDate");
+
+    public static final Property hasXslSource = model.createProperty(NS + "hasXslSource");
 }

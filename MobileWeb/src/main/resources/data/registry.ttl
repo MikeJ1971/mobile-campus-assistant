@@ -12,6 +12,7 @@
     dc:description "Registry for the Mobile Campus Assistant, University of Bristol" ;
     mca:hasItem <mca://registry/maps/> ;
     mca:hasItem <mca://registry/news/> ;
+    mca:hasItem <mca://registry/contacts/> ;
     mca:template <template://homepage.ftl> ;
     .
 
@@ -42,6 +43,45 @@
     mca:order "1"^^xsd:integer ;
     geo:lat "51.4585695818037"^^xsd:double ;
     geo:long "-2.60187349563486"^^xsd:double ;
+    .
+
+<mca://registry/contacts/> rdf:type mca:Group ;
+    rdfs:label "Contacts" ;
+    dc:description "University contact information" ;
+    mca:template <template://item.ftl> ;
+    mca:order "3"^^xsd:integer ;
+    mca:hasItem <mca://registry/contacts/switchboard/> ;
+    mca:hasItem <mca://registry/contacts/emergency/> ;
+    mca:hasItem <mca://registry/contacts/ithelpdesk/> ;
+    mca:hasItem <mca://registry/contacts/libraryhelpdesk/> ;
+    .
+
+<mca://registry/contacts/switchboard/> rdf:type mca:Contact ;
+    rdfs:label "Main Switch Board" ;
+    dc:description "<a href=\"tel:+441179289000\">+44 (0)117 9289000</a>"^^xsd:string ;
+    mca:template <template://itemDetails.ftl> ;
+    mca:order "1"^^xsd:integer
+    .
+
+<mca://registry/contacts/emergency/> rdf:type mca:Contact ;
+    rdfs:label "Emergency" ;
+    dc:description "Security Services: <a href=\"tel:+4411733112233\">+44 (0)117 33112233</a><br/>Control Room: <a href=\"tel:+44011733112233\">+44 (0)117 33112233</a>"^^xsd:string ;
+    mca:template <template://itemDetails.ftl> ;
+    mca:order "2"^^xsd:integer
+    .
+
+<mca://registry/contacts/ithelpdesk/> rdf:type mca:Contact ;
+    rdfs:label "IT Help Desk" ;
+    dc:description "<a href=\"tel:+441179287870\">+44 (0)1179287870</a><br/><a href=\"mailto:help-desk@bristol.ac.uk\">help-desk@bristol.ac.uk</a>"^^xsd:string ;
+    mca:template <template://itemDetails.ftl> ;
+    mca:order "3"^^xsd:integer
+    .
+
+<mca://registry/contacts/libraryhelpdesk/> rdf:type mca:Contact ;
+    rdfs:label "Library Help Desk" ;
+    dc:description "<a href=\"tel:+441179288000\">+44 (0)117 9288000</a><br/><a href=\"mailto:library-enquiries@bristol.ac.uk\">library-enquiries@bristol.ac.uk</a>"^^xsd:string ;
+    mca:template <template://itemDetails.ftl> ;
+    mca:order "4"^^xsd:integer
     .
 
 <mca://registry/news/> rdf:type mca:Group ;
@@ -173,3 +213,7 @@
 <http://www.ubu.org.uk/rss.xml> rdf:type mca:FeedSource .
 
 <http://www.ubu.org.uk/feed/events/rss.xml> rdf:type mca:FeedSource .
+
+<http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
+    mca:hasXslSource <xsl://xsl/weatherData.xsl>
+    .

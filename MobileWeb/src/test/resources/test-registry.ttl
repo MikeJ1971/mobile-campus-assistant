@@ -58,3 +58,7 @@
     mca:order "1"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
     .
+
+<http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
+    mca:hasXslSource <xsl://xsl/weatherData.xsl>
+    .
