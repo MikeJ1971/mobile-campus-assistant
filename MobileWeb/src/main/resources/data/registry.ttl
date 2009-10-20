@@ -94,13 +94,13 @@
 <mca://registry/contacts/emergency/security/> rdf:type mca:Group ;
     rdfs:label "University Security" ;
     mca:template <template://item.ftl> ;
-    rdfs:hasItem <mca://registry/contacts/emergency/security/emergency/> ;
-    rdfs:hasItem <mca://registry/contacts/emergency/security/control/> ;
+    mca:hasItem <mca://registry/contacts/emergency/security/emergency/> ;
+    mca:hasItem <mca://registry/contacts/emergency/security/control/> ;
     mca:order "2"^^xsd:integer;
     .
 
 <mca://registry/contacts/emergency/security/emergency/> rdf:type mca:Contact ;
-    rdfs:label "Emergencies" ;
+    rdfs:label "Emergencies (24 Hours)" ;
     mca:template <template://contacts.ftl> ;
     foaf:phone <tel:+4411733112233> ;
     mca:order "1"^^xsd:integer;
