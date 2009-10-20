@@ -60,8 +60,6 @@ public class ContactsDelegateImpl extends AbstractDao implements Delegate {
 
         Model model = repository.find("id", resource.getURI(), findContactsSparql);
 
-        model.write(System.out);
-
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
