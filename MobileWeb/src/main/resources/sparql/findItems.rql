@@ -19,7 +19,7 @@ CONSTRUCT {
 } WHERE {
     $id mca:template $template .
     $id rdfs:label $label .
-    $id dc:description $description .
+    OPTIONAL { $id dc:description $description . } .
     $id rdf:type $type .
     OPTIONAL { $id rdfs:seeAlso $seeAlso . } .
     OPTIONAL {

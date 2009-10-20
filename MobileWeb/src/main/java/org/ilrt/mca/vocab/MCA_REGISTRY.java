@@ -36,6 +36,8 @@ public class MCA_REGISTRY {
 
     public static final Resource HtmlFragment = model.createProperty(NS + "HtmlFragment");
 
+    public static final Resource Contact = model.createProperty(NS + "Contact");
+
     // ----- Properties
 
     public static final Property order = model.createProperty(NS + "order");
