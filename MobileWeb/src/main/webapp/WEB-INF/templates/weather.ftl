@@ -1,11 +1,11 @@
 <#include "header.ftl"/>
 
 <div class="group">
-    <h3>${it.label}</h3>
-    <p>${it.description}</p>
+    <div id="weatherData">
+        <h3>${it.label}</h3>
+        ${it.htmlFragment!"<p>No Weather Data!</p>"}
 
-    ${it.htmlFragment!"<p>No Weather Data!</p>"}
-
+    </div>
 </div>
 
-<#include "header.ftl"/>
+<#include "footer.ftl"/>

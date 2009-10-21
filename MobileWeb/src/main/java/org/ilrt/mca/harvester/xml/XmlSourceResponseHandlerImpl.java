@@ -45,7 +45,6 @@ public class XmlSourceResponseHandlerImpl implements ResponseHandler {
             transformer.setParameter("uri", sourceUri);
             transformer.transform(xmlSource, result);
 
-
             // create the model
             model = ModelFactory.createDefaultModel();
             model.read(new StringReader(writer.getBuffer().toString()), sourceUri);

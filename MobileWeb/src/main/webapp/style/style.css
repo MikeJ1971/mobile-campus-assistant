@@ -124,3 +124,47 @@ a {
     font-style: italic;
     font-weight: normal;
 }
+
+.contacts ul {
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -border-radius: 10px;
+    font-size: 17px;
+    font-family: Helvetica, serif;
+    font-weight: bold;
+    color: #000000;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #999999;
+    padding: 0;
+}
+
+.contacts li {
+    list-style: none;
+    padding: 15px 10px 15px 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #999999;
+    overflow: hidden;
+    background-position: right;
+    background-position: 99% 50%;
+}
+
+.contacts li:first-child {
+    border-top: 0;
+}
+
+.contacts h4 {
+    text-align: center;
+    font-size: 18px;
+    margin: 12px;
+}
+
+.phoneContact {
+    background: url(../images/75-phone.png) no-repeat;
+}
+
+.emailContact {
+    background: url(../images/18-envelope.png) no-repeat;
+}

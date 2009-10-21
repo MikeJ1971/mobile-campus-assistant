@@ -10,8 +10,8 @@
     <xsl:param name="uri" select="'http://portal.bris.ac.uk/portal-weather/newXml'"/>
 
     <!-- create key -->
-    <xsl:key name='month' match='lookup:months/month' use='@id'/>
-    <xsl:variable name='months' select='lookup:months'/>
+    <xsl:key name='month' match='lookup:months/lookup:month' use='@id'/>
+    <xsl:variable name='months' select='document("")/xsl:stylesheet/lookup:months'/>
 
     <xsl:template match="/">
         <rdf:RDF>
@@ -29,28 +29,8 @@
 
     <xsl:template name="site">
 
-        <!-- numerical value for the month -->
-        <xsl:variable name="currentMonth" select="site/@mon"/>
-
-        <!-- lookup the literal value -->
-        <xsl:variable name="currentMonthLiteral">
-            <xsl:for-each select='$months'>
-                <xsl:value-of select='key("month", $currentMonth)'/>
-            </xsl:for-each>
-        </xsl:variable>
-
         <!-- time -->
         <xsl:variable name="time" select="site/@hr"/>
-
-        <!-- display the date and time of the forecast -->
-        <p class="weatherDateTime">
-            <xsl:value-of select="site/@day"/><xsl:text> </xsl:text>
-            <xsl:value-of select="site/@dayn"/><xsl:text> </xsl:text>
-            <xsl:value-of select="$currentMonthLiteral"/><xsl:text>, </xsl:text>
-            <xsl:value-of select="site/@yr"/><xsl:text> </xsl:text>
-            <xsl:value-of select="substring($time,0,3)"/><xsl:text>:</xsl:text>
-            <xsl:value-of select="substring($time,3,5)"/>
-        </p>
 
         <!-- get today's data -->
         <xsl:for-each select="site/day[@no=1]">
@@ -63,32 +43,26 @@
             </xsl:variable>
 
             <!-- display weather details -->
-            <p class="weatherIcon">
+            <p>
                 <img src='{$image}' alt="Weather icon"/>
-            </p>
-            <p class="weatherMinTemp">Minimum: <xsl:value-of select="@mn"/>&#176;C
-            </p>
-            <p class="weatherMaxTemp">Maximum: <xsl:value-of select="@mx"/>&#176;C
+                Minimum:
+                <xsl:value-of select="@mn"/><xsl:text>&#176;C, </xsl:text>
+                Maximum:
+                <xsl:value-of select="@mx"/><xsl:text>&#176;C</xsl:text>
             </p>
 
         </xsl:for-each>
 
-    </xsl:template>
+        <!-- display the date and time of the forecast -->
+        <p class="weatherDateTime">
+            <xsl:value-of select="site/@day"/><xsl:text> </xsl:text>
+            <xsl:value-of select="site/@dayn"/><xsl:text>-</xsl:text>
+            <xsl:value-of select="site/@mon"/><xsl:text>-</xsl:text>
+            <xsl:value-of select="site/@yr"/><xsl:text> </xsl:text>
+            <xsl:value-of select="substring($time,0,3)"/><xsl:text>:</xsl:text>
+            <xsl:value-of select="substring($time,3,5)"/>
+        </p>
 
-    <!-- Lookup Table of Months -->
-    <lookup:months>
-        <month id="01">January</month>
-        <month id="02">February</month>
-        <month id="03">March</month>
-        <month id="04">April</month>
-        <month id="05">May</month>
-        <month id="06">June</month>
-        <month id="07">July</month>
-        <month id="08">August</month>
-        <month id="09">September</month>
-        <month id="10">October</month>
-        <month id="11">November</month>
-        <month id="12">December</month>
-    </lookup:months>
+    </xsl:template>
 
 </xsl:stylesheet>
