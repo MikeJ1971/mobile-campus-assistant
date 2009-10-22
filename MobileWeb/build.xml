@@ -104,4 +104,24 @@
         <delete dir="${classes.dir}"/>
     </target>
 
+	<target name="gen-busstop-markers">
+		<antcall target="__gen-markers">
+			<param name="output" value="busstops"/>
+			<param name="url" value="${src.main.resources.dir}/data/NaPTAN10.xml"/>
+		</antcall>
+	</target>
+	
+	<target name="__gen-markers">
+		<!-- transform -->
+		<java
+			classname="org.apache.xalan.xslt.Process"
+			classpathref="classpath"
+			output="${src.main.webapp.dir}/js/${output}.json">
+			<arg value="-IN"/>
+			<arg value="${url}"/>
+			<arg value="-XSL"/>
+			<arg value="${src.main.resources.dir}/xsl/NaPTAN_v1.0.xsl"/>
+		</java>
+	</target>
+
 </project>

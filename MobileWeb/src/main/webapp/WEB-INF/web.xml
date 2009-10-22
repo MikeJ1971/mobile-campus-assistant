@@ -45,13 +45,17 @@
     </servlet>
 
     <servlet>
-        <servlet-name>proxy</servlet-name>
-        <servlet-class>org.ilrt.mca.servlet.ProxyServlet</servlet-class>
+        <servlet-name>busproxy</servlet-name>
+        <servlet-class>org.ilrt.mca.servlet.BusProxyServlet</servlet-class>
+        <init-param>
+            <param-name>config-file</param-name>
+            <param-value>/busproxy.properties</param-value>
+        </init-param>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>proxy</servlet-name>
-        <url-pattern>/proxy/*</url-pattern>
+        <servlet-name>busproxy</servlet-name>
+        <url-pattern>/busproxy/*</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -71,7 +75,7 @@
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-            <param-value>/(style|images|js)/.*|/robots.txt|/proxy/*</param-value>
+            <param-value>/(style|images|js)/.*|/robots.txt|/busproxy/*</param-value>
         </init-param>
     </filter>
 

@@ -78,7 +78,7 @@ public class BusProxyServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		
-		String naptan = request.getParameter("naptan");
+		String naptan = request.getParameter("id");
 
 		if (naptan == null || naptan.trim().length() == 0) {
 			response.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE); // TODO check correct response

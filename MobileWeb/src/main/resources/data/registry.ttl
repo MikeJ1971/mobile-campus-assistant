@@ -39,8 +39,20 @@
     dc:description "Useful maps of the campus" ;
     mca:hasItem <mca://registry/maps/wireless/> ;
     mca:hasItem <mca://registry/maps/precinct/> ;
+    mca:hasItem <mca://registry/maps/busstops/> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://item.ftl> ;
+    .
+
+<mca://registry/maps/busstops/> rdf:type mca:ActiveMapSource ;
+    rdfs:label "Bus Stops" ;
+    dc:description "Bus stops and live departure information." ;
+    mca:urlStem "busproxy/?id=" ;
+    mca:markers "js/busstops.json" ;
+    mca:template <template://activeMap.ftl> ;
+    mca:order "3"^^xsd:integer ;
+    geo:lat "51.4585695818037"^^xsd:double ;
+    geo:long "-2.60187349563486"^^xsd:double ;
     .
 
 <mca://registry/maps/wireless/> rdf:type mca:KmlMapSource ;

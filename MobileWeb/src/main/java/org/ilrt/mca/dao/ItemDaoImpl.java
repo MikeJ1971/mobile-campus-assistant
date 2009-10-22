@@ -4,6 +4,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 import org.apache.log4j.Logger;
+import org.ilrt.mca.dao.delegate.ActiveMapDelegateImpl;
 import org.ilrt.mca.dao.delegate.ContactsDelegateImpl;
 import org.ilrt.mca.dao.delegate.Delegate;
 import org.ilrt.mca.dao.delegate.FeedDelegateImpl;
@@ -88,6 +89,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
                 return new FeedDelegateImpl(repository);
             } else if (type.equals(MCA_REGISTRY.HtmlFragment.getURI())) {
                 return new HtmlFragmentDelegateImpl(repository);
+            } else if (type.equals(MCA_REGISTRY.ActiveMapSource.getURI())) {
+                return new ActiveMapDelegateImpl(repository);
             } else if (type.equals(MCA_REGISTRY.Contact.getURI())) {
                 return new ContactsDelegateImpl(repository);
             }

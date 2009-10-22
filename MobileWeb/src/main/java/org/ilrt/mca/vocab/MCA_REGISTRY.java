@@ -26,6 +26,8 @@ public class MCA_REGISTRY {
 
     public static final Resource KmlMapSource = model.createResource(NS + "KmlMapSource");
 
+    public static final Resource ActiveMapSource = model.createResource(NS + "ActiveMapSource");
+
     public static final Resource FeedSource = model.createProperty(NS + "FeedSource");
 
     public static final Resource News = model.createProperty(NS + "News");
@@ -45,6 +47,10 @@ public class MCA_REGISTRY {
     public static final Property hasItem = model.createProperty(NS + "hasItem");
 
     public static final Property template = model.createProperty(NS + "template");
+
+    public static final Property markers = model.createProperty(NS + "markers");
+
+    public static final Property urlStem = model.createProperty(NS + "urlStem");
 
     public static final Property lastVisitedDate = model.createProperty(NS + "lastVisitedDate");
 
