@@ -1,14 +1,5 @@
-<#include "header.ftl"/>
+<#include "includes/header.ftl"/>
 
-<#list it.items as group>
-<div class="group">
-    <p>${group.label}</p>
-    <ul class="itemList">
-        <#list group.items as item>
-        <li><a href="${contextPath}/${item.path}">${item.label}</a></li>
-        </#list>
-    </ul>
-</div>
-</#list>
+<#include "includes/standardNavigation.ftl"/>
 
-<#include "footer.ftl"/>
+<#include "includes/footer.ftl"/>

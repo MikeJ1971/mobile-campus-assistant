@@ -21,7 +21,7 @@
         </init-param>
         <init-param>
             <param-name>registryLocation</param-name>
-            <param-value>data/registry.ttl</param-value>
+            <param-value>data/registry.ttl,data/registry-news.ttl,data/registry-contacts.ttl</param-value>
         </init-param>
         <load-on-startup>0</load-on-startup>
     </servlet>

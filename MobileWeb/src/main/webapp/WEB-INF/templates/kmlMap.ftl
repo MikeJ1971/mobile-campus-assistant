@@ -1,4 +1,4 @@
-<#include "header.ftl"/>
+<#include "includes/header.ftl"/>
 
 
 <h1>${it.label}</h1>
@@ -22,4 +22,4 @@ initializeMap("map", ${it.latitude?string.computer}, ${it.longitude?string.compu
 <script type="text/javascript" src="${contextPath}/js/einsert.js"></script>
 
 
-<#include "footer.ftl"/>
+<#include "includes/footer.ftl"/>

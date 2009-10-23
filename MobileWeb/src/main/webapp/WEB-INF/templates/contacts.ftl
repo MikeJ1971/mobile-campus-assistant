@@ -1,4 +1,4 @@
-<#include "header.ftl"/>
+<#include "includes/header.ftl"/>
 
 <div class="contacts">
     <h4>${it.label}</h4>
@@ -12,4 +12,4 @@
     </ul>
 </div>
 
-<#include "footer.ftl"/>
+<#include "includes/footer.ftl"/>

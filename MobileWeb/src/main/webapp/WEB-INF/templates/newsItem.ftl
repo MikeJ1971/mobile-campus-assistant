@@ -1,4 +1,4 @@
-<#include "header.ftl"/>
+<#include "includes/header.ftl"/>
 <div class="group">
     <div class="newsItem">
         <h3>${it.label}</h3>
@@ -9,4 +9,4 @@
         <p>Original source: <a href="${it.provenance}">${it.provenance}</a></p>
     </div>
 </div>
-<#include "footer.ftl"/>
+<#include "includes/footer.ftl"/>

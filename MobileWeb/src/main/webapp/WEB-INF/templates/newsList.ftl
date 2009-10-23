@@ -1,4 +1,4 @@
-<#include "header.ftl"/>
+<#include "includes/header.ftl"/>
 
 <div class="group">
     <h3>${it.label}</h3>
@@ -14,4 +14,4 @@
     </ul>
 </div>
 
-<#include "footer.ftl"/>
+<#include "includes/footer.ftl"/>

@@ -1,4 +1,4 @@
-<#include "header.ftl"/>
+<#include "includes/header.ftl"/>
 
 <h1>${it.label}</h1>
 <p>${it.description}</p>
@@ -18,4 +18,4 @@ initializeMap("map", ${it.latitude?string.computer}, ${it.longitude?string.compu
 <div id="map"></div>
 <div>&nbsp;</div>
 
-<#include "footer.ftl"/>
+<#include "includes/footer.ftl"/>

@@ -1,7 +1,7 @@
-<#include "header.ftl"/>
+<#include "includes/header.ftl"/>
 
 <h1>Not found!</h1>
 
 <p>${it}</p>
 
-<#include "footer.ftl"/>
+<#include "includes/footer.ftl"/>
