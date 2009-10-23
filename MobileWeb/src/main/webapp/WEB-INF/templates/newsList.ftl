@@ -2,7 +2,6 @@
 
 <div class="group">
     <h3>${it.label}</h3>
-    <p>${it.description}</p>
     <#if it.items?size == 0>
     <p>Sorry, no news items.</p>
     </#if>

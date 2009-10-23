@@ -14,11 +14,12 @@
 
 
 <mca://registry/contacts/emergency/> rdf:type mca:Group ;
-    rdfs:label "Emergency Contacts" ;
-    mca:template <template://item.ftl> ;
+    rdfs:label "Emergency and Security" ;
+    mca:template <template://navigation.ftl> ;
     dc:description "Emergency contact information,";
     mca:hasItem <mca://registry/contacts/emergency/services/> ;
     mca:hasItem <mca://registry/contacts/emergency/security/> ;
+    mca:hasItem <mca://registry/contacts/emergency/police/> ;
     mca:order "1"^^xsd:integer ;
     .
 
@@ -31,19 +32,28 @@
 
 <tel:999> rdfs:label "999" .
 
+<mca://registry/contacts/emergency/police/> rdf:type mca:Contact ;
+    rdfs:label "Avon and Somerset Police (non-emergency)" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+448454567000> ;
+    mca:order "3"^^xsd:integer ;
+    .
+
+<tel:+448454567000> rdfs:label "+44 (0)845 4567000" .
+
 <mca://registry/contacts/emergency/security/> rdf:type mca:Group ;
     rdfs:label "University Security" ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     mca:hasItem <mca://registry/contacts/emergency/security/emergency/> ;
     mca:hasItem <mca://registry/contacts/emergency/security/control/> ;
-    mca:order "2"^^xsd:integer;
+    mca:order "2"^^xsd:integer ;
     .
 
 <mca://registry/contacts/emergency/security/emergency/> rdf:type mca:Contact ;
     rdfs:label "Emergencies (24 Hours)" ;
     mca:template <template://contacts.ftl> ;
     foaf:phone <tel:+4411733112233> ;
-    mca:order "1"^^xsd:integer;
+    mca:order "1"^^xsd:integer ;
     .
 
 <tel:+4411733112233> rdfs:label "+44 (0)117 33112233" .
@@ -60,7 +70,7 @@
 
 <mca://registry/contacts/university/> rdf:type mca:Group ;
     rdfs:label "University Contacts" ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     mca:hasItem <mca://registry/contacts/university/switchboard/> ;
     mca:hasItem <mca://registry/contacts/university/ithelpdesk/> ;
     mca:hasItem <mca://registry/contacts/university/libraryhelpdesk/> ;
@@ -98,7 +108,7 @@
 
 <mca://registry/contacts/welfare/> rdf:type mca:Group ;
     rdfs:label "Health and Welfare" ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     mca:hasItem <mca://registry/contacts/welfare/nhs/> ;
     mca:hasItem <mca://registry/contacts/welfare/samaritans/> ;
     mca:hasItem <mca://registry/contacts/welfare/counselling/> ;

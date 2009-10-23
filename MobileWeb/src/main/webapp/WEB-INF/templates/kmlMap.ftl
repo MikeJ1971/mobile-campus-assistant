@@ -1,8 +1,6 @@
 <#include "includes/header.ftl"/>
 
-
-<h1>${it.label}</h1>
-<p>${it.description}</p>
+<h3>${it.label}</h3>
 
 <script type="text/javascript"
          src="http://www.google.com/jsapi?key=ABQIAAAAdUlVnqcMy8dOraexYlBKqxTjPSaaEJVc4G5y4wKsZE4UoG3L1hRdcwFcZ2_Cpcpc4Lj8nGsd7ZHLsw&sensor=true"></script>

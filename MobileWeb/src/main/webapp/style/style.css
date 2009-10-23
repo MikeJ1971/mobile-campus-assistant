@@ -35,6 +35,15 @@ p {
     margin-right: 5px;
 }
 
+.group {
+    margin: 10px 0px 10px 0px;
+}
+
+.group h3 {
+    text-align: center;
+    margin: 8px;
+}
+
 .group h4 {
     padding-left: 6px;
 }
@@ -51,7 +60,8 @@ p {
     border-width: 1px;
     border-style: solid;
     border-color: #999999;
-    padding: 0;
+    padding: 0px;
+    margin: 0px;
 }
 
 .group li {
@@ -167,4 +177,19 @@ a {
 
 .emailContact {
     background: url(../images/18-envelope.png) no-repeat;
+}
+
+#information {
+    padding-top:20px;
+    margin: 10px;
+}
+
+#information a {
+    display: inline;
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+#copyright {
+    margin: 10px;
 }

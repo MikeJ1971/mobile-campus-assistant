@@ -12,9 +12,9 @@
 @prefix geo:        <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
-<mca://registry/news/latest/> rdf:type mca:News ;
-    rdfs:label "Latest news" ;
-    dc:description "Latest news from the University of Bristol" ;
+<mca://registry/news/main/> rdf:type mca:News ;
+    rdfs:label "Main Headlines" ;
+    dc:description "Main headlines from the University of Bristol" ;
     rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
@@ -23,13 +23,13 @@
 # NEWS - ACADEMIC DEPARTMENTS
 
 <mca://registry/news/academic/> rdf:type mca:Group ;
-    rdfs:label "Faculties and Departments" ;
+    rdfs:label "Departmental News" ;
     dc:description "Latest news from faculties and departments" ;
     mca:hasItem <mca://registry/news/academic/history/> ;
     mca:hasItem <mca://registry/news/academic/biology/> ;
     mca:hasItem <mca://registry/news/academic/compsci/> ;
     mca:order "2"^^xsd:integer ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     .
 
 <mca://registry/news/academic/history/> rdf:type mca:News ;
@@ -60,12 +60,12 @@
 # NEWS - SUPPORT SERVICES
 
 <mca://registry/news/services/> rdf:type mca:Group ;
-    rdfs:label "Support Services" ;
+    rdfs:label "Support Services News" ;
     dc:description "Latest news from the support services" ;
     mca:hasItem <mca://registry/news/services/is/> ;
     mca:hasItem <mca://registry/news/services/sports/> ;
     mca:order "2"^^xsd:integer ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     .
 
 <mca://registry/news/services/is/> rdf:type mca:News ;
@@ -88,12 +88,12 @@
 # NEWS - Students' Union
 
 <mca://registry/news/ubu/> rdf:type mca:Group ;
-    rdfs:label "Students' Union" ;
+    rdfs:label "Students' Union News" ;
     dc:description "Latest news from the Students' Union" ;
     mca:hasItem <mca://registry/news/ubu/latest/> ;
     mca:hasItem <mca://registry/news/ubu/events/> ;
     mca:order "3"^^xsd:integer ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     .
 
 <mca://registry/news/ubu/latest/> rdf:type mca:News ;

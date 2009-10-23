@@ -9,7 +9,7 @@
 
 
 <mca://registry/>  rdf:type mca:Registry ;
-    rdfs:label "Mobile Campus Assistant" ;
+    rdfs:label "Home" ;
     dc:description "Registry for the Mobile Campus Assistant, University of Bristol" ;
     mca:hasItem <mca://registry/today/> ;
     mca:hasItem <mca://registry/maps/> ;
@@ -23,7 +23,7 @@
     dc:description "Information for today" ;
     mca:hasItem <mca://registry/today/weather/> ;
     mca:order "1"^^xsd:integer ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     .
 
 <mca://registry/today/weather/> rdf:type mca:HtmlFragment ;
@@ -35,13 +35,13 @@
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;
-    rdfs:label "Campus Maps" ;
+    rdfs:label "Maps" ;
     dc:description "Useful maps of the campus" ;
     mca:hasItem <mca://registry/maps/wireless/> ;
     mca:hasItem <mca://registry/maps/precinct/> ;
     mca:hasItem <mca://registry/maps/busstops/> ;
     mca:order "1"^^xsd:integer ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     .
 
 <mca://registry/maps/busstops/> rdf:type mca:ActiveMapSource ;
@@ -78,7 +78,7 @@
 <mca://registry/contacts/> rdf:type mca:Group ;
     rdfs:label "Contacts" ;
     dc:description "Contact information" ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     mca:order "3"^^xsd:integer ;
     mca:hasItem <mca://registry/contacts/emergency/> ;
     mca:hasItem <mca://registry/contacts/university/> ;
@@ -88,11 +88,11 @@
 <mca://registry/news/> rdf:type mca:Group ;
     rdfs:label "News" ;
     dc:description "University news items" ;
-    mca:hasItem <mca://registry/news/latest/> ;
+    mca:hasItem <mca://registry/news/main/> ;
     mca:hasItem <mca://registry/news/academic/> ;
     mca:hasItem <mca://registry/news/services/> ;
     mca:hasItem <mca://registry/news/ubu/> ;
     mca:order "2"^^xsd:integer ;
-    mca:template <template://item.ftl> ;
+    mca:template <template://navigation.ftl> ;
     .
 
