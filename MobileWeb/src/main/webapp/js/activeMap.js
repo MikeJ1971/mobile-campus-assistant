@@ -157,7 +157,8 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
             var markerId = markers[i].id;
             var marker = new google.maps.Marker({
                 position: point, 
-                map: map
+                map: map,
+                icon: '/mca/images/bus.png'
             });
 
             attachListener(map, marker, infowindow, markerId, proxyUrl);
