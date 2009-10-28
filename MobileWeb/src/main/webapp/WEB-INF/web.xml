@@ -46,7 +46,7 @@
 
     <servlet>
         <servlet-name>busproxy</servlet-name>
-        <servlet-class>org.ilrt.mca.servlet.BusProxyServlet</servlet-class>
+        <servlet-class>org.ilrt.mca.servlet.TransportProxyServlet</servlet-class>
         <init-param>
             <param-name>config-file</param-name>
             <param-value>/busproxy.properties</param-value>

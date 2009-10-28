@@ -97,6 +97,19 @@ a {
     padding-bottom: 5px;
 }
 
+/*
+transport-info-init is used to intialise the infowindow in the transport map.
+It's height value should ensure that the map pans enough to allow for later dynamic content 
+*/
+#transport-info-init {
+	height: 150px;
+	width: 100%;
+}
+
+#transport-info {
+	width: 100%;
+}
+
 #searching {
     position: absolute;
     top: 20;
