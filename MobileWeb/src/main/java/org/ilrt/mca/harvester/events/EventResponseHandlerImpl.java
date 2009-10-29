@@ -1,7 +1,7 @@
 package org.ilrt.mca.harvester.events;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.util.FileManager;
 import org.ilrt.mca.harvester.ResponseHandler;
 
 import java.io.InputStream;
@@ -14,9 +14,7 @@ public class EventResponseHandlerImpl implements ResponseHandler {
     @Override
     public Model getModel(String sourceUrl, InputStream is) {
 
-        // read into a model
-        Model model = ModelFactory.createDefaultModel();
-        model.read(sourceUrl);
+        Model model = FileManager.get().loadModel(sourceUrl);
 
         return model;
 
@@ -26,6 +24,4 @@ public class EventResponseHandlerImpl implements ResponseHandler {
     public boolean isSupportedMediaType(String mediaType) {
         return mediaType.startsWith("text/xml");
     }
-
-
 }

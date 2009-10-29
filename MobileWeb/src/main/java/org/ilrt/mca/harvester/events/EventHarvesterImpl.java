@@ -20,7 +20,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
-import org.ilrt.mca.harvester.feeds.*;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
