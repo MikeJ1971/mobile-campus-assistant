@@ -11,16 +11,13 @@ CONSTRUCT {
     $id rdfs:label $label .
     $id dc:description $description .
     $id rdf:type $type .
-    $id mca:hasItem $subItemId .
+    $id rdfs:seeAlso $subItemId .
 } WHERE {
     $id mca:template $template .
     $id rdfs:label $label .
     OPTIONAL { $id dc:description $description . } .
     $id rdf:type $type .
     OPTIONAL {
-        $id mca:seeAlso $itemId .
-        OPTIONAL {
-            $itemId rdf:type ical:Vevent $subItemId .
-        } .
+        $id rdfs:seeAlso $subItemId .
     } .
 }
