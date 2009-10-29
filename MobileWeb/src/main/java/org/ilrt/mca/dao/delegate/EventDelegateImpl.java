@@ -51,8 +51,9 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
 
         Model model = repository.find("id", resource.getURI(), findEventItems);
+
         log.info("Creating item " + resource.getURI());
-                log.info("Creating item " + graphUri.getURI());
+        log.info("Creating item " + graphUri.getURI());
 
         model.write(System.out);
 
