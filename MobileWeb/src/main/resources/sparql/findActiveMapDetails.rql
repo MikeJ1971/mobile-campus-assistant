@@ -8,11 +8,13 @@ PREFIX geo:    <http://www.w3.org/2003/01/geo/wgs84_pos#>
 CONSTRUCT {
     $id mca:urlStem $urlStem .
     $id mca:markers $markers .
+    $id mca:icon $icon .
     $id geo:lat $latitude .
     $id geo:long $longitude .
 } WHERE {
     $id mca:urlStem $urlStem .
     $id mca:markers $markers .
+    $id mca:icon $icon .
     $id geo:lat $latitude .
     $id geo:long $longitude .
 }

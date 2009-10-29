@@ -44,7 +44,7 @@
  Author: Mike Jones (mike.a.jones@bristol.ac.uk)
 
  **/
-var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, proxyUrl, markers) {
+var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, proxyUrl, icon, markers) {
 
 	var map;
 	
@@ -55,7 +55,7 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 		      zoom: defaultZoomLevel,
 		      center: latlng,
 		      disableDefaultUI: true,
-		      navigationControl: true,
+//		      navigationControl: true,
 		      mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		map = new google.maps.Map(document.getElementById(mapElementId), myOptions);
@@ -140,9 +140,6 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
                 map: map
             });   
             
-            // show the map controls
-//            map.addControl(new GMapTypeControl());
-
         }
 
     };
@@ -161,8 +158,8 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
             var marker = new google.maps.Marker({
                 position: point, 
                 map: map,
-                title: markerId 
-            });  
+                icon: icon
+            });
 
             attachListener(map, marker, infowindow, markerId, proxyUrl);
     	}
@@ -172,23 +169,26 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 
 var attachListener = function(map, mark, infowindow, id, url) {
     google.maps.event.addListener(mark, 'click', function() {
-    	infowindow.setContent("Fetching...");
-    	getDepartureInfo(infowindow, id, url);
+    	// the style should ensure the autopan pans far enough to allow
+    	// space for later dynamic content
+    	infowindow.setContent("<div id='transport-info-init'>Fetching...</div>");
     	infowindow.open(map,mark);
+    	getDepartureInfo(infowindow, id, url);
     });
 }
 
 var setInfoContent = function(infowindow, json) {
 	var depInfo = eval('(' + json + ')');
-	var content;
+	var content = "<div id='transport-info'>";
 	if(!depInfo.stop.name) {
-		content = "Sorry. No departure data is currently available for this stop.";
+		content += "Sorry. No departure data is currently available for this location.";
 	} else {
-		content = depInfo.stop.name + " at " + depInfo.base_time;
-		for(var i=0; i<depInfo.departures.length; i++) {
+		content += depInfo.stop.name + " at " + depInfo.base_time;
+		for(var i=0; i<depInfo.departures.length && i != 6; i++) {
 			content += "<br/>" + depInfo.departures[i].service + " <em>" + depInfo.departures[i].destination + "</em> " + depInfo.departures[i].due;
 		}
 	}
+	content += "</div>";
 	infowindow.setContent(content);
 }
 

@@ -10,7 +10,7 @@
 
 <script type="text/javascript">
 
-initializeMap("map", ${it.latitude?string.computer}, ${it.longitude?string.computer}, 10, 200, 1000, 3000, 17, "${contextPath}/${it.proxyURLStem}", markers);
+initializeMap("map", ${it.latitude?string.computer}, ${it.longitude?string.computer}, 10, 200, 1000, 3000, 17, "${contextPath}/${it.proxyURLStem}", "${contextPath}/${it.markerIconLocation}", markers);
 
 </script>
 
