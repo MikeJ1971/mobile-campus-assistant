@@ -28,7 +28,7 @@ import org.ilrt.mca.vocab.EVENT;
 public class EventDelegateImpl extends AbstractDao implements Delegate {
 
     private String findEventsCollection = null;
-    private String findEventItem = null;
+    private String findEventItems = null;
     private final Repository repository;
     Logger log = Logger.getLogger(EventDelegateImpl.class);
 
@@ -36,7 +36,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         this.repository = repository;
         try {
             findEventsCollection = loadSparql("/sparql/findEvents.rql");
-            findEventItem = loadSparql("/sparql/findEventDetails.rql");
+            findEventItems = loadSparql("/sparql/findEventDetails.rql");
         } catch (IOException ex) {
             log.error("Unable to load SPARQL query: " + ex.getMessage());
             throw new RuntimeException(ex);
@@ -46,16 +46,21 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
-        log.info("Creating item " + resource);
-
         // the feed is from a specified graph
         Resource graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
+
+        Model model = repository.find("id", resource.getURI(), findEventItems);
+        log.info("Creating item " + resource.getURI());
+                log.info("Creating item " + graphUri.getURI());
+
+        model.write(System.out);
+
         EventItemImpl item = new EventItemImpl();
+/*
+            StmtIterator stmtiter = graphUri.getModel().listStatements(null, RDFS.type, EVENT.event);
 
-            StmtIterator stmtiter = graphUri.getModel().listStatements(null, null, EVENT.event);
-
-            graphUri.getModel().write(System.out);
+//            graphUri.getModel().write(System.out);
             
             if (!stmtiter.hasNext()) log.info("no iterators");
             
@@ -65,8 +70,8 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
                 log.info(r);
                 item.getItems().add(eventItemDetails(r, graphUri.getURI()));
             }
-/*
-        Model model = graphUri.getModel();
+            */
+
         ResIterator iter = model.listSubjects();
 
         if (iter.hasNext())
@@ -88,7 +93,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
             item.setTemplate("template://eventDetails.ftl");
         }
-*/
+
         getBasicDetails(resource, item);
 
         return item;
@@ -101,7 +106,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
         Model model = repository.find("id", resource.getURI(), findEventsCollection);
 
-        model.write(System.out);
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
