@@ -193,3 +193,6 @@ a {
 #copyright {
     margin: 10px;
 }
+
+.utc { display:none; visibility:hidden; }
+.dtstart, .dtend { color: #ccc; font-size:80%; }
