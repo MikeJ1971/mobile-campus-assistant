@@ -18,5 +18,7 @@ public interface ActiveMapItem extends Item {
     String getProxyURLStem();
     
     String getMarkersLocation();
+    
+    String getMarkerIconLocation();
 
 }

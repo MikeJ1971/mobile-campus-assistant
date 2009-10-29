@@ -49,6 +49,7 @@
     dc:description "Bus stops and live departure information." ;
     mca:urlStem "busproxy/?id=" ;
     mca:markers "js/busstops.json" ;
+    mca:icon "images/bus.png" ;
     mca:template <template://activeMap.ftl> ;
     mca:order "3"^^xsd:integer ;
     geo:lat "51.4585695818037"^^xsd:double ;

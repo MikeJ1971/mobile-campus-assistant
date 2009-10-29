@@ -44,7 +44,7 @@
  Author: Mike Jones (mike.a.jones@bristol.ac.uk)
 
  **/
-var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, proxyUrl, markers) {
+var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, proxyUrl, icon, markers) {
 
 	var map;
 	
@@ -158,7 +158,7 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
             var marker = new google.maps.Marker({
                 position: point, 
                 map: map,
-                icon: '/mca/images/bus.png'
+                icon: icon
             });
 
             attachListener(map, marker, infowindow, markerId, proxyUrl);

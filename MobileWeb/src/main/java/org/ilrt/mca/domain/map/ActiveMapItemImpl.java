@@ -32,6 +32,10 @@ public class ActiveMapItemImpl extends BaseItem implements ActiveMapItem {
         return markersLocation;
     }
 
+    public String getMarkerIconLocation() {
+        return markerIconLocation;
+    }
+
     public String getProxyURLStem() {
         return proxyURLStem;
     }
@@ -44,8 +48,13 @@ public class ActiveMapItemImpl extends BaseItem implements ActiveMapItem {
 		this.proxyURLStem = uri;
 	}
 
+	public void setMarkerIconLocation(String location) {
+		this.markerIconLocation = location;
+	}
+
     @Expose private double longitude = -1;
     @Expose private double latitude = -1;
     @Expose private String markersLocation = null;
     @Expose private String proxyURLStem = null;
+    @Expose private String markerIconLocation = null;
 }
