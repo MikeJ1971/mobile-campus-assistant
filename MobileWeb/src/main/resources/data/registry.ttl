@@ -97,9 +97,10 @@
     mca:template <template://navigation.ftl> ;
     .
 
-<mca://registry/events/> rdf:type mca:Event ;
+<mca://registry/events/> rdf:type mca:Group ;
     rdfs:label "Events" ;
     dc:description "University events" ;
+    mca:hasItem <mca://registry/events/aass/> ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://eventOverview.ftl> ;
     .
