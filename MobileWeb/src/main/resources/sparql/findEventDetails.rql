@@ -1,0 +1,24 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ical:      <http://www.w3.org/2002/12/cal/ical#>
+
+CONSTRUCT {
+    $x ical:dtstart $startdate .
+    $x ical:dtend $enddate .
+    $x ical:description $description .
+    $x ical:summary $summary .
+    $x ical:location $location .
+    $x ical:organizer $orgname .
+    $x ical:calAddress $orgemail .
+} WHERE {
+    $x ical:dtstart $y .
+    $y ical:dateTime $startdate .
+    $x ical:description $description .
+    $x ical:summary $summary .
+OPTIONAL {
+    $x ical:dtend $z .
+    $z ical:dateTime $enddate . }
+OPTIONAL { $x ical:location $location . }
+OPTIONAL { $x ical:organizer [ ical:cn $orgname ] . }
+OPTIONAL { $x ical:calAddress $orgemail . }
+}
