@@ -45,7 +45,7 @@
     .
 
 <mca://registry/maps/busstops/> rdf:type mca:ActiveMapSource ;
-    rdfs:label "Bus Stops" ;
+    rdfs:label "Live Bus Departures" ;
     dc:description "Bus stops and live departure information." ;
     mca:urlStem "busproxy/?id=" ;
     mca:markers "js/busstops.json" ;

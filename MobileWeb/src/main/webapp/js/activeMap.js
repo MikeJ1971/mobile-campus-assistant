@@ -56,9 +56,9 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 		      zoom: defaultZoomLevel,
 		      center: latlng,
 		      disableDefaultUI: true,
-		      disableDoubleClickZoom: true,
-			  keyboardShortcuts: false,
-			  scrollwheel: false,
+//		      disableDoubleClickZoom: true,
+//			  keyboardShortcuts: false,
+//			  scrollwheel: false,
 //		      navigationControl: true,
 		      mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
@@ -72,11 +72,12 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 			overlayMarkers();
 		});
 
-//		google.maps.event.addListener(map, 'zoom_changed', function() {
-//			if(map.getZoom() < 16) {
-//				map.setZoom(16);
-//			}
-//		});
+		// test - restrict zoom out
+		google.maps.event.addListener(map, 'zoom_changed', function() {
+			if(map.getZoom() < 16) {
+				map.setZoom(16);
+			}
+		});
 
 		findLocation();
 
