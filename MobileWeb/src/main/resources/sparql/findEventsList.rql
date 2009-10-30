@@ -6,24 +6,16 @@ PREFIX mca:     <http://org.ilrt.mca/registry#>
 CONSTRUCT {
     $x ical:dtstart $startdate .
     $x ical:dtend $enddate .
-    $x ical:description $description .
     $x ical:summary $summary .
-    $x ical:location $location .
-    $x ical:organizer $orgname .
-    $x ical:calAddress $orgemail .
     $x ical:uid $id .
-   $x mca:template <template://eventDetails.ftl> .
+    $x mca:template <template://eventList.ftl> .
     $x rdf:type ical:Vevent .
- } WHERE {
+} WHERE {
     $x ical:uid $id .
     $x ical:dtstart $y .
     $y ical:dateTime $startdate .
-    $x ical:description $description .
     $x ical:summary $summary .
 OPTIONAL {
     $x ical:dtend $z .
     $z ical:dateTime $enddate . }
-OPTIONAL { $x ical:location $location . }
-OPTIONAL { $x ical:organizer [ ical:cn $orgname ] . }
-OPTIONAL { $x ical:calAddress $orgemail . }
 }
