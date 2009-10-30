@@ -1,9 +1,12 @@
 package org.ilrt.mca.dao.delegate;
 
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -13,12 +16,10 @@ import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Collections;
 import org.ilrt.mca.domain.events.EventItemImpl;
 import org.ilrt.mca.vocab.EVENT;
 
@@ -28,7 +29,8 @@ import org.ilrt.mca.vocab.EVENT;
 public class EventDelegateImpl extends AbstractDao implements Delegate {
 
     private String findEventsCollection = null;
-    private String findEventItems = null;
+    private String findEventsList = null;
+    private String findEventDetails = null;
     private final Repository repository;
     Logger log = Logger.getLogger(EventDelegateImpl.class);
 
@@ -36,7 +38,8 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         this.repository = repository;
         try {
             findEventsCollection = loadSparql("/sparql/findEvents.rql");
-            findEventItems = loadSparql("/sparql/findEventDetails.rql");
+            findEventsList = loadSparql("/sparql/findEventsList.rql");
+            findEventDetails = loadSparql("/sparql/findEventDetails.rql");
         } catch (IOException ex) {
             log.error("Unable to load SPARQL query: " + ex.getMessage());
             throw new RuntimeException(ex);
@@ -46,56 +49,51 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
-        // the feed is from a specified graph
+        EventItemImpl item = new EventItemImpl();
+
         Resource graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
+        Model model = repository.get(graphUri.getURI());
 
-        Model model = repository.find("id", resource.getURI(), findEventItems);
+        if (parameters.containsKey("item"))
+        {
+            String queryUid = parameters.get("item").get(0).toString();
+System.out.println(queryUid);
+            // get specific event details
+            // query model with our sparql query
 
-        log.info("Creating item " + resource.getURI());
-        log.info("Creating item " + graphUri.getURI());
+            QuerySolutionMap bindings = new QuerySolutionMap();
+            bindings.add("id", ResourceFactory.createPlainLiteral(queryUid));
+            QueryExecution qe = QueryExecutionFactory.create(findEventDetails, model, bindings);
 
-        model.write(System.out);
+            Model resultModel = qe.execConstruct();
+            qe.close();
 
-        EventItemImpl item = new EventItemImpl();
-/*
-            StmtIterator stmtiter = graphUri.getModel().listStatements(null, RDFS.type, EVENT.event);
+            Resource r = (Resource)resultModel.listSubjects().next();
+            System.out.println(r);
+            item = eventItemDetails(r, queryUid);
+            System.out.println("Found:"+item.getStartDate());
+            return item;
+        }
+        else
+        {
+            // get all events for this calendar feed
+            QueryExecution qe = QueryExecutionFactory.create(findEventsList, model);
+            Model resultModel = qe.execConstruct();
+            qe.close();
 
-//            graphUri.getModel().write(System.out);
-            
+            StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
+
             if (!stmtiter.hasNext()) log.info("no iterators");
-            
+
             while (stmtiter.hasNext()) {
                 Statement statement = stmtiter.nextStatement();
                 Resource r = statement.getSubject();
-                log.info(r);
                 item.getItems().add(eventItemDetails(r, graphUri.getURI()));
             }
-            */
 
-        ResIterator iter = model.listSubjects();
-
-        if (iter.hasNext())
-        {
-
-            while (iter.hasNext()) {
-                Resource r = iter.nextResource();
-                EventItemImpl event = eventItemDetails(r,r.getURI());
-
-                log.info(event + " : " + event.getId());
-                item.getItems().add(event);
-            }
-
-//            Collections.sort(item.getItems());
-
-        } else if (graphUri.hasProperty(MCA_REGISTRY.hasItem)) {    // dealing with an item
-
-            item = eventItemDetails(graphUri.getProperty(MCA_REGISTRY.hasItem).getResource(), graphUri.getURI());
-
-            item.setTemplate("template://eventDetails.ftl");
+            getBasicDetails(resource, item);
         }
-
-        getBasicDetails(resource, item);
 
         return item;
     }
@@ -111,20 +109,22 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     }
 
     private EventItemImpl eventItemDetails(Resource resource, String provenance) {
-
-        log.info("Obtaining event details " + resource);
-
+        
         EventItemImpl item = new EventItemImpl();
 
         getBasicDetails(resource,item);
 
-        item.setId(resource.getURI());
+        System.out.println(resource.getProperty(EVENT.UID));
+        // override default id with uid from ical.
+        // resource.getURI() returns null anyway.
+        item.setId(resource.getProperty(EVENT.UID).getLiteral().getLexicalForm());
 
         item.setProvenance(provenance);
 
         if (resource.hasProperty(EVENT.startDate)) {
-            String strDate = resource.getProperty(EVENT.startDate).getString();
+            String strDate = resource.getProperty(EVENT.startDate).getLiteral().getLexicalForm();
             log.info("Got start date "+strDate);
+
             try {
                 item.setStartDate(Common.parseDate(strDate));
             } catch (ParseException e) {
@@ -133,7 +133,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         }
 
         if (resource.hasProperty(EVENT.endDate)) {
-            String strDate = resource.getProperty(EVENT.endDate).getString();
+            String strDate = resource.getProperty(EVENT.endDate).getLiteral().getLexicalForm();
             log.info("Got end date "+strDate);
             try {
                 item.setEndDate(Common.parseDate(strDate));
@@ -147,19 +147,19 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         }
 
         if (resource.hasProperty(EVENT.organizerName)) {
-            item.setOrganiser(resource.getProperty(EVENT.organizerName).getString());
+            item.setOrganiser(resource.getProperty(EVENT.organizerName).getLiteral().getLexicalForm());
         }
 
         if (resource.hasProperty(EVENT.organizerEmail)) {
-            item.setType(resource.getProperty(EVENT.organizerEmail).getString());
+            item.setType(resource.getProperty(EVENT.organizerEmail).getLiteral().getLexicalForm());
         }
 
         if (resource.hasProperty(EVENT.location)) {
-            item.setLocation(resource.getProperty(EVENT.location).getString());
+            item.setLocation(resource.getProperty(EVENT.location).getLiteral().getLexicalForm());
         }
 
         if (resource.hasProperty(EVENT.description)) {
-            item.setDescription(resource.getProperty(EVENT.description).getString());
+            item.setDescription(resource.getProperty(EVENT.description).getLiteral().getLexicalForm());
         }
 
 

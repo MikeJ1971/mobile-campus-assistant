@@ -4,10 +4,9 @@
 
 package org.ilrt.mca.domain.events;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import org.ilrt.mca.domain.BaseItem;
+import org.ilrt.mca.domain.Item;
 
 /**
  * @author Chris Bailey (c.bailey@bristol.ac.uk)
@@ -72,5 +71,10 @@ public class EventItemImpl extends BaseItem implements EventItem {
 
     public void setProvenance(String provenance) {
         this.provenance = provenance;
+    }
+
+    @Override
+    public int compareTo(Item item) {
+        return ((EventItem)item).getStartDate().compareTo(this.getStartDate());
     }
 }

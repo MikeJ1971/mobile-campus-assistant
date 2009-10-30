@@ -20,6 +20,8 @@ public class EVENT {
     }
 
     public static final Resource NAMESPACE = model.createResource(NS);
+    
+    public static final Resource event = model.createResource(NS + "Vevent");
 
     public static final Property startDate = model.createProperty(NS + "dtstart");
 
@@ -35,5 +37,7 @@ public class EVENT {
 
     public static final Property description = model.createProperty(NS + "description");
 
-    public static final Property event = model.createProperty(NS + "Vevent");
+    public static final Property dateTime = model.createProperty(NS + "dateTime");
+
+    public static final Property UID = model.createProperty(NS + "uid");
 }
