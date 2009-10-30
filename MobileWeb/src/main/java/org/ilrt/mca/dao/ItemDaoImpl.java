@@ -47,8 +47,11 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         Delegate delegate = findDelegate(resource);
 
         if (delegate != null) {
+            log.debug("Using delegate: " + delegate.getClass().getName());
             return delegate.createItem(resource, parameters);
         }
+
+        log.debug("We don't have delegate, defaulting to basic object");
 
         // fallback
         BaseItem item = new BaseItem();
@@ -94,6 +97,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
             } else if (type.equals(MCA_REGISTRY.Contact.getURI())) {
                 return new ContactsDelegateImpl(repository);
             }
+
+            log.debug("Haven't found an appropriate delegate");
         }
 
         return null; // 

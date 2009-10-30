@@ -1,0 +1,28 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sy:      <http://purl.org/rss/1.0/modules/syndication/>
+PREFIX dc:      <http://purl.org/dc/elements/1.1/>
+PREFIX rss:     <http://purl.org/rss/1.0/>
+PREFIX taxo:    <http://purl.org/rss/1.0/modules/taxonomy/>
+PREFIX content: <http://purl.org/rss/1.0/modules/content/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mca:     <http://org.ilrt.mca/registry#>
+CONSTRUCT {
+    $id mca:hasNewsItem $itemId .
+    ?id rdf:type <http://org.ilrt.mca/registry#NewsItem> .
+    $id rdfs:seeAlso $graph .
+    $itemId dc:date $date .
+    $itemId rss:description $description.
+    $itemId rss:link $link .
+    $itemId rss:title $title .
+    $itemId mca:hasSource $graph .
+}
+WHERE {
+    GRAPH $graph {
+        $itemId rdf:type rss:item .
+        $itemId dc:date $date .
+        $itemId rss:description $description .
+        $itemId rss:link $link .
+        $itemId rss:title $title .
+    }
+}

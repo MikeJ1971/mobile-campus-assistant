@@ -1,0 +1,28 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sy:      <http://purl.org/rss/1.0/modules/syndication/>
+PREFIX dc:      <http://purl.org/dc/elements/1.1/>
+PREFIX rss:     <http://purl.org/rss/1.0/>
+PREFIX taxo:    <http://purl.org/rss/1.0/modules/taxonomy/>
+PREFIX content: <http://purl.org/rss/1.0/modules/content/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+PREFIX mca:     <http://org.ilrt.mca/registry#>
+CONSTRUCT {
+    $id rdf:type rss:item .
+    $id dc:date $date .
+    $id rss:description $description.
+    $id rss:link $link .
+    $id rss:title $title .
+    $id mca:hasSource $graph .
+    $id mca:template <template://newsItem.ftl> .
+}
+WHERE {
+    GRAPH $graph {
+        $id rdf:type rss:item .
+        $id dc:date $date .
+        $id rss:description $description .
+        $id rss:link $link .
+        $id rss:title $title .
+        FILTER (xsd:dateTime($date) >= xsd:dateTime($startDate) &&
+        xsd:dateTime($date) <= xsd:dateTime($endDate))
+    }
+}
