@@ -72,6 +72,12 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 			overlayMarkers();
 		});
 
+//		google.maps.event.addListener(map, 'zoom_changed', function() {
+//			if(map.getZoom() < 16) {
+//				map.setZoom(16);
+//			}
+//		});
+
 		findLocation();
 
 	}
