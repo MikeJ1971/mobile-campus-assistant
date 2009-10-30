@@ -50,6 +50,8 @@ public class MCA_REGISTRY {
 
     public static final Property markers = model.createProperty(NS + "markers");
 
+    public static final Property icon = model.createProperty(NS + "icon");
+
     public static final Property urlStem = model.createProperty(NS + "urlStem");
 
     public static final Property lastVisitedDate = model.createProperty(NS + "lastVisitedDate");

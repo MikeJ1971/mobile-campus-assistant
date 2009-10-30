@@ -50,7 +50,11 @@ public class ActiveMapDelegateImpl extends AbstractDao implements Delegate {
         if (resource.hasProperty(MCA_REGISTRY.markers)) {
             item.setMarkersLocation(resource.getProperty(MCA_REGISTRY.markers).getString());
         }
-        
+
+        if (resource.hasProperty(MCA_REGISTRY.icon)) {
+            item.setMarkerIconLocation(resource.getProperty(MCA_REGISTRY.icon).getString());
+        }
+
         if (resource.hasProperty(MCA_REGISTRY.urlStem)) {
             item.setProxyURLStem(resource.getProperty(MCA_REGISTRY.urlStem).getString());
         }
