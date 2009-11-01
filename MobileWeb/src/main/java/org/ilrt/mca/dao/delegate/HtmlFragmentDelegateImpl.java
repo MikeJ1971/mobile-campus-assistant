@@ -15,6 +15,9 @@ import org.ilrt.mca.vocab.MCA_REGISTRY;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 
+/**
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ */
 public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
 
     public HtmlFragmentDelegateImpl(final Repository repository) {
