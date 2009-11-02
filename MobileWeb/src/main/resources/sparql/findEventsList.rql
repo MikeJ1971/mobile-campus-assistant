@@ -11,11 +11,13 @@ CONSTRUCT {
     $x mca:template <template://eventList.ftl> .
     $x rdf:type ical:Vevent .
 } WHERE {
-    $x ical:uid $id .
-    $x ical:dtstart $y .
-    $y ical:dateTime $startdate .
-    $x ical:summary $summary .
-OPTIONAL {
-    $x ical:dtend $z .
-    $z ical:dateTime $enddate . }
+    GRAPH ?graph {
+        $x ical:uid $id .
+        $x ical:dtstart $y .
+        $y ical:dateTime $startdate .
+        $x ical:summary $summary .
+    OPTIONAL {
+        $x ical:dtend $z .
+        $z ical:dateTime $enddate . }
+    }
 }
