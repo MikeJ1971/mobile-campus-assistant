@@ -53,8 +53,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
         Resource graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
-        Model model = repository.get(graphUri.getURI());
-
         if (parameters.containsKey("item"))
         {
             String queryUid = parameters.get("item").get(0).toString();
@@ -64,23 +62,34 @@ System.out.println(queryUid);
 
             QuerySolutionMap bindings = new QuerySolutionMap();
             bindings.add("id", ResourceFactory.createPlainLiteral(queryUid));
-            QueryExecution qe = QueryExecutionFactory.create(findEventDetails, model, bindings);
+            bindings.add("graph", graphUri);
 
-            Model resultModel = qe.execConstruct();
-            qe.close();
+            Model resultModel = repository.find(bindings, findEventDetails);
 
-            Resource r = (Resource)resultModel.listSubjects().next();
-            System.out.println(r);
-            item = eventItemDetails(r, queryUid);
-            System.out.println("Found:"+item.getStartDate());
-            return item;
+            StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
+            if (stmtiter.hasNext())
+            {
+                Statement st = stmtiter.nextStatement();
+
+                Resource r = st.getSubject();
+                System.out.println(r);
+                item = eventItemDetails(r, queryUid);
+                System.out.println("Found:"+item.getStartDate());
+                return item;
+            }
+            else
+            {
+                log.info("Item not found");
+            }
         }
         else
         {
             // get all events for this calendar feed
-            QueryExecution qe = QueryExecutionFactory.create(findEventsList, model);
-            Model resultModel = qe.execConstruct();
-            qe.close();
+            QuerySolutionMap bindings = new QuerySolutionMap();
+            bindings.add("graph", graphUri);
+
+            // search feeds with the specified item
+            Model resultModel = repository.find(bindings, findEventsList);
 
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
 
