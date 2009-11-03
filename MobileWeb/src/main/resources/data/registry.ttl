@@ -22,6 +22,7 @@
     rdfs:label "Today" ;
     dc:description "Information for today" ;
     mca:hasItem <mca://registry/today/weather/> ;
+    mca:hasItem <mca://registry/today/news/> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
@@ -32,6 +33,13 @@
     rdfs:seeAlso <http://portal.bris.ac.uk/portal-weather/newXml> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://weather.ftl> ;
+    .
+
+<mca://registry/today/news/> rdf:type mca:News ;
+    rdfs:label "Today's News" ;
+    dc:description "Today's News in the University of Bristol" ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;

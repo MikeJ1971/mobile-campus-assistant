@@ -29,5 +29,6 @@
         <dependency org="commons-digester" name="commons-digester" rev="2.0" conf="compile->default"/>
         <dependency org="jtidy" name="jtidy" rev="r918" conf="compile->default"/>
         <dependency org="xalan" name="xalan" rev="2.7.1" conf="compile->default"/>
+        <dependency org="joda-time" name="joda-time" rev="1.6" conf="compile->default"/>
     </dependencies>
 </ivy-module>

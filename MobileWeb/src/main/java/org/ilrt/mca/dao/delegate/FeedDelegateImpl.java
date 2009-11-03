@@ -17,6 +17,7 @@ import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.feeds.FeedItemImpl;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
+import org.joda.time.DateTime;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
@@ -104,10 +105,34 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
         } else { // search all graphs
 
+            //try {
+
+                // calculate the start and end dates
+                DateTime current = new DateTime();
+                DateTime past = current.minusHours(100); // TODO the interval should be set in the registry
+
+                String endDate = Common.parseXsdDate(current.toDate());
+                String startDate = Common.parseXsdDate(past.toDate());
+
+                System.out.println("START: " + startDate);
+                System.out.println("END: " + endDate);
+
+                QuerySolutionMap bindings = new QuerySolutionMap();
+                bindings.add("startDate", ResourceFactory.createPlainLiteral(startDate));
+                bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
+
+                Model results = repository.find(bindings, findNewsItemsByDate);
+
+                results.write(System.out);
+
+                return ModelFactory.createUnion(results, resource.getModel());
+
+            //} catch (ParseException e) {
+            //    throw new RuntimeException(e);
+            //}
+
         }
 
-        log.debug("Haven't got the data we expected!");
-        return null;
     }
 
     private FeedItemImpl feedItemDetails(Resource resource) {
