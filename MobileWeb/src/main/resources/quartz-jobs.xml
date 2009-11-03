@@ -39,7 +39,7 @@
                 <group>Harvester</group>
                 <job-name>HarvestEventJob</job-name>
                 <job-group>Harvester</job-group>
-                <cron-expression>0 0/2 * * * ?</cron-expression>
+                <cron-expression>0 0/30 * * * ?</cron-expression>
             </cron>
         </trigger>
     </job>
@@ -58,7 +58,7 @@
                 <group>Harvester</group>
                 <job-name>HarvestXmlJob</job-name>
                 <job-group>Harvester</job-group>
-                <cron-expression>0 0/5 * * * ?</cron-expression>
+                <cron-expression>0 0/30 * * * ?</cron-expression>
             </cron>
         </trigger>
     </job>
