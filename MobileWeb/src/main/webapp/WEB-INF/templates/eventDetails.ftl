@@ -19,9 +19,17 @@
     });
 </script>
 
-<div class="group">
+<div class="event">
     <h3>${it.label}</h3>
     <p>${it.description}</p>
+<p>
+<span class="dtstart"><attr class='value' title='${it.startDate?string("yyyy-MM-dd'T'hh:mm:ss'Z'")}'>${it.startDate?string("E, d MMM")}</attr></span>
+-
+<span class="dtend"><attr class='value' title='${it.endDate?string("yyyy-MM-dd'T'hh:mm:ss'Z'")}'>${it.endDate?string("E, d MMM")}</attr></span>
+</p>
+    <p>${it.location}</p>
+    <p>${it.organiser!""}</p>
+    <p>${it.provenance}</p>
 </div>
 
 <#include "includes/footer.ftl"/>
