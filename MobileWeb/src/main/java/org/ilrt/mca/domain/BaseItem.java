@@ -75,7 +75,7 @@ public class BaseItem implements Item, Comparable<Item> {
 
     @Expose private String id;
     @Expose private String label;
-    @Expose private Integer order;
+    @Expose private Integer order = 1;  // set a fallback order
     @Expose private String description;
     private String template;
     @Expose private String type;

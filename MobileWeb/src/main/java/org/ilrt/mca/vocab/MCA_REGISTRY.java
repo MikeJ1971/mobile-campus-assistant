@@ -61,4 +61,8 @@ public class MCA_REGISTRY {
     public static final Property hasXslSource = model.createProperty(NS + "hasXslSource");
 
     public static final Property hasHtmlFragment = model.createProperty(NS + "hasHtmlFragment");
+
+    public static final Property hasSource = model.createProperty(NS + "hasSource");
+
+    public static final Property hasNewsItem = model.createProperty(NS + "hasNewsItem");
 }

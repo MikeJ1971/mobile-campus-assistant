@@ -1,11 +1,13 @@
 package org.ilrt.mca.dao;
 
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.vocabulary.RDFS;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
+import org.ilrt.mca.domain.BaseItem;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,15 +15,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 
-import org.ilrt.mca.domain.BaseItem;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
-
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public abstract class AbstractDao {
 
-        protected void getBasicDetails(Resource resource, BaseItem item) {
+    protected void getBasicDetails(Resource resource, BaseItem item) {
 
         if (resource == null) {
             return;
