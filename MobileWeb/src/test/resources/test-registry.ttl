@@ -51,7 +51,7 @@
     mca:template <template://item.ftl> ;
     .
 
-<mca://registry/news/events/> rdf:type mca:FeedSource ;
+<mca://registry/news/events/> rdf:type mca:News ;
     rdfs:label "Latest news" ;
     dc:description "Latest news from the University of Bristol" ;
     rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
@@ -62,3 +62,7 @@
 <http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
     mca:hasXslSource <xsl://xsl/weatherData.xsl>
     .
+
+<http://www.bris.ac.uk/news/news-feed.rss> rdf:type mca:FeedSource .
+
+<http://www.ubu.org.uk/rss.xml> rdf:type mca:FeedSource .

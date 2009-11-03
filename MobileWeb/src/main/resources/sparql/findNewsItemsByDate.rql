@@ -19,11 +19,11 @@ CONSTRUCT {
 }
 WHERE {
     GRAPH $graph {
-        $id rdf:type rss:item .
-        $id dc:date $date .
-        $id rss:description $description .
-        $id rss:link $link .
-        $id rss:title $title .
+        $itemId rdf:type rss:item .
+        $itemId dc:date $date .
+        $itemId rss:description $description .
+        $itemId rss:link $link .
+        $itemId rss:title $title .
         FILTER (xsd:dateTime($date) >= xsd:dateTime($startDate) &&
         xsd:dateTime($date) <= xsd:dateTime($endDate))
     }
