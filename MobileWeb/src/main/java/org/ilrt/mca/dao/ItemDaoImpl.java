@@ -16,6 +16,7 @@ import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
+import org.ilrt.mca.dao.delegate.EventDelegateImpl;
 
 
 /**
@@ -96,6 +97,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
                 return new ActiveMapDelegateImpl(repository);
             } else if (type.equals(MCA_REGISTRY.Contact.getURI())) {
                 return new ContactsDelegateImpl(repository);
+            } else if (type.equals(MCA_REGISTRY.EventCalendar.getURI())) {
+                return new EventDelegateImpl(repository);
             }
 
             log.debug("Haven't found an appropriate delegate");

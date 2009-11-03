@@ -26,6 +26,25 @@
     </job>
     <job>
         <job-detail>
+            <name>HarvestEventJob</name>
+            <group>Harvester</group>
+            <job-class>org.ilrt.mca.quartz.HarvestEventJob</job-class>
+            <volatility>false</volatility>
+            <durability>false</durability>
+            <recover>false</recover>
+        </job-detail>
+        <trigger>
+            <cron>
+                <name>HarvestEventsTrigger</name>
+                <group>Harvester</group>
+                <job-name>HarvestEventJob</job-name>
+                <job-group>Harvester</job-group>
+                <cron-expression>0 0/30 * * * ?</cron-expression>
+            </cron>
+        </trigger>
+    </job>
+    <job>
+        <job-detail>
             <name>HarvestXmlJob</name>
             <group>Harvester</group>
             <job-class>org.ilrt.mca.quartz.HarvestXmlJob</job-class>

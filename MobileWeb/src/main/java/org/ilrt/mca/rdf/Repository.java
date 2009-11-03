@@ -32,5 +32,4 @@ public interface Repository {
 
     void updatePropertyInGraph(String graphUri, String uri,
                                Property property, RDFNode object);
-
 }

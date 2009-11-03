@@ -206,3 +206,6 @@ It's height value should ensure that the map pans enough to allow for later dyna
 #copyright {
     margin: 10px;
 }
+
+.utc { display:none; visibility:hidden; }
+.dtstart, .dtend { color: #ccc; font-size:80%; }

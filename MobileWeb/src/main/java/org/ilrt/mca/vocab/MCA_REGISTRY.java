@@ -40,6 +40,8 @@ public class MCA_REGISTRY {
 
     public static final Resource Contact = model.createProperty(NS + "Contact");
 
+    public static final Resource EventCalendar = model.createProperty(NS + "EventCalendar");
+
     // ----- Properties
 
     public static final Property order = model.createProperty(NS + "order");

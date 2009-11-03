@@ -1,0 +1,23 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ical:      <http://www.w3.org/2002/12/cal/ical#>
+PREFIX mca:     <http://org.ilrt.mca/registry#>
+
+CONSTRUCT {
+    $x ical:dtstart $startdate .
+    $x ical:dtend $enddate .
+    $x ical:summary $summary .
+    $x ical:uid $id .
+    $x mca:template <template://eventList.ftl> .
+    $x rdf:type ical:Vevent .
+} WHERE {
+    GRAPH ?graph {
+        $x ical:uid $id .
+        $x ical:dtstart $y .
+        $y ical:dateTime $startdate .
+        $x ical:summary $summary .
+    OPTIONAL {
+        $x ical:dtend $z .
+        $z ical:dateTime $enddate . }
+    }
+}

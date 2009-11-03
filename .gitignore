@@ -10,3 +10,7 @@ classes
 *.ipr
 *.iws
 *.log
+nbproject
+Thumbs*
+build.xml
+catalog.xml
