@@ -2,8 +2,8 @@ package org.ilrt.mca.harvester.feeds;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
@@ -14,7 +14,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.Iterator;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -36,9 +35,8 @@ public class FeedResponseHandlerImpl implements ResponseHandler {
             // The student union feeds GUID is not a valid URI - we check that the value of
             // getUri (which the ROME API populated with the RSS GUID) starts with "http:, if not
             // use the link as the URI.
-            Iterator iter = syndFeed.getEntries().iterator();
-            while (iter.hasNext()) {
-                SyndEntry entry = (SyndEntry) iter.next();
+            for (Object o : syndFeed.getEntries()) {
+                SyndEntry entry = (SyndEntry) o;
                 if (!entry.getUri().startsWith("http")) {
                     entry.setUri(entry.getLink());
                 }
