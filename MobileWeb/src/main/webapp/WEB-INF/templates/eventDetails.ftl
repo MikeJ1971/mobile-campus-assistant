@@ -27,7 +27,8 @@
     function renderDates(d1, d2, humanView)
     {
         if (!handleSingleDate(d1, d2, humanView) &&
-            !handleDatesOnSameDay(d1, d2, humanView))
+            !handleDatesOnSameDay(d1, d2, humanView) &&
+            !handleEventSpanningMultipleDays(d1, d2, humanView))
         {
             jQuery(humanView).html("unable to display dates");
         }
@@ -62,6 +63,13 @@
             return true;
         }
         return false;
+    }
+
+    function handleEventSpanningMultipleDays(d1, d2, humanView)
+    {
+        jQuery(humanView).append("<div class='from row'><span class='label'>From:</span>"+d1.toString("ddd, dd MMM yyyy") +" at " + d1.toString("HH:mm")+"</div>");
+        jQuery(humanView).append("<div class='to row'><span class='label'>To:</span>"+d2.toString("ddd, dd MMM yyyy") +" at " + d2.toString("HH:mm")+"</div>");
+        return true;
     }
 </script>
 
