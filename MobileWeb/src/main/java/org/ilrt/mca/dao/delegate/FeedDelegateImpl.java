@@ -83,13 +83,12 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
+        // we have a parameter so we are interested in a single item
+        if (parameters.containsKey("item")) {
+            return newsItem(resource, parameters.getFirst("item"));
+        }
 
         if (resource.hasProperty(RDFS.seeAlso)) { // we are looking for a specific graph
-
-            // we have a parameter so we are interested in a single item
-            if (parameters.containsKey("item")) {
-                return newsItem(resource, parameters.getFirst("item"));
-            }
 
             QuerySolutionMap bindings = new QuerySolutionMap();
 
@@ -105,23 +104,21 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
         } else { // search all graphs
 
-            //try {
+            // calculate the start and end dates
+            DateTime current = new DateTime();
+            DateTime past = current.minusHours(24); // TODO the interval should be set in the registry
 
-                // calculate the start and end dates
-                DateTime current = new DateTime();
-                DateTime past = current.minusHours(24); // TODO the interval should be set in the registry
+            String endDate = Common.parseXsdDate(current.toDate());
+            String startDate = Common.parseXsdDate(past.toDate());
 
-                String endDate = Common.parseXsdDate(current.toDate());
-                String startDate = Common.parseXsdDate(past.toDate());
+            QuerySolutionMap bindings = new QuerySolutionMap();
+            bindings.add("startDate", ResourceFactory.createPlainLiteral(startDate));
+            bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
+            bindings.add("id", resource);
 
-                QuerySolutionMap bindings = new QuerySolutionMap();
-                bindings.add("startDate", ResourceFactory.createPlainLiteral(startDate));
-                bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
-                bindings.add("id", resource);
+            Model results = repository.find(bindings, findNewsItemsByDate);
 
-                Model results = repository.find(bindings, findNewsItemsByDate);
-
-                return ModelFactory.createUnion(results, resource.getModel());
+            return ModelFactory.createUnion(results, resource.getModel());
         }
 
     }
@@ -185,7 +182,9 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
         QuerySolutionMap bindings = new QuerySolutionMap();
 
         // bind to the graph - the source URI
-        bindings.add("graph", resource.getProperty(RDFS.seeAlso).getResource());
+        if (resource.hasProperty(RDFS.seeAlso)) {
+            bindings.add("graph", resource.getProperty(RDFS.seeAlso).getResource());
+        }
 
         // bind to the URI of the specific news item
         bindings.add("itemId", ResourceFactory.createResource(newsItemUri));
