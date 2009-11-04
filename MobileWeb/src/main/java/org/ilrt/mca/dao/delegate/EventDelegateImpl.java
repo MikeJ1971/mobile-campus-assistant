@@ -56,7 +56,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         if (parameters.containsKey("item"))
         {
             String queryUid = parameters.get("item").get(0).toString();
-System.out.println(queryUid);
+
             // get specific event details
             // query model with our sparql query
 
@@ -72,9 +72,7 @@ System.out.println(queryUid);
                 Statement st = stmtiter.nextStatement();
 
                 Resource r = st.getSubject();
-                System.out.println(r);
                 item = eventItemDetails(r, queryUid);
-                System.out.println("Found:"+item.getStartDate());
                 return item;
             }
             else
@@ -123,7 +121,6 @@ System.out.println(queryUid);
 
         getBasicDetails(resource,item);
 
-        System.out.println(resource.getProperty(EVENT.UID));
         // override default id with uid from ical.
         // resource.getURI() returns null anyway.
         item.setId(resource.getProperty(EVENT.UID).getLiteral().getLexicalForm());
@@ -132,7 +129,6 @@ System.out.println(queryUid);
 
         if (resource.hasProperty(EVENT.startDate)) {
             String strDate = resource.getProperty(EVENT.startDate).getLiteral().getLexicalForm();
-            log.info("Got start date "+strDate);
 
             try {
                 item.setStartDate(Common.parseDate(strDate));
@@ -143,7 +139,7 @@ System.out.println(queryUid);
 
         if (resource.hasProperty(EVENT.endDate)) {
             String strDate = resource.getProperty(EVENT.endDate).getLiteral().getLexicalForm();
-            log.info("Got end date "+strDate);
+
             try {
                 item.setEndDate(Common.parseDate(strDate));
             } catch (ParseException e) {

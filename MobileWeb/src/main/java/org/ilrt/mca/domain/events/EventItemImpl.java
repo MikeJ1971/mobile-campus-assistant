@@ -85,11 +85,11 @@ public class EventItemImpl extends BaseItem implements EventItem {
         this.provenance = provenance;
     }
 
-    @Override
-    public int compareTo(Item item) {
-        return ((EventItem)item).getStartDate().compareTo(this.getStartDate());
-    }
-
+//    @Override
+//    public int compareTo(Item item) {
+//        return this.getStartDate().compareTo(((EventItem)item).getStartDate());
+//    }
+//
     protected static String closeAllTags(String s)
     {
         // first clean up any unclosed tag
