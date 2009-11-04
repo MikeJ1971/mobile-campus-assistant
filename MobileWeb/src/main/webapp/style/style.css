@@ -207,5 +207,52 @@ It's height value should ensure that the map pans enough to allow for later dyna
     margin: 10px;
 }
 
-.utc { display:none; visibility:hidden; }
-.dtstart, .dtend { color: #ccc; font-size:80%; }
+/* EVENTS */
+.event h3
+{
+    border-bottom:1px solid black;
+    padding-bottom:1em;
+    color:#5b5b9a;
+}
+
+
+.event .label
+{
+    font-weight:bold;
+    padding-right:0.2em;
+    width:5em;
+    display:inline-block;
+}
+
+.event .date attr
+{
+    display:none;
+}
+
+.event .row
+{
+    margin-top:0.6em;
+    margin-bottom:0.6em;
+    margin-left:1em;
+    padding-left:0.4em;
+}
+
+.event p
+{
+    font-size:100%;
+}
+
+
+.event .description
+{
+    border-left:5px solid #89bf58;
+}
+.event .day, .event .time
+{
+    border-left:5px solid #e8a81d;
+}
+
+.eventList .startdate
+{
+    color: #ccc; font-size:80%;
+}
