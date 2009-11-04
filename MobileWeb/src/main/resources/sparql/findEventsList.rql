@@ -21,3 +21,4 @@ CONSTRUCT {
         $z ical:dateTime $enddate . }
     }
 }
+ORDER BY DESC($startdate)

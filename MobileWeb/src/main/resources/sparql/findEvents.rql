@@ -12,12 +12,16 @@ CONSTRUCT {
     $id dc:description $description .
     $id rdf:type $type .
     $id rdfs:seeAlso $subItemId .
+    $id mca:icalLink $icalLink .
+    $id mca:htmlLink $htmlLink .
 } WHERE {
     $id mca:template $template .
     $id rdfs:label $label .
-    OPTIONAL { $id dc:description $description . } .
     $id rdf:type $type .
+    OPTIONAL { $id dc:description $description . } .
     OPTIONAL {
         $id rdfs:seeAlso $subItemId .
     } .
+    OPTIONAL {$id mca:htmlLink $htmlLink . } .
+    OPTIONAL {$id mca:icalLink $icalLink . } .
 }
