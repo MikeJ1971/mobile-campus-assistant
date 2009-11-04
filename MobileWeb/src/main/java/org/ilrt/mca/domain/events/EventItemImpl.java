@@ -9,7 +9,6 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.ilrt.mca.domain.BaseItem;
-import org.ilrt.mca.domain.Item;
 
 /**
  * @author Chris Bailey (c.bailey@bristol.ac.uk)
