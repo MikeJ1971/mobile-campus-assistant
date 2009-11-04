@@ -98,6 +98,7 @@
 <mca://registry/news/> rdf:type mca:Group ;
     rdfs:label "News" ;
     dc:description "University news items" ;
+    mca:hasItem <mca://registry/news/alerts/> ;
     mca:hasItem <mca://registry/news/main/> ;
     mca:hasItem <mca://registry/news/academic/> ;
     mca:hasItem <mca://registry/news/services/> ;

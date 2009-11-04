@@ -12,11 +12,20 @@
 @prefix geo:        <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
+
+<mca://registry/news/alerts/> rdf:type mca:News ;
+    rdfs:label "University Alerts" ;
+    dc:description "Information and alerts in case of emergency" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/alert/updates/news-feed.rss> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://alertsList.ftl> ;
+    .
+
 <mca://registry/news/main/> rdf:type mca:News ;
     rdfs:label "Main Headlines" ;
     dc:description "Main headlines from the University of Bristol" ;
     rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
-    mca:order "1"^^xsd:integer ;
+    mca:order "2"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
     .
 
@@ -44,7 +53,7 @@
     mca:hasItem <mca://registry/news/academic/sps/> ;
     mca:hasItem <mca://registry/news/academic/arthistory/> ;
     mca:hasItem <mca://registry/news/academic/anatomy/> ;
-    mca:order "2"^^xsd:integer ;
+    mca:order "3"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
 
@@ -210,7 +219,7 @@
     mca:hasItem <mca://registry/news/services/is/> ;
     mca:hasItem <mca://registry/news/services/sports/> ;
     mca:hasItem <mca://registry/news/services/health/> ;
-    mca:order "2"^^xsd:integer ;
+    mca:order "4"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
 
@@ -246,7 +255,7 @@
     dc:description "Latest news from the Students' Union" ;
     mca:hasItem <mca://registry/news/ubu/latest/> ;
     mca:hasItem <mca://registry/news/ubu/events/> ;
-    mca:order "3"^^xsd:integer ;
+    mca:order "5"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
 
@@ -322,3 +331,5 @@
 <http://www.bristol.ac.uk/students-health/news/news-feed.rss> rdf:type mca:FeedSource .
 
 <http://www.bristol.ac.uk/anatomy/news/news-feed.rss> rdf:type mca:FeedSource .
+
+<http://www.bristol.ac.uk/alert/updates/news-feed.rss> rdf:type mca:FeedSource .
