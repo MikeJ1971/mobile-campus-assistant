@@ -1,7 +1,5 @@
 package org.ilrt.mca.dao.delegate;
 
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -21,7 +19,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.text.ParseException;
 import org.ilrt.mca.domain.events.EventItemImpl;
+import org.ilrt.mca.domain.events.EventSourceImpl;
 import org.ilrt.mca.vocab.EVENT;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -49,12 +49,13 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
-        EventItemImpl item = new EventItemImpl();
 
         Resource graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
         if (parameters.containsKey("item"))
         {
+            EventItemImpl item = new EventItemImpl();
+
             String queryUid = parameters.get("item").get(0).toString();
 
             // get specific event details
@@ -73,15 +74,18 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
                 Resource r = st.getSubject();
                 item = eventItemDetails(r, queryUid);
-                return item;
             }
             else
             {
                 log.info("Item not found");
             }
+
+            return item;
         }
         else
         {
+            EventSourceImpl item = new EventSourceImpl();
+
             // get all events for this calendar feed
             QuerySolutionMap bindings = new QuerySolutionMap();
             bindings.add("graph", graphUri);
@@ -99,10 +103,10 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
                 item.getItems().add(eventItemDetails(r, graphUri.getURI()));
             }
 
-            getBasicDetails(resource, item);
-        }
+            eventSourceDetails(resource, item);
 
-        return item;
+            return item;
+        }
     }
 
     @Override
@@ -113,6 +117,15 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         Model model = repository.find("id", resource.getURI(), findEventsCollection);
 
         return ModelFactory.createUnion(resource.getModel(), model);
+    }
+
+    private void eventSourceDetails(Resource resource, EventSourceImpl item) {
+
+        getBasicDetails(resource,item);
+
+        item.setHTMLLink(resource.getProperty(MCA_REGISTRY.htmlLink).getLiteral().getLexicalForm());
+
+        item.setiCalLink(resource.getProperty(MCA_REGISTRY.icalLink).getLiteral().getLexicalForm());
     }
 
     private EventItemImpl eventItemDetails(Resource resource, String provenance) {
