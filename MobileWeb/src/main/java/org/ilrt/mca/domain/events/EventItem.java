@@ -5,6 +5,7 @@
 package org.ilrt.mca.domain.events;
 
 import java.util.Date;
+import java.util.List;
 import org.ilrt.mca.domain.Item;
 
 /**
@@ -21,4 +22,9 @@ public interface EventItem extends Item {
     String getOrganiser();
 
     String getProvenance();
+
+    boolean isRecurring();
+
+    List<Date> getRecurringDatesUntil(Date endDate);
+
 }
