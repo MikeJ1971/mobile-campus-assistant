@@ -18,6 +18,9 @@ import org.ilrt.mca.rdf.Repository;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
 import org.ilrt.mca.domain.events.EventItemImpl;
 import org.ilrt.mca.domain.events.EventSourceImpl;
 import org.ilrt.mca.vocab.EVENT;
@@ -86,6 +89,14 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         {
             EventSourceImpl item = new EventSourceImpl();
 
+            Calendar oneMonthFromNowCal = Calendar.getInstance();
+
+            // add 18 months to current date
+            oneMonthFromNowCal.add( Calendar.MONTH, 1 );
+
+            Date now = new Date();
+            Date oneMonthFromNow = oneMonthFromNowCal.getTime();
+
             // get all events for this calendar feed
             QuerySolutionMap bindings = new QuerySolutionMap();
             bindings.add("graph", graphUri);
@@ -93,6 +104,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             // search feeds with the specified item
             Model resultModel = repository.find(bindings, findEventsList);
 
+            resultModel.write(System.out);
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
 
             if (!stmtiter.hasNext()) log.info("no iterators");
@@ -100,8 +112,17 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             while (stmtiter.hasNext()) {
                 Statement statement = stmtiter.nextStatement();
                 Resource r = statement.getSubject();
-                item.getItems().add(eventItemDetails(r, graphUri.getURI()));
+                EventItemImpl calEvent = eventItemDetails(r, graphUri.getURI());
+
+                // create repeating items
+                // filter date range
+                if (calEvent.getStartDate().after(now) && calEvent.getStartDate().before(oneMonthFromNow))
+                {
+                    item.getItems().add(calEvent);
+                }
+                
             }
+            Collections.sort(item.getItems());
 
             eventSourceDetails(resource, item);
 
