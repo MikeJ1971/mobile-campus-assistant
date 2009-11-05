@@ -294,10 +294,6 @@
 
 <http://www.ubu.org.uk/feed/events/rss.xml> rdf:type mca:FeedSource .
 
-<http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
-    mca:hasXslSource <xsl://xsl/weatherData.xsl>
-    .
-
 <http://www.bristol.ac.uk/red/news/news.rss> rdf:type mca:FeedSource .
 
 <http://www.bristol.ac.uk/politics/news/news.rss> rdf:type mca:FeedSource .

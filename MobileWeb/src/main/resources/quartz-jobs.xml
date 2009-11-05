@@ -24,6 +24,7 @@
             </cron>
         </trigger>
     </job>
+    <!--
     <job>
         <job-detail>
             <name>HarvestEventJob</name>
@@ -43,6 +44,7 @@
             </cron>
         </trigger>
     </job>
+    -->
     <job>
         <job-detail>
             <name>HarvestXmlJob</name>
@@ -59,6 +61,25 @@
                 <job-name>HarvestXmlJob</job-name>
                 <job-group>Harvester</job-group>
                 <cron-expression>0 0/30 * * * ?</cron-expression>
+            </cron>
+        </trigger>
+    </job>
+    <job>
+        <job-detail>
+            <name>HarvestXhtmlJob</name>
+            <group>Harvester</group>
+            <job-class>org.ilrt.mca.quartz.HarvestXhtmlJob</job-class>
+            <volatility>false</volatility>
+            <durability>false</durability>
+            <recover>false</recover>
+        </job-detail>
+        <trigger>
+            <cron>
+                <name>HarvestXhtmlTrigger</name>
+                <group>Harvester</group>
+                <job-name>HarvestXhtmlJob</job-name>
+                <job-group>Harvester</job-group>
+                <cron-expression>0 0/5 * * * ?</cron-expression>
             </cron>
         </trigger>
     </job>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -5,6 +6,8 @@
                 xmlns:mca="http://org.ilrt.mca/registry#"
                 xmlns:html="http://www.w3.org/1999/xhtml"
                 exclude-result-prefixes="html">
+
+    <xsl:output encoding="utf-8"/>
 
     <!-- URI for the weather data -->
     <xsl:param name="uri" select="'http://is-freepcs.cse.bris.ac.uk/'"/>

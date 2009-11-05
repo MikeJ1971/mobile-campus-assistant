@@ -24,6 +24,7 @@
     dc:description "Information for today" ;
     mca:hasItem <mca://registry/today/weather/> ;
     mca:hasItem <mca://registry/today/news/> ;
+    mca:hasItem <mca://registry/today/pcavailability/> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
@@ -39,8 +40,16 @@
 <mca://registry/today/news/> rdf:type mca:News ;
     rdfs:label "Today's News" ;
     dc:description "Today's News in the University of Bristol" ;
-    mca:order "1"^^xsd:integer ;
+    mca:order "2"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    .
+
+<mca://registry/today/pcavailability/> rdf:type mca:HtmlFragment ;
+    rdfs:label "PC Availability" ;
+    dc:description "PC Availability" ;
+    rdfs:seeAlso <http://is-freepcs.cse.bris.ac.uk/> ;
+    mca:order "3"^^xsd:integer ;
+    mca:template <template://pcavailability.ftl> ;
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;
@@ -114,4 +123,12 @@
     mca:hasItem <mca://registry/events/uobkeydates/> ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://eventOverview.ftl> ;
+    .
+
+<http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
+    mca:hasXslSource <xsl://xsl/weatherData.xsl>
+    .
+
+<http://is-freepcs.cse.bris.ac.uk/> rdf:type mca:HtmlSource ;
+    mca:hasXslSource <xsl://xsl/pcavailability.xsl>
     .
