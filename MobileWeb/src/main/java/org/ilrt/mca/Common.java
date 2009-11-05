@@ -42,6 +42,9 @@ public class Common {
         if (date.endsWith("Z")) {
             date = date.substring(0, date.length() - 1);
         }
+        if (date.length() == 10) {
+            date = date+"T00:00:00Z";
+        }
         return new SimpleDateFormat(DATE_FORMAT_STRING_WITHOUT_TZ).parse(date);
     }
 
