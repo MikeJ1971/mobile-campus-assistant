@@ -1,32 +1,20 @@
 <#include "includes/header.ftl"/>
 
-<script src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js" type="text/javascript"></script>
-<script src="http://datejs.googlecode.com/files/date.js" type="text/javascript"></script>
-
-<script>
-    jQuery(document).ready(function(){
-        jQuery(".date .utc:not(:empty)").each(function ()
-        {
-            // get the value
-            var longDate = Date(parseInt(jQuery(this).text()));
-
-            // handle to human view of datetime
-            var humanView = jQuery(this).prev();
-
-            // set the human view
-            jQuery(humanView).html(longDate.toString("ddd, dd MMM yyyy HH:mm:ss"));
-        });
-    });
-</script>
-
 <div class="group">
     <h3>${it.label}</h3>
+    <div class="description">${it.description}</div>
+    <div class="calendarlinks">
+        <#if it.getHTMLLink()??><div class="calendarlink"><a href="${it.HTMLLink}"><img src="${contextPath}/images/htmlcalicon.png"/><br/>View on web</a></div></#if>
+        <#if it.getiCalLink()??><div class="calendarlink"><a href="${it.iCalLink}"><img src="${contextPath}/images/icalicon.png"/><br/>iCal link</a></div></#if>
+    </div>
     <#if it.items?size == 0>
     <p>Sorry, no upcoming events in this calendar.</p>
     </#if>
-    <ul class="itemList">
+    <ul class="itemList eventList">
         <#list it.items as event>
-        <li class="eventItemTitle"><a href="./?item=${event.id}">${event.label}</a></li>
+        <li class="eventItemTitle"><a href="./?item=${event.id}">${event.label}<br/>
+           <span class="startdate">${event.startDate?string("E, d MMM yyyy HH:mm")}</span></a>
+        </li>
         </#list>
     </ul>
 </div>

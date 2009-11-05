@@ -1,7 +1,5 @@
 package org.ilrt.mca.dao.delegate;
 
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -21,7 +19,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.text.ParseException;
 import org.ilrt.mca.domain.events.EventItemImpl;
+import org.ilrt.mca.domain.events.EventSourceImpl;
 import org.ilrt.mca.vocab.EVENT;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -49,14 +49,15 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
-        EventItemImpl item = new EventItemImpl();
 
         Resource graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
         if (parameters.containsKey("item"))
         {
+            EventItemImpl item = new EventItemImpl();
+
             String queryUid = parameters.get("item").get(0).toString();
-System.out.println(queryUid);
+
             // get specific event details
             // query model with our sparql query
 
@@ -72,18 +73,19 @@ System.out.println(queryUid);
                 Statement st = stmtiter.nextStatement();
 
                 Resource r = st.getSubject();
-                System.out.println(r);
                 item = eventItemDetails(r, queryUid);
-                System.out.println("Found:"+item.getStartDate());
-                return item;
             }
             else
             {
                 log.info("Item not found");
             }
+
+            return item;
         }
         else
         {
+            EventSourceImpl item = new EventSourceImpl();
+
             // get all events for this calendar feed
             QuerySolutionMap bindings = new QuerySolutionMap();
             bindings.add("graph", graphUri);
@@ -101,10 +103,10 @@ System.out.println(queryUid);
                 item.getItems().add(eventItemDetails(r, graphUri.getURI()));
             }
 
-            getBasicDetails(resource, item);
-        }
+            eventSourceDetails(resource, item);
 
-        return item;
+            return item;
+        }
     }
 
     @Override
@@ -117,13 +119,21 @@ System.out.println(queryUid);
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
+    private void eventSourceDetails(Resource resource, EventSourceImpl item) {
+
+        getBasicDetails(resource,item);
+
+        item.setHTMLLink(resource.getProperty(MCA_REGISTRY.htmlLink).getLiteral().getLexicalForm());
+
+        item.setiCalLink(resource.getProperty(MCA_REGISTRY.icalLink).getLiteral().getLexicalForm());
+    }
+
     private EventItemImpl eventItemDetails(Resource resource, String provenance) {
         
         EventItemImpl item = new EventItemImpl();
 
         getBasicDetails(resource,item);
 
-        System.out.println(resource.getProperty(EVENT.UID));
         // override default id with uid from ical.
         // resource.getURI() returns null anyway.
         item.setId(resource.getProperty(EVENT.UID).getLiteral().getLexicalForm());
@@ -132,7 +142,6 @@ System.out.println(queryUid);
 
         if (resource.hasProperty(EVENT.startDate)) {
             String strDate = resource.getProperty(EVENT.startDate).getLiteral().getLexicalForm();
-            log.info("Got start date "+strDate);
 
             try {
                 item.setStartDate(Common.parseDate(strDate));
@@ -143,7 +152,7 @@ System.out.println(queryUid);
 
         if (resource.hasProperty(EVENT.endDate)) {
             String strDate = resource.getProperty(EVENT.endDate).getLiteral().getLexicalForm();
-            log.info("Got end date "+strDate);
+
             try {
                 item.setEndDate(Common.parseDate(strDate));
             } catch (ParseException e) {

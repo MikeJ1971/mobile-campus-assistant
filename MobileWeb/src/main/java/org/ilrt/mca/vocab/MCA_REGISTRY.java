@@ -65,4 +65,8 @@ public class MCA_REGISTRY {
     public static final Property hasSource = model.createProperty(NS + "hasSource");
 
     public static final Property hasNewsItem = model.createProperty(NS + "hasNewsItem");
+
+    public static final Property htmlLink = model.createProperty(NS + "htmlLink");
+
+    public static final Property icalLink = model.createProperty(NS + "icalLink");
 }

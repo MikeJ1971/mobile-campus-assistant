@@ -111,6 +111,7 @@
     rdfs:label "Events" ;
     dc:description "University events" ;
     mca:hasItem <mca://registry/events/aass/> ;
+    mca:hasItem <mca://registry/events/uobkeydates/> ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://eventOverview.ftl> ;
     .
