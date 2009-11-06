@@ -30,7 +30,7 @@ CONSTRUCT {
         }
         OPTIONAL {
             $x ical:dtend $z .
-            $z ical:dateTime $enddate .
+            {  $z ical:dateTime $enddate  } UNION { $z ical:date $enddate }
         }
         OPTIONAL {
             $x ical:rrule $rrule .
