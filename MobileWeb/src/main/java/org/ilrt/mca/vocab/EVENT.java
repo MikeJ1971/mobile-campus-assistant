@@ -40,4 +40,14 @@ public class EVENT {
     public static final Property dateTime = model.createProperty(NS + "dateTime");
 
     public static final Property UID = model.createProperty(NS + "uid");
+
+    public static final Property byMonth = model.createProperty(NS + "bymonth");
+    
+    public static final Property byDay = model.createProperty(NS + "byday");
+
+    public static final Property frequency = model.createProperty(NS + "freq");
+
+    public static final Property interval = model.createProperty(NS + "interval");
+
+    public static final Property until = model.createProperty(NS + "until");
 }

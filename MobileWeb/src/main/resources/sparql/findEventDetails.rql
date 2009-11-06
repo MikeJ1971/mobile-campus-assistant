@@ -18,12 +18,17 @@ CONSTRUCT {
     GRAPH ?graph {
         $x ical:uid $id .
         $x ical:dtstart $y .
-        $y ical:dateTime $startdate .
-        $x ical:description $description .
+        {
+            {  $y ical:dateTime $startdate  } UNION { $y ical:date $startdate }
+        }
+        OPTIONAL { $x ical:description $description . }
         $x ical:summary $summary .
-        OPTIONAL {
+        $x rdf:type ical:Vevent .
+        OPTIONAL
+         {
             $x ical:dtend $z .
-            $z ical:dateTime $enddate . }
+            {  $z ical:dateTime $enddate  } UNION { $z ical:date $enddate }
+         }
         OPTIONAL { $x ical:location $location . }
         OPTIONAL { $x ical:organizer [ ical:cn $orgname ] . }
         OPTIONAL { $x ical:calAddress $orgemail . }

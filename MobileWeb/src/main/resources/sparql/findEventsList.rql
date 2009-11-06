@@ -2,23 +2,43 @@ PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX ical:      <http://www.w3.org/2002/12/cal/ical#>
 PREFIX mca:     <http://org.ilrt.mca/registry#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+PREFIX afn:     <http://jena.hpl.hp.com/ARQ/function#>
+PREFIX fn:      <http://www.w3.org/2005/xpath-functions#>
 
 CONSTRUCT {
     $x ical:dtstart $startdate .
     $x ical:dtend $enddate .
     $x ical:summary $summary .
     $x ical:uid $id .
+    $x ical:bymonth $bymonth .
+    $x ical:freq $freq .
+    $x ical:interval $interval .
+    $x ical:byday $byday .
+    $x ical:until $until .
     $x mca:template <template://eventList.ftl> .
     $x rdf:type ical:Vevent .
 } WHERE {
-    GRAPH ?graph {
+    GRAPH ?graph
+    {
+        $x rdf:type ical:Vevent .
         $x ical:uid $id .
         $x ical:dtstart $y .
-        $y ical:dateTime $startdate .
         $x ical:summary $summary .
-    OPTIONAL {
-        $x ical:dtend $z .
-        $z ical:dateTime $enddate . }
+        {
+            {  $y ical:dateTime $startdate  } UNION { $y ical:date $startdate }
+        }
+        OPTIONAL {
+            $x ical:dtend $z .
+            {  $z ical:dateTime $enddate  } UNION { $z ical:date $enddate }
+        }
+        OPTIONAL {
+            $x ical:rrule $rrule .
+            OPTIONAL { $rrule  ical:bymonth $bymonth . }
+            OPTIONAL { $rrule  ical:freq $freq . }
+            OPTIONAL { $rrule  ical:interval $interval . }
+            OPTIONAL { $rrule  ical:byday $byday . }
+            OPTIONAL { $rrule  ical:until $until . }
+         }
     }
 }
-ORDER BY DESC($startdate)

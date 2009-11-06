@@ -4,6 +4,11 @@
 
 package org.ilrt.mca.domain.events;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,6 +20,8 @@ import static org.junit.Assert.*;
  */
 public class EventItemImplTest {
 
+    private static String DATE_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    
     public EventItemImplTest() {
     }
 
@@ -26,51 +33,112 @@ public class EventItemImplTest {
     public static void tearDownClass() throws Exception {
     }
 
+
     @Test
-    public void testCloseAllTags() {
-        String s;
-        String s_expected;
-        String result;
+    public void testIsRecurring() throws ParseException {
+        EventItemImpl item = new EventItemImpl();
 
-        s = "hello <b>world</b>";
-        s_expected = "hello <b>world</b>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling properly closed tags", s_expected, result);
+        Date startdate = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-09-28T08:00:00Z");
 
-        s = "hello <b>world";
-        s_expected = "hello <b>world</b>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling single closing tags", s_expected, result);
+        Date until = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-12-11T08:00:00Z");
 
-        s = "<span>hello <b>world</b>";
-        s_expected = "<span>hello <b>world</b></span>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling single closing tags with inner tag", s_expected, result);
+        item.setId("2rds35n4nan737jahku8cgq3nc@google.com");
+        item.setLabel("ASSL: Opening times");
+        item.setDescription("Issue Desk Service:<P>\nMonday to Wednesday  -  8.45am - 8.00pm<br>\n\nThursday - 9.45am-8.00pm<br>\n\nFriday - 8.45am - 6.00pm <br>\n\nSaturday - 8.45 am - 6.00pm <br>\n\nSunday - No Issue Desk services<br>\n");
+        item.setStartOfWeek("MO");
+        item.setUntil(until);
 
-        s = "<span>hello <b>world";
-        s_expected = "<span>hello <b>world</b></span>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling multiple closing tags", s_expected, result);
+        System.out.println(item.isRecurring());
+        assertFalse(item.isRecurring());
 
-        s = "<span class='thisisit' id='xyz'>hello <b class nonsense=true>world";
-        s_expected = "<span class='thisisit' id='xyz'>hello <b class nonsense=true>world</b></span>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling tag attributes", s_expected, result);
+        item.setFrequency("DAILY");
+        assertTrue(item.isRecurring());
 
-        s = "<span>hello <b>world</b";
-        s_expected = "<span>hello <b>world</b></span>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling unclosed end tag 1",s_expected, result);
+    }
 
-        s = "<span>hello <b>world</";
-        s_expected = "<span>hello <b>world</b></span>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling unclosed end tag 2", s_expected, result);
+    @Test
+    public void testGetRecurringDates() throws ParseException {
+        EventItemImpl item = new EventItemImpl();
+        List<Date> recurringDates;
 
-        s = "<span>hello <b>world<";
-        s_expected = "<span>hello <b>world</b></span>";
-        result = EventItemImpl.closeAllTags(s);
-        assertEquals("Handling unclosed end tag 3", s_expected, result);
+        Calendar cal = Calendar.getInstance();
+
+        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.DAY_OF_MONTH, 31);
+        cal.set(Calendar.MONTH, 8);
+        System.out.println("Date is now "+cal.getTime());
+        
+        Date startdate = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-09-28T08:00:00Z");
+
+        Date until = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-12-11T08:00:00Z");
+
+        item.setId("2rds35n4nan737jahku8cgq3nc@google.com");
+        item.setLabel("ASSL: Opening times");
+        item.setDescription("Issue Desk Service:<P>\nMonday to Wednesday  -  8.45am - 8.00pm<br>\n\nThursday - 9.45am-8.00pm<br>\n\nFriday - 8.45am - 6.00pm <br>\n\nSaturday - 8.45 am - 6.00pm <br>\n\nSunday - No Issue Desk services<br>\n");
+        item.setStartDate(startdate);
+        item.setStartOfWeek("MO");
+        item.setFrequency("DAILY");
+        item.setUntil(until);
+
+        assertTrue(item.isRecurring());
+
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",74,recurringDates.size());
+
+        // add a month restriction
+        item.setByMonth("1,4,11");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",30,recurringDates.size());
+
+        item.setByMonth("12,9");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",13,recurringDates.size());
+
+        item.setByMonth("11");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",30,recurringDates.size());
+
+        item.setByMonth("");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",74,recurringDates.size());
+
+        System.out.println("Running monthly test");
+
+        item.setFrequency("MONTHLY");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",2,recurringDates.size());
+
+        startdate = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-04-28T08:00:00Z");
+        until = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2010-12-11T08:00:00Z");
+        item.setStartDate(startdate);
+        item.setUntil(until);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",19,recurringDates.size());
+
+        item.setByMonth("11");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",2,recurringDates.size());
+
+        System.out.println("Running count test");
+
+        item.setFrequency("MONTHLY");
+        item.setByMonth("");
+        item.setCount(10);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",10,recurringDates.size());
+
+        item.setCount(25);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",19,recurringDates.size());
+
+        item.setCount(15);
+        item.setByMonth("1,4,5,10");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",6,recurringDates.size());
+
+        item.setCount(5);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",5,recurringDates.size());
     }
 
 }
