@@ -215,6 +215,12 @@ It's height value should ensure that the map pans enough to allow for later dyna
     color:#5b5b9a;
 }
 
+.group .description a
+{
+    display:inline;
+    text-decoration:underline;
+    color:blue;
+}
 
 .event .label
 {
@@ -242,11 +248,11 @@ It's height value should ensure that the map pans enough to allow for later dyna
     font-size:100%;
 }
 
-
 .event .description
 {
     border-left:5px solid #89bf58;
 }
+
 .event .day, .event .time, .event .from, .event .to
 {
     border-left:5px solid #e8a81d;
