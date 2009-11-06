@@ -12,8 +12,8 @@
     </#if>
     <ul class="itemList eventList">
         <#list it.items as event>
-        <li class="eventItemTitle"><a href="./?item=${event.id}">${event.label}<br/>
-           <span class="startdate">${event.startDate?string("E, d MMM yyyy HH:mm")}</span></a>
+        <li class="eventItemTitle"><a href="./?item=${event.id}&r=${event.startDateAsTimeStamp}">${event.label}<br/>
+           <span class="startdate">${event.startDate?string("E, d MMM yyyy")}<#if event.startDate?string("HH:mm") != "00:00"> ${event.startDate?string("HH:mm")}</#if></span></a>
         </li>
         </#list>
     </ul>
