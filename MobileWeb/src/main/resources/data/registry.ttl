@@ -25,6 +25,7 @@
     mca:hasItem <mca://registry/today/weather/> ;
     mca:hasItem <mca://registry/today/news/> ;
     mca:hasItem <mca://registry/today/pcavailability/> ;
+    mca:hasItem <mca://registry/today/it/> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
@@ -50,6 +51,14 @@
     rdfs:seeAlso <http://is-freepcs.cse.bris.ac.uk/> ;
     mca:order "3"^^xsd:integer ;
     mca:template <template://pcavailability.ftl> ;
+    .
+
+<mca://registry/today/it/> rdf:type mca:News ;
+    rdfs:label "IT Service Status" ;
+    dc:description "IT Service Status provided by Information Services" ;
+    rdfs:seeAlso <http://www.bris.ac.uk/is/news/status.rss> ;
+    mca:order "4"^^xsd:integer ;
+    mca:template <template://itServiceStatus.ftl> ;
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;
@@ -132,3 +141,5 @@
 <http://is-freepcs.cse.bris.ac.uk/> rdf:type mca:HtmlSource ;
     mca:hasXslSource <xsl://xsl/pcavailability.xsl>
     .
+
+<http://www.bris.ac.uk/is/news/status.rss> rdf:type mca:FeedSource .

@@ -19,9 +19,9 @@
                     <xsl:text disable-output-escaping="yes">&lt;</xsl:text>
                     <xsl:value-of select="concat('!','[','CDATA','[')"/>
                     <xsl:call-template name="update"/>
-                    <ul>
+                    <table>
                         <xsl:call-template name="availability"/>
-                    </ul>
+                    </table>
                     <xsl:value-of select="concat(']',']')"/>
                     <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
                 </mca:hasHtmlFragment>
@@ -37,10 +37,10 @@
 
     <xsl:template name="availability">
         <xsl:for-each select="html:html/html:body/html:table/html:tbody/html:tr">
-            <li>
-                <xsl:value-of select="html:td[1]"/><xsl:text>: </xsl:text>
-                <xsl:value-of select="html:td[2]"/>
-            </li>
+            <tr>
+                <td><xsl:value-of select="html:td[1]"/></td>
+                <td><xsl:value-of select="html:td[2]"/></td>
+            </tr>
         </xsl:for-each>
     </xsl:template>
 
