@@ -15,7 +15,7 @@
 
 <mca://registry/events/aass/> rdf:type mca:EventCalendar ;
     rdfs:label "Arts and Social Sciences Library Opening Hours" ;
-    dc:description "University of Bristol, Tyndall Avenue, Bristol, BS8 1TJ. See https://www.bris.ac.uk/is/locations/branches/assl/" ;
+    dc:description "University of Bristol, Tyndall Avenue, Bristol, <a href='http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=BS8+1TJ'>BS8 1TJ</a>. <br/>See <a href='https://www.bris.ac.uk/is/locations/branches/assl/'>https://www.bris.ac.uk/is/locations/branches/assl/</a>" ;
     mca:icalLink "http://www.google.com/calendar/ical/lib-asslbs%40bristol.ac.uk/public/basic.ics" ;
     mca:htmlLink "http://www.google.com/calendar/embed?src=lib-asslbs%40bristol.ac.uk&ctz=Europe/London" ;
     rdfs:seeAlso <http://www.kanzaki.com/courier/ical2rdf?u=http%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2Flib-asslbs%2540bristol.ac.uk%2Fpublic%2Fbasic.ics> ;
