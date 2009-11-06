@@ -14,7 +14,7 @@
     mca:hasItem <mca://registry/today/> ;
     mca:hasItem <mca://registry/maps/> ;
     mca:hasItem <mca://registry/news/> ;
-#    mca:hasItem <mca://registry/events/> ;
+    mca:hasItem <mca://registry/events/> ;
     mca:hasItem <mca://registry/contacts/> ;
     mca:template <template://homepage.ftl> ;
     .
