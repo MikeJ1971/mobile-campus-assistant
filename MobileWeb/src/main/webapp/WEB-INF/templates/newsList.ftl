@@ -7,7 +7,7 @@
     </#if>
     <ul class="itemList">
         <#list it.items as item>
-        <li class="newsItemTitle"><a href="./?item=${item.id}">${item.label}<br/>
+        <li class="newsItemTitle"><a href="./?item=${item.id?url("UTF8")}">${item.label}<br/>
             <span class="publishDate">${item.date?string("dd MMMM yyyy hh:mm:ss")}</a></span></li>
         </#list>
     </ul>

@@ -207,6 +207,16 @@ It's height value should ensure that the map pans enough to allow for later dyna
     margin: 10px;
 }
 
+#pcavailability table {
+    border: solid 1px #000000;
+    padding: 3px;
+}
+
+#pcavailability td {
+    padding-right: 15px;
+}
+
+
 /* EVENTS */
 .event h3
 {

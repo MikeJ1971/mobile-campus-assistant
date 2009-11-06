@@ -2,7 +2,7 @@ package org.ilrt.mca.quartz;
 
 import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
-import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
+import org.ilrt.mca.harvester.xml.XhtmlSourceHarvesterImplImpl;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.rdf.SdbRepositoryImpl;
 import org.ilrt.mca.rdf.StoreWrapperManager;
@@ -16,17 +16,17 @@ import java.io.IOException;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class HarvestXmlJob implements Job {
+public class HarvestXhtmlJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        log.info("The HarvestXmlJob has started.");
+        log.info("The HarvestXhtmlJob has started.");
         try {
 
             StoreWrapperManager manager = new StoreWrapperManagerImpl("/sdb.ttl");
             Repository repository = new SdbRepositoryImpl(manager);
 
-            Harvester harvester = new XmlSourceHarvesterImplImpl(repository);
+            Harvester harvester = new XhtmlSourceHarvesterImplImpl(repository);
             harvester.harvest();
 
         } catch (IOException ex) {
@@ -34,8 +34,8 @@ public class HarvestXmlJob implements Job {
             throw new JobExecutionException(ex);
         }
 
-        log.info("The HarvestXmlJob has finished.");
+        log.info("The HarvestXhtmlJob has finished.");
     }
 
-    Logger log = Logger.getLogger(HarvestXmlJob.class);
+    Logger log = Logger.getLogger(HarvestXhtmlJob.class);
 }

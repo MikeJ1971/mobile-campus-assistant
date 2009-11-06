@@ -11,7 +11,7 @@ import com.hp.hpl.jena.vocabulary.DC;
 import static junit.framework.Assert.assertFalse;
 import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.Common;
-import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImpl;
+import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.rdf.SdbRepositoryImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
@@ -65,7 +65,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
                 .getLexicalForm());
         storeWrapper.close();
 
-        Harvester harvester = new XmlSourceHarvesterImpl(repository);
+        Harvester harvester = new XmlSourceHarvesterImplImpl(repository);
         harvester.harvest();
 
         storeWrapper = getStoreWrapper();
