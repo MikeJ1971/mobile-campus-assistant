@@ -27,4 +27,5 @@ public interface EventItem extends Item {
 
     List<Date> getRecurringDatesUntil(Date endDate);
 
+    long getStartDateAsTimeStamp();
 }

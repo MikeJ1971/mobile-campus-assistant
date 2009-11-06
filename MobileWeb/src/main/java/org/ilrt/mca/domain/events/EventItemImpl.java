@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
@@ -17,6 +18,7 @@ import org.ilrt.mca.domain.Item;
  * @author Chris Bailey (c.bailey@bristol.ac.uk)
  */
 public class EventItemImpl extends BaseItem implements EventItem, Comparable<Item> {
+    Logger log = Logger.getLogger(EventItemImpl.class);
 
     public EventItemImpl(){}
 
@@ -50,6 +52,10 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
         return this.startDate;
     }
 
+    public long getStartDateAsTimeStamp()
+    {
+        return this.startDate.getTime();
+    }
 
     public void setEndDate(Date date) {
         this.endDate = date;
@@ -65,6 +71,7 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
     /* Removing any newline characters shown in the description field */
     public void setDescription(String description)
     {
+        if (description == null) return;
         description = description.replaceAll("\\\\n", "");
         description = Common.closeAllTags(description);
         super.setDescription(description);
@@ -114,12 +121,7 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
 
     public void setCount(int i)
     {
-        this._count = 1;
-    }
-
-    public void setInterval(int i)
-    {
-        this._interval = 1;
+        this._count = i;
     }
 
     public void setUntil(Date date)
@@ -148,7 +150,7 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
         }
         catch (IllegalArgumentException iae)
         {
-            iae.printStackTrace();
+            log.info("Unable to convert " + freq + " into a valid frequency");
         }
     }
 
@@ -165,7 +167,7 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
             }
             catch (IllegalArgumentException iae)
             {
-                iae.printStackTrace();
+                log.info("Unable to convert " + days + " into a valid day of the week");
             }
         }
 
@@ -175,21 +177,24 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
     public void setByMonth(String month)
     {
         this._byMonth = new ArrayList();
-        String [] selectedMonths = month.split(",");
-        for(String s : selectedMonths)
+        if (month != null && month.length() > 0)
         {
-            try
+            String [] selectedMonths = month.split(",");
+            for(String s : selectedMonths)
             {
-                Integer i = Integer.parseInt(s);
-                this._byMonth.add(i);
+                try
+                {
+                    Integer i = Integer.parseInt(s);
+                    this._byMonth.add(i);
+                }
+                catch (NumberFormatException nfe)
+                {
+                    log.info("Unable to convert " + s + " into a valid integer");
+                }
             }
-            catch (NumberFormatException nfe)
-            {
-                nfe.printStackTrace();
-            }
-        }
 
-        Collections.sort(this._byMonth);
+            Collections.sort(this._byMonth);
+        }
     }
 
     public boolean repeatsForever()
@@ -214,7 +219,6 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
 
     public List<Date> getRecurringDatesUntil(Date endDate)
     {
-        System.out.println("\n\n");
         ArrayList dates = new ArrayList();
 
         Calendar cal = Calendar.getInstance();
@@ -226,7 +230,7 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
         int pointer = 0;
 
         // setup default pointer position
-        if (this._freq.equals(FREQ.DAILY) && this._byMonth.size() > 0)
+        if ((this._freq.equals(FREQ.DAILY) || this._freq.equals(FREQ.MONTHLY)) && this._byMonth.size() > 0)
         {
             int currMonth = cal.get(Calendar.MONTH) + 1;
             if (this._byMonth.contains(currMonth)) pointer =  this._byMonth.indexOf(currMonth);
@@ -242,18 +246,18 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
             }
             if (this._byMonth.size() == 1) pointer = -1; // as this will automatically get incremented
         }
-
+        log.debug("Init pointer is " + pointer);
+        log.debug("datesToGenerate is " + datesToGenerate);
 
 
         // loop through calculating the next date
-        while (datesToGenerate > 0 || (nextDate.before(endDate) || (this._until != null && nextDate.compareTo(this._until) < 1)))
+        while ((datesToGenerate == -1 || datesToGenerate > 0) && (nextDate.before(endDate) || (this._until != null && nextDate.compareTo(this._until) < 1)))
         {
             cal.setTime(nextDate);
             switch (this._freq)
             {
                 case DAILY:
                     cal.add(Calendar.DAY_OF_MONTH, 1);
-                    System.out.println("Cal is " + cal.getTime());
                     if (this._byMonth.size() > 0)
                     {
                         int currentMonth = cal.get(Calendar.MONTH)+1;// starting from 0
@@ -261,7 +265,6 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
                         {
                             // only allow days withing specified months, so in this case, reset
                             cal.add(Calendar.DAY_OF_MONTH, -1);
-                            System.out.println("Cal reset to " + cal.getTime());
 
                             // increament pointer
                             pointer = pointer + 1;
@@ -271,25 +274,44 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
                                 cal.add(Calendar.YEAR, 1);
                             }
 
-                                int nextMonth = this._byMonth.get(pointer);
-System.out.println("nextMonth is now " + nextMonth + " " + pointer);
+                             int nextMonth = this._byMonth.get(pointer);
 
-
-                        // calculate next month
+                            // calculate next month
                             cal.set(Calendar.MONTH, nextMonth-1);
                             cal.set(Calendar.DAY_OF_MONTH, 1);
-
-                            System.out.println("Cal now " + cal.getTime());
                         }
+                    }
+                    break;
+                case MONTHLY:
+                    if (this._byMonth.size() > 0)
+                    {
+                            // increament pointer
+                            pointer = pointer + 1;
+                            if (pointer >=  this._byMonth.size())
+                            {
+                                pointer = 0;
+                                cal.add(Calendar.YEAR, 1);
+                            }
+
+                            int nextMonth = this._byMonth.get(pointer);
+
+                            // calculate next month
+                            cal.set(Calendar.MONTH, nextMonth-1);
+                            // what happends if month over max allowed for this month? - bug to fix
+                    }
+                    else
+                    {
+                        cal.add(Calendar.MONTH, 1);
                     }
                     break;
             }
 
             nextDate = cal.getTime();
-            if (datesToGenerate > 0) datesToGenerate--;
 
-            if (datesToGenerate > 0 || (nextDate.before(endDate) || (this._until != null && nextDate.compareTo(this._until) < 1)))
+            if ((datesToGenerate == -1 || datesToGenerate > 0) && (nextDate.before(endDate) || (this._until != null && nextDate.compareTo(this._until) < 1)))
             {
+                if (datesToGenerate > 0) datesToGenerate--;
+                log.debug("Adding " + nextDate + " datesToGenerate " + datesToGenerate);
                 dates.add(nextDate);
             }
         }
