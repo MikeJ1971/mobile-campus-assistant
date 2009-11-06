@@ -14,7 +14,7 @@
     mca:hasItem <mca://registry/today/> ;
     mca:hasItem <mca://registry/maps/> ;
     mca:hasItem <mca://registry/news/> ;
-    mca:hasItem <mca://registry/events/> ;
+#    mca:hasItem <mca://registry/events/> ;
     mca:hasItem <mca://registry/contacts/> ;
     mca:template <template://homepage.ftl> ;
     .
@@ -58,7 +58,7 @@
     dc:description "IT Service Status provided by Information Services" ;
     rdfs:seeAlso <http://www.bris.ac.uk/is/news/status.rss> ;
     mca:order "4"^^xsd:integer ;
-    mca:template <template://itServiceStatus.ftl> ;
+    mca:template <template://newsList.ftl> ;
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;

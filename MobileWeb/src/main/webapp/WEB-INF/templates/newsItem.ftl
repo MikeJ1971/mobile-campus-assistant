@@ -1,12 +1,22 @@
 <#include "includes/header.ftl"/>
 <div class="group">
     <div class="newsItem">
-        <h3>${it.label}</h3>
-        <p class="smallPublishDate"><em>${it.date?string("dd MMMM yyyy hh:mm:ss")}</em></p>
-        <p>${it.description}</p>
-        <p><strong><a href="${it.link}">Read more...</a></strong>
+        <#if it.label??>
+            <h3>${it.label}</h3>
+        </#if>
+        <#if it.date??>
+            <p class="smallPublishDate"><em>${it.date?string("dd MMMM yyyy hh:mm:ss")}</em></p>
+        </#if>
+        <#if it.description??>
+            <p>${it.description}</p>
+        </#if>
+        <#if it.link??>
+            <p><strong><a href="${it.link}">Read more...</a></strong>
             <span class="smallNote">(Note: Content might not be optimized for mobile devices.)</span></p>
-        <p>Original source: <a href="${it.provenance}">${it.provenance}</a></p>
+         </#if>
+        <#if it.provenance??>
+            <p>Original source: <a href="${it.provenance}">${it.provenance}</a></p>
+        </#if>
     </div>
 </div>
 <#include "includes/footer.ftl"/>
