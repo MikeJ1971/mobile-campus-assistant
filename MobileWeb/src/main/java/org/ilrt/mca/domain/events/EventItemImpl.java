@@ -320,5 +320,22 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
     }
 
 
+    @Override
+    public EventItemImpl clone()
+    {
+        EventItemImpl item = new EventItemImpl();
+        item.setId(this.getId());
+        item.setLabel(this.getLabel());
+        item.setDescription(this.getDescription());
+        item.setLocation(this.getLocation());
+        item.setOrganiser(this.getOrganiser());
+        item.setProvenance(this.getProvenance());
+        item.setOrder(this.getOrder());
+        item.setType(this.getType());
+        item.setTemplate(this.getTemplate());
+        item.setStartDate(this.getStartDate());
+        item.setEndDate(this.getEndDate());
 
+        return item;
+    }
 }

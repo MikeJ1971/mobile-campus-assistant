@@ -17,14 +17,11 @@ import org.ilrt.mca.rdf.Repository;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
-import java.lang.String;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.ilrt.mca.domain.events.EventItemImpl;
 import org.ilrt.mca.domain.events.EventSourceImpl;
 import org.ilrt.mca.vocab.EVENT;
@@ -70,25 +67,21 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             EventItemImpl item = new EventItemImpl();
 
             String queryUid = parameters.get("item").get(0).toString();
-            Date startDate = null;
-            System.out.println(parameters.containsKey("r"));
-            if (parameters.containsKey("r"))
-            {
-                log.info(parameters.get("r"));
-                startDate = new Date();
-                startDate.setTime(Long.parseLong(parameters.get("r").get(0).toString()));
-            }
 
             // we've requested information about a repeating event.
             // We could search the repo for the item and calculate the date, however a simpler option is to be passed the startdate
-
 
             QuerySolutionMap bindings = new QuerySolutionMap();
             bindings.add("id", ResourceFactory.createPlainLiteral(queryUid));
             bindings.add("graph", graphUri);
 
+            log.info("queryUid:"+queryUid);
+            log.info("graph:"+graphUri);
+
             Model resultModel = repository.find(bindings, findEventDetails);
 
+            resultModel.write(System.out);
+            
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
             if (stmtiter.hasNext())
             {
@@ -96,6 +89,16 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
                 Resource r = st.getSubject();
                 item = eventItemDetails(r, queryUid);
+
+                Date startDate = null;
+
+                if (parameters.containsKey("r"))
+                {
+                    startDate = new Date();
+                    startDate.setTime(Long.parseLong(parameters.get("r").get(0).toString()));
+                    log.debug("Supplied start date is " + startDate);
+                }
+
                 if (startDate != null)
                 {
                     long diff = 0;
@@ -146,12 +149,10 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
                 Resource r = statement.getSubject();
                 EventItemImpl calEvent = eventItemDetails(r, graphUri.getURI());
 
-                log.info("Got event " + calEvent.getStartDate());
-
                 // filter date range
                 if (calEvent.getStartDate().after(now) && calEvent.getStartDate().before(oneMonthFromNow))
                 {
-                    log.info("Adding event");
+                    log.debug("Adding event " + calEvent.getStartDate());
                     item.getItems().add(calEvent);
                 }
 
@@ -179,13 +180,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
                         // if dates are valid, add this event
                         if (d.after(now) &&d.before(oneMonthFromNow))
                         {
-                            EventItemImpl repeatEvent = new EventItemImpl();
-                            repeatEvent.setId(calEvent.getId());
-                            repeatEvent.setLabel(calEvent.getLabel());
-                            repeatEvent.setDescription(calEvent.getDescription());
-                            repeatEvent.setLocation(calEvent.getLocation());
-                            repeatEvent.setOrganiser(calEvent.getOrganiser());
-                            repeatEvent.setProvenance(calEvent.getProvenance());
+                            EventItemImpl repeatEvent = calEvent.clone();
                             repeatEvent.setStartDate(d);
 
                             if (calEvent.getEndDate() != null)
