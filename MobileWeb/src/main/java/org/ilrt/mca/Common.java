@@ -43,8 +43,9 @@ public class Common {
             date = date.substring(0, date.length() - 1);
         }
         if (date.length() == 10) {
-            date = date+"T00:00:00Z";
+            date = date+"T00:00:00";
         }
+        date = date.replaceAll("(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})", "$1-$2-$3T$4:$5:$6");
         return new SimpleDateFormat(DATE_FORMAT_STRING_WITHOUT_TZ).parse(date);
     }
 
