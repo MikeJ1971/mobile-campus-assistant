@@ -6,6 +6,7 @@ package org.ilrt.mca.domain.events;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.junit.AfterClass;
@@ -45,7 +46,6 @@ public class EventItemImplTest {
         item.setLabel("ASSL: Opening times");
         item.setDescription("Issue Desk Service:<P>\nMonday to Wednesday  -  8.45am - 8.00pm<br>\n\nThursday - 9.45am-8.00pm<br>\n\nFriday - 8.45am - 6.00pm <br>\n\nSaturday - 8.45 am - 6.00pm <br>\n\nSunday - No Issue Desk services<br>\n");
         item.setStartOfWeek("MO");
-        item.setInterval(1);
         item.setUntil(until);
 
         System.out.println(item.isRecurring());
@@ -61,6 +61,13 @@ public class EventItemImplTest {
         EventItemImpl item = new EventItemImpl();
         List<Date> recurringDates;
 
+        Calendar cal = Calendar.getInstance();
+
+        cal.set(Calendar.MONTH, 9);
+        cal.set(Calendar.DAY_OF_MONTH, 31);
+        cal.set(Calendar.MONTH, 8);
+        System.out.println("Date is now "+cal.getTime());
+        
         Date startdate = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-09-28T08:00:00Z");
 
         Date until = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-12-11T08:00:00Z");
@@ -71,8 +78,6 @@ public class EventItemImplTest {
         item.setStartDate(startdate);
         item.setStartOfWeek("MO");
         item.setFrequency("DAILY");
-//        item.setByMonth("10");
-        item.setInterval(1);
         item.setUntil(until);
 
         assertTrue(item.isRecurring());
@@ -92,6 +97,48 @@ public class EventItemImplTest {
         item.setByMonth("11");
         recurringDates = item.getRecurringDatesUntil(until);
         assertEquals("Number of generated dates don't match",30,recurringDates.size());
+
+        item.setByMonth("");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",74,recurringDates.size());
+
+        System.out.println("Running monthly test");
+
+        item.setFrequency("MONTHLY");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",2,recurringDates.size());
+
+        startdate = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-04-28T08:00:00Z");
+        until = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2010-12-11T08:00:00Z");
+        item.setStartDate(startdate);
+        item.setUntil(until);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",19,recurringDates.size());
+
+        item.setByMonth("11");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",2,recurringDates.size());
+
+        System.out.println("Running count test");
+
+        item.setFrequency("MONTHLY");
+        item.setByMonth("");
+        item.setCount(10);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",10,recurringDates.size());
+
+        item.setCount(25);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",19,recurringDates.size());
+
+        item.setCount(15);
+        item.setByMonth("1,4,5,10");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",6,recurringDates.size());
+
+        item.setCount(5);
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",5,recurringDates.size());
     }
 
 }
