@@ -28,6 +28,7 @@
     {
         if (!handleSingleDate(d1, d2, humanView) &&
             !handleDatesOnSameDay(d1, d2, humanView) &&
+            !handleWholeDays(d1, d2, humanView) &&
             !handleEventSpanningMultipleDays(d1, d2, humanView))
         {
             jQuery(humanView).html("unable to display dates");
@@ -65,6 +66,17 @@
         return false;
     }
 
+    function handleWholeDays(d1, d2, humanView)
+    {
+        if (d1.toString("HH:mm") == "00:00" && d2.toString("HH:mm") == "00:00")
+        {
+            jQuery(humanView).append("<div class='from row'><span class='label'>From:</span>"+d1.toString("ddd, dd MMM yyyy") + "</div>");
+            jQuery(humanView).append("<div class='to row'><span class='label'>To:</span>"+d2.toString("ddd, dd MMM yyyy") + "</div>");
+            return true;
+        }
+        return false;
+    }
+
     function handleEventSpanningMultipleDays(d1, d2, humanView)
     {
         jQuery(humanView).append("<div class='from row'><span class='label'>From:</span>"+d1.toString("ddd, dd MMM yyyy") +" at " + d1.toString("HH:mm")+"</div>");
@@ -77,11 +89,11 @@
     <h3>${it.label}</h3>
 
     <div class="date">
-        <span class="dtstart"><attr class='value' title='${it.startDate?string("yyyy-MM-dd'T'hh:mm:ss'Z'")}'>${it.startDate?string("E, d MMM")}</attr></span>
+        <span class="dtstart"><attr class='value' title='${it.startDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.startDate?string("E, d MMM")}</attr></span>
         <div class="eventtime"></div>
-        <span class="dtend"><attr class='value' title='${it.endDate?string("yyyy-MM-dd'T'hh:mm:ss'Z'")}'>${it.endDate?string("E, d MMM")}</attr></span>
+        <span class="dtend"><attr class='value' title='${it.endDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.endDate?string("E, d MMM")}</attr></span>
     </div>
-    <div class="description row">${it.description}</div>
+    <div class="description row"><#if it.description?has_content>${it.description}</#if></div>
     <div class="location row"><#if it.location?has_content><span class="label">Location</span> ${it.location}<#else></#if></div>
     <div class="organiser row"><#if it.organiser?has_content><span class="label">Organiser</span> ${it.organiser}<#else></#if></div>
     <!-- <div class="provenance row"><#if it.provenance?has_content><span class="label">Provenance</span> ${it.provenance}<#else></#if></div>-->
