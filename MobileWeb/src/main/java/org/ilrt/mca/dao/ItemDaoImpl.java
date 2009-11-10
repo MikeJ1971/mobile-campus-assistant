@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.delegate.ActiveMapDelegateImpl;
 import org.ilrt.mca.dao.delegate.ContactsDelegateImpl;
 import org.ilrt.mca.dao.delegate.Delegate;
+import org.ilrt.mca.dao.delegate.DirectoryDelegateImpl;
 import org.ilrt.mca.dao.delegate.FeedDelegateImpl;
 import org.ilrt.mca.dao.delegate.HtmlFragmentDelegateImpl;
 import org.ilrt.mca.dao.delegate.KmlMapDelegateImpl;
@@ -97,6 +98,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
                 return new ActiveMapDelegateImpl(repository);
             } else if (type.equals(MCA_REGISTRY.Contact.getURI())) {
                 return new ContactsDelegateImpl(repository);
+            } else if (type.equals(MCA_REGISTRY.Directory.getURI())) {
+                return new DirectoryDelegateImpl(repository);
             } else if (type.equals(MCA_REGISTRY.EventCalendar.getURI())) {
                 return new EventDelegateImpl(repository);
             }
