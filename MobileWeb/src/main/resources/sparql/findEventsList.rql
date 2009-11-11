@@ -7,15 +7,10 @@ PREFIX afn:     <http://jena.hpl.hp.com/ARQ/function#>
 PREFIX fn:      <http://www.w3.org/2005/xpath-functions#>
 
 CONSTRUCT {
-    $x ical:dtstart $startdate .
-    $x ical:dtend $enddate .
+    $x ical:dtstart $sdate .
+    $x ical:dtend $edate .
     $x ical:summary $summary .
     $x ical:uid $id .
-    $x ical:bymonth $bymonth .
-    $x ical:freq $freq .
-    $x ical:interval $interval .
-    $x ical:byday $byday .
-    $x ical:until $until .
     $x mca:template <template://eventList.ftl> .
     $x rdf:type ical:Vevent .
 } WHERE {
@@ -23,22 +18,14 @@ CONSTRUCT {
     {
         $x rdf:type ical:Vevent .
         $x ical:uid $id .
-        $x ical:dtstart $y .
         $x ical:summary $summary .
-        {
-            {  $y ical:dateTime $startdate  } UNION { $y ical:date $startdate }
-        }
+        $x ical:dtstart $y .
+        $y ical:dateTime $sdate .
         OPTIONAL {
             $x ical:dtend $z .
-            {  $z ical:dateTime $enddate  } UNION { $z ical:date $enddate }
+            $z ical:dateTime $edate .
         }
-        OPTIONAL {
-            $x ical:rrule $rrule .
-            OPTIONAL { $rrule  ical:bymonth $bymonth . }
-            OPTIONAL { $rrule  ical:freq $freq . }
-            OPTIONAL { $rrule  ical:interval $interval . }
-            OPTIONAL { $rrule  ical:byday $byday . }
-            OPTIONAL { $rrule  ical:until $until . }
-         }
+        FILTER (xsd:dateTime($sdate) >= xsd:dateTime(?startDate) &&
+            xsd:dateTime($sdate) <= xsd:dateTime(?endDate))
     }
 }

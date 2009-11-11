@@ -18,10 +18,10 @@ import org.ilrt.mca.rdf.Repository;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import org.ilrt.mca.domain.events.EventItemImpl;
 import org.ilrt.mca.domain.events.EventSourceImpl;
 import org.ilrt.mca.vocab.EVENT;
@@ -36,6 +36,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     private String findEventsList = null;
     private String findEventDetails = null;
     private final Repository repository;
+    private static String DATE_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss+00:00";
     Logger log = Logger.getLogger(EventDelegateImpl.class);
 
     public EventDelegateImpl(final Repository repository) {
@@ -51,17 +52,18 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     }
 
     @Override
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
+    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters)
+    {
+        Resource graphUri = null;
+        if (resource.hasProperty(RDFS.seeAlso)) graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
-        Resource graphUri = resource.getProperty(RDFS.seeAlso).getResource();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_STRING);
+        String startDate =  Common.parseXsdDate(EventDelegateImpl.getStartDate());
+        String endDate =  Common.parseXsdDate(EventDelegateImpl.getEndDate(resource.getProperty(MCA_REGISTRY.eventlist).getLiteral().getLexicalForm()));
+
+        log.info("graphUri:"+graphUri);
+        log.info("Looking for events from " + startDate + " to " + endDate);
         
-        Calendar oneMonthFromNowCal = Calendar.getInstance();
-        // add 18 months to current date
-        oneMonthFromNowCal.add( Calendar.MONTH, 1 );
-
-        Date now = new Date();
-        Date oneMonthFromNow = oneMonthFromNowCal.getTime();
-
         if (parameters.containsKey("item"))
         {
             EventItemImpl item = new EventItemImpl();
@@ -73,14 +75,11 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
             QuerySolutionMap bindings = new QuerySolutionMap();
             bindings.add("id", ResourceFactory.createPlainLiteral(queryUid));
-            bindings.add("graph", graphUri);
-
-            log.info("queryUid:"+queryUid);
-            log.info("graph:"+graphUri);
+            if (graphUri != null) bindings.add("graph", graphUri);
 
             Model resultModel = repository.find(bindings, findEventDetails);
 
-            resultModel.write(System.out);
+//            resultModel.write(System.out);
             
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
             if (stmtiter.hasNext())
@@ -89,37 +88,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
                 Resource r = st.getSubject();
                 item = eventItemDetails(r, queryUid);
-
-                Date startDate = null;
-
-                if (parameters.containsKey("r"))
-                {
-                    startDate = new Date();
-                    startDate.setTime(Long.parseLong(parameters.get("r").get(0).toString()));
-                    log.debug("Supplied start date is " + startDate);
-                }
-
-                if (startDate != null)
-                {
-                    long diff = 0;
-
-                    if (item.getEndDate() != null)
-                    {
-                        log.info(item.getEndDate() );
-
-                        // Calculate expectedEndDate based on diff between original start and end dates
-                        long milis1 = item.getStartDate().getTime();
-                        long milis2 = item.getEndDate().getTime();
-                        diff = milis2 - milis1;
-
-                        Calendar end = Calendar.getInstance();
-                        // add diff ms here
-                        end.setTimeInMillis(startDate.getTime()+diff);
-                        item.setEndDate(end.getTime());
-                    }
-
-                    item.setStartDate(startDate);
-                }
             }
             else
             {
@@ -127,19 +95,22 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             }
 
             return item;
-        }
+        } // END if (parameters.containsKey("item"))
         else
         {
             EventSourceImpl item = new EventSourceImpl();
 
             // get all events for this calendar feed
             QuerySolutionMap bindings = new QuerySolutionMap();
-            bindings.add("graph", graphUri);
+            if (graphUri != null) bindings.add("graph", graphUri);
+            bindings.add("startDate", ResourceFactory.createPlainLiteral(startDate));
+            bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
 
             // search feeds with the specified item
             Model resultModel = repository.find(bindings, findEventsList);
 
 //            resultModel.write(System.out);
+
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
 
             if (!stmtiter.hasNext()) log.info("no iterators");
@@ -147,54 +118,8 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             while (stmtiter.hasNext()) {
                 Statement statement = stmtiter.nextStatement();
                 Resource r = statement.getSubject();
-                EventItemImpl calEvent = eventItemDetails(r, graphUri.getURI());
-
-                // filter date range
-                if (calEvent.getStartDate().after(now) && calEvent.getStartDate().before(oneMonthFromNow))
-                {
-                    log.debug("Adding event " + calEvent.getStartDate());
-                    item.getItems().add(calEvent);
-                }
-
-                // create repeating items
-                if (calEvent.isRecurring())
-                {
-                    // generate the repeating events for this item
-                    List<Date> dates = calEvent.getRecurringDatesUntil(oneMonthFromNow);
-
-                    long diff = 0;
-
-                    if (calEvent.getEndDate() != null)
-                    {
-                        // Calculate expectedEndDate;
-                        Calendar start = Calendar.getInstance();
-                        start.setTime(calEvent.getStartDate());
-
-                        long milis1 = calEvent.getStartDate().getTime();
-                        long milis2 = calEvent.getEndDate().getTime();
-                        diff = milis2 - milis1;
-                    }
-
-                    for (Date d : dates)
-                    {
-                        // if dates are valid, add this event
-                        if (d.after(now) &&d.before(oneMonthFromNow))
-                        {
-                            EventItemImpl repeatEvent = calEvent.clone();
-                            repeatEvent.setStartDate(d);
-
-                            if (calEvent.getEndDate() != null)
-                            {
-                                Calendar end = Calendar.getInstance();
-                                // add diff ms here
-                                end.setTimeInMillis(d.getTime()+diff);
-                                repeatEvent.setEndDate(end.getTime());
-                            }
-
-                            item.getItems().add(repeatEvent);
-                        }
-                    }
-                }
+                EventItemImpl calEvent = eventItemDetails(r, (graphUri == null ? "" : graphUri.getURI()));
+                item.getItems().add(calEvent);
             }
             Collections.sort(item.getItems());
 
@@ -206,9 +131,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
     @Override
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        log.info("Creating model for " + resource.getURI());
-
         Model model = repository.find("id", resource.getURI(), findEventsCollection);
 
         return ModelFactory.createUnion(resource.getModel(), model);
@@ -218,12 +140,12 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
         getBasicDetails(resource,item);
 
-        item.setHTMLLink(resource.getProperty(MCA_REGISTRY.htmlLink).getLiteral().getLexicalForm());
+        if (resource.hasProperty(MCA_REGISTRY.htmlLink)) item.setHTMLLink(resource.getProperty(MCA_REGISTRY.htmlLink).getLiteral().getLexicalForm());
 
-        item.setiCalLink(resource.getProperty(MCA_REGISTRY.icalLink).getLiteral().getLexicalForm());
+        if (resource.hasProperty(MCA_REGISTRY.icalLink)) item.setiCalLink(resource.getProperty(MCA_REGISTRY.icalLink).getLiteral().getLexicalForm());
     }
 
-    private EventItemImpl eventItemDetails(Resource resource, String provenance) {
+    public EventItemImpl eventItemDetails(Resource resource, String provenance) {
         
         EventItemImpl item = new EventItemImpl();
 
@@ -275,29 +197,34 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             item.setDescription(resource.getProperty(EVENT.description).getLiteral().getLexicalForm());
         }
 
-        // set recurring event properties
-        if (resource.hasProperty(EVENT.frequency)) {
-            item.setFrequency(resource.getProperty(EVENT.frequency).getLiteral().getLexicalForm());
-        }
-
-        if (resource.hasProperty(EVENT.until)) {
-            String strDate = resource.getProperty(EVENT.until).getLiteral().getLexicalForm();
-
-            try {
-                item.setUntil(Common.parseDate(strDate));
-            } catch (ParseException e) {
-                log.error("Unable to parse: " + strDate + " : " + e.getMessage());
-            }
-        }
-
-        if (resource.hasProperty(EVENT.byDay)) {
-            item.setByDays(resource.getProperty(EVENT.byDay).getLiteral().getLexicalForm());
-        }
-
-        if (resource.hasProperty(EVENT.byMonth)) {
-            item.setByMonth(resource.getProperty(EVENT.byMonth).getLiteral().getLexicalForm());
-        }
-
         return item;
+    }
+
+    public static Date getStartDate()
+    {
+        Calendar cal = Calendar.getInstance();
+
+        cal.set( Calendar.HOUR_OF_DAY, 0 );
+        cal.set( Calendar.MINUTE, 0 );
+        cal.set( Calendar.SECOND, 0 );
+        cal.set( Calendar.MILLISECOND, 0 );
+
+        return cal.getTime();
+    }
+
+    public static Date getEndDate(String s)
+    {
+        Calendar endCal = Calendar.getInstance();
+        
+        if (s.equalsIgnoreCase("TODAY")) 
+        {
+            endCal.set( Calendar.HOUR_OF_DAY, 23 );
+            endCal.set( Calendar.MINUTE, 59 );
+            endCal.set( Calendar.SECOND, 59 );
+            endCal.set( Calendar.MILLISECOND, 999 );
+        }
+        if (s.equalsIgnoreCase("ONEMONTH")) endCal.add( Calendar.MONTH, 1 );
+
+        return endCal.getTime();
     }
 }

@@ -70,8 +70,18 @@
     {
         if (d1.toString("HH:mm") == "00:00" && d2.toString("HH:mm") == "00:00")
         {
-            jQuery(humanView).append("<div class='from row'><span class='label'>From:</span>"+d1.toString("ddd, dd MMM yyyy") + "</div>");
-            jQuery(humanView).append("<div class='to row'><span class='label'>To:</span>"+d2.toString("ddd, dd MMM yyyy") + "</div>");
+            // take off a day from the end, as midnight is really talking about the previous day
+            d2.add({ days :-1 });
+
+            if (Date.equals(d1,d2))
+            {
+                jQuery(humanView).append("<div class='from row'><span class='label'>All day:</span>"+d1.toString("ddd, dd MMM yyyy") + "</div>");
+            }
+            else
+            {
+                jQuery(humanView).append("<div class='from row'><span class='label'>From:</span>"+d1.toString("ddd, dd MMM yyyy") + "</div>");
+                jQuery(humanView).append("<div class='to row'><span class='label'>To:</span>"+d2.toString("ddd, dd MMM yyyy") + "</div>");
+            }
             return true;
         }
         return false;

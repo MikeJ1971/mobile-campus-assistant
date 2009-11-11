@@ -24,7 +24,6 @@
             </cron>
         </trigger>
     </job>
-    <!--
     <job>
         <job-detail>
             <name>HarvestEventJob</name>
@@ -44,7 +43,6 @@
             </cron>
         </trigger>
     </job>
-    -->
     <job>
         <job-detail>
             <name>HarvestXmlJob</name>

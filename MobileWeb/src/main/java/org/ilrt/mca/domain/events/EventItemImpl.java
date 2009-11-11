@@ -229,6 +229,31 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
         
         int pointer = 0;
 
+//System.out.println("Generating ("+datesToGenerate+") dates"+" freq:"+this._freq);
+//System.out.println("until "+this._until);
+//System.out.println("start:"+this.startDate);
+//System.out.println("end "+endDate);
+//System.out.print("_byMonth:");
+//for (int i : this._byMonth)
+//        {
+//System.out.print(i+",");
+//}
+//System.out.print("\n_byDay:");
+//for (DAYS i : this._byDay)
+//        {
+//System.out.print(i+",");
+//}
+//System.out.print("\n");
+        if (!this._freq.equals(FREQ.DAILY) && !this._freq.equals(FREQ.WEEKLY) && !this._freq.equals(FREQ.MONTHLY))
+        {
+            log.warn("Unable to handle this frequency type - not implemented");
+            return dates;
+        }
+        if (this._byDay.size() > 0)
+        {
+            log.warn("Unable to handle specific BYDAY restrictions - assuming all days of the week");
+        }
+
         // setup default pointer position
         if ((this._freq.equals(FREQ.DAILY) || this._freq.equals(FREQ.MONTHLY)) && this._byMonth.size() > 0)
         {
@@ -246,12 +271,9 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
             }
             if (this._byMonth.size() == 1) pointer = -1; // as this will automatically get incremented
         }
-        log.debug("Init pointer is " + pointer);
-        log.debug("datesToGenerate is " + datesToGenerate);
-
 
         // loop through calculating the next date
-        while ((datesToGenerate == -1 || datesToGenerate > 0) && (nextDate.before(endDate) || (this._until != null && nextDate.compareTo(this._until) < 1)))
+        while ((datesToGenerate == -1 || datesToGenerate > 0) && (nextDate.compareTo(endDate) <= 0) && (this._until != null && nextDate.compareTo(this._until) <= 0))
         {
             cal.setTime(nextDate);
             switch (this._freq)
@@ -282,6 +304,18 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
                         }
                     }
                     break;
+                case WEEKLY:
+                    cal.add(Calendar.DAY_OF_MONTH, 7);
+                    if (this._byMonth.size() > 0)
+                    {
+                        pointer = pointer + 1;
+
+                        while (!isAllowed(cal.get(Calendar.MONTH)+1))
+                        {
+                            cal.add(Calendar.DAY_OF_MONTH, 7);
+                        }
+                    }
+                    break;
                 case MONTHLY:
                     if (this._byMonth.size() > 0)
                     {
@@ -308,14 +342,15 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
 
             nextDate = cal.getTime();
 
-            if ((datesToGenerate == -1 || datesToGenerate > 0) && (nextDate.before(endDate) || (this._until != null && nextDate.compareTo(this._until) < 1)))
+            if ((datesToGenerate == -1 || datesToGenerate > 0) && (nextDate.compareTo(endDate) <= 0) && (this._until != null && nextDate.compareTo(this._until) <= 0))
             {
                 if (datesToGenerate > 0) datesToGenerate--;
                 log.debug("Adding " + nextDate + " datesToGenerate " + datesToGenerate);
                 dates.add(nextDate);
             }
         }
-        
+
+        log.info("Generated " + dates.size() + " new dates");
         return dates;
     }
 
@@ -337,5 +372,15 @@ public class EventItemImpl extends BaseItem implements EventItem, Comparable<Ite
         item.setEndDate(this.getEndDate());
 
         return item;
+    }
+
+    /** Simply check if supplied integer is present in the _byMonth array **/
+    private boolean isAllowed(int q)
+    {
+        for (int i : this._byMonth)
+        {
+            if (i == q) return true;
+        }
+        return false;
     }
 }

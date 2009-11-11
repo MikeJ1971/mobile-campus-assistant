@@ -60,13 +60,6 @@ public class EventItemImplTest {
     public void testGetRecurringDates() throws ParseException {
         EventItemImpl item = new EventItemImpl();
         List<Date> recurringDates;
-
-        Calendar cal = Calendar.getInstance();
-
-        cal.set(Calendar.MONTH, 9);
-        cal.set(Calendar.DAY_OF_MONTH, 31);
-        cal.set(Calendar.MONTH, 8);
-        System.out.println("Date is now "+cal.getTime());
         
         Date startdate = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-09-28T08:00:00Z");
 
@@ -83,6 +76,7 @@ public class EventItemImplTest {
         assertTrue(item.isRecurring());
 
         recurringDates = item.getRecurringDatesUntil(until);
+
         assertEquals("Number of generated dates don't match",74,recurringDates.size());
 
         // add a month restriction
@@ -139,6 +133,30 @@ public class EventItemImplTest {
         item.setCount(5);
         recurringDates = item.getRecurringDatesUntil(until);
         assertEquals("Number of generated dates don't match",5,recurringDates.size());
+
+        item.setStartDate(new SimpleDateFormat(DATE_FORMAT_STRING).parse("2010-04-02T08:00:00Z"));
+        item.setEndDate(new SimpleDateFormat(DATE_FORMAT_STRING).parse("2010-04-03T08:00:00Z"));
+        item.setUntil(new SimpleDateFormat(DATE_FORMAT_STRING).parse("2010-08-06T08:00:00Z"));
+        item.setCount(-1);
+        item.setFrequency("WEEKLY");
+        item.setByMonth("");
+
+        until = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2009-12-11T13:51:11Z");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",0,recurringDates.size());
+
+         until = new SimpleDateFormat(DATE_FORMAT_STRING).parse("2011-12-11T13:51:11Z");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",18,recurringDates.size());
+
+        item.setByMonth("1,4,5,10");
+        recurringDates = item.getRecurringDatesUntil(until);
+        assertEquals("Number of generated dates don't match",8,recurringDates.size());
+
+        item.setByMonth("4,7,10");
+        recurringDates = item.getRecurringDatesUntil(until);
+//        for (Date d : recurringDates) System.out.println(d);
+        assertEquals("Number of generated dates don't match",9,recurringDates.size());
     }
 
 }

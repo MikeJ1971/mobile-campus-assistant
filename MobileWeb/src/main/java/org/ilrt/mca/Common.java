@@ -38,6 +38,7 @@ public class Common {
     }
 
     // TODO ICKY QUICK FIX - LOOK AT JODA TIME FOR XSD DATE FORMATS
+    // For events, need to handle yyyy-mm-dd, yyyymmddThhmmss and yyyymmdd input formats
     public static Date parseDate(String date) throws ParseException {
         if (date.endsWith("Z")) {
             date = date.substring(0, date.length() - 1);
@@ -45,7 +46,8 @@ public class Common {
         if (date.length() == 10) {
             date = date+"T00:00:00";
         }
-        date = date.replaceAll("(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})", "$1-$2-$3T$4:$5:$6");
+        date = date.replaceAll("^(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})$", "$1-$2-$3T$4:$5:$6");
+        date = date.replaceAll("^(\\d{4})(\\d{2})(\\d{2})$", "$1-$2-$3T00:00:00");
         return new SimpleDateFormat(DATE_FORMAT_STRING_WITHOUT_TZ).parse(date);
     }
 
