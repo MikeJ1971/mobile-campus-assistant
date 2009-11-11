@@ -119,9 +119,11 @@ var displayResults = function(info) {
 
 			var item = info.results[i];
 
-			var li = "<li><a href='#' onclick='getInfo(\"" + item.person_key
-					+ "\");return false;'>" + item.family_name + "</a></li>";
-			content += li;
+			content += "<li><a href='#' onclick='getInfo(\"" + item.person_key
+				+ "\");return false;'>" + item.family_name + "</a>";
+			
+			content += item.org_unit + "</li>";
+			
 		}
 
 		content += '</ul>';

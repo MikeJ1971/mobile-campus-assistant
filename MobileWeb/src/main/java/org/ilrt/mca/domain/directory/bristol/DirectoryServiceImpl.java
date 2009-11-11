@@ -222,7 +222,8 @@ public class DirectoryServiceImpl implements DirectoryService {
 							.substring((((String) result).indexOf('=') + 1)));
 					// get loc
 					result = exprLoc.evaluate(tr, XPathConstants.STRING);
-					p.setOrganizationUnit((String) result);
+					String orgUnit = ((String) result).replaceAll("\\u00A0", " "); // no-break space
+					p.setOrganizationUnit(orgUnit);
 					infoList.add(p);
 				}
 
