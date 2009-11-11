@@ -23,9 +23,21 @@ public class EVENT {
     
     public static final Resource event = model.createResource(NS + "Vevent");
 
+    public static final Resource start = model.createResource(NS + "dtstart");
+
+    public static final Resource end = model.createResource(NS + "dtend");
+
     public static final Property startDate = model.createProperty(NS + "dtstart");
 
     public static final Property endDate = model.createProperty(NS + "dtend");
+
+    public static final Resource startDateResource = model.createResource(NS + "dtstart");
+
+    public static final Resource endDateResource = model.createResource(NS + "dtend");
+
+    public static final Property date = model.createProperty(NS + "date");
+
+    public static final Property dateTime = model.createProperty(NS + "dateTime");
 
     public static final Property organizerName = model.createProperty(NS + "organizer");
 
@@ -36,8 +48,6 @@ public class EVENT {
     public static final Property subject = model.createProperty(NS + "summary");
 
     public static final Property description = model.createProperty(NS + "description");
-
-    public static final Property dateTime = model.createProperty(NS + "dateTime");
 
     public static final Property UID = model.createProperty(NS + "uid");
 
@@ -50,4 +60,6 @@ public class EVENT {
     public static final Property interval = model.createProperty(NS + "interval");
 
     public static final Property until = model.createProperty(NS + "until");
+
+    public static final Property rrule = model.createProperty(NS + "rrule");
 }
