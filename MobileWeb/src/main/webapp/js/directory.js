@@ -147,8 +147,11 @@ var displayDetails = function(info) {
 		show('email', true);
 	}
 	if (info.telephone) {
-		document.getElementById("telephone").innerHTML = "<a href='"
-				+ info.telephone + "'>" + info.telephone + "</a>";
+		var tel = info.telephone;
+		tel = tel.replace(/[\s+\(\)]/g,'');
+		tel = tel.replace(/^0/,'+44');
+		document.getElementById("telephone").innerHTML = "<a href='tel:"
+				+ tel + "'>" + info.telephone + "</a>";
 		show('telephone', true);
 	}
 	if (info.job_title) {
