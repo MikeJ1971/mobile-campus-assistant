@@ -13,6 +13,14 @@
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 
+<mca://registry/contacts/directory/> rdf:type mca:Directory ;
+    rdfs:label "Search for UoB Staff" ;
+    mca:template <template://directory.ftl> ;
+    mca:order "1"^^xsd:integer ;
+    mca:detailsUrlStem "directoryproxy/?pk=" ;
+    mca:queryUrlStem "directoryproxy/?q=" ;
+    .
+
 <mca://registry/contacts/emergency/> rdf:type mca:Group ;
     rdfs:label "Emergency and Security" ;
     mca:template <template://navigation.ftl> ;

@@ -50,13 +50,28 @@
     </servlet>
 
     <servlet>
+        <servlet-name>directoryproxy</servlet-name>
+        <servlet-class>org.ilrt.mca.servlet.DirectoryProxyServlet</servlet-class>
+        <init-param>
+            <param-name>config-file</param-name>
+            <param-value>/directoryproxy.properties</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet>
         <servlet-name>ServletAdaptor</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>busproxy</servlet-name>
         <url-pattern>/busproxy/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>directoryproxy</servlet-name>
+        <url-pattern>/directoryproxy/*</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -76,7 +91,7 @@
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-            <param-value>/(style|images|js)/.*|/robots.txt|/busproxy/*</param-value>
+            <param-value>/(style|images|js)/.*|/robots.txt|/busproxy/*|/directoryproxy/*</param-value>
         </init-param>
     </filter>
 

@@ -20,7 +20,7 @@ CONSTRUCT {
 WHERE {
     GRAPH $graph {
         $itemId rdf:type rss:item .
-        $itemId dc:date $date .
+        OPTIONAL { $itemId dc:date $date } .
         $itemId rss:description $description .
         $itemId rss:link $link .
         $itemId rss:title $title .

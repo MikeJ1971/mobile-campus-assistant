@@ -120,6 +120,7 @@
     mca:hasItem <mca://registry/contacts/emergency/> ;
     mca:hasItem <mca://registry/contacts/university/> ;
     mca:hasItem <mca://registry/contacts/welfare/> ;
+    mca:hasItem <mca://registry/contacts/directory/> ;
     .
 
 <mca://registry/news/> rdf:type mca:Group ;

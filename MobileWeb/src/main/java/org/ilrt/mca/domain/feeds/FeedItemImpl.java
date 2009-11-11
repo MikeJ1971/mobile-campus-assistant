@@ -25,7 +25,12 @@ public class FeedItemImpl extends BaseItem implements FeedItem {
 
     @Override
     public Date getDate() {
-        return date;
+
+        if (date == null) {
+            return new Date();
+        } else {
+            return date;
+        }
     }
 
     @Override

@@ -40,6 +40,8 @@ public class MCA_REGISTRY {
 
     public static final Resource Contact = model.createProperty(NS + "Contact");
 
+    public static final Resource Directory = model.createProperty(NS + "Directory");
+
     public static final Resource EventCalendar = model.createProperty(NS + "EventCalendar");
 
     // ----- Properties
@@ -55,6 +57,10 @@ public class MCA_REGISTRY {
     public static final Property icon = model.createProperty(NS + "icon");
 
     public static final Property urlStem = model.createProperty(NS + "urlStem");
+
+    public static final Property detailsUrlStem = model.createProperty(NS + "detailsUrlStem");
+
+    public static final Property queryUrlStem = model.createProperty(NS + "queryUrlStem");
 
     public static final Property lastVisitedDate = model.createProperty(NS + "lastVisitedDate");
 
