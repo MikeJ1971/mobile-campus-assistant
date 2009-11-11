@@ -14,10 +14,12 @@ CONSTRUCT {
     $id rdfs:seeAlso $subItemId .
     $id mca:icalLink $icalLink .
     $id mca:htmlLink $htmlLink .
+    $id mca:eventlist $eventList .
 } WHERE {
     $id mca:template $template .
     $id rdfs:label $label .
     $id rdf:type $type .
+    $id mca:eventlist $eventList .
     OPTIONAL { $id dc:description $description . } .
     OPTIONAL {
         $id rdfs:seeAlso $subItemId .
