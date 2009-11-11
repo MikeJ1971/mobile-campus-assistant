@@ -26,6 +26,7 @@
     mca:hasItem <mca://registry/today/news/> ;
     mca:hasItem <mca://registry/today/pcavailability/> ;
     mca:hasItem <mca://registry/today/it/> ;
+    mca:hasItem <mca://registry/today/events/> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
@@ -59,6 +60,14 @@
     rdfs:seeAlso <http://www.bris.ac.uk/is/news/status.rss> ;
     mca:order "4"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    .
+
+<mca://registry/today/events/> rdf:type mca:EventCalendar ;
+    rdfs:label "Today's events" ;
+    dc:description "Events happening today" ;
+    mca:order "5"^^xsd:integer ;
+    mca:eventlist "TODAY" ;
+    mca:template <template://eventList.ftl> ;
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;
