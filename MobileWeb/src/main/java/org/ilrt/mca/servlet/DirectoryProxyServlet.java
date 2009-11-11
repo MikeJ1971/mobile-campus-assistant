@@ -2,7 +2,9 @@ package org.ilrt.mca.servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.ServletConfig;
@@ -13,11 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.ilrt.mca.domain.directory.DirectoryService;
-import org.ilrt.mca.domain.directory.DirectoryUtils;
 import org.ilrt.mca.domain.directory.PersonInfo;
-import org.ilrt.mca.domain.transport.DepartureInfo;
-import org.ilrt.mca.domain.transport.DepartureService;
-import org.ilrt.mca.domain.transport.DepartureUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -111,29 +109,32 @@ public class DirectoryProxyServlet extends HttpServlet {
 			Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 			
 			response.setContentType("application/json");
-			//response.getWriter().print(gson.toJson(DirectoryUtils.toMap(info)));
 			response.getWriter().print(gson.toJson(info));
 			break;
 		case QUERY:
-			List<PersonInfo> infoList = directoryService.getList(query);
+			StringBuilder message = new StringBuilder();
+			
+			List<PersonInfo> infoList = directoryService.getList(query, message);
 			
 			if(infoList.size() == 1) {
 				// one result
-				info = directoryService.getDetails(infoList.get(0).getPersonKey());
+				info = infoList.get(0);
 				// return json
 				gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 				
 				response.setContentType("application/json");
-				//response.getWriter().print(gson.toJson(DirectoryUtils.toMap(info)));
 				response.getWriter().print(gson.toJson(info));
 			} else {
 				// > 1 result
+				Map<String,Object> data = new HashMap<String,Object>();
+				data.put("message", message.toString());
+				data.put("results", infoList);
+				
 				// return json
 				gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 				
 				response.setContentType("application/json");
-				//response.getWriter().print(gson.toJson(DirectoryUtils.toList(infoList)));
-				response.getWriter().print(gson.toJson(infoList));
+				response.getWriter().print(gson.toJson(data));
 			}
 			break;
 		}

@@ -19,6 +19,6 @@ public interface DirectoryService {
 
 	PersonInfo getDetails(String personKey) throws Exception;
 
-	List<PersonInfo> getList(String query) throws Exception;
+	List<PersonInfo> getList(String query, StringBuilder countMesasge) throws Exception;
 
 }

@@ -13,14 +13,14 @@ var query = function() {
 	// get input
 	var q = document.getElementById("search-form-input").value;
 
-	ajax(qUrl, q);
+	ajax(qUrl, encodeURIComponent(q));
 }
 
 var getInfo = function(id) {
 
 	reset();
 
-	ajax(dUrl, id);
+	ajax(dUrl, encodeURIComponent(id));
 
 }
 
