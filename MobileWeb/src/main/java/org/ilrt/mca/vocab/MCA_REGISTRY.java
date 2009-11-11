@@ -69,4 +69,6 @@ public class MCA_REGISTRY {
     public static final Property htmlLink = model.createProperty(NS + "htmlLink");
 
     public static final Property icalLink = model.createProperty(NS + "icalLink");
+
+    public static final Property eventlist = model.createProperty(NS + "eventlist");
 }
