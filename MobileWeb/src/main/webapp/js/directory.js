@@ -1,27 +1,63 @@
 var qUrl;
 var dUrl;
+var currentFrag;
 
 var init = function(queryUrl, detailsUrl) {
 	qUrl = queryUrl;
 	dUrl = detailsUrl;
+	
+	window.onload = function() {
+		setInterval ( "checkFrag()", 250 );
+	}
 }
 
 var query = function() {
 
-	reset();
-
 	// get input
 	var q = document.getElementById("search-form-input").value;
 
-	ajax(qUrl, encodeURIComponent(q));
+	addFrag('q=' + encodeURIComponent(q));
+	
+	checkFrag();
+}
+
+var setQueryInput = function(q) {
+	document.getElementById("search-form-input").value = q;
 }
 
 var getInfo = function(id) {
 
+	addFrag('pk=' + encodeURIComponent(id));
+
+	checkFrag();
+}
+
+var addFrag = function(frag) {
+	parent.location.hash = frag;
+}
+
+var checkFrag = function() {
+	if(parent.location.hash == currentFrag) {
+		return;
+	}
+
 	reset();
-
-	ajax(dUrl, encodeURIComponent(id));
-
+	currentFrag = parent.location.hash;
+	
+	var frag = parent.location.hash;
+	
+	if(frag) {
+		if(/^#pk/.test(frag)) {
+			// details
+			var pk = frag.substring(4);
+			ajax(dUrl, pk);
+		} else if(/^#q/.test(frag)) {
+			// query
+			var q = frag.substring(3);
+			setQueryInput(decodeURIComponent(q));
+			ajax(qUrl, q);
+		}
+	}		
 }
 
 var reset = function() {
@@ -35,6 +71,7 @@ var reset = function() {
 	show('telephone', false);
 	show('job-title', false);
 	show('org-unit', false);
+	setQueryInput('');
 
 }
 
