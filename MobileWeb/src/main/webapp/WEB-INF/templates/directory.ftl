@@ -9,9 +9,9 @@
 <div class="contacts">
     <h4>${it.label}</h4>
 
-	<form action='#'>
+	<form>
 	<input id='search-form-input'/>
-	<a style="display:inline;" href='#' onclick='query();return false;'>search</a>
+	<input type="submit" value="Search" onclick='query();return false;'/>
 	</form>
 
 	<div id="spinner" style="display:none;"><img src="${contextPath}/images/spinner.gif"/></div>
