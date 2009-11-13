@@ -36,7 +36,8 @@
 
 <mca://registry/events/cmsevents/> rdf:type mca:EventCalendar ;
     rdfs:label "What's on Events" ;
-    dc:description "For more information, see the university <a href='http://www.bris.ac.uk/events/'>events page</a>." ;
+    dc:description "" ;
+    mca:htmlLink "http://www.bris.ac.uk/events/" ;
     rdfs:seeAlso <http://www.bris.ac.uk/events/cms.xml> ;
     mca:order "3"^^xsd:integer ;
     mca:eventlist "ONEMONTH" ;
