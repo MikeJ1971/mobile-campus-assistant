@@ -18,7 +18,6 @@ import org.ilrt.mca.rdf.Repository;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -36,7 +35,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     private String findEventsList = null;
     private String findEventDetails = null;
     private final Repository repository;
-    private static String DATE_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss+00:00";
     Logger log = Logger.getLogger(EventDelegateImpl.class);
 
     public EventDelegateImpl(final Repository repository) {
@@ -57,7 +55,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         Resource graphUri = null;
         if (resource.hasProperty(RDFS.seeAlso)) graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_STRING);
         String startDate =  Common.parseXsdDate(EventDelegateImpl.getStartDate());
         String endDate =  Common.parseXsdDate(EventDelegateImpl.getEndDate(resource.getProperty(MCA_REGISTRY.eventlist).getLiteral().getLexicalForm()));
 
@@ -78,8 +75,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             if (graphUri != null) bindings.add("graph", graphUri);
 
             Model resultModel = repository.find(bindings, findEventDetails);
-
-//            resultModel.write(System.out);
             
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
             if (stmtiter.hasNext())
