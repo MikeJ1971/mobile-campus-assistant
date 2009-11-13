@@ -216,6 +216,10 @@ It's height value should ensure that the map pans enough to allow for later dyna
     padding-right: 15px;
 }
 
+#directory-help a {
+	display: inline;
+	text-decoration: underline;
+}
 
 /* EVENTS */
 .event h3

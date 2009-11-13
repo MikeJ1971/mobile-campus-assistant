@@ -14,7 +14,7 @@
 
 
 <mca://registry/contacts/directory/> rdf:type mca:Directory ;
-    rdfs:label "Search for UoB Staff" ;
+    rdfs:label "Search for University Staff" ;
     mca:template <template://directory.ftl> ;
     mca:order "1"^^xsd:integer ;
     mca:detailsUrlStem "directoryproxy/?pk=" ;
