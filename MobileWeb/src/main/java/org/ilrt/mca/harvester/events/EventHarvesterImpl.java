@@ -17,7 +17,6 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,9 +28,10 @@ import org.ilrt.mca.domain.events.EventItemImpl;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
-import org.ilrt.mca.harvester.Source;
 import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.dao.delegate.EventDelegateImpl;
+import org.ilrt.mca.domain.events.EventSource;
+import org.ilrt.mca.harvester.xml.XmlSource;
 import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
@@ -56,17 +56,23 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
 
         // query registry for list of feeds to harvest
         // get the date that they were last updated
-        List<Source> sources = findSources();
+        List<XmlSource> sources = findSources();
 
         log.info("Found " + sources.size() + " sources to harvest");
 
         // harvest each source
-        for (Source source : sources) {
+        for (XmlSource source : sources) {
 
             log.info("Request to harvest: <" + source.getUrl() + ">");
 
+            String xsl = source.getXsl();
+            if (xsl != null && xsl.length() > 0)
+            {
+                xsl = "/" + xsl.substring(6, xsl.length());
+            }
+        
             // harvest the data
-            Model model = resolver.resolve(source, new EventResponseHandlerImpl());
+            Model model = resolver.resolve(source, new EventResponseHandlerImpl(xsl));
 
             if (model != null) {
 
@@ -203,9 +209,9 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
         model.add(newEvents);
     }
 
-    private List<Source> findSources() {
+    private List<XmlSource> findSources() {
 
-        List<Source> sources = new ArrayList<Source>();
+        List<XmlSource> sources = new ArrayList<XmlSource>();
 
         Model m = repository.find(findSources);
 
@@ -222,11 +228,13 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
     }
 
 
-    private Source getDetails(Resource resource) {
+    private XmlSource getDetails(Resource resource) {
 
         Date lastVisited = null;
 
         String uri = resource.getURI();
+
+        String xslSource = "";
 
         if (resource.hasProperty(MCA_REGISTRY.lastVisitedDate)) {
             try {
@@ -236,7 +244,11 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
             }
         }
 
-        return new Source(uri, lastVisited);
+        if (resource.hasProperty(MCA_REGISTRY.hasXslSource)) {
+            xslSource = resource.getProperty(MCA_REGISTRY.hasXslSource).getResource().getURI();
+        }
+
+        return new XmlSource(uri, xslSource, lastVisited);
     }
 
     public EventItemImpl eventItemDetails(Resource resource, String provenance) {
