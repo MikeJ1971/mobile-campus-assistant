@@ -57,7 +57,9 @@ var checkFrag = function() {
 			setQueryInput(decodeURIComponent(q));
 			ajax(qUrl, q);
 		}
-	}		
+	} else {
+		show('directory-help', true);
+	}
 }
 
 var reset = function() {
@@ -72,6 +74,7 @@ var reset = function() {
 	show('job-title', false);
 	show('org-unit', false);
 	setQueryInput('');
+	show('directory-help-refine',false);
 
 }
 
@@ -102,8 +105,10 @@ var ajax = function(url, id) {
 			} else if (xmlhttp.status == 406) {
 				// unacceptable search string
 				displayMessage("Your search string was unacceptable.");
+				show('directory-help', true);
 			} else {
 				displayMessage("There was an error. Status code: " + xmlhttp.status);
+				show('directory-help', true);
 			}
 		}
 
@@ -134,7 +139,7 @@ var displayMessage = function(message) {
 	show('spinner', false);
 
 	if (message) {
-		document.getElementById("message").innerHTML = message;
+		document.getElementById("message").innerHTML = "<p>" + message + "</p>";
 		show('message', true);
 	}
 
@@ -145,11 +150,18 @@ var displayResults = function(info) {
 	show('spinner', false);
 
 	if (info.message) {
-		document.getElementById("message").innerHTML = info.message;
-		show('message', true);
+		displayMessage(info.message);
+	}
+	
+	var count = info.message.match(/\d+/);
+	if(count > 10) {
+		show('directory-help-refine',true);
 	}
 
 	if (info.results.length > 0) {
+		
+		show('directory-help', false);
+		
 		var content = '<ul>';
 
 		for ( var i = 0; i < info.results.length; i++) {
@@ -168,12 +180,18 @@ var displayResults = function(info) {
 		document.getElementById("query-results").innerHTML = content;
 
 		show('query-results', true);
-	}
+
+	} else {
+		show('directory-help', true);
+	}		
+
 }
 
 var displayDetails = function(info) {
 
 	show('spinner', false);
+
+	show('directory-help', false);
 
 	if (info.family_name) {
 		document.getElementById("name").innerHTML = info.title + " "
