@@ -21,7 +21,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
@@ -60,13 +59,13 @@ public class MobileCampusResource {
 
     @GET
     @Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3})
-    public Response getModelAsRdf(@PathParam("path") String path) {
+    public Response getModelAsRdf(@PathParam("path") String path, @Context UriInfo ui) {
 
 
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Model model = itemDao.findModel(uri, null);
+        Model model = itemDao.findModel(uri, ui.getQueryParameters());
 
         if (model.isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -78,14 +77,14 @@ public class MobileCampusResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getGroupAsJson(@PathParam("path") String path) {
+    public Response getGroupAsJson(@PathParam("path") String path, @Context UriInfo ui) {
 
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Item item = itemDao.findItem(uri, null);
+        Item item = itemDao.findItem(uri, ui.getQueryParameters());
 
         if (item != null) {
             return Response.ok(gson.toJson(item)).build();
