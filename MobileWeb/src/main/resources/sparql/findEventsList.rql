@@ -21,10 +21,6 @@ CONSTRUCT {
         $x ical:summary $summary .
         $x ical:dtstart $y .
         $y ical:dateTime $sdate .
-        OPTIONAL {
-            $x ical:dtend $z .
-            $z ical:dateTime $edate .
-        }
         FILTER (xsd:dateTime($sdate) >= xsd:dateTime(?startDate) &&
             xsd:dateTime($sdate) <= xsd:dateTime(?endDate))
     }
