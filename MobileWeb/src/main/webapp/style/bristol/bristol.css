@@ -1,0 +1,203 @@
+body {
+    font-family: Helvetica, Arial, sans-serif, serif;
+    padding: 0px;
+    margin: 0px;
+    max-width: 320px;
+}
+
+h1 {
+    font-size: 14px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 14px;
+    text-align: left;
+    margin: 9px;
+}
+
+h3 {
+    font-size: 12px;
+    text-align: left;
+    margin: 9px;
+}
+
+p {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 9px;
+}
+
+#header {
+    background-image: url(../../images/bristol/header-bkgd.png);
+    height: 55px;
+    text-align: center;
+}
+
+#header a {
+    display: inline-block;
+    background-image: url(../../images/bristol/backarrow.png);
+    width: 56px;
+    height: 55px;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: 0;
+}
+
+#header a:hover, #back a:active {
+    background-position: -58px -0px;
+}
+
+.hideText {
+    display: none;
+}
+
+#title {
+    background-image: url(../../images/bristol/pagetitle-bkgd.png);
+    padding: 3px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 16px;
+    border-top: solid 1px #E6E6E6;
+    border-bottom: solid 1px #FFFFFF;
+    color: #FFFFFF;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-list {
+    margin: 0px;
+    padding: 0px;
+    background: url(../../images/bristol/nav-list-bkgd.png);
+}
+
+.nav-list li {
+    border-bottom: 1px solid #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-list li > a {
+    display: block;
+    width: 320px;
+    height: 48px;
+    background: url(../../images/bristol/nav-list-item-bkgd.png) no-repeat;
+    padding: 10px 0px 0px 10px;
+    text-decoration: none;
+    color: #171717;
+}
+
+.nav-list li:last-child > a {
+    height: 58px;
+}
+
+.nav-list li > a:hover, li > a:active {
+    background-position: 0 -56px;
+    color: #333333;
+}
+
+#information {
+    padding-top: 30px;
+    margin: 10px;
+    font-size: 12px;
+    color: #666666;
+    line-height: 18px;
+}
+
+#information a {
+    display: inline;
+    color: #2F85B5;
+    text-decoration: underline;
+}
+
+#copyright {
+    margin: 10px;
+    padding-top: 15px;;
+    font-size: 12px;
+    color: #666666;
+}
+
+.newsItem {
+    padding: 10px;
+    color: #252525;
+}
+
+.newsItem a {
+    display: inline;
+    color: #2F85B5;
+    text-decoration: underline;
+}
+
+.publishDate {
+    font-style: italic;
+}
+
+.contentWarning, .contentSource {
+    color: #666666;
+    font-style: italic;
+    font-size: 11px;
+}
+
+/* ICONS - used in the navigation */
+
+.map {
+    background: url(../../images/bristol/icon-map.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.today {
+    background: url(../../images/bristol/icon-calendar.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
+
+.events {
+    background: url(../../images/bristol/icon-calendar.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
+
+.news {
+    background: url(../../images/bristol/icon-news.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.contacts {
+    background: url(../../images/bristol/icon-contacts.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.pcavailability {
+    background: url(../../images/bristol/icon-calendar.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
