@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, BusTimesActivity!</string>
+    <string name="hello">BusTimesActivity!</string>
     <string name="app_name">BusTimes</string>
+    <string name="url">https://mca.ilrt.bris.ac.uk/maps/busstops/</string>
 </resources>
