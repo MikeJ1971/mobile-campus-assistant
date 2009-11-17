@@ -34,7 +34,6 @@ package org.ilrt.mca.domain;
 import java.util.List;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public interface Item {
@@ -52,6 +51,8 @@ public interface Item {
     String getTemplate();
 
     String getType();
+
+    String getStyle();
 
     List<BaseItem> getItems();
 }

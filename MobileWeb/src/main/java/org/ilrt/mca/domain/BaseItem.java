@@ -96,6 +96,15 @@ public class BaseItem implements Item, Comparable<Item> {
         return type;
     }
 
+    @Override
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -110,6 +119,7 @@ public class BaseItem implements Item, Comparable<Item> {
     @Expose private String description;
     private String template;
     @Expose private String type;
+    @Expose private String style;
     @Expose List<BaseItem> items = new ArrayList<BaseItem>();
 
 
