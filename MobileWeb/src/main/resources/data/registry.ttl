@@ -29,6 +29,7 @@
     mca:hasItem <mca://registry/today/events/> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
+    mca:style "today"^^xsd:string ;
     .
 
 <mca://registry/today/weather/> rdf:type mca:HtmlFragment ;
@@ -37,6 +38,7 @@
     rdfs:seeAlso <http://portal.bris.ac.uk/portal-weather/newXml> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://weather.ftl> ;
+    mca:style "weather"^^xsd:string ;
     .
 
 <mca://registry/today/news/> rdf:type mca:News ;
@@ -44,6 +46,7 @@
     dc:description "Today's News in the University of Bristol" ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/today/pcavailability/> rdf:type mca:HtmlFragment ;
@@ -52,6 +55,7 @@
     rdfs:seeAlso <http://is-freepcs.cse.bris.ac.uk/> ;
     mca:order "3"^^xsd:integer ;
     mca:template <template://pcavailability.ftl> ;
+    mca:style "pcavailability"^^xsd:string ;
     .
 
 <mca://registry/today/it/> rdf:type mca:News ;
@@ -60,6 +64,7 @@
     rdfs:seeAlso <http://www.bris.ac.uk/is/news/status.rss> ;
     mca:order "4"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/today/events/> rdf:type mca:EventCalendar ;
@@ -68,6 +73,7 @@
     mca:order "5"^^xsd:integer ;
     mca:eventlist "TODAY" ;
     mca:template <template://eventList.ftl> ;
+    mca:style "events"^^xsd:string ;
     .
 
 <mca://registry/maps/> rdf:type mca:Group ;
@@ -78,6 +84,7 @@
     mca:hasItem <mca://registry/maps/busstops/> ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
+    mca:style "maps"^^xsd:string ;
     .
 
 <mca://registry/maps/busstops/> rdf:type mca:ActiveMapSource ;
@@ -90,6 +97,7 @@
     mca:order "3"^^xsd:integer ;
     geo:lat "51.4585695818037"^^xsd:double ;
     geo:long "-2.60187349563486"^^xsd:double ;
+    mca:style "maps"^^xsd:string ;
     .
 
 <mca://registry/maps/wireless/> rdf:type mca:KmlMapSource ;
@@ -100,6 +108,7 @@
     mca:order "2"^^xsd:integer ;
     geo:lat "51.4585695818037"^^xsd:double ;
     geo:long "-2.60187349563486"^^xsd:double ;
+    mca:style "maps"^^xsd:string ;
     .
 
 <mca://registry/maps/precinct/> rdf:type mca:KmlMapSource ;
@@ -110,6 +119,7 @@
     mca:order "1"^^xsd:integer ;
     geo:lat "51.4585695818037"^^xsd:double ;
     geo:long "-2.60187349563486"^^xsd:double ;
+    mca:style "maps"^^xsd:string ;
     .
 
 <mca://registry/contacts/> rdf:type mca:Group ;
@@ -121,6 +131,7 @@
     mca:hasItem <mca://registry/contacts/university/> ;
     mca:hasItem <mca://registry/contacts/welfare/> ;
     mca:hasItem <mca://registry/contacts/directory/> ;
+    mca:style "contacts"^^xsd:string ;
     .
 
 <mca://registry/news/> rdf:type mca:Group ;
@@ -133,6 +144,7 @@
     mca:hasItem <mca://registry/news/ubu/> ;
     mca:order "4"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/events/> rdf:type mca:Group ;
@@ -143,6 +155,7 @@
     mca:hasItem <mca://registry/events/cmsevents/> ;
     mca:order "3"^^xsd:integer ;
     mca:template <template://eventOverview.ftl> ;
+    mca:style "events"^^xsd:string ;
     .
 
 <http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
