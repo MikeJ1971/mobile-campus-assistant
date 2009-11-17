@@ -2,21 +2,18 @@ package org.ilrt.mca.harvester.events;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import org.ilrt.mca.harvester.ResponseHandler;
-
-import java.io.InputStream;
-import java.io.StringBufferInputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
-import javax.xml.transform.Source;
-import javax.xml.transform.sax.SAXSource;
-import javax.xml.transform.stream.StreamSource;
 import org.ilrt.mca.harvester.xml.AbstractXmlSourceResponseHandlerImpl;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
+
+import javax.xml.transform.Source;
+import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.stream.StreamSource;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringReader;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -33,11 +30,9 @@ public class EventResponseHandlerImpl extends AbstractXmlSourceResponseHandlerIm
         Model model;
 
         // check if we have an xsl file supplied
-        if (xslFilePath != null && !xslFilePath.equals(""))
-        {
+        if (xslFilePath != null && !xslFilePath.equals("")) {
             // if so, apply the transform to the xml source and return the result as a model
-            try
-            {
+            try {
                 XMLReader xmlReader = XMLReaderFactory.createXMLReader();
                 xmlReader.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd",
                         false);
@@ -53,9 +48,7 @@ public class EventResponseHandlerImpl extends AbstractXmlSourceResponseHandlerIm
                 ex.printStackTrace();
                 throw new RuntimeException(ex);
             }
-        }
-        else
-        {
+        } else {
             // otherwise we have a direct rdf file, simply load it from the url
             model = FileManager.get().loadModel(sourceUrl);
         }
@@ -69,19 +62,16 @@ public class EventResponseHandlerImpl extends AbstractXmlSourceResponseHandlerIm
         return mediaType.startsWith("text/xml") || mediaType.startsWith("application/rdf+xml");
     }
 
-    private String inputStreamToString(InputStream in)
-    {
+    private String inputStreamToString(InputStream in) {
         StringBuffer out = new StringBuffer();
-        try
-        {
+        try {
             byte[] b = new byte[4096];
             for (int n; (n = in.read(b)) != -1;) {
                 out.append(new String(b, 0, n));
             }
             in.close();
         }
-        catch (IOException ioe)
-        {
+        catch (IOException ioe) {
             ioe.printStackTrace();
         }
         return out.toString();

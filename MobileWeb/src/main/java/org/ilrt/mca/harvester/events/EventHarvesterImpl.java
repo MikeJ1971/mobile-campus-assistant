@@ -5,7 +5,6 @@
 package org.ilrt.mca.harvester.events;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
-import java.text.ParseException;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
@@ -16,27 +15,27 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
+import org.ilrt.mca.dao.delegate.EventDelegateImpl;
 import org.ilrt.mca.domain.events.EventItemImpl;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.dao.delegate.EventDelegateImpl;
-import org.ilrt.mca.domain.events.EventSource;
 import org.ilrt.mca.harvester.xml.XmlSource;
+import org.ilrt.mca.rdf.Repository;
 import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 /**
- *
  * @author cmcpb
  */
 public class EventHarvesterImpl extends AbstractDao implements Harvester {
@@ -66,17 +65,16 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
             log.info("Request to harvest: <" + source.getUrl() + ">");
 
             String xsl = source.getXsl();
-            if (xsl != null && xsl.length() > 0)
-            {
+            if (xsl != null && xsl.length() > 0) {
                 xsl = "/" + xsl.substring(6, xsl.length());
             }
-        
+
             // harvest the data
             Model model = resolver.resolve(source, new EventResponseHandlerImpl(xsl));
 
             if (model != null) {
 
-                generateRepeatingEvents(model,source.getUrl());
+                generateRepeatingEvents(model, source.getUrl());
 
 //System.out.println("AFTER");
 //model.write(System.out);
@@ -100,8 +98,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
 
     }
 
-    private void generateRepeatingEvents(Model model, String graphUri)
-    {
+    private void generateRepeatingEvents(Model model, String graphUri) {
         Date oneMonthFromNow = EventDelegateImpl.getEndDate("ONEMONTH");
 
         StmtIterator stmtiter = model.listStatements(null, RDF.type, EVENT.event);
@@ -114,15 +111,13 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
             EventItemImpl calEvent = eventItemDetails(r, graphUri);
 
             // create repeating items
-            if (calEvent.isRecurring())
-            {
+            if (calEvent.isRecurring()) {
                 // generate the repeating events for this item
                 List<Date> dates = calEvent.getRecurringDatesUntil(oneMonthFromNow);
 
                 long diff = 0;
 
-                if (calEvent.getEndDate() != null)
-                {
+                if (calEvent.getEndDate() != null) {
                     // Calculate expectedEndDate;
                     Calendar start = Calendar.getInstance();
                     start.setTime(calEvent.getStartDate());
@@ -133,45 +128,45 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
                 }
 
                 int count = 0;
-                for (Date d : dates)
-                {
-                        EventItemImpl repeatEvent = calEvent.clone();
-                        repeatEvent.setStartDate(d);
+                for (Date d : dates) {
+                    EventItemImpl repeatEvent = calEvent.clone();
+                    repeatEvent.setStartDate(d);
 
-                        if (calEvent.getEndDate() != null)
-                        {
-                            Calendar end = Calendar.getInstance();
-                            // add diff ms here
-                            end.setTimeInMillis(d.getTime()+diff);
-                            repeatEvent.setEndDate(end.getTime());
-                        }
+                    if (calEvent.getEndDate() != null) {
+                        Calendar end = Calendar.getInstance();
+                        // add diff ms here
+                        end.setTimeInMillis(d.getTime() + diff);
+                        repeatEvent.setEndDate(end.getTime());
+                    }
 
-                        // create a unique id
-                        repeatEvent.setId(repeatEvent.getId()+"_"+(count++));
+                    // create a unique id
+                    repeatEvent.setId(repeatEvent.getId() + "_" + (count++));
 
-                        // store cached copy in repository
-                        Model newEventModel = ModelFactory.createDefaultModel();
-                        Resource newRes = ResourceFactory.createResource();
-                        newEventModel.add(newRes, RDF.type, EVENT.event);
-                        newEventModel.add(newRes, EVENT.UID, ResourceFactory.createPlainLiteral(repeatEvent.getId()));
-                        newEventModel.add(newRes, EVENT.subject, ResourceFactory.createPlainLiteral(repeatEvent.getLabel()));
+                    // store cached copy in repository
+                    Model newEventModel = ModelFactory.createDefaultModel();
+                    Resource newRes = ResourceFactory.createResource();
+                    newEventModel.add(newRes, RDF.type, EVENT.event);
+                    newEventModel.add(newRes, EVENT.UID, ResourceFactory.createPlainLiteral(repeatEvent.getId()));
+                    newEventModel.add(newRes, EVENT.subject, ResourceFactory.createPlainLiteral(repeatEvent.getLabel()));
 
-                        if (repeatEvent.getDescription() != null) newEventModel.add(newRes, EVENT.description, ResourceFactory.createPlainLiteral(repeatEvent.getDescription()));
-                        if (repeatEvent.getLocation() != null) newEventModel.add(newRes, EVENT.location, ResourceFactory.createPlainLiteral(repeatEvent.getLocation()));
-                        if (repeatEvent.getOrganiser() != null) newEventModel.add(newRes, EVENT.organizerName, ResourceFactory.createPlainLiteral(repeatEvent.getOrganiser()));
+                    if (repeatEvent.getDescription() != null)
+                        newEventModel.add(newRes, EVENT.description, ResourceFactory.createPlainLiteral(repeatEvent.getDescription()));
+                    if (repeatEvent.getLocation() != null)
+                        newEventModel.add(newRes, EVENT.location, ResourceFactory.createPlainLiteral(repeatEvent.getLocation()));
+                    if (repeatEvent.getOrganiser() != null)
+                        newEventModel.add(newRes, EVENT.organizerName, ResourceFactory.createPlainLiteral(repeatEvent.getOrganiser()));
 
-                        Resource startDate = ResourceFactory.createResource();
-                        newEventModel.add(newRes,newEventModel.createProperty(EVENT.NS+"dtstart"),startDate);
-                        newEventModel.add(startDate, EVENT.dateTime, ResourceFactory.createPlainLiteral(Common.parseXsdDate(repeatEvent.getStartDate())));
+                    Resource startDate = ResourceFactory.createResource();
+                    newEventModel.add(newRes, newEventModel.createProperty(EVENT.NS + "dtstart"), startDate);
+                    newEventModel.add(startDate, EVENT.dateTime, ResourceFactory.createPlainLiteral(Common.parseXsdDate(repeatEvent.getStartDate())));
 
-                        if (repeatEvent.getEndDate() != null)
-                        {
-                            Resource endDate = ResourceFactory.createResource();
-                            newEventModel.add(newRes,newEventModel.createProperty(EVENT.NS+"dtend"),endDate);
-                            newEventModel.add(endDate, EVENT.dateTime, ResourceFactory.createPlainLiteral(Common.parseXsdDate(repeatEvent.getEndDate())));
-                        }
+                    if (repeatEvent.getEndDate() != null) {
+                        Resource endDate = ResourceFactory.createResource();
+                        newEventModel.add(newRes, newEventModel.createProperty(EVENT.NS + "dtend"), endDate);
+                        newEventModel.add(endDate, EVENT.dateTime, ResourceFactory.createPlainLiteral(Common.parseXsdDate(repeatEvent.getEndDate())));
+                    }
 
-                        newEvents.add(newEventModel);
+                    newEvents.add(newEventModel);
 
                 }
             } // END if (calEvent.isRecurring())
@@ -184,7 +179,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
                     try {
                         rDate.addProperty(
                                 EVENT.dateTime, ResourceFactory.createPlainLiteral(
-                                    Common.parseXsdDate(Common.parseDate(strDate))));
+                                        Common.parseXsdDate(Common.parseDate(strDate))));
                     } catch (ParseException e) {
                         log.error("Unable to parse: " + strDate + " : " + e.getMessage());
                     }
@@ -199,7 +194,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
                     try {
                         rDate.addProperty(
                                 EVENT.dateTime, ResourceFactory.createPlainLiteral(
-                                    Common.parseXsdDate(Common.parseDate(strDate))));
+                                        Common.parseXsdDate(Common.parseDate(strDate))));
                     } catch (ParseException e) {
                         log.error("Unable to parse: " + strDate + " : " + e.getMessage());
                     }
@@ -255,7 +250,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
 
         EventItemImpl item = new EventItemImpl();
 
-        getBasicDetails(resource,item);
+        getBasicDetails(resource, item);
 
         // override default id with uid from ical.
         // resource.getURI() returns null anyway.
@@ -290,7 +285,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
             if (endDate.hasProperty(EVENT.dateTime)) {
                 strDate = endDate.getProperty(EVENT.dateTime).getLiteral().getLexicalForm();
             }
-            
+
             try {
                 item.setEndDate(Common.parseDate(strDate));
             } catch (ParseException e) {
@@ -318,8 +313,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
             item.setDescription(resource.getProperty(EVENT.description).getLiteral().getLexicalForm());
         }
 
-        if (resource.hasProperty(EVENT.rrule))
-        {
+        if (resource.hasProperty(EVENT.rrule)) {
             Resource rrule = resource.getProperty(EVENT.rrule).getResource();
 
             // set recurring event properties

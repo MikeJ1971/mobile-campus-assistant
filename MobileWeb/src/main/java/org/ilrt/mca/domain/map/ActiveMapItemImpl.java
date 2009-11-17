@@ -1,15 +1,15 @@
 package org.ilrt.mca.domain.map;
 
-import org.ilrt.mca.domain.BaseItem;
 import com.google.gson.annotations.Expose;
+import org.ilrt.mca.domain.BaseItem;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ * @author Jasper Tredgold (jasper.tredgold@bristol.ac.uk)
  */
 public class ActiveMapItemImpl extends BaseItem implements ActiveMapItem {
 
-	public ActiveMapItemImpl() {
+    public ActiveMapItemImpl() {
     }
 
     public double getLongitude() {
@@ -40,21 +40,26 @@ public class ActiveMapItemImpl extends BaseItem implements ActiveMapItem {
         return proxyURLStem;
     }
 
-	public void setMarkersLocation(String location) {
-		this.markersLocation = location;
-	}
+    public void setMarkersLocation(String location) {
+        this.markersLocation = location;
+    }
 
-	public void setProxyURLStem(String uri) {
-		this.proxyURLStem = uri;
-	}
+    public void setProxyURLStem(String uri) {
+        this.proxyURLStem = uri;
+    }
 
-	public void setMarkerIconLocation(String location) {
-		this.markerIconLocation = location;
-	}
+    public void setMarkerIconLocation(String location) {
+        this.markerIconLocation = location;
+    }
 
-    @Expose private double longitude = -1;
-    @Expose private double latitude = -1;
-    @Expose private String markersLocation = null;
-    @Expose private String proxyURLStem = null;
-    @Expose private String markerIconLocation = null;
+    @Expose
+    private double longitude = -1;
+    @Expose
+    private double latitude = -1;
+    @Expose
+    private String markersLocation = null;
+    @Expose
+    private String proxyURLStem = null;
+    @Expose
+    private String markerIconLocation = null;
 }
