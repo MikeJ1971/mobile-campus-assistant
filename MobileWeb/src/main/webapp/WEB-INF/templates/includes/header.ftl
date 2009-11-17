@@ -3,16 +3,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-    <title>Mobile Campus Assistant</title>
-    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width"/>
+    <title><#if it.label??>${it.label} - </#if>Mobile Campus Assistant</title>
+    <meta name="viewport" content="width=320,user-scalable=false"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link rel="stylesheet" href="${contextPath}/style/style.css"/>
 </head>
 <body>
 
-<!-- header -->
-<div id="header">&nbsp;</div>
-
-<!-- main body -->
-<div id="mainContent">

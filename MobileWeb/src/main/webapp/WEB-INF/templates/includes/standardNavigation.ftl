@@ -1,8 +1,7 @@
-<div class="group">
-    <h3>${it.label}</h3>
-    <ul>
+<div class="nav">
+    <ul class="nav-list">
         <#list it.items as item>
-            <li><a href="${contextPath}/${item.path}">${item.label}</a></li>
+            <li><a href="${contextPath}/${item.path}"><#if item.style??><span class="${item.style}"></span></#if>${item.label}</a></li>
         </#list>
     </ul>
 </div>
