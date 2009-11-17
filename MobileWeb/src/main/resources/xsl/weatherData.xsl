@@ -43,12 +43,10 @@
             </xsl:variable>
 
             <!-- display weather details -->
-            <p>
-                <img src='{$image}' alt="Weather icon"/>
-                Minimum:
-                <xsl:value-of select="@mn"/><xsl:text>&#176;C, </xsl:text>
-                Maximum:
-                <xsl:value-of select="@mx"/><xsl:text>&#176;C</xsl:text>
+            <p class="weatherIcon"><img src='{$image}' alt="Weather icon"/></p>
+            <p class="weatherDetails">
+                Minimum: <xsl:value-of select="@mn"/><xsl:text>&#176;C, </xsl:text>
+                Maximum: <xsl:value-of select="@mx"/><xsl:text>&#176;C</xsl:text>
             </p>
 
         </xsl:for-each>
