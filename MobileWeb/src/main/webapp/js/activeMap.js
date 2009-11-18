@@ -44,10 +44,15 @@
  Author: Mike Jones (mike.a.jones@bristol.ac.uk)
 
  **/
-var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, proxyUrl, icon, markerData) {
+var map;
+var markers = new Array(); // holds stop markers
+var proxyUrl;
+var icon;
 
-	var map;
-	var markers = new Array(); // holds stop markers
+var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, pUrl, markerIcon, markerUrl) {
+
+	proxyUrl = pUrl;
+	icon = markerIcon; 
 	
 	window.onload = function() {
 	
@@ -64,8 +69,8 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 		};
 		map = new google.maps.Map(document.getElementById(mapElementId), myOptions);
 		
-		// populate the markers array
-		createMarkers();
+		// do the markers
+		getMarkerData(markerUrl);
 
 		// we use the loading of viewable tiles to trigger the refreshing of the markers
 		google.maps.event.addListener(map, 'tilesloaded', function() {
@@ -83,25 +88,6 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 
 	}
 	
-	// intialise the markers
-    var createMarkers = function() {
-    	
-    	var infowindow = new google.maps.InfoWindow();
-    	
-    	for(var i=0; i<markerData.length; i++) {
-        	var point = new google.maps.LatLng(markerData[i].lat, markerData[i].lng);
-            var markerId = markerData[i].id;
-            var marker = new google.maps.Marker({
-                position: point, 
-                icon: icon
-            });
-            
-            // attach the click listener
-            attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
-            markers[i] = marker;
-    	}
-    };
-
     // refresh the markers display
     var overlayMarkers = function() {
 
@@ -292,4 +278,62 @@ var setInfoContent = function(infowindow, json) {
 	
 	infowindow.setContent(content);
 }
+
+//ajax request for marker data
+var getMarkerData = function(url) {
+
+	var xmlhttp;
+	
+	if (window.XMLHttpRequest) {
+
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+
+	} else {
+
+		// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+	}
+	
+	xmlhttp.onreadystatechange=function() {
+
+		if(xmlhttp.readyState==4) {
+			
+			// populate the markers array
+			createMarkers(xmlhttp.responseText);
+
+		}
+		
+	}
+
+	// make the request
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send(null);
+
+}
+
+// intialise the markers
+var createMarkers = function(markerJson) {
+
+	// slurp the incoming json
+	var m = eval('(' + markerJson + ')');
+
+	var markerData = m.markers;
+
+	var infowindow = new google.maps.InfoWindow();
+
+	for(var i=0; i<markerData.length; i++) {
+    	var point = new google.maps.LatLng(markerData[i].lat, markerData[i].lng);
+        var markerId = markerData[i].id;
+        var marker = new google.maps.Marker({
+            position: point, 
+            icon: icon
+        });
+        // attach the click listener
+        attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
+        markers[i] = marker;
+	}
+};
+
 
