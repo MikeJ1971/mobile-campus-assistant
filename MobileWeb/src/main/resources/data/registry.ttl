@@ -76,7 +76,7 @@
     mca:hasItem <mca://registry/maps/wireless/> ;
     mca:hasItem <mca://registry/maps/precinct/> ;
     mca:hasItem <mca://registry/maps/busstops/> ;
-    mca:order "1"^^xsd:integer ;
+    mca:order "2"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
 
@@ -116,7 +116,7 @@
     rdfs:label "Contacts" ;
     dc:description "Contact information" ;
     mca:template <template://navigation.ftl> ;
-    mca:order "3"^^xsd:integer ;
+    mca:order "5"^^xsd:integer ;
     mca:hasItem <mca://registry/contacts/emergency/> ;
     mca:hasItem <mca://registry/contacts/university/> ;
     mca:hasItem <mca://registry/contacts/welfare/> ;
@@ -131,7 +131,7 @@
     mca:hasItem <mca://registry/news/academic/> ;
     mca:hasItem <mca://registry/news/services/> ;
     mca:hasItem <mca://registry/news/ubu/> ;
-    mca:order "2"^^xsd:integer ;
+    mca:order "4"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     .
 
@@ -140,7 +140,8 @@
     dc:description "University events" ;
     mca:hasItem <mca://registry/events/aass/> ;
     mca:hasItem <mca://registry/events/uobkeydates/> ;
-    mca:order "2"^^xsd:integer ;
+    mca:hasItem <mca://registry/events/cmsevents/> ;
+    mca:order "3"^^xsd:integer ;
     mca:template <template://eventOverview.ftl> ;
     .
 

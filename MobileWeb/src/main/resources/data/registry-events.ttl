@@ -29,12 +29,23 @@
     mca:icalLink "webcal://www.google.com/calendar/ical/77q6gepe08n9hbqdd91om074u8%40group.calendar.google.com/public/basic.ics" ;
     mca:htmlLink "http://www.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23FFFFFF&src=77q6gepe08n9hbqdd91om074u8%40group.calendar.google.com&color=%23B1365F&ctz=Europe%2FLondon" ;
     rdfs:seeAlso <http://www.kanzaki.com/courier/ical2rdf?u=http%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2F77q6gepe08n9hbqdd91om074u8%2540group.calendar.google.com%2Fpublic%2Fbasic.ics> ;
-    mca:order "1"^^xsd:integer ;
+    mca:order "2"^^xsd:integer ;
+    mca:eventlist "ONEMONTH" ;
+    mca:template <template://eventList.ftl> ;
+    .
+
+<mca://registry/events/cmsevents/> rdf:type mca:EventCalendar ;
+    rdfs:label "What's on Events" ;
+    dc:description "" ;
+    mca:htmlLink "http://www.bris.ac.uk/events/" ;
+    rdfs:seeAlso <http://www.bris.ac.uk/events/cms.xml> ;
+    mca:order "3"^^xsd:integer ;
     mca:eventlist "ONEMONTH" ;
     mca:template <template://eventList.ftl> ;
     .
 
 # Below are URLs that will be harvested
-
+<http://www.bris.ac.uk/events/cms.xml> rdf:type mca:EventSource ;
+    mca:hasXslSource <xsl://xsl/cmsevents.xsl> .
 <http://www.kanzaki.com/courier/ical2rdf?u=http%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2Flib-asslbs%2540bristol.ac.uk%2Fpublic%2Fbasic.ics> rdf:type mca:EventSource .
-<http://www.kanzaki.com/courier/ical2rdf?u=http%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2F77q6gepe08n9hbqdd91om074u8%2540group.calendar.google.com%2Fpublic%2Fbasic.ics> rdf:type mca:EventSource .
+#<http://www.kanzaki.com/courier/ical2rdf?u=http%3A%2F%2Fwww.google.com%2Fcalendar%2Fical%2F77q6gepe08n9hbqdd91om074u8%2540group.calendar.google.com%2Fpublic%2Fbasic.ics> rdf:type mca:EventSource .

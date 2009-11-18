@@ -1,3 +1,34 @@
+/*
+ * Copyright (c) 2009, University of Bristol
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1) Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ *
+ * 2) Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3) Neither the name of the University of Bristol nor the names of its
+ *    contributors may be used to endorse or promote products derived from this
+ *    software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
 package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.query.QuerySolutionMap;
@@ -18,7 +49,6 @@ import org.ilrt.mca.rdf.Repository;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -28,7 +58,7 @@ import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 /**
- * @author Mike Jones (mike.a.jones@bristol.ac.uk)
+ * @author Chris Bailey (c.bailey@bristol.ac.uk)
  */
 public class EventDelegateImpl extends AbstractDao implements Delegate {
 
@@ -36,7 +66,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     private String findEventsList = null;
     private String findEventDetails = null;
     private final Repository repository;
-    private static String DATE_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss+00:00";
     Logger log = Logger.getLogger(EventDelegateImpl.class);
 
     public EventDelegateImpl(final Repository repository) {
@@ -57,7 +86,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         Resource graphUri = null;
         if (resource.hasProperty(RDFS.seeAlso)) graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_STRING);
         String startDate =  Common.parseXsdDate(EventDelegateImpl.getStartDate());
         String endDate =  Common.parseXsdDate(EventDelegateImpl.getEndDate(resource.getProperty(MCA_REGISTRY.eventlist).getLiteral().getLexicalForm()));
 
@@ -68,7 +96,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         {
             EventItemImpl item = new EventItemImpl();
 
-            String queryUid = parameters.get("item").get(0).toString();
+            String queryUid = parameters.get("item").get(0);
 
             // we've requested information about a repeating event.
             // We could search the repo for the item and calculate the date, however a simpler option is to be passed the startdate
@@ -78,8 +106,6 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             if (graphUri != null) bindings.add("graph", graphUri);
 
             Model resultModel = repository.find(bindings, findEventDetails);
-
-//            resultModel.write(System.out);
             
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
             if (stmtiter.hasNext())

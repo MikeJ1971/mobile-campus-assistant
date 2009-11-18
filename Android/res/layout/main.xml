@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+<com.google.android.maps.MapView
+	android:id="@+id/mapmain"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clickable="true"
+    android:apiKey="0_r5nuDgaqxC0t4l04lwIXTnmXNU1HMmfK-2d4g"
+	/>
+<!-- Key for mcaandroid.keystore:0_r5nuDgaqxBBGsTAH0rw65O5-FG_xsj-eiJRkA -->
+
+<TextView  
+	android:id="@+id/topLabel"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    android:textColor="#FF000000"
+    android:layout_centerHorizontal="true"
+    android:gravity="top"
+    />
+    
+<Button
+	android:id="@+id/btnNavigateHere"
+	android:layout_width="150dp"
+	android:layout_height="wrap_content"
+	android:text="Me"
+	android:textSize="20sp"
+	android:gravity="center_vertical"
+	android:layout_centerInParent="true"
+	android:layout_alignParentBottom="true"
+	/>
+	
+
+</RelativeLayout>

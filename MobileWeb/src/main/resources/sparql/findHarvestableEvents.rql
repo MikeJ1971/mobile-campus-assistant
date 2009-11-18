@@ -6,9 +6,11 @@ PREFIX dc:      <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 CONSTRUCT {
     $id rdf:type <http://org.ilrt.mca/registry#EventSource> .
+    $id mca:hasXslSource $xslSource .
     $id mca:lastVisitedDate $lastVisited  .
 } WHERE {
     $id rdf:type <http://org.ilrt.mca/registry#EventSource> .
+    OPTIONAL { $id mca:hasXslSource $xslSource } .
     OPTIONAL {
         GRAPH $graph {
             OPTIONAL { $id mca:lastVisitedDate $lastVisited } .
