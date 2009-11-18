@@ -5,7 +5,7 @@
 
 	<xsl:template match="/">
 {
-	"markers" = [
+	"markers" : [
 	<xsl:apply-templates select="//Stop"/>
 	]
 }
