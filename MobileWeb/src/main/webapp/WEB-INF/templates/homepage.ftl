@@ -2,7 +2,7 @@
 
 <#include "includes/logoWithoutNav.ftl"/>
 
-<#include "includes/title.ftl"/>
+<@Title label="${it.label}" />
 
 <#include "includes/standardNavigation.ftl"/>
 

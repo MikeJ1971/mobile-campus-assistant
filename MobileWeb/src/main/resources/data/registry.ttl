@@ -63,8 +63,8 @@
     dc:description "IT Service Status provided by Information Services" ;
     rdfs:seeAlso <http://www.bris.ac.uk/is/news/status.rss> ;
     mca:order "4"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    mca:style "news"^^xsd:string ;
+    mca:template <template://serviceStatusList.ftl> ;
+    mca:style "servicestatus"^^xsd:string ;
     .
 
 <mca://registry/today/events/> rdf:type mca:EventCalendar ;

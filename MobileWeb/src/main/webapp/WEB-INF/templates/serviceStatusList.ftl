@@ -5,12 +5,12 @@
 <@Title label="${it.label}" />
 
 <#if it.items?size == 0>
-<p>Sorry, no news items.</p>
+<p>Sorry, there is no service status news.</p>
 <#else>
 <div class="nav">
     <ul class="nav-list">
         <#list it.items as item>
-        <li><a href="./?item=${item.id?url("UTF8")}"><span class="news"></span><@NavLabel label="${item.label}"/>
+        <li><a href="./?item=${item.id?url("UTF8")}"><span class="servicestatus"></span><@NavLabel label="${item.label}"/>
         </a>
         </li>
         </#list>

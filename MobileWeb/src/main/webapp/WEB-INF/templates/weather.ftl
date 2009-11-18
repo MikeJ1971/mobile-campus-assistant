@@ -2,7 +2,7 @@
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<#include "includes/title.ftl"/>
+<@Title label="${it.label}" />
 
 <div class="group">
     <div id="weatherData">

@@ -153,7 +153,7 @@ p {
 }
 
 .today {
-    background: url(../images/bristol/icon-calendar.png) no-repeat;
+    background: url(../images/bristol/icon-smiley.png) no-repeat;
     display: inline-block;
     width: 52px;
     height: 41px;
@@ -183,7 +183,7 @@ p {
 }
 
 .weather {
-    background: url(../images/bristol/icon-news.png) no-repeat;
+    background: url(../images/bristol/icon-umbrella.png) no-repeat;
     display: inline-block;
     width: 52px;
     height: 41px;
@@ -203,7 +203,17 @@ p {
 }
 
 .pcavailability {
-    background: url(../images/bristol/icon-calendar.png) no-repeat;
+    background: url(../images/bristol/icon-computer.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
+
+.servicestatus {
+    background: url(../images/bristol/icon-dial.png) no-repeat;
     display: inline-block;
     width: 52px;
     height: 41px;
@@ -214,4 +224,10 @@ p {
 
 .weatherIcon, .weatherDetails, .weatherDateTime {
    text-align: center;
+}
+
+#pcavailability table {
+    width: 55%;
+    margin: 9px;
+    font-size: 12px;
 }
