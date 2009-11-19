@@ -85,7 +85,7 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 
                 // move to default position if more than maxDistance away from campus
                 if (distance >= maxDistance) {
-                    alert("Your calculated position is " + maxDistance + " meters away from the campus. The map will centre on the campus rather than your current location.");
+                    alert("Your calculated position is MORE THAN " + maxDistance + " meters away from the campus. The map will centre on the campus rather than your current location.");
                     displayMap(defaultLatitude, defaultLongitude);
                     return;
                 }
@@ -122,7 +122,7 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
             map.addOverlay(new GMarker(point));
 
             // show the map controls
-            map.addControl(new GMapTypeControl());
+            //map.addControl(new GMapTypeControl());
 
             // UOB Overlay
             // TODO - make this generic

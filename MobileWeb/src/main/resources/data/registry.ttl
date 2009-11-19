@@ -150,11 +150,11 @@
 <mca://registry/events/> rdf:type mca:Group ;
     rdfs:label "Events" ;
     dc:description "University events" ;
-    mca:hasItem <mca://registry/events/aass/> ;
+    mca:hasItem <mca://registry/events/library/> ;
     mca:hasItem <mca://registry/events/uobkeydates/> ;
     mca:hasItem <mca://registry/events/cmsevents/> ;
     mca:order "3"^^xsd:integer ;
-    mca:template <template://eventOverview.ftl> ;
+    mca:template <template://navigation.ftl> ;
     mca:style "events"^^xsd:string ;
     .
 

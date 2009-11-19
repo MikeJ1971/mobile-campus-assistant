@@ -13,8 +13,18 @@
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 
+<mca://registry/events/library/> rdf:type mca:Group ;
+    rdfs:label "Library Opening Hours" ;
+    dc:description "ULibrary Opening Hours" ;
+    mca:hasItem <mca://registry/events/aass/> ;
+    mca:order "3"^^xsd:integer ;
+    mca:template <template://navigation.ftl> ;
+    mca:style "events"^^xsd:string ;
+    .
+
+
 <mca://registry/events/aass/> rdf:type mca:EventCalendar ;
-    rdfs:label "Arts and Social Sciences Library Opening Hours" ;
+    rdfs:label "Arts and Social Sciences" ;
     dc:description "University of Bristol, Tyndall Avenue, Bristol, <a href='http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=BS8+1TJ'>BS8 1TJ</a>. <br/><a href='https://www.bris.ac.uk/is/locations/branches/assl/'>More information</a>." ;
     mca:icalLink "webcal://www.google.com/calendar/ical/lib-asslbs%40bristol.ac.uk/public/basic.ics" ;
     mca:htmlLink "http://www.google.com/calendar/embed?src=lib-asslbs%40bristol.ac.uk&ctz=Europe/London" ;
@@ -22,9 +32,10 @@
     mca:order "1"^^xsd:integer ;
     mca:eventlist "ONEMONTH" ;
     mca:template <template://eventList.ftl> ;
+    mca:style "events"^^xsd:string ;
     .
 <mca://registry/events/uobkeydates/> rdf:type mca:EventCalendar ;
-    rdfs:label "University of Bristol key dates" ;
+    rdfs:label "University Key Dates" ;
     dc:description "This is a publicly accessible Google Calendar showing key dates in the university year." ;
     mca:icalLink "webcal://www.google.com/calendar/ical/77q6gepe08n9hbqdd91om074u8%40group.calendar.google.com/public/basic.ics" ;
     mca:htmlLink "http://www.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23FFFFFF&src=77q6gepe08n9hbqdd91om074u8%40group.calendar.google.com&color=%23B1365F&ctz=Europe%2FLondon" ;
@@ -32,16 +43,18 @@
     mca:order "2"^^xsd:integer ;
     mca:eventlist "ONEMONTH" ;
     mca:template <template://eventList.ftl> ;
+    mca:style "events"^^xsd:string ;
     .
 
 <mca://registry/events/cmsevents/> rdf:type mca:EventCalendar ;
-    rdfs:label "What's on Events" ;
+    rdfs:label "What's On" ;
     dc:description "" ;
     mca:htmlLink "http://www.bris.ac.uk/events/" ;
     rdfs:seeAlso <http://www.bris.ac.uk/events/cms.xml> ;
     mca:order "3"^^xsd:integer ;
     mca:eventlist "ONEMONTH" ;
     mca:template <template://eventList.ftl> ;
+    mca:style "events"^^xsd:string ;
     .
 
 # Below are URLs that will be harvested

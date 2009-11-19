@@ -1,6 +1,8 @@
 <#include "includes/header.ftl"/>
 
-<h3>${it.label}</h3>
+<#include "includes/logoOneLevelNav.ftl"/>
+
+<@Title label="${it.label}" />
 
 <script type="text/javascript"
          src="http://www.google.com/jsapi?key=ABQIAAAAdUlVnqcMy8dOraexYlBKqxTjPSaaEJVc4G5y4wKsZE4UoG3L1hRdcwFcZ2_Cpcpc4Lj8nGsd7ZHLsw&sensor=true"></script>

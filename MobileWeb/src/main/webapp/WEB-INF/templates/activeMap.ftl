@@ -1,7 +1,8 @@
 <#include "includes/header.ftl"/>
 
-<h1>${it.label}</h1>
-<p>${it.description}</p>
+<#include "includes/logoOneLevelNav.ftl"/>
+
+<@Title label="${it.label}" />
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="${contextPath}/js/activeMap.js"></script>

@@ -301,3 +301,8 @@ It's height value should ensure that the map pans enough to allow for later dyna
 {
     border:0px;
 }
+
+/* gmap api id - stops university photos appearing in windows */
+#iw_kml img {
+    display: none;
+}
