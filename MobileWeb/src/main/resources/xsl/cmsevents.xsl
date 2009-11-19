@@ -29,7 +29,7 @@
     <xsl:value-of select="normalize-space(event_organisation)"/><xsl:value-of select="concat(']',']')"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text></iTemp:description>
             <iTemp:location><xsl:text disable-output-escaping="yes">&lt;</xsl:text><xsl:value-of select="concat('!','[','CDATA','[')"/><xsl:value-of select="normalize-space(event_venue)"/><xsl:value-of select="concat(']',']')"/><xsl:text disable-output-escaping="yes">&gt;</xsl:text></iTemp:location>
             <xsl:element name="dtstart">
-              <xsl:attribute name="rdf:parseType" namespace="">Resource</xsl:attribute>
+              <xsl:attribute name="rdf:parseType" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#">Resource</xsl:attribute>
               <iTemp:dateTime>
               <xsl:call-template name="formatDate">
                 <xsl:with-param name="text" select="event_start_date"/>
@@ -46,7 +46,7 @@
 
 <xsl:template match="event_end_date" xmlns:i="http://www.w3.org/2002/12/cal/ical#">
     <xsl:element name="dtend">
-        <xsl:attribute name="rdf:parseType" namespace="">Resource</xsl:attribute>
+        <xsl:attribute name="rdf:parseType" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#">Resource</xsl:attribute>
         <xsl:choose>
             <xsl:when test="string-length(.) &lt; 12">
                 <xsl:variable name="stime">
