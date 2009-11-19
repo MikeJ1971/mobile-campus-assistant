@@ -143,10 +143,10 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 
         // do we support geolocation?
         if (navigator.geolocation) {
-            alert("We support geolocation")
+
             watchId = navigator.geolocation.watchPosition(successCallback, errorCallBack, {enableHighAccuracy:true});
         } else {
-            alert("We don't support geolocation")
+
             hideSearchMessage();
             displayMap(defaultLatitude, defaultLongitude);
         }
@@ -159,8 +159,6 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
             // check if we need to polling
             if (locationCount >= maxPoll || position.coords.accuracy <= goodAccuracy) {
 
-                alert("Cleared")
-
                 navigator.geolocation.clearWatch(watchId);
 
                 hideSearchMessage();
@@ -170,10 +168,6 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
                 var currentPoint = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 //var distance = defaultPoint.distanceFrom(currentPoint, undefined);
                 var distance = distHaversine(defaultPoint, currentPoint);
-
-                alert(defaultPoint);
-                alert(currentPoint);
-                alert(distance);
 
                 // move to default position if more than maxDistance away from campus
                 if (distance >= maxDistance) {
@@ -303,9 +297,9 @@ var setInfoContent = function(infowindow, json) {
 }
 
 /* see http://stackoverflow.com/questions/1502590/calcualte-distance-between-two-points-in-google-maps-v3/1502821#1502821 */
-rad = function(x) {return x*Math.PI/180;}
+var rad = function(x) {return x*Math.PI/180;}
 
-distHaversine = function(p1, p2) {
+var distHaversine = function(p1, p2) {
   var R = 6371; // earth's mean radius in km
   var dLat  = rad(p2.lat() - p1.lat());
   var dLong = rad(p2.lng() - p1.lng());
@@ -315,5 +309,5 @@ distHaversine = function(p1, p2) {
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   var d = R * c;
 
-  return d.toFixed(3);
+  return d.toFixed(3) * 1000;
 }
