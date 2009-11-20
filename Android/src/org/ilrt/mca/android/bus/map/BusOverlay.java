@@ -1,6 +1,8 @@
 package org.ilrt.mca.android.bus.map;
 
-import org.ilrt.mca.android.bus.BusTimesActivity;
+import java.util.ArrayList;
+
+import org.ilrt.mca.android.bus.Common;
 import org.ilrt.mca.android.bus.db.BusStopsCursor;
 import org.ilrt.mca.android.bus.db.BusTimesDatabase;
 
@@ -19,16 +21,20 @@ public class BusOverlay extends ItemizedOverlay<OverlayItem>
 	MyLocationOverlay mMyLocationOverlay;
 	GeoPoint currPos;
 	boolean init = true;
+	ArrayList<ArrayList<String>> stopIdMappingList;
+	ArrayList<Integer> latitudeList;
+	ArrayList<Integer> longitudeList;
 	
     /**
      * @param marker the push-pin
      */
-    public BusOverlay(Drawable marker, BusTimesDatabase db, MyLocationOverlay mMyLocationOverlay) {
-        super(marker);
+    public BusOverlay(Drawable marker, BusTimesDatabase db, MyLocationOverlay mMyLocationOverlay) throws Exception {
+        super(boundCenter(marker));
+    	
         this.db = db;
         this.mMyLocationOverlay = mMyLocationOverlay;
         init = true;
-        populate();
+//        populate();
         init = false;
     }
 
@@ -37,20 +43,61 @@ public class BusOverlay extends ItemizedOverlay<OverlayItem>
      */
     @Override
     public int size() {
-    	Log.i(BusOverlay.class.getName(),"asking for size");
     	GeoPoint currPos = null;
     	
-    	if (!init) currPos = mMyLocationOverlay.getMyLocation();
+//    	if (!init) currPos = mMyLocationOverlay.getMyLocation();
     	if (currPos != null)
     	{
-	    	Log.i(BusOverlay.class.getName(),(currPos != null ? currPos.toString() : "null"));
-	    	Log.i(BusOverlay.class.getName(),"getLatSpanE6:"+currPos.getLatitudeE6());
-	    	Log.i(BusOverlay.class.getName(),"getLonSpanE6:"+currPos.getLongitudeE6());
-	    	int size = db.getBusStopCount((float)(currPos.getLatitudeE6()/1E6),(float)(currPos.getLongitudeE6()/1E6),(float)0.02,(float)0.02);
-	    	Log.i(BusOverlay.class.getName(),"!! size is "+ size);
+    		try
+    		{
+	    	Common.info(BusOverlay.class,(currPos != null ? currPos.toString() : "null"));
+	    	
+	    	double lat = currPos.getLatitudeE6();
+	    	double lng = currPos.getLongitudeE6();
+	    	double width = this.getLatSpanE6();
+	    	double height = this.getLonSpanE6();
+	    	
+	    	Common.info(BusOverlay.class,"lat:"+lat);
+	    	Common.info(BusOverlay.class,"lng:"+lng);
+	    	    	
+	    	BusStopsCursor c = db.getBusStopsForRegion(lat,lng,width,height);
+	    	int count = c.getCount();
+	    	
+	    	Common.info(BusOverlay.class,"size:"+count);
+	    	
+	    	// reset arrays
+	    	stopIdMappingList = new ArrayList<ArrayList<String>>(count);
+	    	latitudeList = new ArrayList<Integer>(count);
+	    	longitudeList = new ArrayList<Integer>(count);
+	    	
+	    	for (int rowNum = 0; rowNum < count; rowNum++)
+	    	{
+	    		c.moveToPosition(rowNum);
+	    		ArrayList<String> item = new ArrayList<String>();
+	    		item.add(c.getColStopId());
+	    		item.add(c.getColTitle());
+	    		stopIdMappingList.add(item);
+	    		latitudeList.add((int)c.getColLatitude());
+	    		longitudeList.add((int)c.getColLongitude());
+	    	}
+	    	c.close();
+
+//	    	stopIdMappingList.trimToSize();
+//	    	latitudeList.trimToSize();
+//	    	longitudeList.trimToSize();
+	    	
+	    	Common.info(BusOverlay.class,"asking for size");
+	    	
 	    	return 0;
+    		}
+    		catch (Exception e)
+    		{
+    			e.printStackTrace();
+    		}
     	}
-    	else return 0;
+
+		Common.info(BusOverlay.class,"size is 0");
+		return 0;
     }
 
     /**
@@ -58,13 +105,15 @@ public class BusOverlay extends ItemizedOverlay<OverlayItem>
      */
     @Override
     protected OverlayItem createItem(int i) {
-    	BusStopsCursor c = db.getBusDetails(i);
-    	String title = c.getColTitle();
-    	String description = "Nothing here";
-    	Double lat = c.getColLatitude()*1E6;
-    	Double lon = c.getColLongitude()*1E6;
-    	c.close();
-    	return new OverlayItem(new GeoPoint(lat.intValue(), lon.intValue()), title, description);
+    	ArrayList<String> item = stopIdMappingList.get(i);
+    	
+    	//BusStopsCursor c = db.getBusDetails(i);
+    	String title = item.get(0);
+    	String description = item.get(1);
+    	int lat = latitudeList.get(i);
+    	int lon = longitudeList.get(i);
+
+    	return new OverlayItem(new GeoPoint(lat, lon), title, description);
     }
 
     /**
@@ -96,6 +145,19 @@ public class BusOverlay extends ItemizedOverlay<OverlayItem>
 //        i.putExtras(b);
 //        startActivity(i);
 
-        return true;
+        return false;
+    }
+    
+    public void draw(android.graphics.Canvas canvas, MapView mapView, boolean shadow)
+    {
+    	try
+    	{
+	    	Common.info(BusOverlay.class,"Calling draw");
+	    	super.draw(canvas, mapView, false);
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    	}
     }
 }

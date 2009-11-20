@@ -18,7 +18,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 	/** The name of the database file on the file system */
     private static final String DATABASE_NAME = "BusTimes";
     /** The version of the database that this class understands. */
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     
     public static final String BUS_TABLE_NAME = "busstops";
     public static final String DEPARTURE_TABLE_NAME = "departures";
@@ -82,14 +82,26 @@ public class BusTimesDatabase extends SQLiteOpenHelper
         return c;
     }
     
-	public void addBus(String id, String title, float lat, float lng)
+    public void removeAllBusStops()
+    {
+		try
+		{
+			getWritableDatabase().delete(BUS_TABLE_NAME, "", null);
+		}
+		catch (SQLiteException e)
+		{
+			Log.e("Error deleting all bus stops", e.toString());
+		}
+    }
+    
+	public void addBus(String id, String title, double lat, double lng)
 	{
 		ContentValues map = new ContentValues();
 		map.put("stop_id", id);
 		map.put("title", id);
 		map.put("lat", lat);
 		map.put("lng", lng);
-		map.put("last_update", (new Date()).getTime());
+		map.put("last_update", 0);
 		
 		try
 		{
@@ -173,24 +185,17 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 	}
 	
-	public int getBusStopCount(float lat, float lng, float width, float height)
+	public BusStopsCursor getBusStopsForRegion(double lat, double lng, double width, double height)
 	{
-		Cursor c = null;
-		String sql = "SELECT count(*) FROM "+BUS_TABLE_NAME +
-			" WHERE lat > '" + lat + "' AND lat < '" + (lat + height) + "' AND " +
-				" lng > '" + lng + "' AND lng < '" + (lng+width) + "'";
-        try {
-            c = getReadableDatabase().rawQuery(sql, null);
-            if (0 >= c.getCount()) { return 0; }
-            c.moveToFirst();
-            return c.getInt(0);
-        }
-        finally {
-            if (null != c) {
-                try { c.close(); }
-                catch (SQLException e) { return 0; }
-            }
-        }
+
+    	SQLiteDatabase d = getReadableDatabase();
+    	BusStopsCursor c = (BusStopsCursor) d.rawQueryWithFactory(
+			new BusStopsCursor.Factory(),
+			BusStopsCursor.queryBusStopInRegion(lat, lng, width, height),
+			null,
+			null);
+    	c.moveToFirst();
+        return c;
 	}
 	
 	public int getBusStopCount()

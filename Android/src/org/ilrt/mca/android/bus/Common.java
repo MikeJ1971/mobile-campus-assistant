@@ -23,6 +23,7 @@ import android.util.Log;
 public class Common
 {
 	static SSLContext sc;
+	static boolean loggerEnabled = false;
 	
 	public static JSONObject loadJSON(String requestUrl)
 	{
@@ -47,10 +48,10 @@ public class Common
 			pos = new JSONObject(result);
 		} catch (JSONException e)
 		{
-			Log.w(BusTimesActivity.class.getName(),"Unable to parse JSON file", e);
+			warn(BusTimesActivity.class.getName(),"Unable to parse JSON file", e);
 		} catch (MalformedURLException e)
 		{
-			Log.w(BusTimesActivity.class.getName(),"Unable to read url contents", e);
+			warn(BusTimesActivity.class,"Unable to read url contents", e);
 			e.printStackTrace();
 		} catch (IOException e)
 		{
@@ -127,9 +128,45 @@ public class Common
 	public static void showMessage(Context context, String msg)
 	{
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setMessage(msg)
-		       .setCancelable(true);
+		builder.setMessage(msg).setCancelable(true);
 		AlertDialog alert = builder.create();
 		alert.show();
+	}
+	
+	
+	public static void error(Object source, String msg, Throwable error)
+	{
+		if (loggerEnabled()) Log.e(source.toString(), msg, error);
+	}
+	
+	
+	public static void error(Object source, String msg)
+	{
+		if (loggerEnabled()) error(source, msg, null);
+	}
+	
+	public static void warn(Object source, String msg, Throwable error)
+	{
+		if (loggerEnabled()) Log.w(source.toString(),msg, error);
+	}
+
+	public static void warn(Object source, String msg)
+	{
+		if (loggerEnabled()) warn(source, msg, null);
+	}
+	
+	public static void info(Object source, String msg)
+	{
+		if (loggerEnabled()) Log.i(source.toString(),msg);
+	}
+	
+	public static void setLoggerEnabled(boolean b)
+	{
+		loggerEnabled = b;
+	}
+	
+	private static boolean loggerEnabled()
+	{
+		return loggerEnabled;
 	}
 }

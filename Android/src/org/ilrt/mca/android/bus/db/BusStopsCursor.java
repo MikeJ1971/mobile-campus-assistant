@@ -51,11 +51,19 @@ public class BusStopsCursor extends SQLiteCursor
     	return sql;
     }
     
+    static String queryBusStopInRegion(double lat, double lng, double width, double height)
+    {
+    	String sql = QUERY + 	" WHERE lat > '" + (lat-height) + "' AND lat < '" + (lat + height) + "' AND " +
+    		" lng > '" + (lng-width) + "' AND lng < '" + (lng+width) + "'";
+    	return sql;
+    }
+    
+
     
     
     public String getColStopId(){return getString(getColumnIndexOrThrow("stop_id"));}
 	public String getColTitle(){return getString(getColumnIndexOrThrow("title"));}
 	public long getColLastUpdate(){return getLong(getColumnIndexOrThrow("last_update"));}
-	public float getColLatitude(){return getFloat(getColumnIndexOrThrow("lat"));}
-	public float getColLongitude(){return getFloat(getColumnIndexOrThrow("lng"));}
+	public double getColLatitude(){return getDouble(getColumnIndexOrThrow("lat"));}
+	public double getColLongitude(){return getDouble(getColumnIndexOrThrow("lng"));}
 }	

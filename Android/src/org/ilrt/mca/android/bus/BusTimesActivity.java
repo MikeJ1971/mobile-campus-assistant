@@ -1,9 +1,5 @@
 package org.ilrt.mca.android.bus;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import org.ilrt.mca.android.bus.db.BusTimesDatabase;
 import org.ilrt.mca.android.bus.map.BusOverlay;
 import org.json.JSONArray;
@@ -11,12 +7,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Debug;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,6 +34,9 @@ public class BusTimesActivity extends MapActivity
 	MapController mc;
 	LocationManager myLocationManager;
 	LocationListener myLocationListener;
+	public ProgressDialog dialog;
+	ProgressThread thread;
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -47,7 +45,10 @@ public class BusTimesActivity extends MapActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		// initalize the database
+		// setup the logger
+		Common.setLoggerEnabled(this.getString(R.string.loggerenabled).equalsIgnoreCase("true"));
+
+		// initialise the database
 		db = new BusTimesDatabase(this);
 		
 		mvMap = (MapView) findViewById(R.id.mapmain);
@@ -64,6 +65,8 @@ public class BusTimesActivity extends MapActivity
 			{
 				mc.animateTo(mMyLocationOverlay.getMyLocation());
 				mc.setZoom(17);
+				Common.info(BusTimesActivity.class,"Creating overlay");
+				addBusStopIcons(mvMap);
 			}
 		});
 
@@ -72,92 +75,42 @@ public class BusTimesActivity extends MapActivity
 		{
 			public void onClick(View v)
 			{
-				Log.i(BusTimesActivity.class.getName(), "Clicking button");
+				Common.info(BusTimesActivity.class, "Clicking button");
 				try
 				{
 					mc.animateTo(mMyLocationOverlay.getMyLocation());
-					mc.setZoom(17);
-					mvMap.invalidate();
+//					mc.setZoom(17);
+//					mvMap.invalidate();
 				} catch (Exception e)
 				{
-					Log.i(BusTimesActivity.class.getName(),
-							"Unable to animate map", e);
+					Common.warn(BusTimesActivity.class,"Unable to animate map", e);
 				}
 			}
 		});
+		
+		// set the label text
+		final TextView lblHeader = (TextView) findViewById(R.id.topLabel);
 
-		// Load a hashmap with location and positions
-		List<String> lsLocations = new ArrayList<String>();
-		final HashMap<String, GeoPoint> hmLocations = new HashMap<String, GeoPoint>();
-		hmLocations.put("Current Location", new GeoPoint((int) latitute,(int) longitude));
-		lsLocations.add("Current Location");
-
-		if (db.getBusStopCount() == 0)
+		// load bus stop data if required
+		if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))
 		{
-			ProgressDialog dialog = ProgressDialog.show(this, "BusTimes", "Loading Bus Data. Please wait...", false);
-			dialog.show();
-			
-			// populate database with json content
-			Log.i(BusTimesActivity.class.getName(),"No existing bus times, populating from json");
-			
-			// load json data
-			String base_url = this.getString(R.string.base_url);
-			JSONObject json = Common.loadJSON(base_url + this.getString(R.string.busurl));
-			
-			if (json.length() == 0)
-			{
-				dialog.dismiss();
-				Common.showMessage(this, "Unable to parse JSON file");
-			}
-			else
-			{
-				// set the label text
-				final TextView lblHeader = (TextView) findViewById(R.id.topLabel);
-				try
-				{
-					
-					proxyUrl = base_url + json.getString("proxyURLStem");
-					markerLocation = base_url + json.getString("markersLocation");
-					iconUrl = base_url + json.getString("markerIconLocation");
-					
-					 // set initial location
-					int lat = Integer.parseInt(json.getString("longitude"));
-					int lng = Integer.parseInt(json.getString("latitude"));
-					
-					mc.animateTo(new GeoPoint(lat, lng));
-					mvMap.invalidate();
-					
-					lblHeader.setText(json.getString("label"));
-				
-					markerLocation = "http://www.ilrt.bris.ac.uk/~cmcpb/mca/bustops.json";
-					JSONObject json_markers = Common.loadJSON(markerLocation);
-					
-					JSONArray markers = json_markers.getJSONArray("markers");
-					Log.i(BusTimesActivity.class.getName(),"markers.length(): " + markers.length());
-					for (int i=0; i < markers.length(); i++)
-					{
-						JSONObject marker = markers.getJSONObject(i);
-						db.addBus(marker.getString("id"), null, Float.parseFloat(marker.getString("lat")), Float.parseFloat(marker.getString("lng")));
-					}
-				} catch (JSONException e)
-				{
-					e.printStackTrace();
-				}
-			}
-
-			dialog.dismiss();
-		} // END if (db.getBusStopCount() == 0)
-		
-		Log.i(BusTimesActivity.class.getName(),"Creating overlay");
-		addBusStopIcons(mvMap);
-		
+			dialog = ProgressDialog.show(BusTimesActivity.this, "", "Loading Bus Data. Please wait...", true);
+			thread = new ProgressThread(this);
+			thread.start();
+		} // END if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))	
 	}
 	
     private void addBusStopIcons(MapView mvMap)
     {
-        Drawable marker = getResources().getDrawable(R.drawable.bus);
+    	Common.warn(BusTimesActivity.class,"Adding BusOverlay");
+    	
+    	try
+    	{
+    	Drawable marker = getResources().getDrawable(R.drawable.bus);
         marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker.getIntrinsicHeight());
         mvMap.getOverlays().add(new BusOverlay(marker, db, mMyLocationOverlay));
+    	}
+    	catch (Exception e) { e.printStackTrace(); }
 
         mvMap.setClickable(true);
         mvMap.setEnabled(true);
@@ -200,7 +153,96 @@ public class BusTimesActivity extends MapActivity
 	@Override
 	protected boolean isRouteDisplayed()
 	{
-		// TODO Auto-generated method stub
+		// we're not interested in showing routes on our map so set this to false
 		return false;
+	}
+
+	private class ProgressThread extends Thread {
+		BusTimesActivity context;
+       
+        ProgressThread(BusTimesActivity a) {
+            this.context = a;
+        }
+       
+        public void run() {
+            try
+            { 
+				// populate database with json content
+				Common.info(BusTimesActivity.class,"Populating Bus Stops from json");
+				
+				// load json data
+				String base_url = context.getString(R.string.base_url);
+				String jsonUrl = base_url + context.getString(R.string.busurl);
+				Common.info(BusTimesActivity.class,"Loading "+jsonUrl);
+				
+//				Debug.startMethodTracing("jsoninit");
+				long s = System.currentTimeMillis();
+				JSONObject json = Common.loadJSON(jsonUrl);
+				long e = System.currentTimeMillis();
+				Common.warn(BusTimesActivity.class,"Init JSON file took " + (e-s) + "ms");
+//	            Debug.stopMethodTracing();
+				
+				if (json.length() == 0)
+				{
+					dialog.dismiss();
+					Common.warn(BusTimesActivity.class,"Unable to parse JSON file");
+					Common.showMessage(context, "Unable to parse JSON file");
+				}
+				else
+				{
+					try
+					{
+						proxyUrl = base_url + json.getString("proxyURLStem");
+						markerLocation = base_url + json.getString("markersLocation");
+						iconUrl = base_url + json.getString("markerIconLocation");
+						
+						// navigate to default pos
+						int lat = (int)(Float.parseFloat(json.getString("latitude"))*1E6);
+						int lng = (int)(Float.parseFloat(json.getString("longitude"))*1E6);
+						context.mc.animateTo(new GeoPoint(lat,lng));
+	
+						// allow json object to be garbage collected
+						json = null;
+						
+						markerLocation = "http://www.ilrt.bris.ac.uk/~cmcpb/mca/bustops.json";
+						Common.info(BusTimesActivity.class,"Loading "+markerLocation);
+						
+//						Debug.startMethodTracing("jsonmarkers");
+						s = System.currentTimeMillis();
+						JSONObject json_markers = Common.loadJSON(markerLocation);
+						e = System.currentTimeMillis();
+						Common.warn(BusTimesActivity.class,"JSON Marker file took " + (e-s) + "ms");						
+//						Debug.stopMethodTracing();
+						
+						JSONArray markers = json_markers.getJSONArray("markers");
+						
+						int count = markers.length();
+						
+						Common.info(BusTimesActivity.class.getName(),"markers.length(): " + count);
+						
+						if (count > 0) 
+						{
+							// if we have some valid data to insert, remove existing entries
+							Common.info(BusTimesActivity.class,"Removing existing stop data");
+							db.removeAllBusStops();
+						}
+						for (int i=0; i < count; i++)
+						{
+							JSONObject marker = markers.getJSONObject(i);
+							lat = (int)(Float.parseFloat(marker.getString("lat")) * 1E6);
+							lng = (int)(Float.parseFloat(marker.getString("lng")) * 1E6);
+//							Common.info(BusTimesActivity.class,"Adding " + lat + "," + lng);
+							db.addBus(marker.getString("id"), "", lat, lng);
+						}
+					} catch (JSONException je)
+					{
+						je.printStackTrace();
+					}
+				}
+            } catch (Exception e) { e.printStackTrace(); }
+
+            Common.info(BusTimesActivity.class,"Database contains " + db.getBusStopCount() + " bus stops");
+            context.dialog.dismiss();
+        }
 	}
 }
