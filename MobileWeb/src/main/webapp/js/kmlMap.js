@@ -111,6 +111,7 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
         function errorCallBack(error) {
             navigator.geolocation.clearWatch(watchId);
             hideSearchMessage();
+            alert("Unable to calculate your position");
             displayMap(defaultLatitude, defaultLongitude);
         }
 
