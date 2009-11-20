@@ -70,7 +70,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         // get the model based on the id and any parameters passed
         Model model = findModel(id, parameters);
 
-        if (model.isEmpty()) {
+        if (model == null || model.isEmpty()) {
             log.error("Unable to construct a model");
             return null;
         }
