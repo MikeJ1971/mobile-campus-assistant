@@ -44,10 +44,15 @@
  Author: Mike Jones (mike.a.jones@bristol.ac.uk)
 
  **/
-var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, proxyUrl, icon, markerData) {
+var map;
+var markers = new Array(); // holds stop markers
+var proxyUrl;
+var icon;
 
-    var map;
-    var markers = new Array(); // holds stop markers
+var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, maxPoll, goodAccuracy, moderateAccuracy, maxDistance, defaultZoomLevel, pUrl, markerIcon, markerUrl) {
+
+    proxyUrl = pUrl;
+    icon = markerIcon;
 
     window.onload = function() {
 
@@ -64,8 +69,8 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
         };
         map = new google.maps.Map(document.getElementById(mapElementId), myOptions);
 
-        // populate the markers array
-        createMarkers();
+        // do the markers
+        getMarkerData(markerUrl);
 
         // we use the loading of viewable tiles to trigger the refreshing of the markers
         google.maps.event.addListener(map, 'tilesloaded', function() {
@@ -82,25 +87,6 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
         findLocation();
 
     }
-
-    // intialise the markers
-    var createMarkers = function() {
-
-        var infowindow = new google.maps.InfoWindow();
-
-        for (var i = 0; i < markerData.length; i++) {
-            var point = new google.maps.LatLng(markerData[i].lat, markerData[i].lng);
-            var markerId = markerData[i].id;
-            var marker = new google.maps.Marker({
-                position: point,
-                icon: icon
-            });
-
-            // attach the click listener
-            attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
-            markers[i] = marker;
-        }
-    };
 
     // refresh the markers display
     var overlayMarkers = function() {
@@ -143,10 +129,8 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 
         // do we support geolocation?
         if (navigator.geolocation) {
-
             watchId = navigator.geolocation.watchPosition(successCallback, errorCallBack, {enableHighAccuracy:true});
         } else {
-
             hideSearchMessage();
             displayMap(defaultLatitude, defaultLongitude);
         }
@@ -169,9 +153,10 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
                 //var distance = defaultPoint.distanceFrom(currentPoint, undefined);
                 var distance = distHaversine(defaultPoint, currentPoint);
 
+
                 // move to default position if more than maxDistance away from campus
                 if (distance >= maxDistance) {
-                    alert("Your calculated position is MORE THAN " + maxDistance + " meters away from the campus. The map will centre on the campus rather than your current location.");
+                    alert("Your calculated position is MORE THAN "  + maxDistance + " meters away from the campus. The map will centre on the campus rather than your current location.");
                     displayMap(defaultLatitude, defaultLongitude);
                     return;
                 }
@@ -197,7 +182,7 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
         function errorCallBack(error) {
             navigator.geolocation.clearWatch(watchId);
             hideSearchMessage();
-            alert("Unable to calculate your position");
+            alert("Unable to obtain an accurate position. The map will centre on the campus rather than your current location.");
             displayMap(defaultLatitude, defaultLongitude);
         }
 
@@ -219,6 +204,25 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
     var hideSearchMessage = function () {
         document.getElementById("searching").style.visibility = "hidden";
     };
+
+    /* see http://stackoverflow.com/questions/1502590/calcualte-distance-between-two-points-in-google-maps-v3/1502821#1502821 */
+    var rad = function(x) {
+        return x * Math.PI / 180;
+    }
+
+    var distHaversine = function(p1, p2) {
+        var R = 6371; // earth's mean radius in km
+        var dLat = rad(p2.lat() - p1.lat());
+        var dLong = rad(p2.lng() - p1.lng());
+
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+
+        return d.toFixed(3) * 1000;
+    }
+
 
 };
 
@@ -297,18 +301,63 @@ var setInfoContent = function(infowindow, json) {
     infowindow.setContent(content);
 }
 
-/* see http://stackoverflow.com/questions/1502590/calcualte-distance-between-two-points-in-google-maps-v3/1502821#1502821 */
-var rad = function(x) {return x*Math.PI/180;}
+//ajax request for marker data
+var getMarkerData = function(url) {
 
-var distHaversine = function(p1, p2) {
-  var R = 6371; // earth's mean radius in km
-  var dLat  = rad(p2.lat() - p1.lat());
-  var dLong = rad(p2.lng() - p1.lng());
+    var xmlhttp;
 
-  var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) * Math.sin(dLong/2) * Math.sin(dLong/2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  var d = R * c;
+    if (window.XMLHttpRequest) {
 
-  return d.toFixed(3) * 1000;
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+
+    } else {
+
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    }
+
+    xmlhttp.onreadystatechange = function() {
+
+        if (xmlhttp.readyState == 4) {
+
+            // populate the markers array
+            createMarkers(xmlhttp.responseText);
+
+        }
+
+    }
+
+    // make the request
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send(null);
+
 }
+
+// intialise the markers
+var createMarkers = function(markerJson) {
+
+    // slurp the incoming json
+    var m = eval('(' + markerJson + ')');
+
+    var markerData = m.markers;
+
+    var infowindow = new google.maps.InfoWindow();
+
+    for (var i = 0; i < markerData.length; i++) {
+        var point = new google.maps.LatLng(markerData[i].lat, markerData[i].lng);
+        var markerId = markerData[i].id;
+        var marker = new google.maps.Marker({
+            position: point,
+            icon: icon
+        });
+        // attach the click listener
+        attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
+        markers[i] = marker;
+    }
+};
+
+
+
+
