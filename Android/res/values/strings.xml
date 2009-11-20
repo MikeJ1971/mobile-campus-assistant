@@ -4,10 +4,12 @@
     <string name="app_name">BusTimes</string>
     <string name="base_url">https://mca.ilrt.bris.ac.uk/</string>
     <string name="busurl">maps/busstops/</string>
+    <string name="forcereload">false</string>
+    <string name="loggerenabled">true</string>
     
     <!--  DATABASE strings -->
     <string name="BusTimesDatabase_onCreate">"
-CREATE TABLE busstops (_id INTEGER PRIMARY KEY AUTOINCREMENT, stop_id TEXT, title TEXT, lat FLOAT, lng FLOAT, last_update INTEGER);
+CREATE TABLE busstops (_id INTEGER PRIMARY KEY AUTOINCREMENT, stop_id TEXT, title TEXT, lat DOUBLE, lng DOUBLE, last_update INTEGER);
 CREATE TABLE departures ( _id INTEGER PRIMARY KEY AUTOINCREMENT, stop_id TEXT, service TEXT, due TEXT, destination TEXT, last_update INTEGER);
 "</string>
 <string name="BusTimesDatabase_onUpgrade">"
