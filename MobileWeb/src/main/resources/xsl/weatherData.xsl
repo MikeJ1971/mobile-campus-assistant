@@ -19,7 +19,9 @@
                 <mca:hasHtmlFragment>
                     <xsl:text disable-output-escaping="yes">&lt;</xsl:text>
                     <xsl:value-of select="concat('!','[','CDATA','[')"/>
+                    <div id="weatherData">
                     <xsl:call-template name="site"/>
+                    </div>
                     <xsl:value-of select="concat(']',']')"/>
                     <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
                 </mca:hasHtmlFragment>

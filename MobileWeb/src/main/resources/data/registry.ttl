@@ -37,7 +37,7 @@
     dc:description "Today's weather in Bristol" ;
     rdfs:seeAlso <http://portal.bris.ac.uk/portal-weather/newXml> ;
     mca:order "1"^^xsd:integer ;
-    mca:template <template://weather.ftl> ;
+    mca:template <template://htmlFragment.ftl> ;
     mca:style "weather"^^xsd:string ;
     .
 
@@ -54,7 +54,7 @@
     dc:description "PC Availability" ;
     rdfs:seeAlso <http://is-freepcs.cse.bris.ac.uk/> ;
     mca:order "3"^^xsd:integer ;
-    mca:template <template://pcavailability.ftl> ;
+    mca:template <template://htmlFragment.ftl> ;
     mca:style "pcavailability"^^xsd:string ;
     .
 

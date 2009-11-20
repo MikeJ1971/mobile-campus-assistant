@@ -18,10 +18,12 @@
                 <mca:hasHtmlFragment>
                     <xsl:text disable-output-escaping="yes">&lt;</xsl:text>
                     <xsl:value-of select="concat('!','[','CDATA','[')"/>
+                    <div id="pcavailability">
                     <xsl:call-template name="update"/>
                     <table>
                         <xsl:call-template name="availability"/>
                     </table>
+                    </div>
                     <xsl:value-of select="concat(']',']')"/>
                     <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
                 </mca:hasHtmlFragment>

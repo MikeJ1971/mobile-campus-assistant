@@ -4,8 +4,6 @@
 
 <@Title label="${it.label}" />
 
-<div id="pcavailability">
-    ${it.htmlFragment!"<p>No PC Availability Data Available!</p>"}
-</div>
+${it.htmlFragment!"<p>Sorry, not data is available</p>"}
 
 <#include "includes/footer.ftl"/>
