@@ -1,22 +1,21 @@
 <#include "includes/header.ftl"/>
-<div class="group">
+
+<#include "includes/logoSameLevelNav.ftl"/>
+
+<@Title label="News Item" />
+
     <div class="newsItem">
-        <#if it.label??>
-            <h3>${it.label}</h3>
-        </#if>
-        <#if it.date??>
-            <p class="smallPublishDate"><em>${it.date?string("dd MMMM yyyy hh:mm:ss")}</em></p>
-        </#if>
-        <#if it.description??>
-            <p>${it.description}</p>
-        </#if>
+
+        <#if it.label??><h2>${it.label}</h2></#if>
+        <#if it.date??><p class="publishDate">${it.date?string("dd MMMM yyyy")}</p></#if>
+        <#if it.description??><p>${it.description}</p></#if>
         <#if it.link??>
-            <p><strong><a href="${it.link}">Read more...</a></strong>
-            <span class="smallNote">(Note: Content might not be optimized for mobile devices.)</span></p>
+            <p><a href="${it.link}">Read more...</a>
+            <span class="contentWarning">(content not optimized for mobile devices)</span></p>
          </#if>
         <#if it.provenance??>
-            <p>Original source: <a href="${it.provenance}">${it.provenance}</a></p>
+            <p class="contentSource">Source: <a href="${it.provenance}">${it.provenance}</a></p>
         </#if>
     </div>
-</div>
+
 <#include "includes/footer.ftl"/>

@@ -1,7 +1,10 @@
 <#include "includes/header.ftl"/>
 
-<div class="contacts">
-    <h4>${it.label}</h4>
+<#include "includes/logoOneLevelNav.ftl"/>
+
+<@Title label="${it.label}" />
+
+<div class="contactDetails">
     <ul>
         <#if it.phoneNumber??>
         <li class="phoneContact"><a href="${it.phoneNumber}">${it.phoneNumberLabel}</a></li>

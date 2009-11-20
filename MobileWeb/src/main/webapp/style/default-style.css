@@ -1,0 +1,308 @@
+body {
+    background: #e5e5e5;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
+    font-family: Helvetica, serif;
+}
+
+h1 {
+    font-size: 14px;
+}
+
+p {
+    font-family: Helvetica, serif;
+    font-size: 12px;
+}
+
+#header {
+    background: #2858BB url(../images/uob-logo.png) no-repeat right;
+    overflow: hidden;
+    padding: 12px;
+
+}
+
+#footer {
+    background: #2858BB;
+    padding: 10px;
+    font-family: Helvetica, serif;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+#mainContent {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.group {
+    margin: 10px 0px 10px 0px;
+}
+
+.group h3 {
+    text-align: center;
+    margin: 8px;
+}
+
+.group h4 {
+    padding-left: 6px;
+}
+
+.group ul {
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -border-radius: 10px;
+    font-size: 17px;
+    font-family: Helvetica, serif;
+    font-weight: bold;
+    color: #000000;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #999999;
+    padding: 0px;
+    margin: 0px;
+}
+
+.group li {
+    list-style: none;
+    padding: 15px 10px 15px 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #999999;
+    background: url(../images/chevron.png) no-repeat;
+    overflow: hidden;
+    background-position: right;
+    background-position: 99% 50%;
+}
+
+.group li:first-child {
+    border-top: 0;
+}
+
+.group p {
+    font-family: Helvetica, serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    display: block;
+}
+
+#map {
+    width: 300px;
+    height: 300px;
+    padding-bottom: 5px;
+}
+
+/*
+transport-info-init is used to intialise the infowindow in the transport map.
+It's height value should ensure that the map pans enough to allow for later dynamic content 
+*/
+#transport-info-init {
+	height: 150px;
+	width: 100%;
+}
+
+#transport-info {
+	width: 100%;
+}
+
+#searching {
+    position: absolute;
+    top: 20;
+    background: #FFFFCC;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b3b9ab;
+    z-index: 100;
+}
+
+.publishDate {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.newsItem h3 {
+    padding: 10px 5px 5px 10px;
+    margin: 0px;
+}
+
+.newsItem p {
+    padding: 5px 5px 5px 10px;
+    margin: 0px;
+}
+
+.smallPublishDate {
+    font-size: 10px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.smallNote {
+    font-size: 9px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.contacts ul {
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -border-radius: 10px;
+    font-size: 17px;
+    font-family: Helvetica, serif;
+    font-weight: bold;
+    color: #000000;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #999999;
+    padding: 0;
+}
+
+.contacts li {
+    list-style: none;
+    padding: 15px 10px 15px 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #999999;
+    overflow: hidden;
+    background-position: right;
+    background-position: 99% 50%;
+}
+
+.contacts li:first-child {
+    border-top: 0;
+}
+
+.contacts h4 {
+    text-align: center;
+    font-size: 18px;
+    margin: 12px;
+}
+
+.phoneContact {
+    background: url(../images/75-phone.png) no-repeat;
+}
+
+.emailContact {
+    background: url(../images/18-envelope.png) no-repeat;
+}
+
+#information {
+    padding-top:20px;
+    margin: 10px;
+}
+
+#information a {
+    display: inline;
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+#copyright {
+    margin: 10px;
+}
+
+#pcavailability table {
+    border: solid 1px #000000;
+    padding: 3px;
+}
+
+#pcavailability td {
+    padding-right: 15px;
+}
+
+#directory-help a {
+	display: inline;
+	text-decoration: underline;
+}
+
+/* EVENTS */
+.event h3
+{
+    border-bottom:1px solid black;
+    padding-bottom:1em;
+    color:#5b5b9a;
+}
+
+.group .description a
+{
+    display:inline;
+    text-decoration:underline;
+    color:blue;
+}
+
+.event .label
+{
+    font-weight:bold;
+    padding-right:0.2em;
+    width:5em;
+    display:inline-block;
+}
+
+.event .date attr
+{
+    display:none;
+}
+
+.event .row
+{
+    margin-top:0.6em;
+    margin-bottom:0.6em;
+    margin-left:1em;
+    padding-left:0.4em;
+}
+
+.event p
+{
+    font-size:100%;
+}
+
+.event .description
+{
+    border-left:5px solid #89bf58;
+}
+
+.event .day, .event .time, .event .from, .event .to
+{
+    border-left:5px solid #e8a81d;
+}
+
+.event .location
+{
+    border-left:5px solid #e7481d;
+}
+
+.eventList .startdate
+{
+    color: #ccc; font-size:80%;
+}
+
+.group .calendarlinks
+{
+    text-align:center;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+}
+
+.group .calendarlinks .calendarlink
+{
+    text-align:center;
+    display:inline-block;
+    padding-left:2em;
+    padding-right:2em;
+}
+
+.group .calendarlinks .calendarlink img
+{
+    border:0px;
+}
+
+/* gmap api id - stops university photos appearing in windows */
+#iw_kml img {
+    display: none;
+}

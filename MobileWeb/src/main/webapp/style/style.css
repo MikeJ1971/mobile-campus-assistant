@@ -1,232 +1,243 @@
 body {
-    background: #e5e5e5;
-    margin: 0;
-    padding: 0;
-    -webkit-text-size-adjust: none;
-    font-family: Helvetica, serif;
+    font-family: Helvetica, Arial, sans-serif, serif;
+    padding: 0px;
+    margin: 0px;
+    max-width: 320px;
 }
 
 h1 {
     font-size: 14px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 14px;
+    text-align: left;
+    margin: 9px;
+}
+
+h3 {
+    font-size: 12px;
+    text-align: left;
+    margin: 9px;
 }
 
 p {
-    font-family: Helvetica, serif;
     font-size: 12px;
+    line-height: 18px;
+    margin: 9px;
 }
 
 #header {
-    background: #2858BB url(../images/uob-logo.png) no-repeat right;
-    overflow: hidden;
-    padding: 12px;
-
-}
-
-#footer {
-    background: #2858BB;
-    padding: 10px;
-    font-family: Helvetica, serif;
-    color: #FFFFFF;
-    font-size: 12px;
-}
-
-#mainContent {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.group {
-    margin: 10px 0px 10px 0px;
-}
-
-.group h3 {
+    background-image: url(../images/bristol/header-bkgd.png);
+    height: 55px;
     text-align: center;
-    margin: 8px;
 }
 
-.group h4 {
-    padding-left: 6px;
-}
-
-.group ul {
-    background: #FFFFFF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -border-radius: 10px;
-    font-size: 17px;
-    font-family: Helvetica, serif;
-    font-weight: bold;
-    color: #000000;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #999999;
-    padding: 0px;
-    margin: 0px;
-}
-
-.group li {
-    list-style: none;
-    padding: 15px 10px 15px 10px;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: #999999;
-    background: url(../images/chevron.png) no-repeat;
-    overflow: hidden;
-    background-position: right;
-    background-position: 99% 50%;
-}
-
-.group li:first-child {
-    border-top: 0;
-}
-
-.group p {
-    font-family: Helvetica, serif;
-    font-size: 16px;
-}
-
-a {
-    text-decoration: none;
-    color: #000000;
-    display: block;
-}
-
-#map {
-    width: 300px;
-    height: 300px;
-    padding-bottom: 5px;
-}
-
-/*
-transport-info-init is used to intialise the infowindow in the transport map.
-It's height value should ensure that the map pans enough to allow for later dynamic content 
-*/
-#transport-info-init {
-	height: 150px;
-	width: 100%;
-}
-
-#transport-info {
-	width: 100%;
-}
-
-#searching {
+#header a {
+    display: inline-block;
+    background-image: url(../images/bristol/backarrow.png);
+    width: 56px;
+    height: 55px;
+    margin: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 0px;
     position: absolute;
-    top: 20;
-    background: #FFFFCC;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #b3b9ab;
-    z-index: 100;
+    top: 0;
 }
 
-.publishDate {
-    font-size: 14px;
-    font-style: italic;
-    font-weight: normal;
+#header a:hover, #back a:active {
+    background-position: -58px -0px;
 }
 
-.newsItem h3 {
-    padding: 10px 5px 5px 10px;
-    margin: 0px;
+.hideText {
+    display: none;
 }
 
-.newsItem p {
-    padding: 5px 5px 5px 10px;
-    margin: 0px;
-}
-
-.smallPublishDate {
-    font-size: 10px;
-    font-style: italic;
-    font-weight: normal;
-}
-
-.smallNote {
-    font-size: 9px;
-    font-style: italic;
-    font-weight: normal;
-}
-
-.contacts ul {
-    background: #FFFFFF;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -border-radius: 10px;
-    font-size: 17px;
-    font-family: Helvetica, serif;
-    font-weight: bold;
-    color: #000000;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #999999;
-    padding: 0;
-}
-
-.contacts li {
-    list-style: none;
-    padding: 15px 10px 15px 10px;
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: #999999;
-    overflow: hidden;
-    background-position: right;
-    background-position: 99% 50%;
-}
-
-.contacts li:first-child {
-    border-top: 0;
-}
-
-.contacts h4 {
+#title {
+    background-image: url(../images/bristol/pagetitle-bkgd.png);
+    padding: 3px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    height: 16px;
+    border-top: solid 1px #E6E6E6;
+    border-bottom: solid 1px #FFFFFF;
+    color: #FFFFFF;
     text-align: center;
-    font-size: 18px;
-    margin: 12px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.phoneContact {
-    background: url(../images/75-phone.png) no-repeat;
+.nav-list {
+    margin: 0px;
+    padding: 0px;
+    background: url(../images/bristol/nav-list-bkgd.png);
 }
 
-.emailContact {
-    background: url(../images/18-envelope.png) no-repeat;
+.nav-list li {
+    border-bottom: 1px solid #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-list li > a {
+    display: block;
+    width: 320px;
+    height: 48px;
+    background: url(../images/bristol/nav-list-item-bkgd.png) no-repeat;
+    padding: 10px 0px 0px 10px;
+    text-decoration: none;
+    color: #171717;
+}
+
+.nav-list li:last-child > a {
+    height: 58px;
+}
+
+.nav-list li > a:hover, li > a:active {
+    background-position: 0 -58px;
+    color: #333333;
 }
 
 #information {
-    padding-top:20px;
+    padding-top: 30px;
     margin: 10px;
+    font-size: 12px;
+    color: #666666;
+    line-height: 18px;
 }
 
 #information a {
     display: inline;
-    color: #0000FF;
+    color: #2F85B5;
     text-decoration: underline;
 }
 
 #copyright {
     margin: 10px;
+    padding-top: 15px;;
+    font-size: 12px;
+    color: #666666;
+}
+
+.newsItem {
+    padding: 10px;
+    color: #252525;
+}
+
+.newsItem a {
+    display: inline;
+    color: #2F85B5;
+    text-decoration: underline;
+}
+
+.publishDate {
+    font-style: italic;
+}
+
+.contentWarning, .contentSource {
+    color: #666666;
+    font-style: italic;
+    font-size: 11px;
+}
+
+/* ICONS - used in the navigation */
+
+.map {
+    background: url(../images/bristol/icon-map.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.today {
+    background: url(../images/bristol/icon-flag.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
+
+.events {
+    background: url(../images/bristol/icon-calendar.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
+
+.news {
+    background: url(../images/bristol/icon-news.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.weather {
+    background: url(../images/bristol/icon-umbrella.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.contacts {
+    background: url(../images/bristol/icon-contacts.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.pcavailability {
+    background: url(../images/bristol/icon-computer.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
+
+.servicestatus {
+    background: url(../images/bristol/icon-dial.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0px;
+    padding: 0px 10px 0px 0px;
+    vertical-align: middle
+}
+
+.weatherIcon, .weatherDetails, .weatherDateTime {
+   text-align: center;
 }
 
 #pcavailability table {
-    border: solid 1px #000000;
-    padding: 3px;
+    width: 55%;
+    margin: 9px;
+    font-size: 12px;
 }
 
-#pcavailability td {
-    padding-right: 15px;
-}
 
-#directory-help a {
-	display: inline;
-	text-decoration: underline;
-}
 
 /* EVENTS */
-.event h3
-{
-    border-bottom:1px solid black;
-    padding-bottom:1em;
-    color:#5b5b9a;
+
+.event {
+    font-size: 12px;
 }
 
 .group .description a
@@ -282,14 +293,19 @@ It's height value should ensure that the map pans enough to allow for later dyna
     color: #ccc; font-size:80%;
 }
 
-.group .calendarlinks
+.calendarlinks
 {
     text-align:center;
     margin-top:0.5em;
     margin-bottom:0.5em;
+    font-size: 12px;
 }
 
-.group .calendarlinks .calendarlink
+.calendarlinks a {
+    text-decoration: none;
+}
+
+.calendarlinks .calendarlink
 {
     text-align:center;
     display:inline-block;
@@ -297,7 +313,69 @@ It's height value should ensure that the map pans enough to allow for later dyna
     padding-right:2em;
 }
 
-.group .calendarlinks .calendarlink img
+.calendarlinks .calendarlink img
 {
     border:0px;
+}
+
+
+/* Contacts */
+
+.contactDetails {
+    font-size: 13px;
+}
+
+.contactDetails form {
+    margin: 9px;
+}
+
+.contactDetails ul {
+    list-style: none;
+    margin-left: 9px;
+    padding: 0px;
+}
+
+.contactDetails li {
+
+    margin-top: 15px;
+}
+
+.contactDetails a {
+    display: inline;
+    color: #2F85B5;
+    text-decoration: underline;
+}
+
+#map {
+    width: 320px;
+    height: 300px;
+    padding-bottom: 5px;
+}
+
+#searching {
+    position: absolute;
+    top: 20;
+    background: #FFFFCC;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b3b9ab;
+    z-index: 100;
+}
+
+/*
+transport-info-init is used to intialise the infowindow in the transport map.
+It's height value should ensure that the map pans enough to allow for later dynamic content
+*/
+#transport-info-init {
+    height: 150px;
+    width: 100%;
+}
+
+#transport-info {
+    width: 100%;
+}
+
+/* gmap api id - stops university photos appearing in windows */
+#iw_kml img {
+    display: none;
 }

@@ -85,6 +85,11 @@ public abstract class AbstractDao {
             item.setType(resource.getProperty(RDF.type).getResource().getURI());
         }
 
+        // style
+        if (resource.hasProperty(MCA_REGISTRY.style)) {
+            item.setStyle(resource.getProperty(MCA_REGISTRY.style).getLiteral().getLexicalForm());
+        }
+
         // items
         StmtIterator iter = resource.listProperties(MCA_REGISTRY.hasItem);
 

@@ -1,5 +1,9 @@
 <#include "includes/header.ftl"/>
 
+<#include "includes/logoSameLevelNav.ftl"/>
+
+<@Title label="Event Details" />
+
 <script src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js" type="text/javascript"></script>
 <script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
 

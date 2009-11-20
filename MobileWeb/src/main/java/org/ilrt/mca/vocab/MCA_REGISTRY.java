@@ -75,6 +75,7 @@ public class MCA_REGISTRY {
 
     public static final Resource EventCalendar = model.createProperty(NS + "EventCalendar");
 
+
     // ----- Properties
 
     public static final Property order = model.createProperty(NS + "order");
@@ -108,4 +109,6 @@ public class MCA_REGISTRY {
     public static final Property icalLink = model.createProperty(NS + "icalLink");
 
     public static final Property eventlist = model.createProperty(NS + "eventlist");
+
+    public static final Property style = model.createProperty(NS + "style");
 }

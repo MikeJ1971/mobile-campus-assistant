@@ -18,7 +18,8 @@
     dc:description "Information and alerts in case of emergency" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/alert/updates/news-feed.rss> ;
     mca:order "1"^^xsd:integer ;
-    mca:template <template://alertsList.ftl> ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/main/> rdf:type mca:News ;
@@ -27,6 +28,7 @@
     rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 # NEWS - ACADEMIC DEPARTMENTS
@@ -55,198 +57,219 @@
     mca:hasItem <mca://registry/news/academic/anatomy/> ;
     mca:order "3"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/anatomy/> rdf:type mca:News ;
-    rdfs:label "Department of Anatomy" ;
+    rdfs:label "Anatomy" ;
     dc:description "News from the Department of Anatomy" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/anatomy/news/news-feed.rss> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/civilengineering/> rdf:type mca:News ;
-    rdfs:label "Department of Civil Engineering" ;
-    dc:description "News from the Department of Civil Engineering" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/civilengineering/news/news.rss> ;
-    mca:order "2"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/compsci/> rdf:type mca:News ;
-    rdfs:label "Department of Computer Science News" ;
-    dc:description "News from the Department of Computer Science" ;
-    rdfs:seeAlso <http://www.cs.bris.ac.uk/news/news.xml> ;
-    mca:order "3"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/eeng/> rdf:type mca:News ;
-    rdfs:label "Department of Electrical &amp; Electronic Engineering news" ;
-    dc:description "News from the Department of Electrical &amp; Electronic Engineering" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/eeng/news/news-feed.rss> ;
-    mca:order "4"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/history/> rdf:type mca:News ;
-    rdfs:label "Department of History News" ;
-    dc:description "News from Information Services" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/history/news/news-feed.rss> ;
-    mca:order "5"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/arthistory/> rdf:type mca:News ;
-    rdfs:label "Department of History of Art News" ;
-    dc:description "News from the Department of History of Art" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/arthistory/news/news-feed.rss> ;
-    mca:order "6"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-
-<mca://registry/news/academic/music/> rdf:type mca:News ;
-    rdfs:label "Department of Music News" ;
-    dc:description "News from the Department of Music" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/music/news/news.rss> ;
-    mca:order "7"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/politics/> rdf:type mca:News ;
-    rdfs:label "Department of Politics News" ;
-    dc:description "News from the Department of Politics" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/politics/news/news.rss> ;
-    mca:order "8"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/fmd/> rdf:type mca:News ;
-    rdfs:label "Faculty of Medicine and Dentistry News" ;
-    dc:description "News from the Faculty of Medicine and Dentistry" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/fmd/news/news.rss> ;
-    mca:order "9"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/science/> rdf:type mca:News ;
-    rdfs:label "Faculty of Science News" ;
-    dc:description "News from the Faculty of Science" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/science/news/news-feed.rss> ;
-    mca:order "10"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/academic/education/> rdf:type mca:News ;
-    rdfs:label "Graduate School of Education News" ;
-    dc:description "News from the Graduate School of Education" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/education/news/news-feed.rss> ;
-    mca:order "11"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/sachs/> rdf:type mca:News ;
-    rdfs:label "School of Applied Community and Health Studies News" ;
+    rdfs:label "Applied Community and Health Studies" ;
     dc:description "News from the School of Applied Community and Health Studies" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/sachs/news/news-feed.rss> ;
-    mca:order "12"^^xsd:integer ;
+    mca:order "2"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/biology/> rdf:type mca:News ;
-    rdfs:label "School of Biological Sciences News" ;
+    rdfs:label "Biological Sciences" ;
     dc:description "News from the School of Biological Sciences" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/biology/news/news-feed.rss> ;
-    mca:order "13"^^xsd:integer ;
+    mca:order "3"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/chemistry/> rdf:type mca:News ;
-    rdfs:label "School of Chemistry News" ;
+    rdfs:label "Chemistry" ;
     dc:description "News from the School of Chemistry" ;
     rdfs:seeAlso <http://www.chm.bris.ac.uk/whatsnew/chemrss.xml> ;
-    mca:order "14"^^xsd:integer ;
+    mca:order "4"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/civilengineering/> rdf:type mca:News ;
+    rdfs:label "Civil Engineering" ;
+    dc:description "News from the Department of Civil Engineering" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/civilengineering/news/news.rss> ;
+    mca:order "5"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/compsci/> rdf:type mca:News ;
+    rdfs:label "Computer Science" ;
+    dc:description "News from the Department of Computer Science" ;
+    rdfs:seeAlso <http://www.cs.bris.ac.uk/news/news.xml> ;
+    mca:order "6"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/efm/> rdf:type mca:News ;
-    rdfs:label "School Of Economics, Finance and Management News" ;
+    rdfs:label "Economics, Finance and Management" ;
     dc:description "News from the School Of Economics, Finance and Management" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/efm/news/news-feed.rss> ;
-    mca:order "15"^^xsd:integer ;
+    mca:order "7"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/education/> rdf:type mca:News ;
+    rdfs:label "Education" ;
+    dc:description "News from the Graduate School of Education" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/education/news/news-feed.rss> ;
+    mca:order "8"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/eeng/> rdf:type mca:News ;
+    rdfs:label "Electrical &amp; Electronic Engineering" ;
+    dc:description "News from the Department of Electrical &amp; Electronic Engineering" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/eeng/news/news-feed.rss> ;
+    mca:order "9"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/history/> rdf:type mca:News ;
+    rdfs:label "History" ;
+    dc:description "News from the Department of History" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/history/news/news-feed.rss> ;
+    mca:order "10"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/arthistory/> rdf:type mca:News ;
+    rdfs:label "History of Art" ;
+    dc:description "News from the Department of History of Art" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/arthistory/news/news-feed.rss> ;
+    mca:order "11"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/humanities/> rdf:type mca:News ;
-    rdfs:label "School of Humanities News" ;
+    rdfs:label "Humanities" ;
     dc:description "News from the School of Humanities News" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/humanities/news/news-feed.rss> ;
-    mca:order "16"^^xsd:integer ;
+    mca:order "12"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/law/> rdf:type mca:News ;
-    rdfs:label "School of Law News" ;
+    rdfs:label "Law" ;
     dc:description "News from the School of Law" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/law/news/news-feed.rss> ;
+    mca:order "13"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/fmd/> rdf:type mca:News ;
+    rdfs:label "Medicine and Dentistry" ;
+    dc:description "News from the Faculty of Medicine and Dentistry" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/fmd/news/news.rss> ;
+    mca:order "14"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/music/> rdf:type mca:News ;
+    rdfs:label "Music" ;
+    dc:description "News from the Department of Music" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/music/news/news.rss> ;
+    mca:order "15"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/neuroscience/> rdf:type mca:News ;
+    rdfs:label "Neuroscience" ;
+    dc:description "News from Bristol Neuroscience" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/neuroscience/news/bnnews.rss> ;
+    mca:order "16"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/academic/politics/> rdf:type mca:News ;
+    rdfs:label "Politics" ;
+    dc:description "News from the Department of Politics" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/politics/news/news.rss> ;
     mca:order "17"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/academic/sps/> rdf:type mca:News ;
-    rdfs:label "School for Policy Studies News" ;
+    rdfs:label "Policy Studies" ;
     dc:description "News from the School for Policy Studies" ;
     rdfs:seeAlso <http://www.bristol.ac.uk/sps/news/news-feed.rss> ;
     mca:order "18"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
-<mca://registry/news/academic/neuroscience/> rdf:type mca:News ;
-    rdfs:label "Bristol Neuroscience News" ;
-    dc:description "News from Bristol Neuroscience" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/neuroscience/news/bnnews.rss> ;
+<mca://registry/news/academic/science/> rdf:type mca:News ;
+    rdfs:label "Science" ;
+    dc:description "News from the Faculty of Science" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/science/news/news-feed.rss> ;
     mca:order "19"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
-
 
 # NEWS - SUPPORT SERVICES
 
+<mca://registry/news/services/is/> rdf:type mca:News ;
+    rdfs:label "Information Services" ;
+    dc:description "News from Information Services" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/is/news/news.rss> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/services/sports/> rdf:type mca:News ;
+    rdfs:label "Sport, Exercise and Health" ;
+    dc:description "News from Sport, Exercise and Health" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/sport/news/news-feed.rss> ;
+    mca:order "2"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/services/health/> rdf:type mca:News ;
+    rdfs:label "Students' Health Service" ;
+    dc:description "News from Students' Health Service" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/students-health/news/news-feed.rss> ;
+    mca:order "3"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
 <mca://registry/news/services/> rdf:type mca:Group ;
-    rdfs:label "Support Services News" ;
+    rdfs:label "Support Services" ;
     dc:description "Latest news from the support services" ;
     mca:hasItem <mca://registry/news/services/is/> ;
     mca:hasItem <mca://registry/news/services/sports/> ;
     mca:hasItem <mca://registry/news/services/health/> ;
     mca:order "4"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
-
-<mca://registry/news/services/is/> rdf:type mca:News ;
-    rdfs:label "Information Services News" ;
-    dc:description "News from Information Services" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/is/news/news.rss> ;
-    mca:order "1"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/services/sports/> rdf:type mca:News ;
-    rdfs:label "Sport, Exercise and Health News" ;
-    dc:description "News from Sport, Exercise and Health" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/sport/news/news-feed.rss> ;
-    mca:order "2"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
-<mca://registry/news/services/health/> rdf:type mca:News ;
-    rdfs:label "Students' Health Service News" ;
-    dc:description "News from Students' Health Service" ;
-    rdfs:seeAlso <http://www.bristol.ac.uk/students-health/news/news-feed.rss> ;
-    mca:order "3"^^xsd:integer ;
-    mca:template <template://newsList.ftl> ;
-    .
-
 
 # NEWS - Students' Union
 
@@ -257,6 +280,7 @@
     mca:hasItem <mca://registry/news/ubu/events/> ;
     mca:order "5"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/ubu/latest/> rdf:type mca:News ;
@@ -265,6 +289,7 @@
     rdfs:seeAlso <http://www.ubu.org.uk/rss.xml> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 <mca://registry/news/ubu/events/> rdf:type mca:News ;
@@ -273,6 +298,7 @@
     rdfs:seeAlso <http://www.ubu.org.uk/feed/events/rss.xml> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
     .
 
 

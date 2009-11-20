@@ -2,8 +2,8 @@
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<#include "includes/title.ftl"/>
+<@Title label="${it.label}" />
 
-<#include "includes/standardNavigation.ftl"/>
+${it.htmlFragment!"<p>Sorry, not data is available</p>"}
 
 <#include "includes/footer.ftl"/>
