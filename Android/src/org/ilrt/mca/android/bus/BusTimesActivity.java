@@ -1,7 +1,10 @@
 package org.ilrt.mca.android.bus;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import org.ilrt.mca.android.bus.db.BusStopsCursor;
 import org.ilrt.mca.android.bus.db.BusTimesDatabase;
-import org.ilrt.mca.android.bus.map.BusOverlay;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,16 +14,18 @@ import android.graphics.drawable.Drawable;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Debug;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
+
+import de.android1.overlaymanager.ManagedOverlay;
+import de.android1.overlaymanager.ManagedOverlayItem;
+import de.android1.overlaymanager.OverlayManager;
+import de.android1.overlaymanager.lazyload.LazyLoadCallback;
+import de.android1.overlaymanager.lazyload.LazyLoadException;
 
 public class BusTimesActivity extends MapActivity
 {
@@ -36,7 +41,7 @@ public class BusTimesActivity extends MapActivity
 	LocationListener myLocationListener;
 	public ProgressDialog dialog;
 	ProgressThread thread;
-	
+	OverlayManager overlayManager;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -52,9 +57,82 @@ public class BusTimesActivity extends MapActivity
 		db = new BusTimesDatabase(this);
 		
 		mvMap = (MapView) findViewById(R.id.mapmain);
+		mvMap.setBuiltInZoomControls(true);
 
+		// create an overlay manager to handle our bus stop points
+		overlayManager = new OverlayManager(this, mvMap);
+		
+		// get a handle on the controller
 		mc = mvMap.getController();
+		
+		// set the default zoom level
 		mc.setZoom(17);
+		
+		// load bus stop data if required
+		if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))
+		{
+			dialog = ProgressDialog.show(BusTimesActivity.this, "", "Loading Bus Data. Please wait...", true);
+			thread = new ProgressThread(this);
+			thread.start();
+		} // END if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))	
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		
+	    Drawable defaultmarker = getResources().getDrawable(R.drawable.bus);     
+
+	    ManagedOverlay managedOverlay = overlayManager.createOverlay("busstops",defaultmarker);
+	    
+	    managedOverlay.setLazyLoadCallback(new LazyLoadCallback() {
+
+	    	public List<ManagedOverlayItem> lazyload(GeoPoint topLeft, GeoPoint bottomRight, ManagedOverlay overlay) throws LazyLoadException
+	        {
+				List<ManagedOverlayItem> results = new LinkedList<ManagedOverlayItem>();
+
+//	    		try
+//	    		{
+					int width = (bottomRight.getLongitudeE6() - topLeft.getLongitudeE6())/2;
+					int height = (topLeft.getLatitudeE6()-bottomRight.getLatitudeE6())/2;
+					int lat = bottomRight.getLatitudeE6() + height;
+					int lng = topLeft.getLongitudeE6() + width;
+									    	
+					BusStopsCursor c = db.getBusStopsForRegion(lat,lng,(int)(width*1.1),(int)(height*1.1));
+					int count = c.getCount();
+					String title;
+					
+					// cap the maximum number of markers to show on the screen
+					if (count > 30) 
+					{
+						Common.warn(BusTimesActivity.class,count + " items returned, capping at 30");
+						
+						
+						count = 30;
+					}
+										
+					Common.info(BusTimesActivity.class,"size:"+count+" lat:"+lat+",lng:"+lng+ " w:"+width + ", h:"+height);
+					
+					for (int rowNum = 0; rowNum < count; rowNum++)
+					{
+						c.moveToPosition(rowNum);
+						title = "(" + c.getColStopId() + ")" + c.getColTitle();
+						lat = (int)c.getColLatitude();
+						lng = (int)c.getColLongitude();
+	//					Common.info(BusTimesActivity.class,lat + "," + lng);
+						GeoPoint point = new GeoPoint(lat,lng);
+						ManagedOverlayItem item = new ManagedOverlayItem(point, title,"Loading...");
+						results.add(item);
+					}
+					c.close();
+//	    		}
+//	    		catch (Exception e)
+//	    		{
+//	    			throw new LazyLoadException(e.getMessage());
+//	    		}
+				return results;   
+	        }
+	    });
 
 		mMyLocationOverlay = new MyLocationOverlay(this, mvMap);
 		mvMap.getOverlays().add(mMyLocationOverlay);
@@ -66,59 +144,12 @@ public class BusTimesActivity extends MapActivity
 				mc.animateTo(mMyLocationOverlay.getMyLocation());
 				mc.setZoom(17);
 				Common.info(BusTimesActivity.class,"Creating overlay");
-				addBusStopIcons(mvMap);
 			}
 		});
 
-		final Button btnNavigateToMe = (Button) findViewById(R.id.btnNavigateHere);
-		btnNavigateToMe.setOnClickListener(new View.OnClickListener()
-		{
-			public void onClick(View v)
-			{
-				Common.info(BusTimesActivity.class, "Clicking button");
-				try
-				{
-					mc.animateTo(mMyLocationOverlay.getMyLocation());
-//					mc.setZoom(17);
-//					mvMap.invalidate();
-				} catch (Exception e)
-				{
-					Common.warn(BusTimesActivity.class,"Unable to animate map", e);
-				}
-			}
-		});
-		
-		// set the label text
-		final TextView lblHeader = (TextView) findViewById(R.id.topLabel);
-
-		// load bus stop data if required
-		if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))
-		{
-			dialog = ProgressDialog.show(BusTimesActivity.this, "", "Loading Bus Data. Please wait...", true);
-			thread = new ProgressThread(this);
-			thread.start();
-		} // END if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))	
+	    overlayManager.populate();	    
 	}
-	
-    private void addBusStopIcons(MapView mvMap)
-    {
-    	Common.warn(BusTimesActivity.class,"Adding BusOverlay");
-    	
-    	try
-    	{
-    	Drawable marker = getResources().getDrawable(R.drawable.bus);
-        marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker.getIntrinsicHeight());
-        mvMap.getOverlays().add(new BusOverlay(marker, db, mMyLocationOverlay));
-    	}
-    	catch (Exception e) { e.printStackTrace(); }
 
-        mvMap.setClickable(true);
-        mvMap.setEnabled(true);
-        mvMap.setSatellite(false);
-        mvMap.setTraffic(false);
-        mvMap.setStreetView(false);
-    }
-    
   //Get the current location in start-up
     public void setInitialPoint()
     {
@@ -244,5 +275,11 @@ public class BusTimesActivity extends MapActivity
             Common.info(BusTimesActivity.class,"Database contains " + db.getBusStopCount() + " bus stops");
             context.dialog.dismiss();
         }
+	}
+	
+	@Override
+	public void onRestart()
+	{
+		 super.onRestart();
 	}
 }

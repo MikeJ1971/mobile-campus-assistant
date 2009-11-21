@@ -7,7 +7,6 @@ import org.ilrt.mca.android.bus.db.BusStopsCursor;
 import org.ilrt.mca.android.bus.db.BusTimesDatabase;
 
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
@@ -52,10 +51,10 @@ public class BusOverlay extends ItemizedOverlay<OverlayItem>
     		{
 	    	Common.info(BusOverlay.class,(currPos != null ? currPos.toString() : "null"));
 	    	
-	    	double lat = currPos.getLatitudeE6();
-	    	double lng = currPos.getLongitudeE6();
-	    	double width = this.getLatSpanE6();
-	    	double height = this.getLonSpanE6();
+	    	int lat = currPos.getLatitudeE6();
+	    	int lng = currPos.getLongitudeE6();
+	    	int width = this.getLatSpanE6();
+	    	int height = this.getLonSpanE6();
 	    	
 	    	Common.info(BusOverlay.class,"lat:"+lat);
 	    	Common.info(BusOverlay.class,"lng:"+lng);

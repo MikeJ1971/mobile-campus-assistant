@@ -4,7 +4,6 @@ import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteCursorDriver;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQuery;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 abstract class Cursor extends SQLiteCursor
 {    

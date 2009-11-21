@@ -21,8 +21,7 @@ public class BusStopsCursor extends SQLiteCursor
 		super(db, driver, editTable, query);
 	}
     
-	static class Factory implements SQLiteDatabase.CursorFactory{
-		@Override
+	public static class Factory implements SQLiteDatabase.CursorFactory{
 		public Cursor newCursor(SQLiteDatabase db, SQLiteCursorDriver driver, String editTable, SQLiteQuery query) {
 			return new BusStopsCursor(db, driver, editTable, query);
 		}

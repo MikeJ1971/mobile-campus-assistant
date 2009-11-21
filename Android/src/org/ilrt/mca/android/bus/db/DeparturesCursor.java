@@ -20,7 +20,6 @@ public class DeparturesCursor extends SQLiteCursor
 	}
     
     static class Factory implements SQLiteDatabase.CursorFactory{
-		@Override
 		public Cursor newCursor(SQLiteDatabase db, SQLiteCursorDriver driver, String editTable, SQLiteQuery query) {
 			return new DeparturesCursor(db, driver, editTable, query);
 		}

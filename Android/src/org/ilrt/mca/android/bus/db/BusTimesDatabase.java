@@ -2,6 +2,7 @@ package org.ilrt.mca.android.bus.db;
 
 import java.util.Date;
 
+import org.ilrt.mca.android.bus.Common;
 import org.ilrt.mca.android.bus.R;
 
 import android.content.ContentValues;
@@ -11,7 +12,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class BusTimesDatabase extends SQLiteOpenHelper
 {
@@ -90,7 +90,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 		catch (SQLiteException e)
 		{
-			Log.e("Error deleting all bus stops", e.toString());
+			Common.error(BusTimesDatabase.class,"Error deleting all bus stops", e);
 		}
     }
     
@@ -109,7 +109,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 		catch (SQLException e)
 		{
-			Log.e("Error writing new bus to database",e.toString());
+			Common.error(BusTimesDatabase.class,"Error writing new bus to database",e);
 		}
 	}
 	
@@ -129,7 +129,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 		catch (SQLException e)
 		{
-			Log.e("Error writing departure info to database",e.toString());
+			Common.error(BusTimesDatabase.class,"Error writing departure info to database",e);
 		}
 	}
 	
@@ -149,7 +149,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 		catch (SQLException e)
 		{
-			Log.e("Error updating the busstop table",e.toString());
+			Common.error(BusTimesDatabase.class,"Error updating the busstop table",e);
 		}
 	}
 	
@@ -165,7 +165,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 		catch (SQLException e)
 		{
-			Log.e("Error updating the busstop table",e.toString());
+			Common.error(BusTimesDatabase.class,"Error updating the busstop table",e);
 		}
 		
 		return 0;
@@ -181,11 +181,11 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 		catch (SQLiteException e)
 		{
-			Log.e("Error deleting departure information for stop " + stop_id, e.toString());
+			Common.error(BusTimesDatabase.class,"Error deleting departure information for stop " + stop_id, e);
 		}
 	}
 	
-	public BusStopsCursor getBusStopsForRegion(double lat, double lng, double width, double height)
+	public BusStopsCursor getBusStopsForRegion(int lat, int lng, int width, int height)
 	{
 
     	SQLiteDatabase d = getReadableDatabase();
@@ -226,7 +226,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 	public void onCreate(SQLiteDatabase db) {
 		String[] sql = mContext.getString(R.string.BusTimesDatabase_onCreate).split("\n");
 		boolean success = execMultipleSQL(db, sql);
-		if (!success) Log.e(BusTimesDatabase.class.getName(),"Unable to create database");
+		if (!success) Common.error(BusTimesDatabase.class,"Unable to create database");
 	}
 
 	@Override
@@ -235,7 +235,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		String[] sql = mContext.getString(R.string.BusTimesDatabase_onUpgrade).split("\n");
 		boolean success = execMultipleSQL(db, sql);
 		onCreate(db);
-		if (!success) Log.e(BusTimesDatabase.class.getName(),"Unable to upgrade the database");
+		if (!success) Common.error(BusTimesDatabase.class,"Unable to upgrade the database");
 	}
 	
     /**
@@ -258,7 +258,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 			
 			returnFlag = true;
 		} catch (SQLException e) {
-            Log.e("Error with sql statement", e.toString());
+			Common.error(BusTimesDatabase.class,"Error with sql statement", e);
         } finally {
         	db.endTransaction();
         }
