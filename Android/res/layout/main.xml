@@ -13,27 +13,63 @@
     android:apiKey="0_r5nuDgaqxC0t4l04lwIXTnmXNU1HMmfK-2d4g"
 	/>
 <!-- Key for mcaandroid.keystore:0_r5nuDgaqxBBGsTAH0rw65O5-FG_xsj-eiJRkA -->
+<!-- Key for debug.keystore:0_r5nuDgaqxC0t4l04lwIXTnmXNU1HMmfK-2d4g -->
 
-<TextView  
-	android:id="@+id/topLabel"
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    android:textColor="#FF000000"
-    android:layout_centerHorizontal="true"
-    android:gravity="top"
-    />
-    
-<Button
-	android:id="@+id/btnNavigateHere"
-	android:layout_width="150dp"
-	android:layout_height="wrap_content"
-	android:text="Me"
-	android:textSize="20sp"
-	android:gravity="center_vertical"
-	android:layout_centerInParent="true"
-	android:layout_alignParentBottom="true"
-	/>
+	<org.ilrt.mca.android.bus.map.TransparentRelativePanel
+			android:id="@+id/popup_window" 
+    	    android:layout_width="fill_parent"
+        	android:layout_height="fill_parent"
+        	android:orientation="vertical"
+        	android:gravity="left"
+        	android:padding="1px"
+        	android:background="@drawable/white">
 	
+		<RelativeLayout	xmlns:android="http://schemas.android.com/apk/res/android"
+						android:orientation="vertical"
+			        	android:gravity="right"
+					    android:layout_width="fill_parent"
+					    android:layout_height="fill_parent"
+					    android:background="@drawable/button_bar_gradient">
+			
+			<Button android:id="@+id/hide_popup_button"
+			        android:layout_width="wrap_content" 
+			        android:layout_height="wrap_content"
+	    			android:layout_alignParentRight="true"
+	    			android:layout_alignParentBottom="true"
+			        android:layout_marginTop="5px"
+	    			android:layout_marginRight="10px"
+	    			android:paddingLeft="5px"
+			        android:paddingRight="5px"
+	    			style="?android:attr/buttonStyleSmall"
+			        android:textStyle="bold"
+			        android:textColor="@drawable/white"
+			        android:textSize="12px"
+			        android:text="Close"
+			        android:background="@drawable/button_black_rounded_out"/>
+        
+			<LinearLayout	xmlns:android="http://schemas.android.com/apk/res/android"
+						    android:orientation="vertical"
+			    	    	android:layout_width="fill_parent"
+					    	android:layout_height="1px"
+				        	android:layout_marginTop="5px"
+				        	android:layout_below="@+id/hide_popup_button"
+					    	android:background="@drawable/white"/>
+		</RelativeLayout>
 
+        <TextView	android:id="@+id/location_name"
+			        android:layout_width="wrap_content" 
+			        android:layout_height="wrap_content"
+	        		android:textStyle="bold"
+	        		android:textSize="16px"
+	        		android:textColor="@drawable/white"
+	        		android:layout_marginTop="5px"
+	        		android:layout_marginLeft="5px"/>
+        
+	    <TextView	android:id="@+id/location_description"
+			        android:layout_width="wrap_content" 
+			        android:layout_height="wrap_content"
+					android:textColor="@drawable/white"
+	        		android:layout_margin="5px"/>
+        
+	</org.ilrt.mca.android.bus.map.TransparentRelativePanel>
 </RelativeLayout>

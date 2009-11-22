@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<drawable name="white">#FFFFFF</drawable>
+	<drawable name="android_orange">#FF9E18</drawable>
+	<drawable name="android_yellow">#F2E406</drawable>
+	<drawable name="black">#000000</drawable>
+	<drawable name="red">#FF0000</drawable>
+</resources>

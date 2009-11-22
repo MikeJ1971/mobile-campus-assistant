@@ -6,6 +6,8 @@
     <string name="busurl">maps/busstops/</string>
     <string name="forcereload">false</string>
     <string name="loggerenabled">true</string>
+    <string name="destinationCacheLength">60</string>
+    
     
     <!--  DATABASE strings -->
     <string name="BusTimesDatabase_onCreate">"
