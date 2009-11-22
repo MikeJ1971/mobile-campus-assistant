@@ -154,18 +154,18 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 	}
 	
 	
-	private long getLastUpdate(String stop_id)
+	public long getLastUpdate(String stop_id)
 	{
 		String [] cols = new String[]{"last_update"};
 		String [] whereArgs = new String[]{stop_id};
 		try
 		{
 			Cursor c = getWritableDatabase().query(BUS_TABLE_NAME, cols, "stop_id=?",whereArgs, null, null, null);
-			return c.getLong(0);
+			if (c.getCount() > 0 && !c.isNull(0)) return c.getLong(0);
 		}
 		catch (SQLException e)
 		{
-			Common.error(BusTimesDatabase.class,"Error updating the busstop table",e);
+			Common.error(BusTimesDatabase.class,"Error getting last update time",e);
 		}
 		
 		return 0;
