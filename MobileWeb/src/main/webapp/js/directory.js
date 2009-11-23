@@ -171,7 +171,7 @@ var displayResults = function(info) {
 			content += "<li><a href='#' onclick='getInfo(\"" + item.person_key
 				+ "\");return false;'>" + item.family_name + "</a>";
 			
-			content += item.org_unit + "</li>";
+			content += " " + item.org_unit + "</li>";
 			
 		}
 
