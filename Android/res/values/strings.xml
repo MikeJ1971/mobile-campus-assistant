@@ -6,6 +6,7 @@
     <string name="busurl">maps/busstops/</string>
     <string name="forcereload">false</string>
     <string name="loggerenabled">true</string>
+    <string name="maxMarkersPerScreen">30</string>
     <string name="destinationCacheLength">60</string>
     
     
@@ -13,9 +14,11 @@
     <string name="BusTimesDatabase_onCreate">"
 CREATE TABLE busstops (_id INTEGER PRIMARY KEY AUTOINCREMENT, stop_id TEXT, title TEXT, lat DOUBLE, lng DOUBLE, last_update INTEGER);
 CREATE TABLE departures ( _id INTEGER PRIMARY KEY AUTOINCREMENT, stop_id TEXT, service TEXT, due TEXT, destination TEXT, last_update INTEGER);
+CREATE TABLE variables (name TEXT PRIMARY KEY, value TEXT);
 "</string>
 <string name="BusTimesDatabase_onUpgrade">"
 DROP TABLE IF EXISTS busstops;
 DROP TABLE IF EXISTS departures;
+DROP TABLE IF EXISTS variables;
 "</string>
 </resources>
