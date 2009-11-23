@@ -18,10 +18,11 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 	/** The name of the database file on the file system */
     private static final String DATABASE_NAME = "BusTimes";
     /** The version of the database that this class understands. */
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     
     public static final String BUS_TABLE_NAME = "busstops";
     public static final String DEPARTURE_TABLE_NAME = "departures";
+    public static final String VARIABLE_TABLE_NAME = "variables";
     
     /** Keep track of context so that we can load SQL from string resources */
     private final Context mContext;
@@ -98,7 +99,7 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 	{
 		ContentValues map = new ContentValues();
 		map.put("stop_id", id);
-		map.put("title", id);
+		map.put("title", title);
 		map.put("lat", lat);
 		map.put("lng", lng);
 		map.put("last_update", 0);
@@ -118,14 +119,15 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		ContentValues map = new ContentValues();
 		map.put("stop_id", stop_id);
 		map.put("service", service);
-		map.put("due", destination);
+		map.put("due", due);
+		map.put("destination", destination);
 		map.put("last_update", (new Date()).getTime());
 		
 		try
 		{
 			getWritableDatabase().insert(DEPARTURE_TABLE_NAME, null, map);
 			// update the busstop table to reflect the change
-			updateBusStopAccessTime(stop_id);
+			updateBusStopDetails(stop_id, null);
 		}
 		catch (SQLException e)
 		{
@@ -133,15 +135,65 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 	}
 	
+    public void addVariable(String name, String value)
+    {
+    	
+    	String sql = "REPLACE INTO " + VARIABLE_TABLE_NAME + " (name,value) VALUES (?,?)";
+    	SQLiteDatabase db = this.getWritableDatabase();
+		db.beginTransaction();
+		try 
+		{
+	    	db.execSQL(sql,new Object[]{name,value});
+			db.setTransactionSuccessful();
+		}
+		catch (SQLException e) 
+		{
+			Common.error(BusTimesDatabase.class,"Error writing variable info to database [" + name + "," + value + "]",e);
+        }
+		finally
+        {
+        	db.endTransaction();
+        }
+    }
+    
+    public String getVariable(String name)
+    {
+		String [] cols = new String[]{"value"};
+		String [] whereArgs = new String[]{name};
+		
+		Cursor c = null;
+		
+		try
+		{
+			c = getWritableDatabase().query(VARIABLE_TABLE_NAME, cols, "name=?",whereArgs, null, null, null);
+			boolean hasResult = c.moveToFirst();
+			if (hasResult && !c.isNull(0))
+			{
+				return c.getString(0);
+			}
+		}
+		catch (SQLException e)
+		{
+			Common.error(BusTimesDatabase.class,"Error getting variable [" + name + "]",e);
+		}
+        finally {
+            if (null != c) {
+                try { c.close(); }
+                catch (SQLException e) { return null; }
+            }
+        }
+		return null;
+    }
     
 	/**
-	 * Updates the busstop information with the current timestamp
+	 * Updates the busstop information with the current timestamp and name (if present)
 	 * @param stop_id
 	 */
-	private void updateBusStopAccessTime(String stop_id)
+	public void updateBusStopDetails(String stop_id, String desc)
 	{
 		ContentValues map = new ContentValues();
 		map.put("last_update", (new Date()).getTime());
+		if (desc != null) map.put("title",desc);
 		String [] whereArgs = new String[]{stop_id};
 		try
 		{
@@ -153,21 +205,28 @@ public class BusTimesDatabase extends SQLiteOpenHelper
 		}
 	}
 	
-	
 	public long getLastUpdate(String stop_id)
 	{
 		String [] cols = new String[]{"last_update"};
 		String [] whereArgs = new String[]{stop_id};
+		
+		Cursor c = null;
 		try
 		{
-			Cursor c = getWritableDatabase().query(BUS_TABLE_NAME, cols, "stop_id=?",whereArgs, null, null, null);
-			if (c.getCount() > 0 && !c.isNull(0)) return c.getLong(0);
+			c = getWritableDatabase().query(BUS_TABLE_NAME, cols, "stop_id=?",whereArgs, null, null, null);
+			boolean hasResult = c.moveToFirst();
+			if (hasResult && !c.isNull(0)) return c.getLong(0);
 		}
 		catch (SQLException e)
 		{
 			Common.error(BusTimesDatabase.class,"Error getting last update time",e);
 		}
-		
+        finally {
+            if (null != c) {
+                try { c.close(); }
+                catch (SQLException e) { return 0; }
+            }
+        }
 		return 0;
 	}
 	

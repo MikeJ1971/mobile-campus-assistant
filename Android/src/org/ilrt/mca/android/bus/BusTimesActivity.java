@@ -7,24 +7,20 @@ import java.util.List;
 import org.ilrt.mca.android.bus.db.BusStopsCursor;
 import org.ilrt.mca.android.bus.db.BusTimesDatabase;
 import org.ilrt.mca.android.bus.db.DeparturesCursor;
-import org.ilrt.mca.android.bus.map.TransparentRelativePanel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.RectF;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
@@ -43,6 +39,12 @@ import de.android1.overlaymanager.lazyload.LazyLoadException;
 
 public class BusTimesActivity extends MapActivity
 {
+	private static final int MENU_QUIT = 0;
+	private static final int MENU_RELOAD_STOP_INFO = 1;
+	
+	public static final int DIALOG_ERROR = 0;
+	public static final int DIALOG_INFORMATION = 1;
+	
 	String proxyUrl = "";
 	String markerLocation = "";
 	String iconUrl = "";
@@ -52,11 +54,16 @@ public class BusTimesActivity extends MapActivity
 	OverlayManager overlayManager;
 	MapController mc;
 	public ProgressDialog dialog;
-	ProgressThread thread;
-	private Animation animShow, animHide;
-	TransparentRelativePanel popup;
+	LoadBusStopDetailsThread thread;
+	Activity popup;
 	TextView popupDescription;
 	int destinationCacheLength = 0;
+	Drawable defaultmarker;
+    Drawable disabledmarker; 
+    int maxMarkers;
+    Intent intent;
+    public String dialogMessage;
+    public String dialogTitle;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -83,31 +90,28 @@ public class BusTimesActivity extends MapActivity
 		// set the default zoom level
 		mc.setZoom(17);
 		
+		initVariables();
+		
+		maxMarkers = Integer.parseInt(this.getString(R.string.maxMarkersPerScreen));
+		
 		// load bus stop data if required
 		if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))
 		{
-			dialog = ProgressDialog.show(BusTimesActivity.this, "", "Loading Bus Data. Please wait...", true);
-			thread = new ProgressThread(this);
-			thread.start();
-		} // END if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))	
-		
-		try
-		{
-			destinationCacheLength = Integer.parseInt(this.getString(R.string.destinationCacheLength));
-		}
-		catch (Exception e) { }
-		
-		initPopup();
+			reloadBusStopInformation();
+		} // END if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))			
 	}
 	
 	@Override
 	public void onStart() {
 		super.onStart();
 		
-	    Drawable defaultmarker = getResources().getDrawable(R.drawable.bus);     
+	    defaultmarker = getResources().getDrawable(R.drawable.bus);
+	    disabledmarker = getResources().getDrawable(R.drawable.bus_unknown);
+	    
+	    disabledmarker.setBounds(0,0,disabledmarker.getIntrinsicWidth(),disabledmarker.getIntrinsicHeight());
 
 	    ManagedOverlay managedOverlay = overlayManager.createOverlay("busstops",defaultmarker);
-	    
+
 	    managedOverlay.setLazyLoadCallback(new LazyLoadCallback() {
 
 	    	public List<ManagedOverlayItem> lazyload(GeoPoint topLeft, GeoPoint bottomRight, ManagedOverlay overlay) throws LazyLoadException
@@ -128,20 +132,19 @@ public class BusTimesActivity extends MapActivity
 				int minWidthDist = 0;
 				int minHeightDist = 0;
 				// cap the maximum number of markers to show on the screen
-				if (count > 30) 
+				if (count > maxMarkers) 
 				{
-					Common.warn(BusTimesActivity.class,count + " items returned, capping at 30");
-					
+					Common.warn(BusTimesActivity.class,count + " items returned exceeds max limit");
 											
+					
 					minWidthDist = overlay.getDefaultMarker().getIntrinsicWidth();
-					minWidthDist = width/100 * minWidthDist;
+					minWidthDist = width/overlay.getManager().getMapView().getMeasuredWidth() * minWidthDist;
 					
 					minHeightDist = overlay.getDefaultMarker().getIntrinsicHeight();
-					minHeightDist = height/100 * minHeightDist;
-					Common.info(BusTimesActivity.class,"minWidthDist:"+minWidthDist + "  IntrinsicWidth:"+overlay.getDefaultMarker().getIntrinsicWidth());
-					Common.info(BusTimesActivity.class,"minHeightDist:"+minHeightDist + "  IntrinsicHeight:"+overlay.getDefaultMarker().getIntrinsicHeight());
+					minHeightDist = height/overlay.getManager().getMapView().getMeasuredHeight() * minHeightDist;
 					
-					count = 30;
+					Common.info(BusTimesActivity.class,"minWidthDist:"+minWidthDist + "  IntrinsicWidth:"+overlay.getDefaultMarker().getIntrinsicWidth() + " MeasuredWidth:"+overlay.getManager().getMapView().getMeasuredWidth());
+					Common.info(BusTimesActivity.class,"minHeightDist:"+minHeightDist + "  IntrinsicHeight:"+overlay.getDefaultMarker().getIntrinsicHeight() +  " MeasuredHeight:"+overlay.getManager().getMapView().getMeasuredHeight());
 				}
 							
 				boolean overMinDist = true;
@@ -149,7 +152,7 @@ public class BusTimesActivity extends MapActivity
 				for (int rowNum = 0; rowNum < count; rowNum++)
 				{
 					c.moveToPosition(rowNum);
-					title = "(" + c.getColStopId() + ")" + c.getColTitle();
+					title = c.getColStopId();
 					lat = (int)c.getColLatitude();
 					lng = (int)c.getColLongitude();
 					
@@ -172,8 +175,17 @@ public class BusTimesActivity extends MapActivity
 						insertedCount++;
 						Common.info(BusTimesActivity.class,"Adding " +lat + "," + lng);
 						GeoPoint point = new GeoPoint(lat,lng);
-						ManagedOverlayItem item = new ManagedOverlayItem(point, title,"Loading...");
-						results.add(item);
+						if (count > maxMarkers) 
+						{
+							ManagedOverlayItem item = new ManagedOverlayItem(point, "","");
+							item.setMarker(disabledmarker);
+							results.add(item);
+						}
+						else
+						{
+							ManagedOverlayItem item = new ManagedOverlayItem(point, title,"");
+							results.add(item);
+						}
 					}
 				}
 				c.close();
@@ -191,62 +203,34 @@ public class BusTimesActivity extends MapActivity
 
 			public void onLongPress(MotionEvent arg0, ManagedOverlay arg1)
 			{
-				// TODO Auto-generated method stub
-				
 			}
 
 			public void onLongPressFinished(MotionEvent arg0, ManagedOverlay arg1, GeoPoint arg2, ManagedOverlayItem arg3)
 			{
-				// TODO Auto-generated method stub
-				
 			}
 
 			public boolean onScrolled(MotionEvent arg0, MotionEvent arg1, float arg2, float arg3, ManagedOverlay arg4)
 			{
-				// TODO Auto-generated method stub
 				return false;
 			}
 
 			public boolean onSingleTap(MotionEvent arg0, ManagedOverlay overlay, GeoPoint gPoint, ManagedOverlayItem item)
-			{
-				hidePopup();
-				if (item != null)
+			{	
+				if (item != null && !item.getTitle().equals(""))
 				{
-					mc.animateTo(gPoint);
-					Common.info(BusTimesActivity.class,item.toString());
-					
-					String busStopId = item.getTitle();
-					long lastUpdate = db.getLastUpdate(busStopId);
-					long now = new Date().getTime();
-					
-					if ((now - lastUpdate) > destinationCacheLength)
-					{
-						updateDestinations(busStopId);
-					}
-
-					DeparturesCursor c = db.getDestinationsForBus(busStopId);
-
-					StringBuffer desc = new StringBuffer();
-					
-					for (int i = 0; i < c.getCount(); i++)
-					{
-						c.moveToNext();
-						desc.append(c.getColService() + ":" + c.getColDue() + ":" + c.getColDestination() + "\n");
-					}
-					showPopup(desc.toString());
-
-//					Toast.makeText(getApplicationContext(), item.getTitle()+item.getSnippet(), Toast.LENGTH_SHORT).show();
+					mc.animateTo(gPoint, new LoadDepartureDetailsThread((BusTimesActivity)overlay.getMapView().getContext(),item));
 				}
 				return false;
 			}
 
 			public boolean onZoom(ZoomEvent arg0, ManagedOverlay arg1)
 			{
-				// TODO Auto-generated method stub
 				return false;
 			}
 	    });
 
+	    overlayManager.populate();
+	    
 		mMyLocationOverlay = new MyLocationOverlay(this, mvMap);
 		mvMap.getOverlays().add(mMyLocationOverlay);
 		mMyLocationOverlay.enableMyLocation();
@@ -256,43 +240,28 @@ public class BusTimesActivity extends MapActivity
 			{
 				mc.animateTo(mMyLocationOverlay.getMyLocation());
 				mc.setZoom(17);
-				Common.info(BusTimesActivity.class,"Creating overlay");
 			}
 		});
-
-	    overlayManager.populate();	    
 	}
 
-  //Get the current location in start-up
-    public void setInitialPoint()
-    {
-//    	myLocationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-//
-//    	myLocationListener = myLocationManager.();
-//
-//    	myLocationManager.requestLocationUpdates(
-//    			    LocationManager.GPS_PROVIDER,
-//    			    0,
-//    			    0,
-//    			    myLocationListener);
-//    			  
-//    GeoPoint initGeoPoint = new GeoPoint(
-//     (int)(myLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLatitude()*1000000),
-//     (int)(myLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER).getLongitude()*1000000));
-//    	mc.animateTo(initGeoPoint);
-    }
-     
-	// @Override
-	// public void onResume()
-	// {
-	// if (mMyLocationOverlay != null) mMyLocationOverlay.enableMyLocation();
-	// }
-	//
-	// @Override
-	// public void onPause()
-	// {
-	// if (mMyLocationOverlay != null) mMyLocationOverlay.disableMyLocation();
-	// }
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		if (mMyLocationOverlay != null) mMyLocationOverlay.enableMyLocation();
+//		ManagedOverlay managedOverlay = overlayManager.getOverlay("busstops");
+//		
+//		overlayManager.populate();
+//		managedOverlay.invokeLazyLoad(0);
+//		mvMap.invalidate();
+	}
+	
+	@Override
+	public void onPause()
+	{
+		 super.onPause();
+		 if (mMyLocationOverlay != null) mMyLocationOverlay.disableMyLocation();
+	}
 
 	@Override
 	protected boolean isRouteDisplayed()
@@ -301,11 +270,70 @@ public class BusTimesActivity extends MapActivity
 		return false;
 	}
 
-	private class ProgressThread extends Thread {
+	private class LoadDepartureDetailsThread extends Thread {
+		ManagedOverlayItem item;
+		BusTimesActivity context;
+		
+		LoadDepartureDetailsThread(BusTimesActivity context, ManagedOverlayItem item) {
+            this.item = item;
+            this.context = context;
+        }
+       
+        public void run() 
+        {	
+			String busStopId = item.getTitle();
+			long lastUpdate = db.getLastUpdate(busStopId);
+			long now = new Date().getTime();
+			
+			if ((now - lastUpdate) > destinationCacheLength)
+			{
+				updateDepartures(busStopId);
+				lastUpdate = new Date().getTime();
+			}
+
+			DeparturesCursor c = db.getDestinationsForBus(busStopId);
+
+			BusStopsCursor stopCursor = db.getBusDetails(busStopId);
+			
+			StringBuffer desc = new StringBuffer();
+			String title = stopCursor.getColTitle();
+			if (title != null && !title.equals("")) title = "Bus Times for " + stopCursor.getColTitle();
+			
+			stopCursor.close();
+			
+			Common.info(this.getClass(), "Count is :" +c.getCount());
+			for (int i = 0; i < c.getCount(); i++)
+			{
+				desc.append(c.getColService() + " " + c.getColDestination() + " " + c.getColDue()+ "\n");
+				c.moveToNext();
+			}
+			
+			if (c.getCount() == 0)
+			{
+				desc.append("Unable to obtain any bus departures for this stop");
+			}
+			else
+			{
+				desc.append("\n\nLast updated:"+new Date(lastUpdate));
+			}
+			
+			c.close();
+			
+			context.dialogMessage =  desc.toString();
+			context.dialogTitle =  title;
+			context.mvMap.post(new Runnable() {
+		        public void run() {
+		        	context.showDialog(DIALOG_INFORMATION);
+		        }
+		      });
+        }
+	}
+	
+	private class LoadBusStopDetailsThread extends Thread {
 		BusTimesActivity context;
        
-        ProgressThread(BusTimesActivity a) {
-            this.context = a;
+        LoadBusStopDetailsThread(BusTimesActivity context) {
+            this.context = context;
         }
        
         public void run() {
@@ -317,7 +345,6 @@ public class BusTimesActivity extends MapActivity
 				// load json data
 				String base_url = context.getString(R.string.base_url);
 				String jsonUrl = base_url + context.getString(R.string.busurl);
-				Common.info(BusTimesActivity.class,"Loading "+jsonUrl);
 				
 //				Debug.startMethodTracing("jsoninit");
 				long s = System.currentTimeMillis();
@@ -330,7 +357,12 @@ public class BusTimesActivity extends MapActivity
 				{
 					dialog.dismiss();
 					Common.warn(BusTimesActivity.class,"Unable to parse JSON file");
-					Common.showMessage(context, "Unable to parse JSON file");
+					context.dialogMessage =  "Unable to parse JSON file";
+					context.mvMap.post(new Runnable() {
+				        public void run() {
+				        	context.showDialog(DIALOG_ERROR);
+				        }
+				      });
 				}
 				else
 				{
@@ -343,13 +375,13 @@ public class BusTimesActivity extends MapActivity
 						// navigate to default pos
 						int lat = (int)(Float.parseFloat(json.getString("latitude"))*1E6);
 						int lng = (int)(Float.parseFloat(json.getString("longitude"))*1E6);
-						context.mc.animateTo(new GeoPoint(lat,lng));
+						
+						// store variables in database for future reference
+						db.addVariable("defaultLat",lat+"");
+						db.addVariable("defaultLng",lng+"");
 	
 						// allow json object to be garbage collected
 						json = null;
-						
-						markerLocation = "http://www.ilrt.bris.ac.uk/~cmcpb/mca/bustops.json";
-						Common.info(BusTimesActivity.class,"Loading "+markerLocation);
 						
 //						Debug.startMethodTracing("jsonmarkers");
 						s = System.currentTimeMillis();
@@ -362,7 +394,7 @@ public class BusTimesActivity extends MapActivity
 						
 						int count = markers.length();
 						
-						Common.info(BusTimesActivity.class.getName(),"markers.length(): " + count);
+						Common.info(BusTimesActivity.class,"markers.length(): " + count);
 						
 						if (count > 0) 
 						{
@@ -375,7 +407,6 @@ public class BusTimesActivity extends MapActivity
 							JSONObject marker = markers.getJSONObject(i);
 							lat = (int)(Float.parseFloat(marker.getString("lat")) * 1E6);
 							lng = (int)(Float.parseFloat(marker.getString("lng")) * 1E6);
-//							Common.info(BusTimesActivity.class,"Adding " + lat + "," + lng);
 							db.addBus(marker.getString("id"), "", lat, lng);
 						}
 					} catch (JSONException je)
@@ -389,87 +420,123 @@ public class BusTimesActivity extends MapActivity
             context.dialog.dismiss();
         }
 	}
+
+	/* Creates the menu items */
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    menu.add(0, MENU_RELOAD_STOP_INFO, 0, "Reload Bus Stop db");
+	    menu.add(0, MENU_QUIT, 0, "Quit");
+	    return true;
+	}
 	
-	@Override
-	public void onRestart()
+	/* Handles item selections */
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    case MENU_RELOAD_STOP_INFO:
+	    	reloadBusStopInformation();
+	        return true;
+	    case MENU_QUIT:
+	        quit();
+	        return true;
+	    }
+	    return false;
+	}
+
+	private void reloadBusStopInformation()
 	{
-		 super.onRestart();
+		dialog = ProgressDialog.show(BusTimesActivity.this, "", "Loading Bus Data. Please wait...", true);
+		thread = new LoadBusStopDetailsThread(this);
+		thread.start();
 	}
 	
-	private void updateDestinations(String busStopId)
+	private void quit()
 	{
-		String location = proxyUrl + busStopId;
-		Common.info(BusTimesActivity.class,"Loading destinations for " + busStopId + " from " + location);
-		JSONObject json_destination = Common.loadJSON(location);
-		
-		Common.info(BusTimesActivity.class, json_destination.toString());
-		
+		finish();
 	}
 	
-	private void drawInfoWindow(Canvas canvas, MapView mapView, GeoPoint gPoint, String message, int markerHeight) { 
+	private void updateDepartures(String busStopId)
+	{
+		try
+		{
+			// delete all existing departures
+			db.deleteAllDeparturesForStop(busStopId);
+			
+			String location = proxyUrl + busStopId;
 
-		// Again get our screen coordinate
-		Point p = mapView.getProjection().toPixels(gPoint, null);
+			JSONObject json_departures = Common.loadJSON(location);
 		
-		// Setup the info window with the right size & location
-		int INFO_WINDOW_WIDTH = 125;
-		int INFO_WINDOW_HEIGHT = 25;
-		RectF infoWindowRect = new RectF(0,0,INFO_WINDOW_WIDTH,INFO_WINDOW_HEIGHT);
-		int infoWindowOffsetX = p.x-INFO_WINDOW_WIDTH/2;
-		int infoWindowOffsetY = p.y-INFO_WINDOW_HEIGHT-markerHeight;
-		infoWindowRect.offset(infoWindowOffsetX,infoWindowOffsetY);
-
-		Paint innerPaint = new Paint();
-		innerPaint.setColor(Color.YELLOW);
-		Paint outerPaint = new Paint();
-		outerPaint.setColor(Color.BLACK);
-		Paint textPaint = new Paint();
-		textPaint.setColor(Color.BLACK);
-		
-		// Draw inner info window
-		canvas.drawRoundRect(infoWindowRect, 5, 5, innerPaint);
-
-		// Draw border for info window
-		canvas.drawRoundRect(infoWindowRect, 5, 5, outerPaint);
-
-		// Draw the MapLocation’s name
-		int TEXT_OFFSET_X = 10;
-		int TEXT_OFFSET_Y = 15;
-		canvas.drawText(message,infoWindowOffsetX+TEXT_OFFSET_X,infoWindowOffsetY+TEXT_OFFSET_Y,textPaint);
-	}
-	
-    private void initPopup() { 
-
-        popup = (TransparentRelativePanel) findViewById(R.id.popup_window); 
-
-        // Start out with the popup initially hidden. 
-        popup.setVisibility(View.GONE); 
-
-        animShow = AnimationUtils.loadAnimation(this, R.anim.popup_show); 
-        animHide = AnimationUtils.loadAnimation(this, R.anim.popup_hide); 
-
-        popupDescription = (TextView) findViewById(R.id.location_description); 
-
-        final Button hideButton = (Button) findViewById(R.id.hide_popup_button);
-
-		hideButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View view) {
-				hideButton.setEnabled(false);
-				hidePopup();
+			String stopDesc = json_departures.getJSONObject("stop").getString("name");
+			JSONArray departures = json_departures.getJSONArray("departures");
+			
+			Common.info(this.getClass(), "Length:"+departures.length());
+			for (int i = 0; i < departures.length(); i++)
+			{
+				JSONObject json = departures.getJSONObject(i);
+				
+				db.addDeparture(busStopId,json.getString("service"), json.getString("due"), json.getString("destination"));
 			}
-		});
-   }
+			
+			// update bus stop last update time & description
+			db.updateBusStopDetails(busStopId,stopDesc);
+			
+		} catch (JSONException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	private void initVariables()
+	{
+		proxyUrl = db.getVariable("proxyurl");
+		iconUrl = db.getVariable("iconUrl");
+
+		try
+		{
+			String cacheLength = db.getVariable("destinationCacheLength");
+			if (cacheLength != null)
+			{
+				destinationCacheLength = Integer.parseInt(cacheLength);
+			}
+			else
+			{
+				// load from strings xml file
+				destinationCacheLength = Integer.parseInt(this.getString(R.string.destinationCacheLength));
+				db.addVariable("destinationCacheLength",destinationCacheLength+"");
+			}
+			
+			int lat = Integer.parseInt(db.getVariable("defaultLat"));
+			Common.info(BusTimesActivity.class, "defaultLat:"+lat);
+			int lng = Integer.parseInt(db.getVariable("defaultLng"));
+			Common.info(BusTimesActivity.class, "defaultLng:"+lng);
+			mc.animateTo(new GeoPoint(lat,lng));
+		}
+		catch (Exception e) { 
+			e.printStackTrace();
+		}
+		
+		Common.info(BusTimesActivity.class, "proxyUrl:"+proxyUrl);
+		Common.info(BusTimesActivity.class, "iconUrl:"+iconUrl);
+	}
+
+
     
-    private void showPopup(String message)
-    {
-        popupDescription.setText(message);
-        popup.setVisibility(View.VISIBLE); 
-        popup.startAnimation(animShow); 
-    }
-    
-    private void hidePopup()
-    {
-    	popup.startAnimation(animHide);  
-        popup.setVisibility(View.GONE); 
+    @Override
+    protected Dialog onCreateDialog(int id) {
+    	switch (id)
+    	{
+    		case DIALOG_ERROR:
+    			return new AlertDialog.Builder(this)
+    			.setPositiveButton("OK", null)
+    			.setMessage(this.dialogMessage)
+    			.create();
+    		case DIALOG_INFORMATION:
+    			return new AlertDialog.Builder(this)
+    			.setIcon(R.drawable.icon)
+    			.setTitle(dialogTitle)
+    			.setPositiveButton("OK", null)
+    			.setMessage(this.dialogMessage)
+    			.create();
+    	}
+    	
+    	return null;	
     }
 }

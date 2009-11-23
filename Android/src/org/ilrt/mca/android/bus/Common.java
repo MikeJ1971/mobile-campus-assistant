@@ -4,8 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.Inflater;
+import java.util.zip.InflaterInputStream;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -16,8 +20,6 @@ import javax.net.ssl.X509TrustManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.util.Log;
 
 public class Common
@@ -27,28 +29,55 @@ public class Common
 	
 	public static JSONObject loadJSON(String requestUrl)
 	{
+		Common.info(Common.class,"Loading " + requestUrl);
+		
 		JSONObject pos = new JSONObject();
 		try
 		{
 			URL url = new URL(requestUrl);
 			InputStream in;
+
+			HttpURLConnection conn;
+
+			installAllTrustManager();
 			try
 			{
-				installAllTrustManager();
-				HttpsURLConnection sUrl = (HttpsURLConnection) url.openConnection();
-				sUrl.addRequestProperty("Accept","application/json");
-				in = sUrl.getInputStream();
+				conn = (HttpsURLConnection) url.openConnection();
 			}
 			catch (ClassCastException cce)
 			{
-				in = url.openStream();
+				conn = (HttpURLConnection) url.openConnection();
 			}
-			String result = convertStreamToString(in);
 			
+			conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
+			conn.setRequestProperty("Accept","application/json");
+			
+			//establish connection, get response headers
+			conn.connect();
+
+			//obtain the encoding returned by the server
+			String encoding = conn.getContentEncoding();
+
+			//create the appropriate stream wrapper based on the encoding type
+			if (encoding != null && encoding.equalsIgnoreCase("gzip")) {
+				Common.info(Common.class, "Using compressed data source");
+				in = new GZIPInputStream(conn.getInputStream());
+			}
+			else if (encoding != null && encoding.equalsIgnoreCase("deflate")) {
+				Common.info(Common.class, "Using deflated data source");
+				in = new InflaterInputStream(conn.getInputStream(), new Inflater(true));
+			}
+			else {
+				Common.info(Common.class, "Using uncompressed data source");
+				in = conn.getInputStream();
+			}
+
+			String result = convertStreamToString(in);
+			Common.info(Common.class, "Result:"+result);
 			pos = new JSONObject(result);
 		} catch (JSONException e)
 		{
-			warn(BusTimesActivity.class.getName(),"Unable to parse JSON file", e);
+			warn(BusTimesActivity.class,"Unable to parse JSON file", e);
 		} catch (MalformedURLException e)
 		{
 			warn(BusTimesActivity.class,"Unable to read url contents", e);
@@ -74,7 +103,7 @@ public class Common
          * there's no more data to read. Each line will appended to a StringBuilder
          * and returned as String.
          */
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is), 128);
         StringBuilder sb = new StringBuilder();
 
         String line = null;
@@ -124,40 +153,32 @@ public class Common
 			e.printStackTrace();
 		}
 	}
+
 	
-	public static void showMessage(Context context, String msg)
+	public static void error(Class <?>source, String msg, Throwable error)
 	{
-		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setMessage(msg).setCancelable(true);
-		AlertDialog alert = builder.create();
-		alert.show();
+		if (loggerEnabled()) Log.e(source.getSimpleName(), msg, error);
 	}
 	
 	
-	public static void error(Object source, String msg, Throwable error)
-	{
-		if (loggerEnabled()) Log.e(source.toString(), msg, error);
-	}
-	
-	
-	public static void error(Object source, String msg)
+	public static void error(Class <?>source, String msg)
 	{
 		if (loggerEnabled()) error(source, msg, null);
 	}
 	
-	public static void warn(Object source, String msg, Throwable error)
+	public static void warn(Class <?>source, String msg, Throwable error)
 	{
-		if (loggerEnabled()) Log.w(source.toString(),msg, error);
+		if (loggerEnabled()) Log.w(source.getSimpleName(),msg, error);
 	}
 
-	public static void warn(Object source, String msg)
+	public static void warn(Class <?>source, String msg)
 	{
 		if (loggerEnabled()) warn(source, msg, null);
 	}
 	
-	public static void info(Object source, String msg)
+	public static void info(Class <?>source, String msg)
 	{
-		if (loggerEnabled()) Log.i(source.toString(),msg);
+		if (loggerEnabled()) Log.i(source.getSimpleName(),msg);
 	}
 	
 	public static void setLoggerEnabled(boolean b)
