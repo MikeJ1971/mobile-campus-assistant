@@ -236,6 +236,17 @@ p {
 
 /* EVENTS */
 
+.nav-list li a .startdate
+{
+    display: block;
+    width: 100%;
+    padding-left:80px;
+    margin-top:-10px;
+    text-decoration: none;
+    color: #999;
+    font-size:80%;
+}
+
 .event {
     font-size: 12px;
 }
