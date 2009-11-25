@@ -103,9 +103,9 @@
     <h3>${it.label}</h3>
 
     <div class="date">
-        <span class="dtstart"><attr class='value' title='${it.startDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.startDate?string("E, d MMM")}</attr></span>
+        <span class="dtstart"><abbr class='value' title='${it.startDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.startDate?string("E, d MMM")}</abbr></span>
         <div class="eventtime"></div>
-        <span class="dtend"><attr class='value' title='${it.endDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.endDate?string("E, d MMM")}</attr></span>
+        <span class="dtend"><abbr class='value' title='${it.endDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.endDate?string("E, d MMM")}</abbr></span>
     </div>
     <div class="description row"><#if it.description?has_content>${it.description}</#if></div>
     <div class="location row"><#if it.location?has_content><span class="label">Location</span> ${it.location}<#else></#if></div>
