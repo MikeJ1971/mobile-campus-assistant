@@ -21,6 +21,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
@@ -41,9 +44,12 @@ public class BusTimesActivity extends MapActivity
 {
 	private static final int MENU_QUIT = 0;
 	private static final int MENU_RELOAD_STOP_INFO = 1;
+	private static final int MENU_RELOAD_MAP = 2;
 	
 	public static final int DIALOG_ERROR = 0;
 	public static final int DIALOG_INFORMATION = 1;
+	
+	private static final String OVERLAY_NAME = "busstops";
 	
 	String proxyUrl = "";
 	String markerLocation = "";
@@ -108,9 +114,10 @@ public class BusTimesActivity extends MapActivity
 	    defaultmarker = getResources().getDrawable(R.drawable.bus);
 	    disabledmarker = getResources().getDrawable(R.drawable.bus_unknown);
 	    
+	    defaultmarker.setBounds(0,0,defaultmarker.getIntrinsicWidth(),defaultmarker.getIntrinsicHeight());
 	    disabledmarker.setBounds(0,0,disabledmarker.getIntrinsicWidth(),disabledmarker.getIntrinsicHeight());
 
-	    ManagedOverlay managedOverlay = overlayManager.createOverlay("busstops",defaultmarker);
+	    ManagedOverlay managedOverlay = overlayManager.createOverlay(OVERLAY_NAME,defaultmarker);
 
 	    managedOverlay.setLazyLoadCallback(new LazyLoadCallback() {
 
@@ -249,7 +256,7 @@ public class BusTimesActivity extends MapActivity
 	{
 		super.onResume();
 		if (mMyLocationOverlay != null) mMyLocationOverlay.enableMyLocation();
-//		ManagedOverlay managedOverlay = overlayManager.getOverlay("busstops");
+//		ManagedOverlay managedOverlay = overlayManager.getOverlay(OVERLAY_NAME);
 //		
 //		overlayManager.populate();
 //		managedOverlay.invokeLazyLoad(0);
@@ -281,12 +288,15 @@ public class BusTimesActivity extends MapActivity
        
         public void run() 
         {	
+    		context.dialog = ProgressDialog.show(BusTimesActivity.this, "", "Fetching...", true);
+
 			String busStopId = item.getTitle();
 			long lastUpdate = db.getLastUpdate(busStopId);
 			long now = new Date().getTime();
 			
 			if ((now - lastUpdate) > destinationCacheLength)
 			{
+				Common.info(this.getClass(), (now - lastUpdate) + "ms is larger then default " + destinationCacheLength + "ms, fetching new times");
 				updateDepartures(busStopId);
 				lastUpdate = new Date().getTime();
 			}
@@ -319,13 +329,15 @@ public class BusTimesActivity extends MapActivity
 			
 			c.close();
 			
-			context.dialogMessage =  desc.toString();
+			context.dialogMessage = desc.toString();
 			context.dialogTitle =  title;
 			context.mvMap.post(new Runnable() {
 		        public void run() {
+		        	context.dialog.dismiss();
 		        	context.showDialog(DIALOG_INFORMATION);
 		        }
 		      });
+			
         }
 	}
 	
@@ -425,10 +437,11 @@ public class BusTimesActivity extends MapActivity
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    menu.add(0, MENU_RELOAD_STOP_INFO, 0, "Reload Bus Stop db");
 	    menu.add(0, MENU_QUIT, 0, "Quit");
+	    menu.add(0, MENU_RELOAD_MAP, 0, "Redraw");
 	    return true;
 	}
 	
-	/* Handles item selections */
+	/* Handles menu item selections */
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	    case MENU_RELOAD_STOP_INFO:
@@ -437,10 +450,15 @@ public class BusTimesActivity extends MapActivity
 	    case MENU_QUIT:
 	        quit();
 	        return true;
+	    case MENU_RELOAD_MAP:
+	    	Common.info(getClass(),"Lazy loading");
+	    	ManagedOverlay managedOverlay = overlayManager.getOverlay(OVERLAY_NAME);
+	        managedOverlay.invokeLazyLoad(0);
+	        return true;
 	    }
 	    return false;
 	}
-
+	
 	private void reloadBusStopInformation()
 	{
 		dialog = ProgressDialog.show(BusTimesActivity.this, "", "Loading Bus Data. Please wait...", true);
@@ -448,6 +466,9 @@ public class BusTimesActivity extends MapActivity
 		thread.start();
 	}
 	
+	/**
+	 * Close the application down
+	 */
 	private void quit()
 	{
 		finish();
@@ -472,6 +493,7 @@ public class BusTimesActivity extends MapActivity
 			{
 				JSONObject json = departures.getJSONObject(i);
 				
+				Common.info(getClass(),"Adding "+json.getString("service") +","+ json.getString("due") +","+ json.getString("destination"));
 				db.addDeparture(busStopId,json.getString("service"), json.getString("due"), json.getString("destination"));
 			}
 			
@@ -517,8 +539,18 @@ public class BusTimesActivity extends MapActivity
 		Common.info(BusTimesActivity.class, "iconUrl:"+iconUrl);
 	}
 
-
-    
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog)
+	{
+    	if (id == DIALOG_INFORMATION)
+    	{
+    		dialog.setTitle(this.dialogTitle);
+    		TextView ta = (TextView) dialog.findViewById(R.id.MainContent);
+    		ta.setText(this.dialogMessage);
+    	}		
+	}
+	
+	
     @Override
     protected Dialog onCreateDialog(int id) {
     	switch (id)
@@ -529,14 +561,31 @@ public class BusTimesActivity extends MapActivity
     			.setMessage(this.dialogMessage)
     			.create();
     		case DIALOG_INFORMATION:
-    			return new AlertDialog.Builder(this)
-    			.setIcon(R.drawable.icon)
-    			.setTitle(dialogTitle)
-    			.setPositiveButton("OK", null)
-    			.setMessage(this.dialogMessage)
-    			.create();
+    			Dialog dialog = new Dialog(BusTimesActivity.this); 
+    	          dialog.setContentView(R.layout.popup); 
+    	          
+    	          Button btn = (Button) dialog.findViewById(R.id.OkButton);
+    	          btn.setOnClickListener(new OKListener(dialog));
+    	          
+    	          ImageView image = (ImageView) dialog.findViewById(R.id.dialog_icon);
+    	          image.setImageResource(R.drawable.icon);
+
+    	          return dialog;
     	}
     	
     	return null;	
     }
+    
+    protected class OKListener implements View.OnClickListener { 
+
+        private Dialog dialog; 
+
+        public OKListener(Dialog dialog) { 
+             this.dialog = dialog; 
+        } 
+
+        public void onClick(View v) { 
+             dialog.dismiss();
+        } 
+   }
 }
