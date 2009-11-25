@@ -51,6 +51,7 @@ public class Common
 			
 			conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
 			conn.setRequestProperty("Accept","application/json");
+			conn.setConnectTimeout(2000);
 			
 			//establish connection, get response headers
 			conn.connect();
