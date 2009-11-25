@@ -10,8 +10,8 @@
     <div class="nav">
         <ul class="nav-list">
             <#list it.items as item>
-                <li><a href="./?item=${item.id?url("UTF8")}"><span class="events"></span><@NavLabel label="${item.label}"/></a></li>
-                <#-- <span class="startdate">${event.startDate?string("E, d MMM yyyy")}<#if event.startDate?string("HH:mm") != "00:00"> ${event.startDate?string("HH:mm")}</#if></span></a> -->
+                <li><a href="./?item=${item.id?url("UTF8")}"><span class="events"></span><@NavLabel label="${item.label}"/><br/><span class="startdate">${item.startDate?string("E, d MMM yyyy")}<#if item.startDate?string("HH:mm") != "00:00"> ${item.startDate?string("HH:mm")}</#if></span></a></li>
+                </a>
             </#list>
         </ul>
     </div>
