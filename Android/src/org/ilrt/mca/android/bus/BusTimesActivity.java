@@ -213,7 +213,9 @@ public class BusTimesActivity extends MapActivity
 						Common.info(BusTimesActivity.class,"minWidthDist:"+minWidthDist + "  IntrinsicWidth:"+overlay.getDefaultMarker().getIntrinsicWidth() + " MeasuredWidth:"+overlay.getManager().getMapView().getMeasuredWidth());
 						Common.info(BusTimesActivity.class,"minHeightDist:"+minHeightDist + "  IntrinsicHeight:"+overlay.getDefaultMarker().getIntrinsicHeight() +  " MeasuredHeight:"+overlay.getManager().getMapView().getMeasuredHeight());
 					}
-								
+
+					long startTime = new Date().getTime();
+					
 					boolean overMinDist = true;
 					int insertedCount = 0;
 					for (int rowNum = 0; rowNum < count; rowNum++)
@@ -253,6 +255,13 @@ public class BusTimesActivity extends MapActivity
 								ManagedOverlayItem item = new ManagedOverlayItem(point, title,"");
 								results.add(item);
 							}
+						}
+						
+						// bomb out if we're taking to long
+						if ((new Date().getTime() - startTime) > (1000*5))
+						{
+	    					Common.info(getClass(), "Taking too long, returing current results so far");
+	    					break;
 						}
 					}
 					c.close();
@@ -324,7 +333,7 @@ public class BusTimesActivity extends MapActivity
 		super.onResume();
 		if (mMyLocationOverlay != null) mMyLocationOverlay.enableMyLocation();
     	ManagedOverlay managedOverlay = overlayManager.getOverlay(OVERLAY_NAME);
-        managedOverlay.invokeLazyLoad(500);
+        managedOverlay.invokeLazyLoad(1000);
 	}
 	
 	@Override
@@ -384,12 +393,11 @@ public class BusTimesActivity extends MapActivity
 		LoadDepartureDetailsThread(BusTimesActivity context, ManagedOverlayItem item) {
             this.item = item;
             this.context = context;
+            context.dialog = ProgressDialog.show(BusTimesActivity.this, "", "Fetching...", true);
         }
        
         public void run() 
         {	
-    		context.dialog = ProgressDialog.show(BusTimesActivity.this, "", "Fetching...", true);
-
 			String busStopId = item.getTitle();
 			long lastUpdate = db.getLastUpdate(busStopId);
 			long now = new Date().getTime();
@@ -523,7 +531,7 @@ public class BusTimesActivity extends MapActivity
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    menu.add(0, MENU_RELOAD_STOP_INFO, 0, "Reload Bus Stop db").setIcon(android.R.drawable.ic_menu_rotate);
 	    menu.add(0, MENU_QUIT, 0, "Quit").setIcon(android.R.drawable.ic_lock_power_off);
-	    menu.add(0, MENU_RELOAD_MAP, 0, "Redraw");
+//	    menu.add(0, MENU_RELOAD_MAP, 0, "Redraw");
 	    return true;
 	}
 	
