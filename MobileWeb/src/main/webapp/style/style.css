@@ -11,7 +11,7 @@ h1 {
 }
 
 h2 {
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
     margin: 9px;
 }
@@ -23,7 +23,7 @@ h3 {
 }
 
 p {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     margin: 9px;
 }
@@ -229,7 +229,7 @@ p {
 #pcavailability table {
     width: 55%;
     margin: 9px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 
