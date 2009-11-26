@@ -10,7 +10,7 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:clickable="true"
-	    android:apiKey="0_r5nuDgaqxC0t4l04lwIXTnmXNU1HMmfK-2d4g"
+	    android:apiKey="0_r5nuDgaqxBBGsTAH0rw65O5-FG_xsj-eiJRkA"
 		/>
 	<!-- Key for mcaandroid.keystore:0_r5nuDgaqxBBGsTAH0rw65O5-FG_xsj-eiJRkA -->
 	<!-- Key for debug.keystore:0_r5nuDgaqxC0t4l04lwIXTnmXNU1HMmfK-2d4g -->
@@ -19,4 +19,11 @@
 	    android:layout_width="fill_parent" android:layout_height="fill_parent"
 	    android:gravity="center_vertical|center_horizontal"/>
 
+		<ImageView
+			android:id="@+id/LoadingIcon"
+			android:src="@drawable/progress_particle"
+			android:layout_width="30px"
+			android:layout_height="30px"
+			android:layout_centerInParent="true"/>
+	
 </RelativeLayout>

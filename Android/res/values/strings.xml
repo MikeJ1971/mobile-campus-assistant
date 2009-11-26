@@ -10,9 +10,8 @@ All rights reserved.\n\n</string>
  * Nicer dialog boxes\n
  * Correctly drawing stops on load\n
  * Welcome screen shown on first run\n</string>
-    <string name="base_url">https://mca.ilrt.bris.ac.uk/</string>
+    <string name="base_url">http://mca.ilrt.bris.ac.uk/</string>
     <string name="busurl">maps/busstops/</string>
-    <string name="loggerenabled">true</string>
     <string name="maxMarkersPerScreen">30</string>
     <string name="destinationCacheLength">60000</string> <!--  in milliseconds -->
     
