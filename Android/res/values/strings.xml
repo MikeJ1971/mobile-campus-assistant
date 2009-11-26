@@ -12,7 +12,7 @@ All rights reserved.\n\n</string>
  * Welcome screen shown on first run\n</string>
     <string name="base_url">http://mca.ilrt.bris.ac.uk/</string>
     <string name="busurl">maps/busstops/</string>
-    <string name="maxMarkersPerScreen">30</string>
+    <string name="maxMarkersPerScreen">50</string>
     <string name="destinationCacheLength">60000</string> <!--  in milliseconds -->
     
     

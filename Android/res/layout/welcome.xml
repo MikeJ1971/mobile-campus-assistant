@@ -38,7 +38,7 @@
 	
 	<Button android:id="@+id/OkButton" 
 		android:layout_alignParentBottom="true"
-		android:text="Close" 
+		android:text="Continue" 
 		android:layout_height="50dp"
 		android:layout_width="fill_parent"/>
 	
