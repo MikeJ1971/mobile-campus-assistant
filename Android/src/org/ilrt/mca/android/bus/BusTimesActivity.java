@@ -27,6 +27,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -61,10 +62,11 @@ public class BusTimesActivity extends MapActivity
 	private static final String OVERLAY_NAME = "busstops";
 	
 	// debug helper override variables
-	private static boolean forceWelcomeScreen = true;
+	private static boolean forceWelcomeScreen = false;
 	private static boolean forceReload = false;
+	private static boolean enableLogging = false;
 	
-	// address of the service to obtain depature information
+	// address of the service to obtain departure information
 	private String proxyUrl = "";
 
 	// google map ref
@@ -91,7 +93,7 @@ public class BusTimesActivity extends MapActivity
 	// 'disabled' bus stop map marker
 	private Drawable disabledmarker; 
 
-    // the maximum number of real markers we will show on screen before marging stop icons together
+    // the maximum number of real markers we will show on screen before merging stop icons together
 	private int maxMarkers;
     
     // represents (in ms) how long the departure information is cached before reloading from url
@@ -117,7 +119,7 @@ public class BusTimesActivity extends MapActivity
 		setContentView(R.layout.main);
 
 		// setup the logger
-		Common.setLoggerEnabled(this.getString(R.string.loggerenabled).equalsIgnoreCase("true"));
+		Common.setLoggerEnabled(enableLogging);
 
 		// initialise the database
 		db = new BusTimesDatabase(this);
@@ -159,83 +161,102 @@ public class BusTimesActivity extends MapActivity
 
 	    ManagedOverlay managedOverlay = overlayManager.createOverlay(OVERLAY_NAME,defaultmarker);
 
+	    ImageView imageView = (ImageView) findViewById(R.id.LoadingIcon);
+	    managedOverlay.enableLazyLoadAnimation(imageView);
+	    
 	    managedOverlay.setLazyLoadCallback(new LazyLoadCallback() {
 
 	    	public List<ManagedOverlayItem> lazyload(GeoPoint topLeft, GeoPoint bottomRight, ManagedOverlay overlay) throws LazyLoadException
 	        {
 				List<ManagedOverlayItem> results = new LinkedList<ManagedOverlayItem>();
 
-				int width = (bottomRight.getLongitudeE6() - topLeft.getLongitudeE6())/2;
-				int height = (topLeft.getLatitudeE6()-bottomRight.getLatitudeE6())/2;
-				int lat = bottomRight.getLatitudeE6() + height;
-				int lng = topLeft.getLongitudeE6() + width;
-								    	
-				BusStopsCursor c = db.getBusStopsForRegion(lat,lng,(int)(width*1.1),(int)(height*1.1));
-				int count = c.getCount();
-				String title;
-
-				Common.info(BusTimesActivity.class,"size:"+count+" lat:"+lat+",lng:"+lng+ " w:"+width + ", h:"+height);
-
-				int minWidthDist = 0;
-				int minHeightDist = 0;
-				// cap the maximum number of markers to show on the screen
-				if (count > maxMarkers) 
+				Common.info(getClass(), "Zoom level:"+overlay.getMapView().getZoomLevel());
+				
+				// don't bother loading dataset if we're too far out
+				if (overlay.getMapView().getZoomLevel() < 12)
 				{
-					Common.warn(BusTimesActivity.class,count + " items returned exceeds max limit");
-											
+					int lat = Integer.parseInt(db.getVariable("defaultLat"));
+					int lng = Integer.parseInt(db.getVariable("defaultLng"));
 					
-					minWidthDist = overlay.getDefaultMarker().getIntrinsicWidth();
-					minWidthDist = width/overlay.getManager().getMapView().getMeasuredWidth() * minWidthDist;
-					
-					minHeightDist = overlay.getDefaultMarker().getIntrinsicHeight();
-					minHeightDist = height/overlay.getManager().getMapView().getMeasuredHeight() * minHeightDist;
-					
-					Common.info(BusTimesActivity.class,"minWidthDist:"+minWidthDist + "  IntrinsicWidth:"+overlay.getDefaultMarker().getIntrinsicWidth() + " MeasuredWidth:"+overlay.getManager().getMapView().getMeasuredWidth());
-					Common.info(BusTimesActivity.class,"minHeightDist:"+minHeightDist + "  IntrinsicHeight:"+overlay.getDefaultMarker().getIntrinsicHeight() +  " MeasuredHeight:"+overlay.getManager().getMapView().getMeasuredHeight());
+					GeoPoint point = new GeoPoint(lat,lng);
+					ManagedOverlayItem item = new ManagedOverlayItem(point, "","");
+					item.setMarker(disabledmarker);
+					results.add(item);
 				}
-							
-				boolean overMinDist = true;
-				int insertedCount = 0;
-				for (int rowNum = 0; rowNum < count; rowNum++)
+				else
 				{
-					c.moveToPosition(rowNum);
-					title = c.getColStopId();
-					lat = (int)c.getColLatitude();
-					lng = (int)c.getColLongitude();
+					// calculate bounding region so that we can query the db for nearby busses only
+					int halfMapWidth = (bottomRight.getLongitudeE6() - topLeft.getLongitudeE6())/2;
+					int halfMapHeight = (topLeft.getLatitudeE6()-bottomRight.getLatitudeE6())/2;
+					int centerLat = bottomRight.getLatitudeE6() + halfMapHeight;
+					int centerLng = topLeft.getLongitudeE6() + halfMapWidth;
 					
-					// check that we are further than minimum distance of all other markers
-					overMinDist = true;
-					for (ManagedOverlayItem it : results)
+					BusStopsCursor c = db.getBusStopsForRegion(centerLat,centerLng,(int)(halfMapWidth*1.1),(int)(halfMapHeight*1.1));
+					int count = c.getCount();
+					String title;
+	
+					Common.info(BusTimesActivity.class,"size:"+count+" lat:"+centerLat+",lng:"+centerLng+ " w:"+halfMapWidth + ", h:"+halfMapHeight);
+	
+					int minWidthDist = 0;
+					int minHeightDist = 0;
+					// cap the maximum number of markers to show on the screen
+					if (count > maxMarkers) 
 					{
-						int otherLat = it.getPoint().getLatitudeE6();
-						int otherLng = it.getPoint().getLongitudeE6();
-						if ((lat > (otherLat - minHeightDist) && lat < (otherLat + minHeightDist)) && 
-								(lng > (otherLng - minWidthDist) && lng < (otherLng + minWidthDist))) 
+						Common.warn(BusTimesActivity.class,count + " items returned exceeds max limit");
+						
+						minWidthDist = ((halfMapWidth * 2) / overlay.getManager().getMapView().getMeasuredWidth()) * overlay.getDefaultMarker().getIntrinsicWidth();
+						minHeightDist = ((halfMapHeight * 2) / overlay.getManager().getMapView().getMeasuredHeight()) * overlay.getDefaultMarker().getIntrinsicHeight();
+						
+						// add a bit
+						minWidthDist = (int) (minWidthDist * 1.1);
+						minHeightDist = (int) (minHeightDist * 1.1);
+						Common.info(BusTimesActivity.class,"minWidthDist:"+minWidthDist + "  IntrinsicWidth:"+overlay.getDefaultMarker().getIntrinsicWidth() + " MeasuredWidth:"+overlay.getManager().getMapView().getMeasuredWidth());
+						Common.info(BusTimesActivity.class,"minHeightDist:"+minHeightDist + "  IntrinsicHeight:"+overlay.getDefaultMarker().getIntrinsicHeight() +  " MeasuredHeight:"+overlay.getManager().getMapView().getMeasuredHeight());
+					}
+								
+					boolean overMinDist = true;
+					int insertedCount = 0;
+					for (int rowNum = 0; rowNum < count; rowNum++)
+					{
+						c.moveToPosition(rowNum);
+						title = c.getColStopId();
+						centerLat = (int)c.getColLatitude();
+						centerLng = (int)c.getColLongitude();
+						
+						// check that we are further than minimum distance of all other markers
+						overMinDist = true;
+						for (ManagedOverlayItem it : results)
 						{
-							overMinDist = false;
-							Common.info(BusTimesActivity.class,"Rejecting " +lat + "," + lng);
+							int otherLat = it.getPoint().getLatitudeE6();
+							int otherLng = it.getPoint().getLongitudeE6();
+							if ((centerLat > (otherLat - minHeightDist) && centerLat < (otherLat + minHeightDist)) && 
+									(centerLng > (otherLng - minWidthDist) && centerLng < (otherLng + minWidthDist))) 
+							{
+								overMinDist = false;
+								Common.info(BusTimesActivity.class,"Rejecting " +centerLat + "," + centerLng);
+							}
+						}
+						
+						if (overMinDist)
+						{
+							insertedCount++;
+							Common.info(BusTimesActivity.class,"Adding " +centerLat + "," + centerLng);
+							GeoPoint point = new GeoPoint(centerLat,centerLng);
+							if (count > maxMarkers) 
+							{
+								ManagedOverlayItem item = new ManagedOverlayItem(point, "","");
+								item.setMarker(disabledmarker);
+								results.add(item);
+							}
+							else
+							{
+								ManagedOverlayItem item = new ManagedOverlayItem(point, title,"");
+								results.add(item);
+							}
 						}
 					}
-					
-					if (overMinDist)
-					{
-						insertedCount++;
-						Common.info(BusTimesActivity.class,"Adding " +lat + "," + lng);
-						GeoPoint point = new GeoPoint(lat,lng);
-						if (count > maxMarkers) 
-						{
-							ManagedOverlayItem item = new ManagedOverlayItem(point, "","");
-							item.setMarker(disabledmarker);
-							results.add(item);
-						}
-						else
-						{
-							ManagedOverlayItem item = new ManagedOverlayItem(point, title,"");
-							results.add(item);
-						}
-					}
-				}
-				c.close();
+					c.close();
+				} // else .. if zoom > x
 				return results;   
 	        }
 	    });
@@ -383,8 +404,7 @@ public class BusTimesActivity extends MapActivity
 			departures = db.getDestinationsForBus(busStopId);
 
 			BusStopsCursor stopCursor = db.getBusDetails(busStopId);
-			
-			StringBuffer desc = new StringBuffer();
+
 			String title = stopCursor.getColTitle();
 			if (title != null && !title.equals("")) title = "Bus Times for " + stopCursor.getColTitle();
 			
