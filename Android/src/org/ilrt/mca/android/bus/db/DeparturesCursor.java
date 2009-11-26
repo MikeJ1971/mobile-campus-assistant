@@ -33,6 +33,7 @@ public class DeparturesCursor extends SQLiteCursor
     	// TODO: use query parameter rather then hardcoded id
     	String sql = DeparturesCursor.QUERY + "\"" + busStopId + "\" " +
 	    "ORDER BY _id";
+    	Common.info(DeparturesCursor.class,sql);
     	return sql;
     }
     

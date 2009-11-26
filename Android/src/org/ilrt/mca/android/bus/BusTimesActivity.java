@@ -1,5 +1,6 @@
 package org.ilrt.mca.android.bus;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,19 +12,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
@@ -42,36 +47,69 @@ import de.android1.overlaymanager.lazyload.LazyLoadException;
 
 public class BusTimesActivity extends MapActivity
 {
+	// static menu indicators
 	private static final int MENU_QUIT = 0;
 	private static final int MENU_RELOAD_STOP_INFO = 1;
 	private static final int MENU_RELOAD_MAP = 2;
 	
+	// static dialog indicators
 	public static final int DIALOG_ERROR = 0;
 	public static final int DIALOG_INFORMATION = 1;
+	public static final int DIALOG_FIRST_LOAD = 2;
 	
+	// overlay name
 	private static final String OVERLAY_NAME = "busstops";
 	
-	String proxyUrl = "";
-	String markerLocation = "";
-	String iconUrl = "";
-	MapView mvMap;
-	BusTimesDatabase db;
-	MyLocationOverlay mMyLocationOverlay;
-	OverlayManager overlayManager;
-	MapController mc;
+	// debug helper override variables
+	private static boolean forceWelcomeScreen = true;
+	private static boolean forceReload = false;
+	
+	// address of the service to obtain depature information
+	private String proxyUrl = "";
+
+	// google map ref
+	private MapView mvMap;
+	
+	// database wrapper
+	private BusTimesDatabase db;
+	
+	// handle to class to enable positioning
+	private MyLocationOverlay mMyLocationOverlay;
+	
+	// controller for moving map around
+	private MapController mc;
+	
+	// manager to handle our bus stop overlay
+	private OverlayManager overlayManager;
+	
+	// progress indicator reference
 	public ProgressDialog dialog;
-	LoadBusStopDetailsThread thread;
-	Activity popup;
-	TextView popupDescription;
-	int destinationCacheLength = 0;
-	Drawable defaultmarker;
-    Drawable disabledmarker; 
-    int maxMarkers;
-    Intent intent;
+	
+	// thread to process populating database from mca server
+	private LoadBusStopDetailsThread thread;
+
+	// 'disabled' bus stop map marker
+	private Drawable disabledmarker; 
+
+    // the maximum number of real markers we will show on screen before marging stop icons together
+	private int maxMarkers;
+    
+    // represents (in ms) how long the departure information is cached before reloading from url
+	private int destinationCacheLength = 0;
+	
+	// dialog-specific variables (used between threads)
     public String dialogMessage;
     public String dialogTitle;
+    
+    // link to departure cursor so that we can access this information between threads
+    public DeparturesCursor departures;
+    
+    // format to display the last bus stop update time
+    SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
 	
-	/** Called when the activity is first created. */
+	/** 
+	 * Called when the activity is first created. 
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -100,18 +138,20 @@ public class BusTimesActivity extends MapActivity
 		
 		maxMarkers = Integer.parseInt(this.getString(R.string.maxMarkersPerScreen));
 		
+		boolean firstLoad = initFirstLoad();
+		
 		// load bus stop data if required
-		if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))
+		if (!firstLoad && (db.getBusStopCount() == 0 || forceReload))
 		{
 			reloadBusStopInformation();
-		} // END if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))			
+		} // END if (db.getBusStopCount() == 0 || this.getString(R.string.forcereload).equalsIgnoreCase("true"))	
 	}
 	
 	@Override
 	public void onStart() {
 		super.onStart();
 		
-	    defaultmarker = getResources().getDrawable(R.drawable.bus);
+		Drawable defaultmarker = getResources().getDrawable(R.drawable.bus);
 	    disabledmarker = getResources().getDrawable(R.drawable.bus_unknown);
 	    
 	    defaultmarker.setBounds(0,0,defaultmarker.getIntrinsicWidth(),defaultmarker.getIntrinsicHeight());
@@ -218,6 +258,7 @@ public class BusTimesActivity extends MapActivity
 
 			public boolean onScrolled(MotionEvent arg0, MotionEvent arg1, float arg2, float arg3, ManagedOverlay arg4)
 			{
+				Common.info(getClass(), "onScrolled");
 				return false;
 			}
 
@@ -245,22 +286,24 @@ public class BusTimesActivity extends MapActivity
 		{
 			public void run()
 			{
+				Common.info(getClass(), "runOnFirstFix");
 				mc.animateTo(mMyLocationOverlay.getMyLocation());
 				mc.setZoom(17);
 			}
 		});
+		
+		Common.info(getClass(), "onStartFinished");
 	}
 
 	@Override
 	public void onResume()
 	{
+		Common.info(getClass(), "onResume");
+		
 		super.onResume();
 		if (mMyLocationOverlay != null) mMyLocationOverlay.enableMyLocation();
-//		ManagedOverlay managedOverlay = overlayManager.getOverlay(OVERLAY_NAME);
-//		
-//		overlayManager.populate();
-//		managedOverlay.invokeLazyLoad(0);
-//		mvMap.invalidate();
+    	ManagedOverlay managedOverlay = overlayManager.getOverlay(OVERLAY_NAME);
+        managedOverlay.invokeLazyLoad(500);
 	}
 	
 	@Override
@@ -270,6 +313,10 @@ public class BusTimesActivity extends MapActivity
 		 if (mMyLocationOverlay != null) mMyLocationOverlay.disableMyLocation();
 	}
 
+	/*
+	 * Required to tell the app that we will not bother drawing routes
+	 * @see com.google.android.maps.MapActivity#isRouteDisplayed()
+	 */
 	@Override
 	protected boolean isRouteDisplayed()
 	{
@@ -277,6 +324,38 @@ public class BusTimesActivity extends MapActivity
 		return false;
 	}
 
+	/**
+	 * This function checks if we're loading the app for the first time (or after a new version update)
+	 * In which case it loads up a dialog and returns <code>true</code>, <code>false</code> otherwise;
+	 * @return
+	 */
+	private boolean initFirstLoad()
+	{
+		try
+		{
+			PackageInfo pi = this.getPackageManager().getPackageInfo("org.ilrt.mca.android.bus", 0);
+			
+			String version = db.getVariable("version");
+			
+			Common.warn(getClass(), "Version is " + pi.versionCode);
+			
+			if (version == null || Integer.parseInt(version) < pi.versionCode || forceWelcomeScreen)
+			{
+				db.addVariable("version", pi.versionCode+"");
+
+				// show information
+				showDialog(DIALOG_FIRST_LOAD);
+				
+				return true;
+			}
+		} catch (NameNotFoundException e)
+		{
+			Common.warn(getClass(), "Unable to find package information", e);
+		}
+		
+		return false;
+	}
+	
 	private class LoadDepartureDetailsThread extends Thread {
 		ManagedOverlayItem item;
 		BusTimesActivity context;
@@ -301,7 +380,7 @@ public class BusTimesActivity extends MapActivity
 				lastUpdate = new Date().getTime();
 			}
 
-			DeparturesCursor c = db.getDestinationsForBus(busStopId);
+			departures = db.getDestinationsForBus(busStopId);
 
 			BusStopsCursor stopCursor = db.getBusDetails(busStopId);
 			
@@ -311,25 +390,11 @@ public class BusTimesActivity extends MapActivity
 			
 			stopCursor.close();
 			
-			Common.info(this.getClass(), "Count is :" +c.getCount());
-			for (int i = 0; i < c.getCount(); i++)
-			{
-				desc.append(c.getColService() + " " + c.getColDestination() + " " + c.getColDue()+ "\n");
-				c.moveToNext();
-			}
+			Common.info(this.getClass(), "Count is :" +departures.getCount());
 			
-			if (c.getCount() == 0)
-			{
-				desc.append("Unable to obtain any bus departures for this stop");
-			}
-			else
-			{
-				desc.append("\n\nLast updated:"+new Date(lastUpdate));
-			}
+			Date d = new Date(lastUpdate);
 			
-			c.close();
-			
-			context.dialogMessage = desc.toString();
+			context.dialogMessage = "Last updated at " +sdf.format(d);
 			context.dialogTitle =  title;
 			context.mvMap.post(new Runnable() {
 		        public void run() {
@@ -358,12 +423,10 @@ public class BusTimesActivity extends MapActivity
 				String base_url = context.getString(R.string.base_url);
 				String jsonUrl = base_url + context.getString(R.string.busurl);
 				
-//				Debug.startMethodTracing("jsoninit");
 				long s = System.currentTimeMillis();
 				JSONObject json = Common.loadJSON(jsonUrl);
 				long e = System.currentTimeMillis();
 				Common.warn(BusTimesActivity.class,"Init JSON file took " + (e-s) + "ms");
-//	            Debug.stopMethodTracing();
 				
 				if (json.length() == 0)
 				{
@@ -381,8 +444,7 @@ public class BusTimesActivity extends MapActivity
 					try
 					{
 						proxyUrl = base_url + json.getString("proxyURLStem");
-						markerLocation = base_url + json.getString("markersLocation");
-						iconUrl = base_url + json.getString("markerIconLocation");
+						String markerLocation = base_url + json.getString("markersLocation");
 						
 						// navigate to default pos
 						int lat = (int)(Float.parseFloat(json.getString("latitude"))*1E6);
@@ -391,16 +453,20 @@ public class BusTimesActivity extends MapActivity
 						// store variables in database for future reference
 						db.addVariable("defaultLat",lat+"");
 						db.addVariable("defaultLng",lng+"");
+						db.addVariable("proxyurl",proxyUrl);
+
+						// as we're storing variables in the destination, do the same with cache length
+						destinationCacheLength = Integer.parseInt(BusTimesActivity.this.getString(R.string.destinationCacheLength));
+						db.addVariable("destinationCacheLength",destinationCacheLength+"");
 	
 						// allow json object to be garbage collected
 						json = null;
-						
-//						Debug.startMethodTracing("jsonmarkers");
+
 						s = System.currentTimeMillis();
 						JSONObject json_markers = Common.loadJSON(markerLocation);
 						e = System.currentTimeMillis();
 						Common.warn(BusTimesActivity.class,"JSON Marker file took " + (e-s) + "ms");						
-//						Debug.stopMethodTracing();
+
 						
 						JSONArray markers = json_markers.getJSONArray("markers");
 						
@@ -435,8 +501,8 @@ public class BusTimesActivity extends MapActivity
 
 	/* Creates the menu items */
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    menu.add(0, MENU_RELOAD_STOP_INFO, 0, "Reload Bus Stop db");
-	    menu.add(0, MENU_QUIT, 0, "Quit");
+	    menu.add(0, MENU_RELOAD_STOP_INFO, 0, "Reload Bus Stop db").setIcon(android.R.drawable.ic_menu_rotate);
+	    menu.add(0, MENU_QUIT, 0, "Quit").setIcon(android.R.drawable.ic_lock_power_off);
 	    menu.add(0, MENU_RELOAD_MAP, 0, "Redraw");
 	    return true;
 	}
@@ -459,7 +525,7 @@ public class BusTimesActivity extends MapActivity
 	    return false;
 	}
 	
-	private void reloadBusStopInformation()
+	public void reloadBusStopInformation()
 	{
 		dialog = ProgressDialog.show(BusTimesActivity.this, "", "Loading Bus Data. Please wait...", true);
 		thread = new LoadBusStopDetailsThread(this);
@@ -471,7 +537,16 @@ public class BusTimesActivity extends MapActivity
 	 */
 	private void quit()
 	{
+		mMyLocationOverlay.disableMyLocation();
+		if (thread != null) thread.destroy();
+		thread = null;
+		
+		if (dialog != null) dialog.dismiss();
+		dialog = null;
+		
 		finish();
+		
+		// free resources
 	}
 	
 	private void updateDepartures(String busStopId)
@@ -509,7 +584,6 @@ public class BusTimesActivity extends MapActivity
 	private void initVariables()
 	{
 		proxyUrl = db.getVariable("proxyurl");
-		iconUrl = db.getVariable("iconUrl");
 
 		try
 		{
@@ -526,9 +600,7 @@ public class BusTimesActivity extends MapActivity
 			}
 			
 			int lat = Integer.parseInt(db.getVariable("defaultLat"));
-			Common.info(BusTimesActivity.class, "defaultLat:"+lat);
 			int lng = Integer.parseInt(db.getVariable("defaultLng"));
-			Common.info(BusTimesActivity.class, "defaultLng:"+lng);
 			mc.animateTo(new GeoPoint(lat,lng));
 		}
 		catch (Exception e) { 
@@ -536,23 +608,119 @@ public class BusTimesActivity extends MapActivity
 		}
 		
 		Common.info(BusTimesActivity.class, "proxyUrl:"+proxyUrl);
-		Common.info(BusTimesActivity.class, "iconUrl:"+iconUrl);
 	}
 
+	/**
+	 * Render specific content in dialogs before being shown
+	 */
 	@Override
 	protected void onPrepareDialog(int id, Dialog dialog)
 	{
     	if (id == DIALOG_INFORMATION)
-    	{
+    	{   		
+    		TableLayout tl = (TableLayout) dialog.findViewById(R.id.DepartureTable);
+    		tl.removeAllViews();
+    		
+    		Common.info(this.getClass(), "Departure count is :" +departures.getCount());
+    		
+    		if (departures.getCount() > 0)
+    		{
+	    		// create header
+	            TableRow header = new TableRow(tl.getContext());
+	            header.setId(50);
+	            header.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT,TableRow.LayoutParams.WRAP_CONTENT));   
+	            header.setPadding(0, 0, 0, 10);
+	            
+	            // Create a TextView to house the service name
+	            TextView serviceHeader = new TextView(header.getContext());
+	            serviceHeader.setId(51);
+	            serviceHeader.setText("Service");
+	            serviceHeader.setGravity(Gravity.CENTER_HORIZONTAL);
+	            serviceHeader.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
+	            header.addView(serviceHeader);
+	
+	            // Create a TextView to house the value of the destination info
+	            TextView destHeader = new TextView(header.getContext());
+	            destHeader.setId(52);
+	            destHeader.setText("Final Destination");
+	            destHeader.setGravity(Gravity.CENTER_HORIZONTAL);
+	            destHeader.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+	            header.addView(destHeader);
+	
+	            // Create a TextView to house the due time
+	            TextView dueHeader = new TextView(header.getContext());
+	            dueHeader.setId(53);
+	            dueHeader.setText("Due");
+	            dueHeader.setGravity(Gravity.CENTER_HORIZONTAL);
+	            dueHeader.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+	            header.addView(dueHeader);
+	            
+	            // Add the TableRow to the TableLayout
+	            tl.addView(header,new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+	    		
+	    		boolean oddRow = false;
+	    		// Go through each item in the array
+	            for (int i = 0; i < departures.getCount(); i++)
+	            {
+	            	Common.info(this.getClass(), "Adding:" +departures.getColDue());
+	                // Create a TableRow and give it an ID
+	                TableRow tr = new TableRow(tl.getContext());
+	                tr.setId(100+i);
+	                tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT,TableRow.LayoutParams.WRAP_CONTENT));   
+	                if (oddRow) tr.setBackgroundColor(Color.argb(120, 50, 50, 50));
+	                oddRow = !oddRow;
+	                
+	                // Create a TextView to house the service name
+	                TextView serviceId = new TextView(tr.getContext());
+	                serviceId.setId(200+i);
+	                serviceId.setText(departures.getColService());
+	                serviceId.setGravity(Gravity.CENTER_HORIZONTAL);
+	                serviceId.setTextColor(Color.WHITE);
+	                serviceId.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
+	                tr.addView(serviceId);
+	
+	                // Create a TextView to house the value of the destination info
+	                TextView destView = new TextView(tr.getContext());
+	                destView.setId(300+i);
+	                destView.setText(departures.getColDestination());
+	                destView.setGravity(Gravity.CENTER_HORIZONTAL);
+	                destView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+	                tr.addView(destView);
+	
+	                // Create a TextView to house the due time
+	                TextView dueView = new TextView(tr.getContext());
+	                dueView.setId(400+i);
+	                dueView.setText(departures.getColDue());
+	                dueView.setGravity(Gravity.CENTER_HORIZONTAL);
+	                dueView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+	                tr.addView(dueView);
+	                
+	                // Add the TableRow to the TableLayout
+	                tl.addView(tr,new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+	
+	                departures.moveToNext();
+	            }
+    		} // if (departures.getCount() > 0)
+    		else
+    		{
+    			this.dialogMessage = "No information for this stop";
+    		}
+            departures.close();
+            
     		dialog.setTitle(this.dialogTitle);
-    		TextView ta = (TextView) dialog.findViewById(R.id.MainContent);
-    		ta.setText(this.dialogMessage);
+    		TextView ta = (TextView) dialog.findViewById(R.id.TopText);
+    		ta.setText(this.dialogMessage);            
     	}		
 	}
 	
-	
+	/**
+	 * Create the various dialogs this application will use
+	 */
     @Override
     protected Dialog onCreateDialog(int id) {
+    	Dialog dialog = null;
+    	Button btn;
+    	
     	switch (id)
     	{
     		case DIALOG_ERROR:
@@ -561,19 +729,46 @@ public class BusTimesActivity extends MapActivity
     			.setMessage(this.dialogMessage)
     			.create();
     		case DIALOG_INFORMATION:
-    			Dialog dialog = new Dialog(BusTimesActivity.this); 
-    	          dialog.setContentView(R.layout.popup); 
-    	          
-    	          Button btn = (Button) dialog.findViewById(R.id.OkButton);
-    	          btn.setOnClickListener(new OKListener(dialog));
-    	          
-    	          ImageView image = (ImageView) dialog.findViewById(R.id.dialog_icon);
-    	          image.setImageResource(R.drawable.icon);
+    			dialog = new Dialog(BusTimesActivity.this); 
+				dialog.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+				dialog.setContentView(R.layout.departuredialog); 
+				dialog.getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,R.drawable.icon);
 
-    	          return dialog;
+    			btn = (Button) dialog.findViewById(R.id.OkButton);
+    			btn.setOnClickListener(new OKListener(dialog));
+
+    			break;
+    		case DIALOG_FIRST_LOAD:
+				dialog = new Dialog(BusTimesActivity.this); 
+				
+				// request that we want to set an icon
+				dialog.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+
+				// need to set content view before drawable resource
+				dialog.setContentView(R.layout.welcome); 
+
+				dialog.getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,R.drawable.icon);
+
+				dialog.setTitle(BusTimesActivity.this.getString(R.string.app_name));
+				
+				// set the version number
+				TextView ta = (TextView) dialog.findViewById(R.id.current_version);
+				String version = "0";
+				PackageInfo pi;
+				try
+				{
+					pi = this.getPackageManager().getPackageInfo("org.ilrt.mca.android.bus", 0);
+					version = pi.versionName;
+				} catch (NameNotFoundException e) {}
+	    		ta.setText("Version: "+version);
+	    		
+				btn = (Button) dialog.findViewById(R.id.OkButton);
+				btn.setOnClickListener(new InitLoadListener(dialog,BusTimesActivity.this));
+				
+				break;
     	}
     	
-    	return null;	
+    	return dialog;	
     }
     
     protected class OKListener implements View.OnClickListener { 
@@ -586,6 +781,25 @@ public class BusTimesActivity extends MapActivity
 
         public void onClick(View v) { 
              dialog.dismiss();
+        } 
+   }
+    
+    protected class InitLoadListener implements View.OnClickListener { 
+
+        private Dialog dialog; 
+        private BusTimesActivity activity;
+
+        public InitLoadListener(Dialog dialog, BusTimesActivity activity) { 
+             this.dialog = dialog; 
+             this.activity = activity;
+        } 
+
+        public void onClick(View v) { 
+             dialog.dismiss();
+             if (db.getBusStopCount() == 0 || forceReload)
+             {
+            	 activity.reloadBusStopInformation();
+             }
         } 
    }
 }
