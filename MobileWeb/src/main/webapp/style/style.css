@@ -266,7 +266,7 @@ p {
     display:inline-block;
 }
 
-.event .date attr
+.event .date .value
 {
     display:none;
 }
