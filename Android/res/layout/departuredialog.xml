@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"> 
+
+	<ScrollView 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_weight="1"> 
+	    
+		<LinearLayout
+		    android:orientation="vertical"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingLeft="10dp"
+				android:paddingRight="10dp">
+	    
+			<TableLayout android:id="@+id/DepartureTable" 
+				android:layout_height="fill_parent"
+				android:layout_width="fill_parent"
+				android:stretchColumns="1"/>
+			
+			<TextView android:id="@+id/TopText" 
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:paddingTop="5dp"
+				android:paddingBottom="5dp"
+				android:textStyle="italic"/>
+				 	
+		</LinearLayout>
+	
+	</ScrollView>
+	
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0">
+
+		<Button android:id="@+id/OkButton" 
+			android:text="Close" 
+			android:layout_height="50dp"
+			android:layout_width="fill_parent"/>
+	
+	</LinearLayout>
+			
+</LinearLayout>

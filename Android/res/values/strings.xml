@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">BusTimesActivity!</string>
-    <string name="app_name">BusTimes</string>
+    <string name="app_name">MCA BusTimes</string>
+    <string name="welcome_text">Welcome to the BusTimes application.\nThis application was written by Chris Bailey (c.bailey@bristol.ac.uk) for the Mobile Campus Assistant Project\n
+http://mca.ilrt.bris.ac.uk\n
+\nPLEASE NOTE: The first time you load the application, it will download the details of all bus stops in Bristol. This might take several minutes.\n
+\nCopyright (c) 2009, University of Bristol\n
+All rights reserved.\n\n</string>
+    <string name="version_info">New in this version:\n
+ * Nicer dialog boxes\n
+ * Correctly drawing stops on load\n
+ * Welcome screen shown on first run\n</string>
     <string name="base_url">https://mca.ilrt.bris.ac.uk/</string>
     <string name="busurl">maps/busstops/</string>
-    <string name="forcereload">false</string>
     <string name="loggerenabled">true</string>
     <string name="maxMarkersPerScreen">30</string>
-    <string name="destinationCacheLength">60</string>
+    <string name="destinationCacheLength">60000</string> <!--  in milliseconds -->
     
     
     <!--  DATABASE strings -->
