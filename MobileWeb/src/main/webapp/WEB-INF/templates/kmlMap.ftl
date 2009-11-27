@@ -5,7 +5,7 @@
 <@Title label="${it.label}" />
 
 <script type="text/javascript"
-         src="http://www.google.com/jsapi?key=ABQIAAAAdUlVnqcMy8dOraexYlBKqxTjPSaaEJVc4G5y4wKsZE4UoG3L1hRdcwFcZ2_Cpcpc4Lj8nGsd7ZHLsw&sensor=true"></script>
+         src="http://www.google.com/jsapi?key=ABQIAAAAdUlVnqcMy8dOraexYlBKqxTDMCtVt0Z1QKDY6FJUEvi5o6nJzRSVHu1QtUKAj255RXb5v_X_E-R-AQ&sensor=true"></script>
 
 
 <script type="text/javascript" src="${contextPath}/js/kmlMap.js"></script>
