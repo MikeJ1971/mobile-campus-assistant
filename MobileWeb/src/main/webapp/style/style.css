@@ -142,6 +142,8 @@ p {
 
 /* ICONS - used in the navigation */
 
+/*
+
 .map {
     background: url(../images/bristol/icon-map.png) no-repeat;
     display: inline-block;
@@ -221,6 +223,8 @@ p {
     padding: 0px 10px 0px 0px;
     vertical-align: middle
 }
+
+*/
 
 .weatherIcon, .weatherDetails, .weatherDateTime {
    text-align: center;
