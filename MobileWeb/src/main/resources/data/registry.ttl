@@ -10,35 +10,20 @@
 
 <mca://registry/>  rdf:type mca:Registry ;
     rdfs:label "Home" ;
-    dc:description "Registry for the Mobile Campus Assistant, University of Bristol" ;
+    dc:description "Registry for the Mobile Campus Assistant" ;
     mca:hasItem <mca://registry/today/> ;
     mca:hasItem <mca://registry/maps/> ;
     mca:hasItem <mca://registry/news/> ;
-    mca:hasItem <mca://registry/events/> ;
-    mca:hasItem <mca://registry/contacts/> ;
     mca:template <template://homepage.ftl> ;
     .
 
 <mca://registry/today/> rdf:type mca:Group ;
     rdfs:label "Today" ;
     dc:description "Information for today" ;
-    mca:hasItem <mca://registry/today/weather/> ;
     mca:hasItem <mca://registry/today/news/> ;
-    mca:hasItem <mca://registry/today/pcavailability/> ;
-    mca:hasItem <mca://registry/today/it/> ;
-    mca:hasItem <mca://registry/today/events/> ;
     mca:order "1"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     mca:style "today"^^xsd:string ;
-    .
-
-<mca://registry/today/weather/> rdf:type mca:HtmlFragment ;
-    rdfs:label "Weather" ;
-    dc:description "Today's weather in Bristol" ;
-    rdfs:seeAlso <http://portal.bris.ac.uk/portal-weather/newXml> ;
-    mca:order "1"^^xsd:integer ;
-    mca:template <template://htmlFragment.ftl> ;
-    mca:style "weather"^^xsd:string ;
     .
 
 <mca://registry/today/news/> rdf:type mca:News ;
@@ -49,54 +34,12 @@
     mca:style "news"^^xsd:string ;
     .
 
-<mca://registry/today/pcavailability/> rdf:type mca:HtmlFragment ;
-    rdfs:label "PC Availability" ;
-    dc:description "PC Availability" ;
-    rdfs:seeAlso <http://is-freepcs.cse.bris.ac.uk/> ;
-    mca:order "3"^^xsd:integer ;
-    mca:template <template://htmlFragment.ftl> ;
-    mca:style "pcavailability"^^xsd:string ;
-    .
-
-<mca://registry/today/it/> rdf:type mca:News ;
-    rdfs:label "IT Service Status" ;
-    dc:description "IT Service Status provided by Information Services" ;
-    rdfs:seeAlso <http://www.bris.ac.uk/is/news/status.rss> ;
-    mca:order "4"^^xsd:integer ;
-    mca:template <template://serviceStatusList.ftl> ;
-    mca:style "servicestatus"^^xsd:string ;
-    .
-
-<mca://registry/today/events/> rdf:type mca:EventCalendar ;
-    rdfs:label "Today's Events" ;
-    dc:description "Events happening today" ;
-    mca:order "5"^^xsd:integer ;
-    mca:eventlist "TODAY" ;
-    mca:template <template://eventList.ftl> ;
-    mca:style "events"^^xsd:string ;
-    .
-
 <mca://registry/maps/> rdf:type mca:Group ;
     rdfs:label "Maps" ;
     dc:description "Useful maps of the campus" ;
     mca:hasItem <mca://registry/maps/wireless/> ;
-    mca:hasItem <mca://registry/maps/precinct/> ;
-    mca:hasItem <mca://registry/maps/busstops/> ;
     mca:order "2"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
-    mca:style "map"^^xsd:string ;
-    .
-
-<mca://registry/maps/busstops/> rdf:type mca:ActiveMapSource ;
-    rdfs:label "Live Bus Departures" ;
-    dc:description "Bus stops and live departure information." ;
-    mca:urlStem "busproxy/?id=" ;
-    mca:markers "js/busstops.json" ;
-    mca:icon "images/bus.png" ;
-    mca:template <template://activeMap.ftl> ;
-    mca:order "3"^^xsd:integer ;
-    geo:lat "51.4585695818037"^^xsd:double ;
-    geo:long "-2.60187349563486"^^xsd:double ;
     mca:style "map"^^xsd:string ;
     .
 
@@ -111,59 +54,46 @@
     mca:style "map"^^xsd:string ;
     .
 
-<mca://registry/maps/precinct/> rdf:type mca:KmlMapSource ;
-    rdfs:label "University Precinct" ;
-    dc:description "University precinct and residences." ;
-    rdfs:seeAlso <http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&output=kml&msid=111005880056449945013.0004718d9aaef89003fc6> ;
-    mca:template <template://kmlMap.ftl> ;
-    mca:order "1"^^xsd:integer ;
-    geo:lat "51.4585695818037"^^xsd:double ;
-    geo:long "-2.60187349563486"^^xsd:double ;
-    mca:style "map"^^xsd:string ;
-    .
-
-<mca://registry/contacts/> rdf:type mca:Group ;
-    rdfs:label "Contacts" ;
-    dc:description "Contact information" ;
-    mca:template <template://navigation.ftl> ;
-    mca:order "5"^^xsd:integer ;
-    mca:hasItem <mca://registry/contacts/emergency/> ;
-    mca:hasItem <mca://registry/contacts/university/> ;
-    mca:hasItem <mca://registry/contacts/welfare/> ;
-    mca:hasItem <mca://registry/contacts/directory/> ;
-    mca:style "contacts"^^xsd:string ;
-    .
-
 <mca://registry/news/> rdf:type mca:Group ;
     rdfs:label "News" ;
     dc:description "University news items" ;
-    mca:hasItem <mca://registry/news/alerts/> ;
     mca:hasItem <mca://registry/news/main/> ;
-    mca:hasItem <mca://registry/news/academic/> ;
     mca:hasItem <mca://registry/news/services/> ;
-    mca:hasItem <mca://registry/news/ubu/> ;
     mca:order "4"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
     mca:style "news"^^xsd:string ;
     .
 
-<mca://registry/events/> rdf:type mca:Group ;
-    rdfs:label "Events" ;
-    dc:description "University events" ;
-    mca:hasItem <mca://registry/events/library/> ;
-    mca:hasItem <mca://registry/events/uobkeydates/> ;
-    mca:hasItem <mca://registry/events/cmsevents/> ;
-    mca:order "3"^^xsd:integer ;
+<mca://registry/news/main/> rdf:type mca:News ;
+    rdfs:label "Main Headlines" ;
+    dc:description "Main headlines from the University of Bristol" ;
+    rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
+    mca:order "2"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/services/is/> rdf:type mca:News ;
+    rdfs:label "Information Services" ;
+    dc:description "News from Information Services" ;
+    rdfs:seeAlso <http://www.bristol.ac.uk/is/news/news.rss> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    mca:style "news"^^xsd:string ;
+    .
+
+<mca://registry/news/services/> rdf:type mca:Group ;
+    rdfs:label "Support Services" ;
+    dc:description "Latest news from the support services" ;
+    mca:hasItem <mca://registry/news/services/is/> ;
+    mca:order "4"^^xsd:integer ;
     mca:template <template://navigation.ftl> ;
-    mca:style "events"^^xsd:string ;
+    mca:style "news"^^xsd:string ;
     .
 
-<http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
-    mca:hasXslSource <xsl://xsl/weatherData.xsl>
-    .
 
-<http://is-freepcs.cse.bris.ac.uk/> rdf:type mca:HtmlSource ;
-    mca:hasXslSource <xsl://xsl/pcavailability.xsl>
-    .
+# Below are URLs that will be harvested
 
-<http://www.bris.ac.uk/is/news/status.rss> rdf:type mca:FeedSource .
+<http://www.bris.ac.uk/news/news-feed.rss> rdf:type mca:FeedSource .
+
+<http://www.bristol.ac.uk/is/news/news.rss> rdf:type mca:FeedSource .
