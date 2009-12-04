@@ -1,4 +1,57 @@
-Mobile Campus Assistant (c) 2009 University of Bristol
+MOBILE CAMPUS ASSISTANT - README
+================================
+
+INTRODUCTION
+------------
 
 Mobile Campus Assistant is a JISC funded rapid innovation project
-being undertaken by the University of Bristol.
+undertaken by the Institute for Learning and Research Technology (ILRT)
+at the University of Bristol.
+
+COMPILING
+---------
+
+This is a Java project that uses Ant as the build tool and Ivy
+for dependency management. You will need to have the Ivy lib
+installed in a .ant/lib directory in your home directory.
+
+Ant has the following targets:
+
+resolve         download third party libraries
+compile         compile the Java source code
+war             create a deployable War file
+
+RUNNING
+-------
+
+You need to deploy the War file to a servlet container that
+implements the 2.5 servlet specification.
+
+For development purposes it is possible to configure the project
+to use an IDE managed servlet container - the developers of the
+project used Eclipse, Netbeans and IntelliJ IDEA.
+
+The source code is only configured to use a couple of
+public data sources provided by the University of Bristol. For
+a more comprehensive example of what is possible, please view
+the demonstrator: <http://mca.ilrt.bristol.ac.uk>
+
+The demonstrator uses licensed images that could not be
+distributed with the source code.
+
+
+FURTHER INFORMATION
+-------------------
+
+Project Website:
+<http://mobilecampus.ilrt.bris.ac.uk/>
+
+Demonstrator
+<http://mca.ilrt.bristol.ac.uk/>
+
+
+For general queries about the project please contact Nikki
+Rogers (nikki.rogers@bristol.ac.uk). For technical queries please
+contact Mike Jones (mike.a.jones@bristol.ac.uk).
+
+(c) 2009 University of Bristol
