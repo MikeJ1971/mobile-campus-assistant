@@ -14,3 +14,13 @@ nbproject
 Thumbs*
 build.xml
 catalog.xml
+.idea
+out
+
+# xcode
+*.mode1v3
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.pyc
+*~.nib/
