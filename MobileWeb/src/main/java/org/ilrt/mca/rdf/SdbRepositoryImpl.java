@@ -83,10 +83,9 @@ public class SdbRepositoryImpl implements Repository {
 
         Model results = qe.execConstruct();
 
-        //results.write(System.out);
-
-        // clean up and returm
+        // clean up and return
         qe.close();
+        dataset.close();
         storeWrapper.close();
         return results;
     }
@@ -96,6 +95,7 @@ public class SdbRepositoryImpl implements Repository {
         StoreWrapper storeWrapper = manager.getStoreWrapper();
         Model sdbModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         sdbModel.add(model);
+        sdbModel.close();
         storeWrapper.close();
     }
 
@@ -104,6 +104,7 @@ public class SdbRepositoryImpl implements Repository {
         StoreWrapper storeWrapper = manager.getStoreWrapper();
         Model sdbModel = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
         sdbModel.add(model);
+        sdbModel.close();
         storeWrapper.close();
     }
 
@@ -112,6 +113,7 @@ public class SdbRepositoryImpl implements Repository {
         StoreWrapper storeWrapper = manager.getStoreWrapper();
         Model sdbModel = SDBFactory.connectNamedModel(storeWrapper.getStore(), graphUri);
         sdbModel.remove(model);
+        sdbModel.close();
         storeWrapper.close();
     }
 

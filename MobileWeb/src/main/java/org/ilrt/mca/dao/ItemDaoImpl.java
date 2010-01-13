@@ -89,6 +89,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         // fallback
         BaseItem item = new BaseItem();
         getBasicDetails(resource, item);
+        model.close();
         return item;
     }
 
