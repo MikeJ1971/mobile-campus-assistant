@@ -10,8 +10,8 @@
 #     .
 
  _:c rdf:type sdb:SDBConnection ;
-     sdb:sdbType        "H2" ;
-     sdb:sdbName        "mca" ;
+     sdb:sdbType        "h2" ;
+     sdb:sdbName        "/tmp/mca" ;
      sdb:driver         "org.h2.Driver" ;
      .
 
