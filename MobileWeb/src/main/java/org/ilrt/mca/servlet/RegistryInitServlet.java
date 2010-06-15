@@ -74,7 +74,6 @@ public class RegistryInitServlet extends HttpServlet {
         log.info("Database used: " + wrapper.getStore().getDatabaseType().getName());
         wrapper.close();
 
-        manager.getStoreWrapper().getStore().getDatabaseType();
         Repository repository = new SdbRepositoryImpl(manager);
 
         // clear existing registry

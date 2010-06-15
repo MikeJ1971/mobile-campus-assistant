@@ -29,6 +29,6 @@
         <dependency org="jtidy" name="jtidy" rev="r918" conf="compile->default"/>
         <dependency org="xalan" name="xalan" rev="2.7.1" conf="compile->default"/>
         <dependency org="joda-time" name="joda-time" rev="1.6" conf="compile->default"/>
-        <dependency org="com.h2database" name="h2" rev="1.2.121" conf="compile->default"/>
+        <dependency org="com.h2database" name="h2" rev="1.2.137" conf="compile->default"/>
     </dependencies>
 </ivy-module>

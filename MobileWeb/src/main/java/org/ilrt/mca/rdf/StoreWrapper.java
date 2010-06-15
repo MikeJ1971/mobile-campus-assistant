@@ -32,6 +32,7 @@
 package org.ilrt.mca.rdf;
 
 import com.hp.hpl.jena.sdb.Store;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 
@@ -53,17 +54,25 @@ public class StoreWrapper {
     }
 
     public void close() {
-        if (!store.isClosed()) {
-            try {
-                if (!store.getConnection().getSqlConnection().isClosed()) {
-                    store.getConnection().close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+
+        log.debug("Call to close the store");
+
+        // the store might be already closed (due to the closure of a dataset) so cleanup the db
+        try {
+            if (!store.getConnection().getSqlConnection().isClosed()) {
+                log.debug("Closing database connection");
+                store.getConnection().close();
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (!store.isClosed()) {
             store.close();
         }
     }
 
     private final Store store;
+
+    private final Logger log = Logger.getLogger(StoreWrapper.class);
 }
