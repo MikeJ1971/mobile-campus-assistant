@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class AbstractTest {
+public abstract class AbstractTest {
 
     protected void setUpStore() throws Exception {
 
