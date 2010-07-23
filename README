@@ -11,15 +11,12 @@ at the University of Bristol.
 COMPILING
 ---------
 
-This is a Java project that uses Ant as the build tool and Ivy
-for dependency management. You will need to have the Ivy lib
-installed in a .ant/lib directory in your home directory.
+This is a Java project that uses maven as the build tool:
 
-Ant has the following targets:
-
-resolve         download third party libraries
-compile         compile the Java source code
-war             create a deployable War file
+compile         compile the source code
+test            compile the source code and run tests
+install         compile the source code, run tests and create
+                the application WAR file
 
 RUNNING
 -------
@@ -38,6 +35,10 @@ the demonstrator: <http://mca.ilrt.bristol.ac.uk>
 
 The demonstrator uses licensed images that could not be
 distributed with the source code.
+
+To run the application via maven you can run:
+
+mvn jetty:run-war
 
 
 FURTHER INFORMATION
