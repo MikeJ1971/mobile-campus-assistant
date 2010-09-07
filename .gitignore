@@ -16,6 +16,7 @@ build.xml
 catalog.xml
 .idea
 out
+atlassian-ide-plugin.xml
 
 # xcode
 *.mode1v3
