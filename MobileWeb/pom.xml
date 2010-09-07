@@ -9,8 +9,42 @@
     <name>Mobile Campus Assistant Web Application</name>
     <url>http://maven.apache.org</url>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>develop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <filter.location>src/main/filters/development.properties</filter.location>
+            </properties>
+        </profile>
+        <profile>
+            <id>deploy</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <filter.location>src/main/filters/deployment.properties</filter.location>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <finalName>mca</finalName>
+        <filters>
+            <filter>${filter.location}</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -114,7 +148,7 @@
         <dependency>
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
-            <version>0.9</version>
+            <version>1.0</version>
         </dependency>
         <!-- needed by rome - rome pom is broken and won't auto pull dependencies -->
         <dependency>
@@ -153,4 +187,61 @@
             <version>1.2.137</version>
         </dependency>
     </dependencies>
+
+    <!-- project information -->
+
+    <organization>
+        <name>University of Bristol</name>
+        <url>http://www.bristol.ac.uk</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Mike Jones</name>
+            <email>mike.a.jones@bristol.ac.uk</email>
+            <url>http://fairlypositive.com</url>
+            <organization>University of Bristol</organization>
+            <organizationUrl>http://www.bristol.ac.uk</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Jasper Tredgold</name>
+            <email>jasper.tredgold@bristol.ac.uk</email>
+            <organization>University of Bristol</organization>
+            <organizationUrl>http://www.bristol.ac.uk</organizationUrl>
+            <roles>
+                <role>developer</role>
+                <role>code buddy</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Chris Bailey</name>
+            <email>c.bailey@bristol.ac.uk</email>
+            <organization>University of Bristol</organization>
+            <organizationUrl>http://www.bristol.ac.uk</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Nikki Rogers</name>
+            <email>nikki.rogers@bristol.ac.uk</email>
+            <organizationUrl>http://www.bristol.ac.uk</organizationUrl>
+            <roles>
+                <role>project management</role>
+            </roles>
+        </contributor>
+    </contributors>
+
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://jira.ilrt.bris.ac.uk/browse/MCA</url>
+    </issueManagement>
+
 </project>

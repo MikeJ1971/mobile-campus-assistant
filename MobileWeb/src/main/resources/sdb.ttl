@@ -3,15 +3,9 @@
 @prefix ja:       <http://jena.hpl.hp.com/2005/11/Assembler#> .
 @prefix sdb:      <http://jena.hpl.hp.com/2007/sdb#> .
 
-# _:c rdf:type sdb:SDBConnection ;
-#     sdb:sdbType        "derby" ;
-#     sdb:sdbName        "/tmp/mca" ;
-#     sdb:driver         "org.apache.derby.jdbc.EmbeddedDriver" ;
-#     .
-
  _:c rdf:type sdb:SDBConnection ;
      sdb:sdbType        "h2" ;
-     sdb:sdbName        "/tmp/mca" ;
+     sdb:sdbName        ${sdbName} ;
      sdb:driver         "org.h2.Driver" ;
      .
 
