@@ -115,7 +115,7 @@
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-            <param-value>/(style|images|js)/.*|/robots.txt|/favicon.ico|/busproxy/*|/directoryproxy/*
+            <param-value>/(style|images|js)/.*|/robots.txt|/favicon.ico|/apple-touch-icon.png|/busproxy/*|/directoryproxy/*
             </param-value>
         </init-param>
     </filter>
