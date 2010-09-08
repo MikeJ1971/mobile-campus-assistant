@@ -11,7 +11,7 @@
             overflowToDisk="true"
             />
 
-    <cache name="CachePage1CachingFilter"
+    <cache name="NavigationFilter"
            maxElementsInMemory="10"
            eternal="false"
            timeToIdleSeconds="10000"

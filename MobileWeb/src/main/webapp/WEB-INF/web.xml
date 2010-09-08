@@ -7,19 +7,28 @@
 
     <display-name>Mobile Campus Assistant</display-name>
 
+    <!-- CONTEXT PARAMETERS -->
+
     <context-param>
+        <description>Location of the freemarker templates</description>
         <param-name>freemarker.template.path</param-name>
         <param-value>/WEB-INF/templates/</param-value>
     </context-param>
 
+    <!-- SERVLETS -->
+
     <servlet>
+        <description>Initialises the application registry on startup</description>
+        <display-name>Registry Startup Servlet</display-name>
         <servlet-name>registry</servlet-name>
         <servlet-class>org.ilrt.mca.servlet.RegistryInitServlet</servlet-class>
         <init-param>
+            <description>Location of the SDB configuration file</description>
             <param-name>configLocation</param-name>
             <param-value>/sdb.ttl</param-value>
         </init-param>
         <init-param>
+            <description>Location of the registry file.</description>
             <param-name>registryLocation</param-name>
             <param-value>data/registry.ttl</param-value>
         </init-param>
@@ -27,6 +36,8 @@
     </servlet>
 
     <servlet>
+        <description>Scheduler used to manage data harvesters</description>
+        <display-name>Quartz Initialization Servlet</display-name>
         <servlet-name>scheduler</servlet-name>
         <servlet-class>org.ilrt.mca.servlet.QuartzInitServlet</servlet-class>
         <init-param>
@@ -45,6 +56,8 @@
     </servlet>
 
     <servlet>
+        <description>Servlet that proxies transport data</description>
+        <display-name>Transport Data Proxy Servlet</display-name>
         <servlet-name>busproxy</servlet-name>
         <servlet-class>org.ilrt.mca.servlet.TransportProxyServlet</servlet-class>
         <init-param>
@@ -54,6 +67,8 @@
     </servlet>
 
     <servlet>
+        <description>Servlet that proxies contact data</description>
+        <display-name>Contact Data Proxy Servlet</display-name>
         <servlet-name>directoryproxy</servlet-name>
         <servlet-class>org.ilrt.mca.servlet.DirectoryProxyServlet</servlet-class>
         <init-param>
@@ -68,18 +83,10 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <servlet-mapping>
-        <servlet-name>busproxy</servlet-name>
-        <url-pattern>/busproxy/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>directoryproxy</servlet-name>
-        <url-pattern>/directoryproxy/*</url-pattern>
-    </servlet-mapping>
+    <!-- FILTERS -->
 
     <filter>
-        <filter-name>CachePage1CachingFilter</filter-name>
+        <filter-name>NavigationFilter</filter-name>
         <filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
         <init-param>
             <param-name>suppressStackTraces</param-name>
@@ -87,7 +94,7 @@
         </init-param>
         <init-param>
             <param-name>cacheName</param-name>
-            <param-value>CachePage1CachingFilter</param-value>
+            <param-value>NavigationFilter</param-value>
         </init-param>
     </filter>
 
@@ -108,14 +115,31 @@
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-            <param-value>/(style|images|js)/.*|/robots.txt|/busproxy/*|/directoryproxy/*
+            <param-value>/(style|images|js)/.*|/robots.txt|/favicon.ico|/busproxy/*|/directoryproxy/*
             </param-value>
         </init-param>
     </filter>
 
+    <!-- SERVLET MAPPINGS -->
+
+    <servlet-mapping>
+        <servlet-name>busproxy</servlet-name>
+        <url-pattern>/busproxy/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>directoryproxy</servlet-name>
+        <url-pattern>/directoryproxy/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- FILTER MAPPINGS -->
+
     <filter-mapping>
-        <filter-name>CachePage1CachingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <filter-name>NavigationFilter</filter-name>
+        <url-pattern>/</url-pattern>
+        <url-pattern>/today/</url-pattern>
+        <url-pattern>/maps/</url-pattern>
+        <url-pattern>/news/</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>FORWARD</dispatcher>
@@ -130,4 +154,5 @@
         <servlet-name>ServletAdaptor</servlet-name>
         <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
+
 </web-app>
