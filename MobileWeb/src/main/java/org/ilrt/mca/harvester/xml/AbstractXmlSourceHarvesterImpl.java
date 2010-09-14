@@ -44,7 +44,8 @@ import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.Source;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.SdbManagerImpl;
+import org.ilrt.mca.rdf.UpdateManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.text.ParseException;
@@ -121,6 +122,6 @@ public abstract class AbstractXmlSourceHarvesterImpl extends AbstractDao impleme
         return new XmlSource(uri, xsl, lastVisited);
     }
 
-    protected Repository repository = null;
+    protected SdbManagerImpl repository = null;
     Logger log = Logger.getLogger(AbstractXmlSourceHarvesterImpl.class);
 }

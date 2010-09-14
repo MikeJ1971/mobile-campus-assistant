@@ -32,19 +32,18 @@
 package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.query.QuerySolutionMap;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.domain.events.EventItemImpl;
+import org.ilrt.mca.domain.events.EventSourceImpl;
+import org.ilrt.mca.rdf.QueryManager;
+import org.ilrt.mca.vocab.EVENT;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
@@ -52,10 +51,6 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import org.ilrt.mca.domain.events.EventItemImpl;
-import org.ilrt.mca.domain.events.EventSourceImpl;
-import org.ilrt.mca.vocab.EVENT;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 /**
  * @author Chris Bailey (c.bailey@bristol.ac.uk)
@@ -65,11 +60,11 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     private String findEventsCollection = null;
     private String findEventsList = null;
     private String findEventDetails = null;
-    private final Repository repository;
+    private final QueryManager queryManager;
     Logger log = Logger.getLogger(EventDelegateImpl.class);
 
-    public EventDelegateImpl(final Repository repository) {
-        this.repository = repository;
+    public EventDelegateImpl(final QueryManager queryManager) {
+        this.queryManager = queryManager;
         try {
             findEventsCollection = loadSparql("/sparql/findEvents.rql");
             findEventsList = loadSparql("/sparql/findEventsList.rql");
@@ -81,19 +76,18 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
     }
 
     @Override
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters)
-    {
+    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
         Resource graphUri = null;
-        if (resource.hasProperty(RDFS.seeAlso)) graphUri = resource.getProperty(RDFS.seeAlso).getResource();
+        if (resource.hasProperty(RDFS.seeAlso))
+            graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
-        String startDate =  Common.parseXsdDate(EventDelegateImpl.getStartDate());
-        String endDate =  Common.parseXsdDate(EventDelegateImpl.getEndDate(resource.getProperty(MCA_REGISTRY.eventlist).getLiteral().getLexicalForm()));
+        String startDate = Common.parseXsdDate(EventDelegateImpl.getStartDate());
+        String endDate = Common.parseXsdDate(EventDelegateImpl.getEndDate(resource.getProperty(MCA_REGISTRY.eventlist).getLiteral().getLexicalForm()));
 
-        log.info("graphUri:"+graphUri);
+        log.info("graphUri:" + graphUri);
         log.info("Looking for events from " + startDate + " to " + endDate);
-        
-        if (parameters.containsKey("item"))
-        {
+
+        if (parameters.containsKey("item")) {
             EventItemImpl item = new EventItemImpl();
 
             String queryUid = parameters.get("item").get(0);
@@ -105,25 +99,21 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             bindings.add("id", ResourceFactory.createPlainLiteral(queryUid));
             if (graphUri != null) bindings.add("graph", graphUri);
 
-            Model resultModel = repository.find(bindings, findEventDetails);
-            
+            Model resultModel = queryManager.find(bindings, findEventDetails);
+
             StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
-            if (stmtiter.hasNext())
-            {
+            if (stmtiter.hasNext()) {
                 Statement st = stmtiter.nextStatement();
 
                 Resource r = st.getSubject();
                 item = eventItemDetails(r, queryUid);
-            }
-            else
-            {
+            } else {
                 log.info("Item not found");
             }
 
             return item;
         } // END if (parameters.containsKey("item"))
-        else
-        {
+        else {
             EventSourceImpl item = new EventSourceImpl();
 
             // get all events for this calendar feed
@@ -133,7 +123,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
             bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
 
             // search feeds with the specified item
-            Model resultModel = repository.find(bindings, findEventsList);
+            Model resultModel = queryManager.find(bindings, findEventsList);
 
 //            resultModel.write(System.out);
 
@@ -157,25 +147,27 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
     @Override
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-        Model model = repository.find("id", resource.getURI(), findEventsCollection);
+        Model model = queryManager.find("id", resource.getURI(), findEventsCollection);
 
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
     private void eventSourceDetails(Resource resource, EventSourceImpl item) {
 
-        getBasicDetails(resource,item);
+        getBasicDetails(resource, item);
 
-        if (resource.hasProperty(MCA_REGISTRY.htmlLink)) item.setHTMLLink(resource.getProperty(MCA_REGISTRY.htmlLink).getLiteral().getLexicalForm());
+        if (resource.hasProperty(MCA_REGISTRY.htmlLink))
+            item.setHTMLLink(resource.getProperty(MCA_REGISTRY.htmlLink).getLiteral().getLexicalForm());
 
-        if (resource.hasProperty(MCA_REGISTRY.icalLink)) item.setiCalLink(resource.getProperty(MCA_REGISTRY.icalLink).getLiteral().getLexicalForm());
+        if (resource.hasProperty(MCA_REGISTRY.icalLink))
+            item.setiCalLink(resource.getProperty(MCA_REGISTRY.icalLink).getLiteral().getLexicalForm());
     }
 
     public EventItemImpl eventItemDetails(Resource resource, String provenance) {
-        
+
         EventItemImpl item = new EventItemImpl();
 
-        getBasicDetails(resource,item);
+        getBasicDetails(resource, item);
 
         // override default id with uid from ical.
         // resource.getURI() returns null anyway.
@@ -226,30 +218,27 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         return item;
     }
 
-    public static Date getStartDate()
-    {
+    public static Date getStartDate() {
         Calendar cal = Calendar.getInstance();
 
-        cal.set( Calendar.HOUR_OF_DAY, 0 );
-        cal.set( Calendar.MINUTE, 0 );
-        cal.set( Calendar.SECOND, 0 );
-        cal.set( Calendar.MILLISECOND, 0 );
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
 
         return cal.getTime();
     }
 
-    public static Date getEndDate(String s)
-    {
+    public static Date getEndDate(String s) {
         Calendar endCal = Calendar.getInstance();
-        
-        if (s.equalsIgnoreCase("TODAY")) 
-        {
-            endCal.set( Calendar.HOUR_OF_DAY, 23 );
-            endCal.set( Calendar.MINUTE, 59 );
-            endCal.set( Calendar.SECOND, 59 );
-            endCal.set( Calendar.MILLISECOND, 999 );
+
+        if (s.equalsIgnoreCase("TODAY")) {
+            endCal.set(Calendar.HOUR_OF_DAY, 23);
+            endCal.set(Calendar.MINUTE, 59);
+            endCal.set(Calendar.SECOND, 59);
+            endCal.set(Calendar.MILLISECOND, 999);
         }
-        if (s.equalsIgnoreCase("ONEMONTH")) endCal.add( Calendar.MONTH, 1 );
+        if (s.equalsIgnoreCase("ONEMONTH")) endCal.add(Calendar.MONTH, 1);
 
         return endCal.getTime();
     }

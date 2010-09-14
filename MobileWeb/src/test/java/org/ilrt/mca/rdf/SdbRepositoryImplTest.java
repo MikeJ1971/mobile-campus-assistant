@@ -11,16 +11,17 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.sdb.util.StoreUtils;
 import com.hp.hpl.jena.vocabulary.DC;
-import static junit.framework.Assert.assertFalse;
 import org.ilrt.mca.Common;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import static junit.framework.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -47,7 +48,7 @@ public class SdbRepositoryImplTest {
         storeWrapper.close();
 
         // add some data
-        Repository repository = getRepository();
+        UpdateManager repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
@@ -69,7 +70,7 @@ public class SdbRepositoryImplTest {
         storeWrapper.close();
 
         // add some data to the graph
-        Repository repository = getRepository();
+        UpdateManager repository = getRepository();
         repository.add(graphUri, getTestData());
 
         // test that the graph is stored
@@ -93,7 +94,7 @@ public class SdbRepositoryImplTest {
         storeWrapper.close();
 
         // remove data from the graph
-        Repository repository = getRepository();
+        UpdateManager repository = getRepository();
         repository.delete(graphUri, getTestData());
 
         // test that the graph isn't stored
@@ -114,7 +115,7 @@ public class SdbRepositoryImplTest {
         storeWrapper.close();
 
         // add some data
-        Repository repository = getRepository();
+        UpdateManager repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
@@ -138,7 +139,7 @@ public class SdbRepositoryImplTest {
     public void findWithBindings() throws Exception {
 
         // add some data
-        Repository repository = getRepository();
+        SdbManagerImpl repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
@@ -158,7 +159,7 @@ public class SdbRepositoryImplTest {
     public void findWithJustSparql() throws Exception {
 
         // add some data
-        Repository repository = getRepository();
+        SdbManagerImpl repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
@@ -176,7 +177,7 @@ public class SdbRepositoryImplTest {
     public void findWithBindingId() throws Exception {
 
         // add some data
-        Repository repository = getRepository();
+        SdbManagerImpl repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
@@ -220,7 +221,7 @@ public class SdbRepositoryImplTest {
         beforeModel.close();
         storeWrapper.close();
 
-        Repository repository = getRepository();
+        UpdateManager repository = getRepository();
 
         String newdate = Common.parseXsdDate(new Date());
 
@@ -258,7 +259,7 @@ public class SdbRepositoryImplTest {
 
         model.close();
 
-        Repository repository = getRepository();
+        UpdateManager repository = getRepository();
         repository.deleteAllInGraph(graph);
 
         storeWrapper = getStoreWrapper();
@@ -283,7 +284,7 @@ public class SdbRepositoryImplTest {
 
         model.close();
 
-        Repository repository = getRepository();
+        UpdateManager repository = getRepository();
         repository.deleteAllInGraph(null);
 
         storeWrapper = getStoreWrapper();
@@ -314,8 +315,8 @@ public class SdbRepositoryImplTest {
         return getStoreWrapperManager().getStoreWrapper();
     }
 
-    Repository getRepository() {
-        return new SdbRepositoryImpl(getStoreWrapperManager());
+    SdbManagerImpl getRepository() {
+        return new SdbManagerImpl(getStoreWrapperManager());
     }
 
     StoreWrapperManager getStoreWrapperManager() {

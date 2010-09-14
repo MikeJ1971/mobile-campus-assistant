@@ -4,14 +4,14 @@ import com.hp.hpl.jena.sdb.util.StoreUtils;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
-import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -37,8 +37,8 @@ public abstract class AbstractTest {
         return getStoreWrapperManager().getStoreWrapper();
     }
 
-    protected Repository getRepository() {
-        return new SdbRepositoryImpl(getStoreWrapperManager());
+    protected SdbManagerImpl getRepository() {
+        return new SdbManagerImpl(getStoreWrapperManager());
     }
 
     protected StoreWrapperManager getStoreWrapperManager() {

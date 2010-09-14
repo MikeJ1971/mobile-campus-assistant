@@ -35,20 +35,13 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 import org.apache.log4j.Logger;
-import org.ilrt.mca.dao.delegate.ActiveMapDelegateImpl;
-import org.ilrt.mca.dao.delegate.ContactsDelegateImpl;
-import org.ilrt.mca.dao.delegate.Delegate;
-import org.ilrt.mca.dao.delegate.DirectoryDelegateImpl;
-import org.ilrt.mca.dao.delegate.FeedDelegateImpl;
-import org.ilrt.mca.dao.delegate.HtmlFragmentDelegateImpl;
-import org.ilrt.mca.dao.delegate.KmlMapDelegateImpl;
+import org.ilrt.mca.dao.delegate.*;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
-import org.ilrt.mca.dao.delegate.EventDelegateImpl;
 
 
 /**
@@ -56,8 +49,8 @@ import org.ilrt.mca.dao.delegate.EventDelegateImpl;
  */
 public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
-    public ItemDaoImpl(Repository repository) throws Exception {
-        this.repository = repository;
+    public ItemDaoImpl(final QueryManager queryManager) throws Exception {
+        this.queryManager = queryManager;
         findItemsSparql = loadSparql("/sparql/findItems.rql");
 
     }
@@ -96,7 +89,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
     @Override
     public Model findModel(String id, MultivaluedMap<String, String> parameters) {
 
-        Model model = repository.find("id", id, findItemsSparql);
+        Model model = queryManager.find("id", id, findItemsSparql);
 
         if (model.isEmpty()) {
             return null;
@@ -120,20 +113,20 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
             String type = resource.getProperty(RDF.type).getResource().getURI();
 
             if (type.equals(MCA_REGISTRY.KmlMapSource.getURI())) {
-                return new KmlMapDelegateImpl(repository);
+                return new KmlMapDelegateImpl(queryManager);
             } else if (type.equals(MCA_REGISTRY.News.getURI()) ||
                     type.equals(MCA_REGISTRY.FeedItem.getURI())) {
-                return new FeedDelegateImpl(repository);
+                return new FeedDelegateImpl(queryManager);
             } else if (type.equals(MCA_REGISTRY.HtmlFragment.getURI())) {
-                return new HtmlFragmentDelegateImpl(repository);
+                return new HtmlFragmentDelegateImpl(queryManager);
             } else if (type.equals(MCA_REGISTRY.ActiveMapSource.getURI())) {
-                return new ActiveMapDelegateImpl(repository);
+                return new ActiveMapDelegateImpl(queryManager);
             } else if (type.equals(MCA_REGISTRY.Contact.getURI())) {
-                return new ContactsDelegateImpl(repository);
+                return new ContactsDelegateImpl(queryManager);
             } else if (type.equals(MCA_REGISTRY.Directory.getURI())) {
-                return new DirectoryDelegateImpl(repository);
+                return new DirectoryDelegateImpl(queryManager);
             } else if (type.equals(MCA_REGISTRY.EventCalendar.getURI())) {
-                return new EventDelegateImpl(repository);
+                return new EventDelegateImpl(queryManager);
             }
 
             log.debug("Haven't found an appropriate delegate");
@@ -144,7 +137,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
 
     private String findItemsSparql = null;
-    private Repository repository;
+    private QueryManager queryManager;
 
     Logger log = Logger.getLogger(ItemDaoImpl.class);
 }

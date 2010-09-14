@@ -41,8 +41,8 @@ import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
 import org.ilrt.mca.dao.ItemDaoImpl;
 import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.QueryManager;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
 
@@ -65,8 +65,8 @@ public class MobileCampusResource {
     public MobileCampusResource() throws Exception {
 
         StoreWrapperManager manager = new StoreWrapperManagerImpl(CONFIG);
-        Repository repository = new SdbRepositoryImpl(manager);
-        itemDao = new ItemDaoImpl(repository);
+        QueryManager queryManager = new SdbManagerImpl(manager);
+        itemDao = new ItemDaoImpl(queryManager);
     }
 
     @GET

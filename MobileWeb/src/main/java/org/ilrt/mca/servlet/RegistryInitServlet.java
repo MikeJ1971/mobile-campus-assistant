@@ -34,13 +34,9 @@ package org.ilrt.mca.servlet;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.util.FileManager;
-import com.hp.hpl.jena.sdb.Store;
 import org.apache.log4j.Logger;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.rdf.SdbRepositoryImpl;
-import org.ilrt.mca.rdf.StoreWrapperManager;
-import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
-import org.ilrt.mca.rdf.StoreWrapper;
+import org.ilrt.mca.rdf.*;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -74,7 +70,7 @@ public class RegistryInitServlet extends HttpServlet {
         log.info("Database used: " + wrapper.getStore().getDatabaseType().getName());
         wrapper.close();
 
-        Repository repository = new SdbRepositoryImpl(manager);
+        UpdateManager repository = new SdbManagerImpl(manager);
 
         // clear existing registry
         log.info("Clearing existing registry details");

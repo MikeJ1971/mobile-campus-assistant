@@ -34,8 +34,7 @@ package org.ilrt.mca.quartz;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
 import org.quartz.Job;
@@ -55,7 +54,7 @@ public class HarvestXmlJob implements Job {
         try {
 
             StoreWrapperManager manager = new StoreWrapperManagerImpl("/sdb.ttl");
-            Repository repository = new SdbRepositoryImpl(manager);
+            SdbManagerImpl repository = new SdbManagerImpl(manager);
 
             Harvester harvester = new XmlSourceHarvesterImplImpl(repository);
             harvester.harvest();

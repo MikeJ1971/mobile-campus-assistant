@@ -40,7 +40,7 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.html.HtmlFragmentImpl;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -51,8 +51,8 @@ import java.io.IOException;
  */
 public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
 
-    public HtmlFragmentDelegateImpl(final Repository repository) {
-        this.repository = repository;
+    public HtmlFragmentDelegateImpl(final QueryManager queryManager) {
+        this.queryManager = queryManager;
         try {
             sparql = loadSparql("/sparql/findHtmlFragment.rql");
         } catch (IOException ex) {
@@ -91,11 +91,11 @@ public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
         bindings.add("id", graph);
         bindings.add("graph", graph);
 
-        Model model = repository.find(bindings, sparql);
+        Model model = queryManager.find(bindings, sparql);
 
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
     private String sparql = null;
-    private final Repository repository;
+    private final QueryManager queryManager;
 }

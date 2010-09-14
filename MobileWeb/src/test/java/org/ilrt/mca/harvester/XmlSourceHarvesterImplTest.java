@@ -8,21 +8,21 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.util.FileManager;
 import com.hp.hpl.jena.vocabulary.DC;
-import static junit.framework.Assert.assertFalse;
 import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import static junit.framework.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -51,7 +51,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
 
         storeWrapper.close();
 
-        repository = new SdbRepositoryImpl(manager);
+        repository = new SdbManagerImpl(manager);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
         storeWrapper.close();
     }
 
-    Repository repository;
+    SdbManagerImpl repository;
 
     // these need to be in the test-registry.ttl file
     String feedUrl = "http://portal.bris.ac.uk/portal-weather/newXml";

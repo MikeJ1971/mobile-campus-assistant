@@ -39,7 +39,7 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.KmlMapItemImpl;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.vocab.GEO;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -50,8 +50,8 @@ import java.io.IOException;
  */
 public class KmlMapDelegateImpl extends AbstractDao implements Delegate {
 
-    public KmlMapDelegateImpl(final Repository repository) {
-        this.repository = repository;
+    public KmlMapDelegateImpl(final QueryManager queryManager) {
+        this.queryManager = queryManager;
         try {
             kmlMapDetailsSparql = loadSparql("/sparql/findKmlMapDetails.rql");
         } catch (IOException ex) {
@@ -86,11 +86,10 @@ public class KmlMapDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
-        Model kmlModel = repository.find("id", resource.getURI(), kmlMapDetailsSparql);
+        Model kmlModel = queryManager.find("id", resource.getURI(), kmlMapDetailsSparql);
         return ModelFactory.createUnion(resource.getModel(), kmlModel);
     }
 
-
     private String kmlMapDetailsSparql = null;
-    private final Repository repository;
+    private final QueryManager queryManager;
 }

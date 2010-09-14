@@ -33,10 +33,10 @@ package org.ilrt.mca.quartz;
 
 import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.UpdateManager;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -56,7 +56,7 @@ public class HarvestEventJob implements Job {
         try {
 
             StoreWrapperManager manager = new StoreWrapperManagerImpl("/sdb.ttl");
-            Repository repository = new SdbRepositoryImpl(manager);
+            SdbManagerImpl repository = new SdbManagerImpl(manager);
 
             Harvester harvester = new EventHarvesterImpl(repository);
             harvester.harvest();

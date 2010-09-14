@@ -5,14 +5,7 @@
 package org.ilrt.mca.harvester.events;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.ResIterator;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
 import org.apache.log4j.Logger;
@@ -24,7 +17,7 @@ import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
 import org.ilrt.mca.harvester.xml.XmlSource;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
@@ -40,7 +33,7 @@ import java.util.List;
  */
 public class EventHarvesterImpl extends AbstractDao implements Harvester {
 
-    public EventHarvesterImpl(Repository repository) throws IOException {
+    public EventHarvesterImpl(SdbManagerImpl repository) throws IOException {
         resolver = new HttpResolverImpl();
         this.repository = repository;
         findSources = loadSparql("/sparql/findHarvestableEvents.rql");
@@ -344,7 +337,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
     }
 
     private Resolver resolver;
-    private Repository repository;
+    private SdbManagerImpl repository;
     private String findSources;
 
     final private Logger log = Logger.getLogger(EventHarvesterImpl.class);

@@ -32,12 +32,7 @@
 package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.query.QuerySolutionMap;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.rdf.model.Statement;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.RSS;
@@ -46,7 +41,7 @@ import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.feeds.FeedItemImpl;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 import org.joda.time.DateTime;
 
@@ -67,8 +62,8 @@ import java.util.Collections;
  */
 public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
-    public FeedDelegateImpl(final Repository repository) {
-        this.repository = repository;
+    public FeedDelegateImpl(final QueryManager queryManager) {
+        this.queryManager = queryManager;
         try {
             findNewsItems = loadSparql("/sparql/findNewsItems.rql");
             findNewsItemsByDate = loadSparql("/sparql/findNewsItemsByDate.rql");
@@ -129,7 +124,7 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
             bindings.add("graph", graph);
 
             // search feeds with the specified item
-            Model feedModel = repository.find(bindings, findNewsItems);
+            Model feedModel = queryManager.find(bindings, findNewsItems);
 
             return ModelFactory.createUnion(feedModel, resource.getModel());
 
@@ -147,7 +142,7 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
             bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
             bindings.add("id", resource);
 
-            Model results = repository.find(bindings, findNewsItemsByDate);
+            Model results = queryManager.find(bindings, findNewsItemsByDate);
 
             return ModelFactory.createUnion(results, resource.getModel());
         }
@@ -223,7 +218,7 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
         // bind to the URI in the registry that matches the HTTP request
         bindings.add("id", resource);
 
-        Model model = repository.find(bindings, findNewsItems);
+        Model model = queryManager.find(bindings, findNewsItems);
 
         // we want to use a special template for an individual news item
         Resource r = model.getResource(resource.getURI());
@@ -240,6 +235,6 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
     private String findNewsItems = null;
     private String findNewsItemsByDate = null;
-    private final Repository repository;
+    private final QueryManager queryManager;
     Logger log = Logger.getLogger(FeedDelegateImpl.class);
 }

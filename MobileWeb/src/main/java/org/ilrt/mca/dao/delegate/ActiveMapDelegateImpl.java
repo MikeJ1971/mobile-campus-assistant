@@ -38,7 +38,7 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.map.ActiveMapItemImpl;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
@@ -51,8 +51,8 @@ import java.io.IOException;
  */
 public class ActiveMapDelegateImpl extends AbstractDao implements Delegate {
 
-    public ActiveMapDelegateImpl(final Repository repository) {
-        this.repository = repository;
+    public ActiveMapDelegateImpl(final QueryManager queryManager) {
+        this.queryManager = queryManager;
         try {
             activeMapDetailsSparql = loadSparql("/sparql/findActiveMapDetails.rql");
         } catch (IOException ex) {
@@ -95,11 +95,11 @@ public class ActiveMapDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
-        Model model = repository.find("id", resource.getURI(), activeMapDetailsSparql);
+        Model model = queryManager.find("id", resource.getURI(), activeMapDetailsSparql);
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
 
     private String activeMapDetailsSparql = null;
-    private final Repository repository;
+    private final QueryManager queryManager;
 }

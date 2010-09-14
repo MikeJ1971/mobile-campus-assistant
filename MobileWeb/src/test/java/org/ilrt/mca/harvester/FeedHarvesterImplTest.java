@@ -11,12 +11,9 @@ import com.hp.hpl.jena.vocabulary.DC;
 import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.harvester.feeds.FeedHarvesterImpl;
-import org.ilrt.mca.rdf.Repository;
-import org.ilrt.mca.rdf.SdbRepositoryImpl;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +21,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import static junit.framework.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -52,7 +51,7 @@ public class FeedHarvesterImplTest extends AbstractTest {
 
         storeWrapper.close();
 
-        repository = new SdbRepositoryImpl(manager);
+        repository = new SdbManagerImpl(manager);
     }
 
     @Test
@@ -82,7 +81,7 @@ public class FeedHarvesterImplTest extends AbstractTest {
         storeWrapper.close();
     }
 
-    Repository repository;
+    SdbManagerImpl repository;
 
     // these need to be in the test-registry.ttl file
     String feedUrl = "http://www.bris.ac.uk/news/news-feed.rss";

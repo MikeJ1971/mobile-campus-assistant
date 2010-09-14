@@ -4,14 +4,14 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
 import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.rdf.Repository;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertNotNull;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class ItemDaoTest extends AbstractTest {
@@ -21,7 +21,7 @@ public class ItemDaoTest extends AbstractTest {
     @Before
     public void setUp() {
 
-        Repository repository = getRepository();
+        SdbManagerImpl repository = getRepository();
 
         Model model = FileManager.get().loadModel("test-registry.ttl");
 

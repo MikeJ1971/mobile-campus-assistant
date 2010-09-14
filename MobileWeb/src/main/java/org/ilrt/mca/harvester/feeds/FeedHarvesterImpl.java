@@ -46,7 +46,7 @@ import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
 import org.ilrt.mca.harvester.Source;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ import java.util.List;
  */
 public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
-    public FeedHarvesterImpl(Repository repository) throws IOException {
+    public FeedHarvesterImpl(SdbManagerImpl repository) throws IOException {
         resolver = new HttpResolverImpl();
         this.repository = repository;
         findSources = loadSparql("/sparql/findHarvestableFeeds.rql");
@@ -148,7 +148,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
     }
 
     private Resolver resolver;
-    private Repository repository;
+    private SdbManagerImpl repository;
     private String findSources;
 
     final private Logger log = Logger.getLogger(FeedHarvesterImpl.class);

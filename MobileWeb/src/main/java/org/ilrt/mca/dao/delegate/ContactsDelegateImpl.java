@@ -39,7 +39,7 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.domain.contacts.ContactImpl;
-import org.ilrt.mca.rdf.Repository;
+import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.vocab.FOAF;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -50,8 +50,8 @@ import java.io.IOException;
  */
 public class ContactsDelegateImpl extends AbstractDao implements Delegate {
 
-    public ContactsDelegateImpl(final Repository repository) {
-        this.repository = repository;
+    public ContactsDelegateImpl(final QueryManager queryManager) {
+        this.queryManager = queryManager;
         try {
             findContactsSparql = loadSparql("/sparql/findContacts.rql");
         } catch (IOException ex) {
@@ -89,12 +89,13 @@ public class ContactsDelegateImpl extends AbstractDao implements Delegate {
     @Override
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
-        Model model = repository.find("id", resource.getURI(), findContactsSparql);
+        Model model = queryManager.find("id", resource.getURI(), findContactsSparql);
 
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
     private String findContactsSparql = null;
-    private final Repository repository;
+    private final QueryManager queryManager;
+
     Logger log = Logger.getLogger(ContactsDelegateImpl.class);
 }
