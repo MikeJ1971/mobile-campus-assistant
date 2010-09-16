@@ -44,8 +44,7 @@ import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.Source;
-import org.ilrt.mca.rdf.SdbManagerImpl;
-import org.ilrt.mca.rdf.UpdateManager;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.text.ParseException;
@@ -66,15 +65,15 @@ public abstract class AbstractXmlSourceHarvesterImpl extends AbstractDao impleme
         if (model != null) {
 
             // delete the old data
-            repository.deleteAllInGraph(source.getUrl());
+            dataManager.deleteAllInGraph(source.getUrl());
 
             // add the harvested data
-            repository.add(source.getUrl(), model);
+            dataManager.add(source.getUrl(), model);
 
             // update the last visited date
             RDFNode date = ModelFactory.createDefaultModel()
                     .createTypedLiteral(Common.parseXsdDate(lastVisited), XSDDatatype.XSDdateTime);
-            repository.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
+            dataManager.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
                     DC.date, date);
         } else {
             log.info("Unable to cache " + source.getUrl());
@@ -85,7 +84,7 @@ public abstract class AbstractXmlSourceHarvesterImpl extends AbstractDao impleme
 
         List<XmlSource> sources = new ArrayList<XmlSource>();
 
-        Model m = repository.find(findSources);
+        Model m = dataManager.find(findSources);
 
         if (!m.isEmpty()) {
 
@@ -122,6 +121,6 @@ public abstract class AbstractXmlSourceHarvesterImpl extends AbstractDao impleme
         return new XmlSource(uri, xsl, lastVisited);
     }
 
-    protected SdbManagerImpl repository = null;
+    protected DataManager dataManager = null;
     Logger log = Logger.getLogger(AbstractXmlSourceHarvesterImpl.class);
 }

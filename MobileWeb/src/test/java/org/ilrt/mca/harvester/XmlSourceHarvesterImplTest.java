@@ -11,6 +11,7 @@ import com.hp.hpl.jena.vocabulary.DC;
 import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
@@ -51,7 +52,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
 
         storeWrapper.close();
 
-        repository = new SdbManagerImpl(manager);
+        dataManager = new SdbManagerImpl(manager);
     }
 
     @Test
@@ -65,7 +66,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
                 .getLexicalForm());
         storeWrapper.close();
 
-        Harvester harvester = new XmlSourceHarvesterImplImpl(repository);
+        Harvester harvester = new XmlSourceHarvesterImplImpl(dataManager);
         harvester.harvest();
 
         storeWrapper = getStoreWrapper();
@@ -81,7 +82,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
         storeWrapper.close();
     }
 
-    SdbManagerImpl repository;
+    DataManager dataManager;
 
     // these need to be in the test-registry.ttl file
     String feedUrl = "http://portal.bris.ac.uk/portal-weather/newXml";

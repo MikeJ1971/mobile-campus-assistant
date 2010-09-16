@@ -139,7 +139,7 @@ public class SdbRepositoryImplTest {
     public void findWithBindings() throws Exception {
 
         // add some data
-        SdbManagerImpl repository = getRepository();
+        DataManager repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
@@ -159,7 +159,7 @@ public class SdbRepositoryImplTest {
     public void findWithJustSparql() throws Exception {
 
         // add some data
-        SdbManagerImpl repository = getRepository();
+        DataManager repository = getRepository();
         repository.add(getTestData());
 
         // test that the database is not empty
@@ -177,15 +177,15 @@ public class SdbRepositoryImplTest {
     public void findWithBindingId() throws Exception {
 
         // add some data
-        SdbManagerImpl repository = getRepository();
-        repository.add(getTestData());
+        DataManager dataManager = getRepository();
+        dataManager.add(getTestData());
 
         // test that the database is not empty
         StoreWrapper storeWrapper = getStoreWrapper();
         Model afterModel = SDBFactory.connectDefaultModel(storeWrapper.getStore());
         assertEquals("The model should not be empty", 1, afterModel.size());
 
-        Model results = repository.find("id", uri, query);
+        Model results = dataManager.find("id", uri, query);
 
         assertEquals("The results should not be empty", 1, results.size());
         storeWrapper.close();
@@ -315,7 +315,7 @@ public class SdbRepositoryImplTest {
         return getStoreWrapperManager().getStoreWrapper();
     }
 
-    SdbManagerImpl getRepository() {
+    DataManager getRepository() {
         return new SdbManagerImpl(getStoreWrapperManager());
     }
 

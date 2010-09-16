@@ -62,7 +62,7 @@ public class RegistryInitServlet extends HttpServlet {
         String configLocation = config.getInitParameter("configLocation");
         String registryLocation = config.getInitParameter("registryLocation");
 
-        // create the repository
+        // create the dataManager
         StoreWrapperManager manager = new StoreWrapperManagerImpl(configLocation);
 
         // log the database being used

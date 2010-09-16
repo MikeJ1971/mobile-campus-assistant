@@ -4,6 +4,7 @@ import com.hp.hpl.jena.sdb.util.StoreUtils;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
@@ -37,7 +38,7 @@ public abstract class AbstractTest {
         return getStoreWrapperManager().getStoreWrapper();
     }
 
-    protected SdbManagerImpl getRepository() {
+    protected DataManager getRepository() {
         return new SdbManagerImpl(getStoreWrapperManager());
     }
 

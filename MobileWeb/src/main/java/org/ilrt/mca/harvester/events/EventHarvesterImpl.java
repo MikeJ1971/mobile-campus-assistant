@@ -5,7 +5,14 @@
 package org.ilrt.mca.harvester.events;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
-import com.hp.hpl.jena.rdf.model.*;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDF;
 import org.apache.log4j.Logger;
@@ -17,7 +24,7 @@ import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
 import org.ilrt.mca.harvester.xml.XmlSource;
-import org.ilrt.mca.rdf.SdbManagerImpl;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
@@ -33,9 +40,9 @@ import java.util.List;
  */
 public class EventHarvesterImpl extends AbstractDao implements Harvester {
 
-    public EventHarvesterImpl(SdbManagerImpl repository) throws IOException {
+    public EventHarvesterImpl(DataManager manager) throws IOException {
         resolver = new HttpResolverImpl();
-        this.repository = repository;
+        this.manager = manager;
         findSources = loadSparql("/sparql/findHarvestableEvents.rql");
     }
 
@@ -73,15 +80,15 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
 //model.write(System.out);
 
                 // delete the old data
-                repository.deleteAllInGraph(source.getUrl());
+                manager.deleteAllInGraph(source.getUrl());
 
                 // add the harvested data
-                repository.add(source.getUrl(), model);
+                manager.add(source.getUrl(), model);
 
                 // update the last visited date
                 RDFNode date = ModelFactory.createDefaultModel()
                         .createTypedLiteral(Common.parseXsdDate(lastVisited), XSDDatatype.XSDdateTime);
-                repository.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
+                manager.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
                         DC.date, date);
             } else {
                 log.info("Unable to cache " + source.getUrl());
@@ -135,7 +142,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
                     // create a unique id
                     repeatEvent.setId(repeatEvent.getId() + "_" + (count++));
 
-                    // store cached copy in repository
+                    // store cached copy in dataManager
                     Model newEventModel = ModelFactory.createDefaultModel();
                     Resource newRes = ResourceFactory.createResource();
                     newEventModel.add(newRes, RDF.type, EVENT.event);
@@ -201,7 +208,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
 
         List<XmlSource> sources = new ArrayList<XmlSource>();
 
-        Model m = repository.find(findSources);
+        Model m = manager.find(findSources);
 
         if (!m.isEmpty()) {
 
@@ -337,7 +344,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
     }
 
     private Resolver resolver;
-    private SdbManagerImpl repository;
+    private DataManager manager;
     private String findSources;
 
     final private Logger log = Logger.getLogger(EventHarvesterImpl.class);

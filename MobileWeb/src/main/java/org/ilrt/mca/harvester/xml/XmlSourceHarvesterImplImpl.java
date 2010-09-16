@@ -36,8 +36,7 @@ import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
-import org.ilrt.mca.rdf.SdbManagerImpl;
-import org.ilrt.mca.rdf.UpdateManager;
+import org.ilrt.mca.rdf.DataManager;
 
 import java.io.IOException;
 import java.util.Date;
@@ -49,8 +48,8 @@ import java.util.List;
  */
 public class XmlSourceHarvesterImplImpl extends AbstractXmlSourceHarvesterImpl implements Harvester {
 
-    public XmlSourceHarvesterImplImpl(SdbManagerImpl repository) throws IOException {
-        this.repository = repository;
+    public XmlSourceHarvesterImplImpl(DataManager dataManager) throws IOException {
+        this.dataManager = dataManager;
         resolver = new HttpResolverImpl();
         findSources = loadSparql("/sparql/findHarvestableXml.rql");
     }
@@ -77,7 +76,7 @@ public class XmlSourceHarvesterImplImpl extends AbstractXmlSourceHarvesterImpl i
             // harvest the data
             Model model = resolver.resolve(source, new XmlSourceResponseHandlerImpl(xsl));
 
-            saveOrUpdate(source,  lastVisited, model);
+            saveOrUpdate(source, lastVisited, model);
         }
     }
 

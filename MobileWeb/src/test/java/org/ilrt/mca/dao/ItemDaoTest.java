@@ -4,6 +4,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
 import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.domain.Item;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,13 +22,13 @@ public class ItemDaoTest extends AbstractTest {
     @Before
     public void setUp() {
 
-        SdbManagerImpl repository = getRepository();
+        DataManager dataManager = getRepository();
 
         Model model = FileManager.get().loadModel("test-registry.ttl");
 
         assertTrue("The model should not be empty", model.size() > 0);
 
-        repository.add(model);
+        dataManager.add(model);
     }
 
     @Test

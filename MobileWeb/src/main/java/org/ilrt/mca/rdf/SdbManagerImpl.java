@@ -45,7 +45,7 @@ import com.hp.hpl.jena.sdb.SDBFactory;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class SdbManagerImpl implements QueryManager, UpdateManager {
+public class SdbManagerImpl implements DataManager {
 
     public SdbManagerImpl(final StoreWrapperManager manager) {
         this.manager = manager;

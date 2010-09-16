@@ -46,7 +46,7 @@ import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
 import org.ilrt.mca.harvester.Source;
-import org.ilrt.mca.rdf.SdbManagerImpl;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.io.IOException;
@@ -61,9 +61,9 @@ import java.util.List;
  */
 public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
-    public FeedHarvesterImpl(SdbManagerImpl repository) throws IOException {
+    public FeedHarvesterImpl(DataManager dataManager) throws IOException {
         resolver = new HttpResolverImpl();
-        this.repository = repository;
+        this.manager = dataManager;
         findSources = loadSparql("/sparql/findHarvestableFeeds.rql");
     }
 
@@ -91,15 +91,15 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
             if (model != null) {
 
                 // delete the old data
-                repository.deleteAllInGraph(source.getUrl());
+                manager.deleteAllInGraph(source.getUrl());
 
                 // add the harvested data
-                repository.add(source.getUrl(), model);
+                manager.add(source.getUrl(), model);
 
                 // update the last visited date
                 RDFNode date = ModelFactory.createDefaultModel()
                         .createTypedLiteral(Common.parseXsdDate(lastVisited), XSDDatatype.XSDdateTime);
-                repository.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
+                manager.updatePropertyInGraph(Common.AUDIT_GRAPH_URI, source.getUrl(),
                         DC.date, date);
             } else {
                 log.info("Unable to cache " + source.getUrl());
@@ -114,7 +114,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
 
         List<Source> sources = new ArrayList<Source>();
 
-        Model m = repository.find(findSources);
+        Model m = manager.find(findSources);
 
         if (!m.isEmpty()) {
 
@@ -148,7 +148,7 @@ public class FeedHarvesterImpl extends AbstractDao implements Harvester {
     }
 
     private Resolver resolver;
-    private SdbManagerImpl repository;
+    private DataManager manager;
     private String findSources;
 
     final private Logger log = Logger.getLogger(FeedHarvesterImpl.class);

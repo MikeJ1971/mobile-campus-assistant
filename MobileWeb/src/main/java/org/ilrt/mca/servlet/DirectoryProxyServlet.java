@@ -173,7 +173,6 @@ public class DirectoryProxyServlet extends HttpServlet {
 
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            return;
         }
 
     }

@@ -11,6 +11,7 @@ import com.hp.hpl.jena.vocabulary.DC;
 import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.harvester.feeds.FeedHarvesterImpl;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
@@ -51,7 +52,7 @@ public class FeedHarvesterImplTest extends AbstractTest {
 
         storeWrapper.close();
 
-        repository = new SdbManagerImpl(manager);
+        dataManager = new SdbManagerImpl(manager);
     }
 
     @Test
@@ -65,7 +66,7 @@ public class FeedHarvesterImplTest extends AbstractTest {
                 .getLexicalForm());
         storeWrapper.close();
 
-        Harvester harvester = new FeedHarvesterImpl(repository);
+        Harvester harvester = new FeedHarvesterImpl(dataManager);
         harvester.harvest();
 
         storeWrapper = getStoreWrapper();
@@ -81,10 +82,10 @@ public class FeedHarvesterImplTest extends AbstractTest {
         storeWrapper.close();
     }
 
-    SdbManagerImpl repository;
+    DataManager dataManager;
 
     // these need to be in the test-registry.ttl file
     String feedUrl = "http://www.bris.ac.uk/news/news-feed.rss";
-    String uri = "mca://registry/news/events/";
+    //String uri = "mca://registry/news/events/";
     String date;
 }
