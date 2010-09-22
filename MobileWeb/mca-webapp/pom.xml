@@ -12,7 +12,6 @@
     <groupId>org.ilrt.mca</groupId>
     <artifactId>mca-webapp</artifactId>
     <packaging>war</packaging>
-    <version>0.6-SNAPSHOT</version>
     <name>Mobile Campus Assistant Web Application</name>
     <url>http://maven.apache.org</url>
 
