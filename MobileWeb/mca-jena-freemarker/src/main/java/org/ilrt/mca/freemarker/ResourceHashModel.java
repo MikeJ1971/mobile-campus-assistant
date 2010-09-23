@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Class to help display a Jena Resource in a freemarker template. For example, for the
@@ -60,11 +59,6 @@ public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarMod
         prefixMapping.setNsPrefix("foaf", "http://xmlns.com/foaf/0.1/");
         prefixMapping.setNsPrefix("geo", "http://www.w3.org/2003/01/geo/wgs84_pos#");
         prefixMapping.setNsPrefix("dcterms", "http://purl.org/dc/terms/");
-
-        //prefixMapping.setNsPrefix("aiiso", "http://purl.org/vocab/aiiso/schema#");
-        //prefixMapping.setNsPrefix("proj", "http://vocab.ouls.ox.ac.uk/projectfunding/projectfunding#");
-        //prefixMapping.setNsPrefix("dc", "http://vocab.ilrt.bris.ac.uk/rr/closed#");
-
     }
 
     // ---------- TemplateModel interface methods
