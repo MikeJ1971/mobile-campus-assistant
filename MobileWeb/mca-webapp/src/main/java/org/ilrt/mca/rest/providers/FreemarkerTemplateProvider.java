@@ -238,7 +238,7 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
 
         freemarkerConfig.setTemplateLoader(new WebappTemplateLoader(context, rootPath));
 
-        final InputStream fmProps = context.getResourceAsStream("freemarker.properties");
+        final InputStream fmProps = context.getResourceAsStream("/WEB-INF/classes/freemarker.properties");
         if (fmProps != null) {
             try {
                 freemarkerConfig.setSettings(fmProps);
@@ -250,6 +250,7 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
                         "instead; error: " + t.getMessage());
             }
         }
+
         assignFreemarkerConfig(freemarkerConfig, context);
     }
 }

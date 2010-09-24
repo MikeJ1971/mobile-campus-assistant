@@ -184,6 +184,11 @@
             <artifactId>ehcache-web</artifactId>
             <version>2.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.ilrt.mca</groupId>
+            <artifactId>mca-jena-freemarker</artifactId>
+            <version>0.6-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

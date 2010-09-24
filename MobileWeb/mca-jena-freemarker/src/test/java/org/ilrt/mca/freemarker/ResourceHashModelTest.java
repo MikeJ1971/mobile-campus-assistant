@@ -162,10 +162,20 @@ public class ResourceHashModelTest {
     }
 
     @Test
-    public void testAsString() throws TemplateModelException {
+    public void testAsStringWithUri() throws TemplateModelException {
 
         // check that we get the testUri
         assertEquals("Unexpected string value", testUri, resourceHashModel.getAsString());
+    }
+
+    @Test
+    public void testAsStringWithBNode() throws TemplateModelException {
+
+        Resource resource = ModelFactory.createDefaultModel().createResource();
+        ResourceHashModel resourceHashModel = new ResourceHashModel(resource);
+
+        assertEquals("Unexpected URI", ResourceHashModel.INVALID_URL,
+                resourceHashModel.getAsString());
     }
 
 
@@ -186,14 +196,14 @@ public class ResourceHashModelTest {
         return resource;
     }
 
-    private String testUri = "http://example.org/1/";
-    private String testStringLiteral = "This is a label";
-    private int testIntegerLiteral = 999999;
-    private double testDoubleLiteral = 9.8989;
-    private String testDate = "2010-09-23T15:20:47";
+    private final String testUri = "http://example.org/1/";
+    private final String testStringLiteral = "This is a label";
+    private final int testIntegerLiteral = 999999;
+    private final double testDoubleLiteral = 9.8989;
+    private final String testDate = "2010-09-23T15:20:47";
 
-    private String secondUri = "http://example.org/2/";
-    private String secondLabel = "This is a another label";
+    private final String secondUri = "http://example.org/2/";
+    private final String secondLabel = "This is a another label";
 
     private ResourceHashModel resourceHashModel;
 
