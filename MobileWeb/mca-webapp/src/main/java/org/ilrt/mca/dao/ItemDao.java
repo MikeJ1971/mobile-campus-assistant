@@ -32,6 +32,7 @@
 package org.ilrt.mca.dao;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
 import org.ilrt.mca.domain.Item;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -44,4 +45,6 @@ public interface ItemDao {
     Item findItem(String id, MultivaluedMap<String, String> parameters);
 
     Model findModel(String id, MultivaluedMap<String, String> parameters);
+
+    Resource findResource(String id, MultivaluedMap<String, String> parameters);
 }

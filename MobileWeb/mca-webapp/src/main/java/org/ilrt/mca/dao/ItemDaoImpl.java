@@ -106,6 +106,31 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         return model;
     }
 
+    @Override
+
+    public Resource findResource(String id, MultivaluedMap<String, String> parameters) {
+
+        Model model = queryManager.find("id", id, findItemsSparql);
+
+        if (model.isEmpty()) {
+            return null;
+        }
+
+        // hand work to a delegate if possible
+        Resource resource = model.getResource(id);
+        Delegate delegate = findDelegate(resource);
+
+        if (delegate != null) {
+            System.out.println("IN HERE ... WILL probably get NULL");
+            return delegate.createResource(resource, parameters);
+        }
+
+        model.write(System.out);
+
+        return model.getResource(id);
+    }
+    
+
     private Delegate findDelegate(Resource resource) {
 
         if (resource.hasProperty(RDF.type)) {

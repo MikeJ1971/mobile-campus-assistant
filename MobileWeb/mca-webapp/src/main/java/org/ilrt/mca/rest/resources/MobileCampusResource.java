@@ -34,6 +34,7 @@ package org.ilrt.mca.rest.resources;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.resource.Singleton;
 import org.ilrt.mca.Common;
@@ -45,6 +46,7 @@ import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -69,6 +71,7 @@ public class MobileCampusResource {
         itemDao = new ItemDaoImpl(queryManager);
     }
 
+/*
     @GET
     @Produces(MediaType.TEXT_HTML)
     public Response getGroupsAsHtml(@PathParam("path") String path, @Context UriInfo ui) {
@@ -85,6 +88,39 @@ public class MobileCampusResource {
             return Response.status(Response.Status.NOT_FOUND).entity(new Viewable("/404.ftl",
                     "Unable to resolve the requested path: " + path)).build();
         }
+    }
+*/
+
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public Response getGroupsAsHtml(@PathParam("path") String path, @Context UriInfo ui) {
+
+        // are we just after the root?
+        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
+
+        Resource resource = itemDao.findResource(uri, ui.getQueryParameters());
+
+
+        resource.getModel().write(System.out);
+
+
+        String template = resolveTemplateFromResource(resource);
+        return Response.ok(new Viewable(getTemplatePath(template), resource)).build();
+
+        //return Response.noContent().build();
+        /**
+
+        Item item = itemDao.findItem(uri, ui.getQueryParameters());
+
+        if (item != null) {
+
+            return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).entity(new Viewable("/404.ftl",
+                    "Unable to resolve the requested path: " + path)).build();
+        }
+
+         **/
     }
 
 
@@ -125,6 +161,14 @@ public class MobileCampusResource {
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
+
+    protected String resolveTemplateFromResource(Resource resource) {
+        if (resource.hasProperty(MCA_REGISTRY.template)) {
+            return resource.getProperty(MCA_REGISTRY.template).getResource().getURI();
+        } else {
+            return null;
+        }
+    }
 
     private String getTemplatePath(String templatePath) {
         return "/" + templatePath.substring(Common.TEMPLATE_STUB.length());

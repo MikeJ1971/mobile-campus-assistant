@@ -96,6 +96,11 @@ public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
         return ModelFactory.createUnion(resource.getModel(), model);
     }
 
+    @Override
+    public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     private String sparql = null;
     private final QueryManager queryManager;
 }

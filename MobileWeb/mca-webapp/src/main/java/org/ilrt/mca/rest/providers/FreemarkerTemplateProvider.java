@@ -192,7 +192,7 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
         if (model instanceof Map) {
             vars.putAll((Map<String, Object>) model);
         } else {
-            vars.put("it", model);
+            vars.put("resource", model);
         }
 
         final Map<String, Object> extraVars = getVariablesForTemplate(new HashMap<String, Object>(vars));

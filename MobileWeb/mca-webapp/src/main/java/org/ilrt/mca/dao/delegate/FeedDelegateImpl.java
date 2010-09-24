@@ -149,6 +149,11 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
     }
 
+    @Override
+    public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     private FeedItemImpl feedItemDetails(Resource resource) {
 
         FeedItemImpl feedItem = new FeedItemImpl();
