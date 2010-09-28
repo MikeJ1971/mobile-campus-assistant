@@ -8,6 +8,8 @@
         ${resource['foaf:name']?first}
     <#elseif resource['dc:title']??>
         ${resource['dc:title']?first}
+    <#elseif resource['rss:title']??>
+        ${resource['rss:title']?first}
     <#else>
         Untitled
     </#if>

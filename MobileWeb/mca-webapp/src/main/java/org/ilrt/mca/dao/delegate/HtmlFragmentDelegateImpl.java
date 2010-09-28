@@ -62,7 +62,7 @@ public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-    @Override
+
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
         HtmlFragmentImpl htmlFragment = new HtmlFragmentImpl();
@@ -82,7 +82,7 @@ public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
         return htmlFragment;
     }
 
-    @Override
+    
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
         Resource graph = resource.getProperty(RDFS.seeAlso).getResource();

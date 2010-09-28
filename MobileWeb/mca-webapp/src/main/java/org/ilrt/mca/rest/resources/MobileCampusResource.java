@@ -37,6 +37,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.resource.Singleton;
+import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
@@ -105,6 +106,15 @@ public class MobileCampusResource {
 
 
         String template = resolveTemplateFromResource(resource);
+
+        if (template == null) {
+            System.out.println(">>>>> THE TEMPLATE IS NULL");
+        }
+
+        if (resource == null) {
+            System.out.println(">>>>> THE RESOURCE IS NULL");
+        }
+
         return Response.ok(new Viewable(getTemplatePath(template), resource)).build();
 
         //return Response.noContent().build();
@@ -132,13 +142,13 @@ public class MobileCampusResource {
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Model model = itemDao.findModel(uri, ui.getQueryParameters());
+        Resource resource = itemDao.findResource(uri, ui.getQueryParameters());
 
-        if (model.isEmpty()) {
+        if (resource.getModel().isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        return Response.ok(model).build();
+        return Response.ok(resource.getModel()).build();
     }
 
 
@@ -151,7 +161,8 @@ public class MobileCampusResource {
         // are we just after the root?
         String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
 
-        Item item = itemDao.findItem(uri, ui.getQueryParameters());
+        //Item item = itemDao.findItem(uri, ui.getQueryParameters());
+        Item item = null;
 
         if (item != null) {
             return Response.ok(gson.toJson(item)).build();
@@ -163,9 +174,15 @@ public class MobileCampusResource {
 
 
     protected String resolveTemplateFromResource(Resource resource) {
+
+        System.out.println("Looking for template");
+
+        resource.getModel().write(System.out);
+
         if (resource.hasProperty(MCA_REGISTRY.template)) {
             return resource.getProperty(MCA_REGISTRY.template).getResource().getURI();
         } else {
+            log.warn("Unable to find a template.");
             return null;
         }
     }
@@ -180,4 +197,5 @@ public class MobileCampusResource {
 
     private ItemDao itemDao;
     final String CONFIG = "/sdb.ttl";
+    Logger log = Logger.getLogger(MobileCampusResource.class);
 }

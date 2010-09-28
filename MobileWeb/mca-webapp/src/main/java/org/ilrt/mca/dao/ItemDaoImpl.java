@@ -35,7 +35,14 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 import org.apache.log4j.Logger;
-import org.ilrt.mca.dao.delegate.*;
+import org.ilrt.mca.dao.delegate.ActiveMapDelegateImpl;
+import org.ilrt.mca.dao.delegate.ContactsDelegateImpl;
+import org.ilrt.mca.dao.delegate.Delegate;
+import org.ilrt.mca.dao.delegate.DirectoryDelegateImpl;
+import org.ilrt.mca.dao.delegate.EventDelegateImpl;
+import org.ilrt.mca.dao.delegate.FeedDelegateImpl;
+import org.ilrt.mca.dao.delegate.HtmlFragmentDelegateImpl;
+import org.ilrt.mca.dao.delegate.KmlMapDelegateImpl;
 import org.ilrt.mca.domain.BaseItem;
 import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.rdf.QueryManager;
@@ -57,7 +64,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
     // ---------- PUBLIC METHODS
 
-    @Override
+
     public Item findItem(String id, MultivaluedMap<String, String> parameters) {
 
         // get the model based on the id and any parameters passed
@@ -74,7 +81,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
         if (delegate != null) {
             log.debug("Using delegate: " + delegate.getClass().getName());
-            return delegate.createItem(resource, parameters);
+            //return delegate.createItem(resource, parameters);
+            return null;
         }
 
         log.debug("We don't have delegate, defaulting to basic object");
@@ -86,7 +94,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         return item;
     }
 
-    @Override
+    
     public Model findModel(String id, MultivaluedMap<String, String> parameters) {
 
         Model model = queryManager.find("id", id, findItemsSparql);
@@ -100,7 +108,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         Delegate delegate = findDelegate(resource);
 
         if (delegate != null) {
-            return delegate.createModel(resource, parameters);
+            //return delegate.createModel(resource, parameters);
+            return null;
         }
 
         return model;
@@ -129,7 +138,7 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
 
         return model.getResource(id);
     }
-    
+
 
     private Delegate findDelegate(Resource resource) {
 

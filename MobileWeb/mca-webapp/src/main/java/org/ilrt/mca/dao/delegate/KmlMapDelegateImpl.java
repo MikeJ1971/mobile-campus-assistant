@@ -62,37 +62,10 @@ public class KmlMapDelegateImpl extends AbstractDao implements Delegate {
     }
 
     @Override
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        KmlMapItemImpl item = new KmlMapItemImpl();
-
-        getBasicDetails(resource, item);
-
-        if (resource.hasProperty(GEO.latitude)) {
-            item.setLatitude(resource.getProperty(GEO.latitude).getDouble());
-        }
-
-        if (resource.hasProperty(GEO.longitude)) {
-            item.setLongitude(resource.getProperty(GEO.longitude).getDouble());
-        }
-
-        if (resource.hasProperty(RDFS.seeAlso)) {
-            item.setKmlUrl(resource.getProperty(RDFS.seeAlso).getResource().getURI());
-        }
-
-        return item;
-    }
-
-    @Override
-    public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        Model kmlModel = queryManager.find("id", resource.getURI(), kmlMapDetailsSparql);
-        return ModelFactory.createUnion(resource.getModel(), kmlModel);
-    }
-
-    @Override
     public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Model kmlModel = queryManager.find("id", resource.getURI(), kmlMapDetailsSparql);
+        resource.getModel().add(kmlModel);
+        return resource;
     }
 
     private String kmlMapDetailsSparql = null;

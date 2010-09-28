@@ -61,7 +61,7 @@ public class DirectoryDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-    @Override
+
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
         DirectoryImpl directoryImpl = new DirectoryImpl();
@@ -79,7 +79,7 @@ public class DirectoryDelegateImpl extends AbstractDao implements Delegate {
         return directoryImpl;
     }
 
-    @Override
+    
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
         Model model = queryManager.find("id", resource.getURI(), findDirectorySparql);

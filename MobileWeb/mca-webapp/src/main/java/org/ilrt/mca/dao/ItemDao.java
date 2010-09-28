@@ -42,9 +42,9 @@ import javax.ws.rs.core.MultivaluedMap;
  */
 public interface ItemDao {
 
-    Item findItem(String id, MultivaluedMap<String, String> parameters);
+    //Item findItem(String id, MultivaluedMap<String, String> parameters);
 
-    Model findModel(String id, MultivaluedMap<String, String> parameters);
+    //Model findModel(String id, MultivaluedMap<String, String> parameters);
 
     Resource findResource(String id, MultivaluedMap<String, String> parameters);
 }

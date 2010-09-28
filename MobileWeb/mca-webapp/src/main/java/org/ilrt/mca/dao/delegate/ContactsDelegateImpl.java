@@ -60,7 +60,7 @@ public class ContactsDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-    @Override
+
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
         ContactImpl contactsImpl = new ContactImpl();
@@ -86,7 +86,7 @@ public class ContactsDelegateImpl extends AbstractDao implements Delegate {
         return contactsImpl;
     }
 
-    @Override
+    
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
         Model model = queryManager.find("id", resource.getURI(), findContactsSparql);

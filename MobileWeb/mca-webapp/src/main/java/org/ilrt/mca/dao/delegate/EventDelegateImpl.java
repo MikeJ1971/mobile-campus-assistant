@@ -75,7 +75,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-    @Override
+
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
         Resource graphUri = null;
         if (resource.hasProperty(RDFS.seeAlso))
@@ -145,7 +145,7 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-    @Override
+
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
         Model model = queryManager.find("id", resource.getURI(), findEventsCollection);
 

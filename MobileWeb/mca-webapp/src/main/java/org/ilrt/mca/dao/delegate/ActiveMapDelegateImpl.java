@@ -62,7 +62,7 @@ public class ActiveMapDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-    @Override
+
     public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
 
         ActiveMapItemImpl item = new ActiveMapItemImpl();
@@ -92,7 +92,7 @@ public class ActiveMapDelegateImpl extends AbstractDao implements Delegate {
         return item;
     }
 
-    @Override
+    
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
         Model model = queryManager.find("id", resource.getURI(), activeMapDetailsSparql);
