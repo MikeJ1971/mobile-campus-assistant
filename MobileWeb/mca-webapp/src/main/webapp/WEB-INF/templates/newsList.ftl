@@ -2,7 +2,25 @@
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<@Title label="${it.label}" />
+<#assign label><@Label resource/></#assign>
+
+<@Title label="${label}" />
+
+
+<#if resource['mca:hasNewsItem']??>
+<p>Yes, there are news items</p>
+
+<#list resource['mca:hasNewsItem'] as item>
+    <p>${item}</p>
+    <p>${item['rss:title']?first}</p>
+</#list>
+
+<#else>
+<p>Sorry</p>
+</#if>
+
+
+<#--
 
 <#if it.items?size == 0>
 <p>Sorry, no news items.</p>
@@ -17,5 +35,7 @@
     </ul>
 </div>
 </#if>
+
+-->
 
 <#include "includes/footer.ftl"/>

@@ -111,7 +111,7 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
         // we have a parameter so we are interested in a single item
         if (parameters.containsKey("item")) {
-            return newsItem(resource, parameters.getFirst("item"));
+            //return newsItem(resource, parameters.getFirst("item"));
         }
 
         if (resource.hasProperty(RDFS.seeAlso)) { // we are looking for a specific graph
@@ -151,7 +151,63 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
 
     @Override
     public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        // we have a parameter so we are interested in a single item
+        if (parameters.containsKey("item")) {
+
+            Resource r = newsItem(resource, parameters.getFirst("item"));
+            System.out.println("**********************************************");
+            r.getModel().write(System.out);
+            System.out.println("**********************************************");
+            return r;
+
+            //return newsItem(resource, parameters.getFirst("item"));
+        }
+
+        if (resource.hasProperty(RDFS.seeAlso)) { // we are looking for a specific graph
+
+            QuerySolutionMap bindings = new QuerySolutionMap();
+
+            // seeAlso will be the name of the graph and so we need to bind
+            Resource graph = resource.getProperty(RDFS.seeAlso).getResource();
+            bindings.add("id", resource);
+            bindings.add("graph", graph);
+
+            // search feeds with the specified item
+            Model feedModel = queryManager.find(bindings, findNewsItems);
+
+            resource.getModel().add(feedModel);
+
+            System.out.println("**********************************************");
+            resource.getModel().write(System.out);
+            System.out.println("**********************************************");
+
+            return resource;
+
+        } else { // search all graphs
+
+            // calculate the start and end dates
+            DateTime current = new DateTime();
+            DateTime past = current.minusHours(24); // TODO the interval should be set in the registry
+
+            String endDate = Common.parseXsdDate(current.toDate());
+            String startDate = Common.parseXsdDate(past.toDate());
+
+            QuerySolutionMap bindings = new QuerySolutionMap();
+            bindings.add("startDate", ResourceFactory.createPlainLiteral(startDate));
+            bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
+            bindings.add("id", resource);
+
+            Model results = queryManager.find(bindings, findNewsItemsByDate);
+
+            resource.getModel().add(results);
+
+            System.out.println("**********************************************");
+            resource.getModel().write(System.out);
+            System.out.println("**********************************************");
+
+            return resource;
+        }
     }
 
     private FeedItemImpl feedItemDetails(Resource resource) {
@@ -208,6 +264,7 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
         return feedItem;
     }
 
+    /**
     private Model newsItem(Resource resource, String newsItemUri) {
 
         QuerySolutionMap bindings = new QuerySolutionMap();
@@ -236,6 +293,37 @@ public class FeedDelegateImpl extends AbstractDao implements Delegate {
         }
 
         return model;
+    }
+     **/
+
+    private Resource newsItem(Resource resource, String newsItemUri) {
+
+        QuerySolutionMap bindings = new QuerySolutionMap();
+
+        // bind to the graph - the source URI
+        if (resource.hasProperty(RDFS.seeAlso)) {
+            bindings.add("graph", resource.getProperty(RDFS.seeAlso).getResource());
+        }
+
+        // bind to the URI of the specific news item
+        bindings.add("itemId", ResourceFactory.createResource(newsItemUri));
+
+        // bind to the URI in the registry that matches the HTTP request
+        bindings.add("id", resource);
+
+        Model model = queryManager.find(bindings, findNewsItems);
+
+        // we want to use a special template for an individual news item
+        Resource r = model.getResource(resource.getURI());
+        Resource template = ResourceFactory.createResource("template://newsItem.ftl");
+
+        if (r.hasProperty(MCA_REGISTRY.template)) {
+            r.getProperty(MCA_REGISTRY.template).changeObject(template);
+        } else {
+            r.addProperty(MCA_REGISTRY.template, template);
+        }
+
+        return model.getResource(newsItemUri);
     }
 
     private String findNewsItems = null;
