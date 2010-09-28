@@ -86,7 +86,7 @@ public class ContactsDelegateImpl extends AbstractDao implements Delegate {
         return contactsImpl;
     }
 
-    
+
     public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
 
         Model model = queryManager.find("id", resource.getURI(), findContactsSparql);
@@ -96,7 +96,10 @@ public class ContactsDelegateImpl extends AbstractDao implements Delegate {
 
     @Override
     public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        Model model = queryManager.find("id", resource.getURI(), findContactsSparql);
+        resource.getModel().add(model);
+        return resource;
     }
 
     private String findContactsSparql = null;

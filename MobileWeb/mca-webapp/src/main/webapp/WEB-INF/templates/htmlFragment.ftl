@@ -2,8 +2,9 @@
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<@Title label="${it.label}" />
+<#assign label><@Label resource/></#assign>
+<@Title label="${label}" />
 
-${it.htmlFragment!"<p>Sorry, not data is available</p>"}
+${resource['rdfs:seeAlso']?first['mca:hasHtmlFragment']?first!"<p>Sorry, not data is available</p>"}
 
 <#include "includes/footer.ftl"/>

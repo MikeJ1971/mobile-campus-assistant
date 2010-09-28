@@ -33,15 +33,11 @@ package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
-import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.domain.html.HtmlFragmentImpl;
 import org.ilrt.mca.rdf.QueryManager;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
@@ -62,29 +58,8 @@ public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        HtmlFragmentImpl htmlFragment = new HtmlFragmentImpl();
-        getBasicDetails(resource, htmlFragment);
-
-        if (resource.hasProperty(RDFS.seeAlso)) {
-
-            Resource seeAlso = resource.getProperty(RDFS.seeAlso).getResource();
-
-            if (seeAlso.hasProperty(MCA_REGISTRY.hasHtmlFragment)) {
-
-                htmlFragment.setHtmlFragment(seeAlso.getProperty(MCA_REGISTRY.hasHtmlFragment)
-                        .getLiteral().getLexicalForm());
-            }
-        }
-
-        return htmlFragment;
-    }
-
-    
-    public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-
+    @Override
+    public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
         Resource graph = resource.getProperty(RDFS.seeAlso).getResource();
 
         QuerySolutionMap bindings = new QuerySolutionMap();
@@ -92,13 +67,9 @@ public class HtmlFragmentDelegateImpl extends AbstractDao implements Delegate {
         bindings.add("graph", graph);
 
         Model model = queryManager.find(bindings, sparql);
+        resource.getModel().add(model);
 
-        return ModelFactory.createUnion(resource.getModel(), model);
-    }
-
-    @Override
-    public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return resource;
     }
 
     private String sparql = null;

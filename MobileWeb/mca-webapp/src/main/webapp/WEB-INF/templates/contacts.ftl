@@ -2,15 +2,15 @@
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<@Title label="${it.label}" />
+<@Title label="${resource['rdfs:label']?first}" />
 
 <div class="contactDetails">
     <ul>
-        <#if it.phoneNumber??>
-        <li class="phoneContact"><a href="${it.phoneNumber}">${it.phoneNumberLabel}</a></li>
+        <#if resource['foaf:phone']??>
+        <li class="phoneContact"><a href="${resource['foaf:phone']?first}">${resource['foaf:phone']?first['rdfs:label']?first}</a></li>
         </#if>
-        <#if it.email??>
-        <li class="emailContact"><a href="mailto:${it.email}">${it.email}</a></li>
+        <#if resource['foaf:mbox']??>
+        <li class="emailContact"><a href="mailto:${resource['foaf:mbox']?first}">${resource['foaf:mbox']?first}</a></li>
         </#if>
     </ul>
 </div>

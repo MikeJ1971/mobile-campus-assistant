@@ -2,20 +2,19 @@
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<@Title label="${it.label}" />
+<#assign label><@Label resource/></#assign>
+<@Title label="${label}" />
 
-<#if it.items?size == 0>
-<p>Sorry, there is no service status news.</p>
-<#else>
+<#if resource['mca:hasNewsItem']??>
 <div class="nav">
     <ul class="nav-list">
-        <#list it.items as item>
-        <li><a href="./?item=${item.id?url("UTF8")}"><span class="servicestatus"></span><@NavLabel label="${item.label}"/>
-        </a>
-        </li>
+        <#list resource['mca:hasNewsItem'] as item>
+            <#assign label=item['rss:title']?first/>
+            <li><a href="./?item=${item?url("UTF8")}"><span class="servicestatus"></span><@NavLabel label="${label}"/></a></li>
         </#list>
     </ul>
-</div>
+<#else>
+<p>Sorry, there is no service status news.</p>
 </#if>
 
 <#include "includes/footer.ftl"/>
