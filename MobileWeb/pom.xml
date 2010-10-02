@@ -18,10 +18,21 @@
     <!-- properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <warName>mca</warName>
     </properties>
 
     <!-- common build items -->
     <build>
+        <finalName>${warName}</finalName>
+        <filters>
+            <filter>${filter.location}</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
