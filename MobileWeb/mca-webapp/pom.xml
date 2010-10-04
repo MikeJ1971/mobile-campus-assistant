@@ -62,7 +62,7 @@
     </profiles>
 
     <build>
-        <finalName>mca</finalName>
+        <finalName>${warName}</finalName>
         <filters>
             <filter>${filter.location}</filter>
         </filters>
