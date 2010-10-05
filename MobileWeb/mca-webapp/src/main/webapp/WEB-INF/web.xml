@@ -87,7 +87,7 @@
 
     <filter>
         <filter-name>NavigationFilter</filter-name>
-        <filter-class>net.sf.ehcache.constructs.web.filter.SimplePageCachingFilter</filter-class>
+        <filter-class>org.ilrt.mca.cache.SimpleCachingAcceptHeadersPageCachingFilter</filter-class>
         <init-param>
             <param-name>suppressStackTraces</param-name>
             <param-value>false</param-value>
