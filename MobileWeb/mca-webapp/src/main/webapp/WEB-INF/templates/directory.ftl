@@ -2,12 +2,13 @@
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<@Title label="${it.label}" />
+<#assign label><@Label resource/></#assign>
+<@Title label="${label}" />
 
 <script type="text/javascript" src="${contextPath}/js/directory.js"></script>
 
 <script type="text/javascript">
-    init("${contextPath}/${it.queryUrlStem}", "${contextPath}/${it.detailsUrlStem}");
+    init("${contextPath}/${resource['mca:queryUrlStem']?first}", "${contextPath}/${resource['mca:detailsUrlStem']?first}");
 </script>
 
 <div class="contactDetails">

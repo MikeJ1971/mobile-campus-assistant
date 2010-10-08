@@ -32,14 +32,10 @@
 package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
-import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.domain.directory.DirectoryImpl;
 import org.ilrt.mca.rdf.QueryManager;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
@@ -61,35 +57,13 @@ public class DirectoryDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        DirectoryImpl directoryImpl = new DirectoryImpl();
-
-        if (resource.hasProperty(MCA_REGISTRY.detailsUrlStem)) {
-            directoryImpl.setDetailsUrlStem(resource.getProperty(MCA_REGISTRY.detailsUrlStem).getString());
-        }
-
-        if (resource.hasProperty(MCA_REGISTRY.queryUrlStem)) {
-            directoryImpl.setQueryUrlStem(resource.getProperty(MCA_REGISTRY.queryUrlStem).getString());
-        }
-
-        getBasicDetails(resource, directoryImpl);
-
-        return directoryImpl;
-    }
-
-    
-    public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        Model model = queryManager.find("id", resource.getURI(), findDirectorySparql);
-
-        return ModelFactory.createUnion(resource.getModel(), model);
-    }
-
     @Override
     public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        Model model = queryManager.find("id", resource.getURI(), findDirectorySparql);
+        resource.getModel().add(model);
+        return resource;
+
     }
 
     private String findDirectorySparql = null;

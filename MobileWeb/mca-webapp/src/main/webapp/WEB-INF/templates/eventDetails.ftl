@@ -99,18 +99,22 @@
     }
 </script>
 
-<div class="event">
-    <h3>${it.label}</h3>
 
-    <div class="date">
-        <span class="dtstart"><abbr class='value' title='${it.startDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.startDate?string("E, d MMM")}</abbr></span>
-        <div class="eventtime"></div>
-        <span class="dtend"><abbr class='value' title='${it.endDate?string("yyyy-MM-dd'T'HH:mm:ss'Z'")}'>${it.endDate?string("E, d MMM")}</abbr></span>
+<#list resource['mca:hasEventItem'] as event>
+    <div class="event">
+        <h3>${event['ical:summary']?first}</h3>
+
+        <div class="date">
+            <#assign startDate><@ParseXsdDate event['ical:dtstart']?first/></#assign>
+            <span class="dtstart"><abbr class='value' title='${event['ical:dtstart']?first?substring(0,19)}Z'>${startDate?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string("E, d MMM")}</abbr></span>
+            <div class="eventtime"></div>
+            <#assign endDate><@ParseXsdDate event['ical:dtend']?first/></#assign>
+            <span class="dtend"><abbr class='value' title='${event['ical:dtend']?first?substring(0,19)}Z'>${endDate?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string("E, d MMM")}</abbr></span>
+        </div>
+     <div class="description row"><#if event['ical:description']??>${event['ical:description']?first}</#if></div>
+         <div class="location row"><#if event['ical:location']??><span class="label">Location</span> ${event['ical:location']?first}<#else></#if></div>
+    <div class="organiser row"><#if event['ical:organizer']??><span class="label">Organiser</span>${event['ical:organizer']?first}<#else></#if></div>
     </div>
-    <div class="description row"><#if it.description?has_content>${it.description}</#if></div>
-    <div class="location row"><#if it.location?has_content><span class="label">Location</span> ${it.location}<#else></#if></div>
-    <div class="organiser row"><#if it.organiser?has_content><span class="label">Organiser</span> ${it.organiser}<#else></#if></div>
-    <!-- <div class="provenance row"><#if it.provenance?has_content><span class="label">Provenance</span> ${it.provenance}<#else></#if></div>-->
-</div>
+</#list>
 
 <#include "includes/footer.ftl"/>

@@ -1,29 +1,34 @@
+<#compress>
 <#include "includes/header.ftl"/>
 
 <#include "includes/logoOneLevelNav.ftl"/>
 
-<@Title label="${it.label}" />
+<#assign label><@Label resource/></#assign>
+<@Title label="${label}" />
 
-<#if it.items?size == 0>
-    <p>Sorry, there are no upcoming events.</p>
-<#else>
-    <div class="nav">
+<#if resource['mca:hasEventItem']??>
+   <div class="nav">
         <ul class="nav-list">
-            <#list it.items as item>
-                <li><a href="./?item=${item.id?url("UTF8")}"><span class="events"></span><@NavLabel label="${item.label}"/><br/><span class="startdate">${item.startDate?string("E, d MMM yyyy")}<#if item.startDate?string("HH:mm") != "00:00"> ${item.startDate?string("HH:mm")}</#if></span></a></li>
-                </a>
+            <#list resource['mca:hasEventItem'] as item>
+                <#assign label=item['ical:summary']?first/>
+                <li><a href="./?item=${item['ical:uid']?first?url("UTF8")}"><span class="events"></span><@NavLabel label="${label}"/><br/><span class="startdate"><@EventDate item['ical:dtstart']?first /></a></li>
             </#list>
         </ul>
     </div>
+<#else>
+ <p>Sorry, there are no upcoming events.</p>
 </#if>
 
 <div class="calendarlinks">
-    <#if it.getHTMLLink()??>
-    <div class="calendarlink"><a href="${it.HTMLLink}"><img src="${contextPath}/images/htmlcalicon.png" alt="View on the Web"/><br/>View on web</a></div>
+    <#if resource['mca:htmlLink']??>
+    <div class="calendarlink"><a href="${resource['mca:htmlLink']?first}"><img src="${contextPath}/images/htmlcalicon.png" alt="View on the Web"/><br/>View on web</a></div>
     </#if>
-    <#if it.getiCalLink()??>
-    <div class="calendarlink"><a href="${it.iCalLink}"><img src="${contextPath}/images/icalicon.png" alt="iCal File"/><br/>.ics file</a></div>
+    <#if resource['mca:icalLink']??>
+    <div class="calendarlink"><a href="${resource['mca:icalLink']?first}"><img src="${contextPath}/images/icalicon.png" alt="iCal File"/><br/>.ics file</a></div>
     </#if>
 </div>
 
+
+
 <#include "includes/footer.ftl"/>
+</#compress>

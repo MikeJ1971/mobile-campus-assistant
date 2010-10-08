@@ -60,40 +60,6 @@ public class ContactsDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        ContactImpl contactsImpl = new ContactImpl();
-
-        if (resource.hasProperty(FOAF.mbox)) {
-            contactsImpl.setEmail(resource.getProperty(FOAF.mbox).getLiteral().getLexicalForm());
-        }
-
-        if (resource.hasProperty(FOAF.phone)) {
-
-            Resource phoneUri = resource.getProperty(FOAF.phone).getResource();
-
-            contactsImpl.setPhoneNumber(phoneUri.getURI());
-
-            if (phoneUri.hasProperty(RDFS.label)) {
-                contactsImpl.setPhoneNumberLabel(phoneUri.getProperty(RDFS.label)
-                        .getLiteral().getLexicalForm());
-            }
-        }
-
-        getBasicDetails(resource, contactsImpl);
-
-        return contactsImpl;
-    }
-
-
-    public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        Model model = queryManager.find("id", resource.getURI(), findContactsSparql);
-
-        return ModelFactory.createUnion(resource.getModel(), model);
-    }
-
     @Override
     public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
 

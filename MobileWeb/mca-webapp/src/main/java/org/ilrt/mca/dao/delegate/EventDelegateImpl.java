@@ -32,24 +32,19 @@
 package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.query.QuerySolutionMap;
-import com.hp.hpl.jena.rdf.model.*;
-import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
-import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.domain.events.EventItemImpl;
-import org.ilrt.mca.domain.events.EventSourceImpl;
 import org.ilrt.mca.rdf.QueryManager;
-import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -75,20 +70,26 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
+    @Override
+    public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
 
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
+        Model model = queryManager.find("id", resource.getURI(), findEventsCollection);
+        resource.getModel().add(model);
+
         Resource graphUri = null;
+
         if (resource.hasProperty(RDFS.seeAlso))
             graphUri = resource.getProperty(RDFS.seeAlso).getResource();
 
         String startDate = Common.parseXsdDate(EventDelegateImpl.getStartDate());
-        String endDate = Common.parseXsdDate(EventDelegateImpl.getEndDate(resource.getProperty(MCA_REGISTRY.eventlist).getLiteral().getLexicalForm()));
+        String endDate = Common.parseXsdDate(EventDelegateImpl
+                .getEndDate(resource.getProperty(MCA_REGISTRY.eventlist).getLiteral()
+                .getLexicalForm()));
 
         log.info("graphUri:" + graphUri);
         log.info("Looking for events from " + startDate + " to " + endDate);
 
         if (parameters.containsKey("item")) {
-            EventItemImpl item = new EventItemImpl();
 
             String queryUid = parameters.get("item").get(0);
 
@@ -97,130 +98,31 @@ public class EventDelegateImpl extends AbstractDao implements Delegate {
 
             QuerySolutionMap bindings = new QuerySolutionMap();
             bindings.add("id", ResourceFactory.createPlainLiteral(queryUid));
+            bindings.add("this", resource);
             if (graphUri != null) bindings.add("graph", graphUri);
 
             Model resultModel = queryManager.find(bindings, findEventDetails);
+            resource.getModel().add(resultModel);
 
-            StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
-            if (stmtiter.hasNext()) {
-                Statement st = stmtiter.nextStatement();
+            resource.getProperty(MCA_REGISTRY.template).changeObject(resource.getModel()
+                    .createResource("template://eventDetails.ftl"));
 
-                Resource r = st.getSubject();
-                item = eventItemDetails(r, queryUid);
-            } else {
-                log.info("Item not found");
-            }
 
-            return item;
-        } // END if (parameters.containsKey("item"))
-        else {
-            EventSourceImpl item = new EventSourceImpl();
+        } else {
 
             // get all events for this calendar feed
             QuerySolutionMap bindings = new QuerySolutionMap();
             if (graphUri != null) bindings.add("graph", graphUri);
             bindings.add("startDate", ResourceFactory.createPlainLiteral(startDate));
             bindings.add("endDate", ResourceFactory.createPlainLiteral(endDate));
+            bindings.add("this", resource);
 
             // search feeds with the specified item
             Model resultModel = queryManager.find(bindings, findEventsList);
-
-//            resultModel.write(System.out);
-
-            StmtIterator stmtiter = resultModel.listStatements(null, RDF.type, EVENT.event);
-
-            if (!stmtiter.hasNext()) log.info("no iterators");
-
-            while (stmtiter.hasNext()) {
-                Statement statement = stmtiter.nextStatement();
-                Resource r = statement.getSubject();
-                EventItemImpl calEvent = eventItemDetails(r, (graphUri == null ? "" : graphUri.getURI()));
-                item.getItems().add(calEvent);
-            }
-            Collections.sort(item.getItems());
-
-            eventSourceDetails(resource, item);
-
-            return item;
-        }
-    }
-
-
-    public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-        Model model = queryManager.find("id", resource.getURI(), findEventsCollection);
-
-        return ModelFactory.createUnion(resource.getModel(), model);
-    }
-
-    @Override
-    public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    private void eventSourceDetails(Resource resource, EventSourceImpl item) {
-
-        getBasicDetails(resource, item);
-
-        if (resource.hasProperty(MCA_REGISTRY.htmlLink))
-            item.setHTMLLink(resource.getProperty(MCA_REGISTRY.htmlLink).getLiteral().getLexicalForm());
-
-        if (resource.hasProperty(MCA_REGISTRY.icalLink))
-            item.setiCalLink(resource.getProperty(MCA_REGISTRY.icalLink).getLiteral().getLexicalForm());
-    }
-
-    public EventItemImpl eventItemDetails(Resource resource, String provenance) {
-
-        EventItemImpl item = new EventItemImpl();
-
-        getBasicDetails(resource, item);
-
-        // override default id with uid from ical.
-        // resource.getURI() returns null anyway.
-        item.setId(resource.getProperty(EVENT.UID).getLiteral().getLexicalForm());
-
-        item.setProvenance(provenance);
-
-        if (resource.hasProperty(EVENT.startDate)) {
-            String strDate = resource.getProperty(EVENT.startDate).getLiteral().getLexicalForm();
-
-            try {
-                item.setStartDate(Common.parseDate(strDate));
-            } catch (ParseException e) {
-                log.error("Unable to parse: " + strDate + " : " + e.getMessage());
-            }
+            resource.getModel().add(resultModel);
         }
 
-        if (resource.hasProperty(EVENT.endDate)) {
-            String strDate = resource.getProperty(EVENT.endDate).getLiteral().getLexicalForm();
-
-            try {
-                item.setEndDate(Common.parseDate(strDate));
-            } catch (ParseException e) {
-                log.error("Unable to parse: " + strDate + " : " + e.getMessage());
-            }
-        }
-
-        if (resource.hasProperty(EVENT.subject)) {
-            item.setLabel(resource.getProperty(EVENT.subject).getString());
-        }
-
-        if (resource.hasProperty(EVENT.organizerName)) {
-            item.setOrganiser(resource.getProperty(EVENT.organizerName).getLiteral().getLexicalForm());
-        }
-
-        if (resource.hasProperty(EVENT.organizerEmail)) {
-            item.setType(resource.getProperty(EVENT.organizerEmail).getLiteral().getLexicalForm());
-        }
-
-        if (resource.hasProperty(EVENT.location)) {
-            item.setLocation(resource.getProperty(EVENT.location).getLiteral().getLexicalForm());
-        }
-
-        if (resource.hasProperty(EVENT.description)) {
-            item.setDescription(resource.getProperty(EVENT.description).getLiteral().getLexicalForm());
-        }
-
-        return item;
+        return resource;
     }
 
     public static Date getStartDate() {

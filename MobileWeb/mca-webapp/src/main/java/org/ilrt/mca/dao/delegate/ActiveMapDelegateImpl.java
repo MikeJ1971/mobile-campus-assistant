@@ -32,15 +32,10 @@
 package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
-import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.domain.map.ActiveMapItemImpl;
 import org.ilrt.mca.rdf.QueryManager;
-import org.ilrt.mca.vocab.GEO;
-import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
@@ -62,46 +57,12 @@ public class ActiveMapDelegateImpl extends AbstractDao implements Delegate {
         }
     }
 
-
-    public Item createItem(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        ActiveMapItemImpl item = new ActiveMapItemImpl();
-
-        getBasicDetails(resource, item);
-
-        if (resource.hasProperty(GEO.latitude)) {
-            item.setLatitude(resource.getProperty(GEO.latitude).getDouble());
-        }
-
-        if (resource.hasProperty(GEO.longitude)) {
-            item.setLongitude(resource.getProperty(GEO.longitude).getDouble());
-        }
-
-        if (resource.hasProperty(MCA_REGISTRY.markers)) {
-            item.setMarkersLocation(resource.getProperty(MCA_REGISTRY.markers).getString());
-        }
-
-        if (resource.hasProperty(MCA_REGISTRY.icon)) {
-            item.setMarkerIconLocation(resource.getProperty(MCA_REGISTRY.icon).getString());
-        }
-
-        if (resource.hasProperty(MCA_REGISTRY.urlStem)) {
-            item.setProxyURLStem(resource.getProperty(MCA_REGISTRY.urlStem).getString());
-        }
-
-        return item;
-    }
-
-    
-    public Model createModel(Resource resource, MultivaluedMap<String, String> parameters) {
-
-        Model model = queryManager.find("id", resource.getURI(), activeMapDetailsSparql);
-        return ModelFactory.createUnion(resource.getModel(), model);
-    }
-
     @Override
     public Resource createResource(Resource resource, MultivaluedMap<String, String> parameters) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        Model model = queryManager.find("id", resource.getURI(), activeMapDetailsSparql);
+        resource.getModel().add(model);
+        return resource;
     }
 
 

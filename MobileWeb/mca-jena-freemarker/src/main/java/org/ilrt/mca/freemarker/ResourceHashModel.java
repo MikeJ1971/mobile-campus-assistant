@@ -61,6 +61,7 @@ public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarMod
         prefixMapping.setNsPrefix("dcterms", "http://purl.org/dc/terms/");
         prefixMapping.setNsPrefix("mca", "http://org.ilrt.mca/registry#");
         prefixMapping.setNsPrefix("rss", "http://purl.org/rss/1.0/");
+        prefixMapping.setNsPrefix("ical", "http://www.w3.org/2002/12/cal/ical#");
     }
 
     // ---------- TemplateModel interface methods

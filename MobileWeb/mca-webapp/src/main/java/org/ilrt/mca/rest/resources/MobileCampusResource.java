@@ -33,7 +33,6 @@ package org.ilrt.mca.rest.resources;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.resource.Singleton;
@@ -72,25 +71,6 @@ public class MobileCampusResource {
         itemDao = new ItemDaoImpl(queryManager);
     }
 
-/*
-    @GET
-    @Produces(MediaType.TEXT_HTML)
-    public Response getGroupsAsHtml(@PathParam("path") String path, @Context UriInfo ui) {
-
-        // are we just after the root?
-        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
-
-        Item item = itemDao.findItem(uri, ui.getQueryParameters());
-
-        if (item != null) {
-
-            return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).entity(new Viewable("/404.ftl",
-                    "Unable to resolve the requested path: " + path)).build();
-        }
-    }
-*/
 
     @GET
     @Produces(MediaType.TEXT_HTML)
@@ -101,36 +81,14 @@ public class MobileCampusResource {
 
         Resource resource = itemDao.findResource(uri, ui.getQueryParameters());
 
-
-        resource.getModel().write(System.out);
-
-
-        String template = resolveTemplateFromResource(resource);
-
-        if (template == null) {
-            System.out.println(">>>>> THE TEMPLATE IS NULL");
-        }
-
-        if (resource == null) {
-            System.out.println(">>>>> THE RESOURCE IS NULL");
-        }
-
-        return Response.ok(new Viewable(getTemplatePath(template), resource)).build();
-
-        //return Response.noContent().build();
-        /**
-
-        Item item = itemDao.findItem(uri, ui.getQueryParameters());
-
-        if (item != null) {
-
-            return Response.ok(new Viewable(getTemplatePath(item.getTemplate()), item)).build();
-        } else {
+        if (resource == null || resource.getModel().size() == 0) {
             return Response.status(Response.Status.NOT_FOUND).entity(new Viewable("/404.ftl",
                     "Unable to resolve the requested path: " + path)).build();
         }
 
-         **/
+        String template = resolveTemplateFromResource(resource);
+
+        return Response.ok(new Viewable(getTemplatePath(template), resource)).build();
     }
 
 
@@ -138,11 +96,7 @@ public class MobileCampusResource {
     @Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3})
     public Response getModelAsRdf(@PathParam("path") String path, @Context UriInfo ui) {
 
-
-        // are we just after the root?
-        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
-
-        Resource resource = itemDao.findResource(uri, ui.getQueryParameters());
+        Resource resource = createResource(path, ui);
 
         if (resource.getModel().isEmpty()) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -170,6 +124,15 @@ public class MobileCampusResource {
 
         // default to not found
         return Response.status(Response.Status.NOT_FOUND).build();
+    }
+
+
+    private Resource createResource(@PathParam("path") String path, @Context UriInfo ui) {
+
+        // are we just after the root?
+        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
+
+        return itemDao.findResource(uri, ui.getQueryParameters());
     }
 
 

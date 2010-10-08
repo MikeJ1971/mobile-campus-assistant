@@ -16,7 +16,6 @@
     </#compress>
 </#macro>
 
-
 <#macro NavLabel label>
     <#compress>
     <#if (label?length > 23)>
@@ -29,4 +28,17 @@
 
 <#macro Title label>
     <h1 id="title">${label!"Untitled Page"}</h1>
+</#macro>
+
+<#macro ParseXsdDate value>
+<#assign length>${value?length}</#assign>
+${value?substring(0, length?number - 3)}${value?substring(length?number - 2, length?number)}
+</#macro>
+
+<#macro EventDate value>
+<#compress>
+<#assign length>${value?length}</#assign>
+<#assign temp>${value?substring(0, length?number - 3)}${value?substring(length?number - 2, length?number)}</#assign>
+${temp?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string('E, d MMM yyyy')}&nbsp;<#if temp?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string('HH:mm') != "00:00">${temp?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string('HH:mm')}</#if>
+</#compress>
 </#macro>
