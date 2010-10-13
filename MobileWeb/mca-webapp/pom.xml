@@ -87,6 +87,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.ilrt.mca</groupId>
+            <artifactId>mca-common</artifactId>
+            <version>0.6-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ilrt.mca</groupId>
+            <artifactId>mca-jena-freemarker</artifactId>
+            <version>0.6-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.1.1-ea</version>
@@ -183,11 +193,6 @@
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-web</artifactId>
             <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.ilrt.mca</groupId>
-            <artifactId>mca-jena-freemarker</artifactId>
-            <version>0.6-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
