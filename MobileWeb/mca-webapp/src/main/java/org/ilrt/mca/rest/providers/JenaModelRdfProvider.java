@@ -59,7 +59,7 @@ import java.lang.reflect.Type;
 public final class JenaModelRdfProvider implements MessageBodyWriter<Object>,
         MessageBodyReader<Object> {
 
-    // ---- Writer implememtation
+    // ---- Writer implementation
 
     public boolean isWriteable(Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType) {
         return Model.class.isAssignableFrom(aClass);
@@ -86,7 +86,7 @@ public final class JenaModelRdfProvider implements MessageBodyWriter<Object>,
 
     }
 
-    // ---- Reader implememtation
+    // ---- Reader implementation
 
     public boolean isReadable(Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType) {
         return aClass == Model.class;

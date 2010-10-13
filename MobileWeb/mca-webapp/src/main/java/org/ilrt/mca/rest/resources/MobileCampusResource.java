@@ -31,8 +31,6 @@
  */
 package org.ilrt.mca.rest.resources;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.resource.Singleton;
@@ -41,7 +39,6 @@ import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
 import org.ilrt.mca.dao.ItemDaoImpl;
-import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapperManager;
@@ -110,20 +107,13 @@ public class MobileCampusResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getGroupAsJson(@PathParam("path") String path, @Context UriInfo ui) {
 
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Resource resource = createResource(path, ui);
 
-        // are we just after the root?
-        String uri = isRoot(path) ? "mca://registry/" : Common.MCA_STUB + path;
-
-        //Item item = itemDao.findItem(uri, ui.getQueryParameters());
-        Item item = null;
-
-        if (item != null) {
-            return Response.ok(gson.toJson(item)).build();
+        if (resource.getModel().isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        // default to not found
-        return Response.status(Response.Status.NOT_FOUND).build();
+        return Response.ok(resource).build();
     }
 
 
@@ -137,10 +127,6 @@ public class MobileCampusResource {
 
 
     protected String resolveTemplateFromResource(Resource resource) {
-
-        System.out.println("Looking for template");
-
-        resource.getModel().write(System.out);
 
         if (resource.hasProperty(MCA_REGISTRY.template)) {
             return resource.getProperty(MCA_REGISTRY.template).getResource().getURI();

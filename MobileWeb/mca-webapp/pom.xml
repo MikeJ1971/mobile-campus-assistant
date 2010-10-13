@@ -201,6 +201,11 @@
             <version>3.0.4.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.talis.jena</groupId>
+            <artifactId>rdf-json</artifactId>
+            <version>0.2-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
