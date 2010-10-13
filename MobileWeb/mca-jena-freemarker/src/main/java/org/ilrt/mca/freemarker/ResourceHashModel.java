@@ -23,6 +23,7 @@ import freemarker.template.TemplateScalarModel;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +47,7 @@ import java.util.List;
  *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarModel {
+public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarModel, ResourceTemplate {
 
     // ---------- constructors
 
@@ -130,6 +131,8 @@ public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarMod
             list.add(resolveModel(iter.next().getObject()));
         }
 
+        Collections.sort(list, new JenaResourceComparator());
+
         return new SimpleSequence(list);
     }
 
@@ -187,7 +190,13 @@ public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarMod
         return null;
     }
 
+    @Override
+    public Resource getResource() {
+        return resource;
+    }
+
     private final Resource resource;
     protected final PrefixMapping prefixMapping;
     public final static String INVALID_URL = "http://invalid.org";
+
 }
