@@ -43,8 +43,6 @@ import org.ilrt.mca.dao.delegate.EventDelegateImpl;
 import org.ilrt.mca.dao.delegate.FeedDelegateImpl;
 import org.ilrt.mca.dao.delegate.HtmlFragmentDelegateImpl;
 import org.ilrt.mca.dao.delegate.KmlMapDelegateImpl;
-import org.ilrt.mca.domain.BaseItem;
-import org.ilrt.mca.domain.Item;
 import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
@@ -63,57 +61,6 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
     }
 
     // ---------- PUBLIC METHODS
-
-
-    public Item findItem(String id, MultivaluedMap<String, String> parameters) {
-
-        // get the model based on the id and any parameters passed
-        Model model = findModel(id, parameters);
-
-        if (model == null || model.isEmpty()) {
-            log.error("Unable to construct a model");
-            return null;
-        }
-
-        // hand work to a delegate if possible
-        Resource resource = model.getResource(id);
-        Delegate delegate = findDelegate(resource);
-
-        if (delegate != null) {
-            log.debug("Using delegate: " + delegate.getClass().getName());
-            //return delegate.createItem(resource, parameters);
-            return null;
-        }
-
-        log.debug("We don't have delegate, defaulting to basic object");
-
-        // fallback
-        BaseItem item = new BaseItem();
-        getBasicDetails(resource, item);
-        model.close();
-        return item;
-    }
-
-    
-    public Model findModel(String id, MultivaluedMap<String, String> parameters) {
-
-        Model model = queryManager.find("id", id, findItemsSparql);
-
-        if (model.isEmpty()) {
-            return null;
-        }
-
-        // hand work to a delegate if possible
-        Resource resource = model.getResource(id);
-        Delegate delegate = findDelegate(resource);
-
-        if (delegate != null) {
-            //return delegate.createModel(resource, parameters);
-            return null;
-        }
-
-        return model;
-    }
 
     @Override
 

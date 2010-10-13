@@ -32,15 +32,10 @@
 package org.ilrt.mca.dao.delegate;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDFS;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.dao.AbstractDao;
-import org.ilrt.mca.domain.Item;
-import org.ilrt.mca.domain.map.KmlMapItemImpl;
 import org.ilrt.mca.rdf.QueryManager;
-import org.ilrt.mca.vocab.GEO;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
