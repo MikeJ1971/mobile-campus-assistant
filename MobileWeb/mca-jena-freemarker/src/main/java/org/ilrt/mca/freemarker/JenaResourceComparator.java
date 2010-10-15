@@ -1,11 +1,14 @@
 package org.ilrt.mca.freemarker;
 
 import com.hp.hpl.jena.rdf.model.Literal;
+import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDFS;
+import com.hp.hpl.jena.vocabulary.RSS;
 import freemarker.template.TemplateModel;
+import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.util.Comparator;
@@ -25,19 +28,17 @@ public class JenaResourceComparator implements Comparator<TemplateModel> {
             // do we have an "mca:order" - this should take priority
             if (r1.hasProperty(MCA_REGISTRY.order) && r2.hasProperty(MCA_REGISTRY.order)) {
 
-                // they should be Literal values, but check anyway
-                RDFNode node1 = r1.getProperty(MCA_REGISTRY.order).getObject();
-                RDFNode node2 = r2.getProperty(MCA_REGISTRY.order).getObject();
+                return compareResources(r1, r2, MCA_REGISTRY.order);
 
-                if (node1.isLiteral() && node2.isLiteral()) {
-                    int val = compareLexicalForm(node1.asLiteral(), node2.asLiteral());
-                    return val == 0 ? compareOnLabel(r1, r2) : val;
-                }
+            } else if (r1.hasProperty(DC.date) && r2.hasProperty(DC.date)) {
 
-                // TODO check on dates
+                return compareResources(r1, r2, DC.date);
+
+            } else if (r1.hasProperty(EVENT.startDate) && r2.hasProperty(EVENT.startDate)) {
+
+                return compareResources(r1, r2, EVENT.startDate);
 
             } else { // other wise try and order on a label
-
                 return compareOnLabel(r1, r2);
             }
         }
@@ -67,9 +68,27 @@ public class JenaResourceComparator implements Comparator<TemplateModel> {
             return r.getProperty(RDFS.label).getLiteral();
         } else if (r.hasProperty(DC.title)) {
             return r.getProperty(DC.title).getLiteral();
+        } else if (r.hasProperty(RSS.title)) {
+            return r.getProperty(RSS.title).getLiteral();
+        } else if (r.hasProperty(EVENT.subject)) {
+            return (r.getProperty(EVENT.subject)).getLiteral();
         }
 
         return null;
+    }
+
+    private int compareResources(Resource r1, Resource r2, Property p) {
+
+        // they should be Literal values, but check anyway
+        RDFNode node1 = r1.getProperty(p).getObject();
+        RDFNode node2 = r2.getProperty(p).getObject();
+
+        if (node1.isLiteral() && node2.isLiteral()) {
+            int val = compareLexicalForm(node1.asLiteral(), node2.asLiteral());
+            return val == 0 ? compareOnLabel(r1, r2) : val;
+        }
+
+        return 0;
     }
 
 }

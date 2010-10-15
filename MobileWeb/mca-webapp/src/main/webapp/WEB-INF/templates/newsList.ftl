@@ -8,7 +8,7 @@
 <#if resource['mca:hasNewsItem']??>
 <div class="nav">
     <ul class="nav-list">
-        <#list resource['mca:hasNewsItem'] as item>
+        <#list resource['mca:hasNewsItem']?reverse as item>
             <#assign label=item['rss:title']?first/>
             <li><a href="./?item=${item?url("UTF8")}"><span class="news"></span><@NavLabel label="${label}"/></a></li>
         </#list>

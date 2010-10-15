@@ -83,7 +83,7 @@ public class JenaResourceComparatorTest {
         ResourceHashModel elementFive = (ResourceHashModel) sequence.get(4);
         assertEquals("Unexpected URI", uriFive, elementFive.getAsString());
         Resource r5 = elementFive.getResource();
-        assertEquals("Unexpected label", labelFive, r5.getProperty(DC.title).getLiteral().getLexicalForm());
+        assertEquals("Unexpected label", labelFive, r5.getProperty(RDFS.label).getLiteral().getLexicalForm());
     }
 
     private final String uriOne = "http://example.org/1";
