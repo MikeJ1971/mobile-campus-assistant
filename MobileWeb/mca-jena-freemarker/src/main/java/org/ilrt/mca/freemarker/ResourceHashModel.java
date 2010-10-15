@@ -131,7 +131,7 @@ public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarMod
             list.add(resolveModel(iter.next().getObject()));
         }
 
-        Collections.sort(list, new JenaResourceComparator());
+        Collections.sort(list, new McaJenaResourceComparator());
 
         return new SimpleSequence(list);
     }
