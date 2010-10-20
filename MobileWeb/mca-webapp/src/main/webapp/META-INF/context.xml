@@ -1,3 +1,6 @@
 <?xml version="1.0"?>
 <Context path="" docBase="MobileWeb" debug="0" reloadable="true">
+    <Resource name="jdbc/mca" auth="Container" type="javax.sql.DataSource"
+              driverClassName="org.h2.Driver"
+              url="jdbc:h2:/usr/local/projects/mmb/var/mca"/>
 </Context>
