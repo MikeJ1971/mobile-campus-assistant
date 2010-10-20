@@ -33,21 +33,17 @@ package org.ilrt.mca.quartz;
 
 import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
-import org.ilrt.mca.rdf.SdbManagerImpl;
-import org.ilrt.mca.rdf.StoreWrapperManager;
-import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
-import org.ilrt.mca.rdf.UpdateManager;
+import org.ilrt.mca.harvester.events.EventHarvesterImpl;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import java.io.IOException;
-import org.ilrt.mca.harvester.events.EventHarvesterImpl;
 
 /**
  * @author Chris Bailey (c.bailey@bristol.ac.uk)
  */
-public class HarvestEventJob implements Job {
+public class HarvestEventJob extends AbstractJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
@@ -55,10 +51,7 @@ public class HarvestEventJob implements Job {
         log.info("The HarvestEventJob has started.");
         try {
 
-            StoreWrapperManager manager = new StoreWrapperManagerImpl("/sdb.ttl");
-            SdbManagerImpl repository = new SdbManagerImpl(manager);
-
-            Harvester harvester = new EventHarvesterImpl(repository);
+            Harvester harvester = new EventHarvesterImpl(manager);
             harvester.harvest();
 
         } catch (IOException ex) {

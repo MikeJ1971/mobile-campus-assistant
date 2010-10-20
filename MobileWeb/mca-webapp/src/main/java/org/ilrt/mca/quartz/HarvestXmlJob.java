@@ -34,9 +34,6 @@ package org.ilrt.mca.quartz;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
-import org.ilrt.mca.rdf.SdbManagerImpl;
-import org.ilrt.mca.rdf.StoreWrapperManager;
-import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -46,17 +43,15 @@ import java.io.IOException;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class HarvestXmlJob implements Job {
+public class HarvestXmlJob extends AbstractJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         log.info("The HarvestXmlJob has started.");
         try {
 
-            StoreWrapperManager manager = new StoreWrapperManagerImpl("/sdb.ttl");
-            SdbManagerImpl repository = new SdbManagerImpl(manager);
 
-            Harvester harvester = new XmlSourceHarvesterImplImpl(repository);
+            Harvester harvester = new XmlSourceHarvesterImplImpl(manager);
             harvester.harvest();
 
         } catch (IOException ex) {
