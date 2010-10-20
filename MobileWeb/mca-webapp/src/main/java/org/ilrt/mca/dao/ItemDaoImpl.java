@@ -77,11 +77,8 @@ public class ItemDaoImpl extends AbstractDao implements ItemDao {
         Delegate delegate = findDelegate(resource);
 
         if (delegate != null) {
-            System.out.println("IN HERE ... WILL probably get NULL");
             return delegate.createResource(resource, parameters);
         }
-
-        model.write(System.out);
 
         return model.getResource(id);
     }
