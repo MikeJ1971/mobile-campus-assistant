@@ -5,6 +5,10 @@
 <#assign label><@Label resource/></#assign>
 <@Title label="${label}" />
 
-${resource['rdfs:seeAlso']?first['mca:hasHtmlFragment']?first!"<p>Sorry, not data is available</p>"}
+<#if resource['rdfs:seeAlso']?first['mca:hasHtmlFragment']??>
+    ${resource['rdfs:seeAlso']?first['mca:hasHtmlFragment']?first}
+<#else>
+    <p>Sorry, not data is available</p>
+</#if>
 
 <#include "includes/footer.ftl"/>
