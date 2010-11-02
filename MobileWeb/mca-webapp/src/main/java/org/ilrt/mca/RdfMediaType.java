@@ -34,7 +34,6 @@ package org.ilrt.mca;
 import javax.ws.rs.core.MediaType;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class RdfMediaType {
@@ -42,14 +41,32 @@ public class RdfMediaType {
     private RdfMediaType() {
     }
 
+    // application/rdf+xml
+
     public final static String APPLICATION_RDF_XML = "application/rdf+xml";
 
     public final static MediaType APPLICATION_RDF_XML_TYPE =
             new MediaType("application", "rdf+xml");
+
+    // text/n3
 
     public final static String TEXT_RDF_N3 = "text/n3";
 
     public final static MediaType TEXT_RDF_N3_TYPE =
             new MediaType("text", "n3");
 
+    // application/sparql-results+json
+
+    public final static String SPARQL_RESULTS_JSON = "application/sparql-results+json";
+
+    public final static MediaType SPARQL_RESULTS_JSON_TYPE =
+            new MediaType("application", "sparql-results+json");
+
+
+    // application/sparql-results+json
+
+    public final static String SPARQL_RESULTS_XML = "application/sparql-results+xml";
+
+    public final static MediaType SPARQL_RESULTS_XML_TYPE =
+            new MediaType("application", "sparql-results+xml");
 }
