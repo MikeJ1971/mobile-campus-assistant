@@ -1,6 +1,7 @@
 
 package org.ilrt.mca.rest.providers;
 
+import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.talis.rdfwriters.json.JSONJenaWriter;
 
@@ -27,7 +28,7 @@ public class JenaResourceJsonProvider implements MessageBodyWriter<Object> {
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations,
                                MediaType mediaType) {
 
-        return Resource.class.isAssignableFrom(type);
+        return Resource.class.isAssignableFrom(type) || Model.class.isAssignableFrom(type);
     }
 
     @Override
@@ -41,9 +42,15 @@ public class JenaResourceJsonProvider implements MessageBodyWriter<Object> {
                         MediaType mediaType, MultivaluedMap<String, Object> httpHeaders,
                         OutputStream entityStream) throws IOException, WebApplicationException {
 
-        Resource resource = (Resource) o;
+        Model m;
+
+        if (o instanceof Resource) {
+            m = ((Resource) o).getModel();
+        } else {
+            m = (Model) o;
+        }
 
         JSONJenaWriter jsonJenaWriter = new JSONJenaWriter();
-        jsonJenaWriter.write(resource.getModel(), entityStream, null);
+        jsonJenaWriter.write(m, entityStream, null);
     }
 }
