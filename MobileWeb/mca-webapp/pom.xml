@@ -84,6 +84,14 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
+            <resource>
+                <directory>${basedir}/src/main/webapp/WEB-INF/</directory>
+                <includes>
+                    <include>web.xml</include>
+                </includes>
+                <filtering>true</filtering>
+                <targetPath>${project.build.directory}</targetPath>
+            </resource>
         </resources>
         <plugins>
             <plugin>
@@ -93,6 +101,13 @@
                     <webAppConfig>
                         <contextPath>/</contextPath>
                     </webAppConfig>
+                    <webXml>${project.build.directory}/web.xml</webXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webXml>${project.build.directory}/web.xml</webXml>
                 </configuration>
             </plugin>
         </plugins>

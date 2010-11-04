@@ -7,12 +7,19 @@
 
     <display-name>Mobile Campus Assistant</display-name>
 
+
     <!-- CONTEXT PARAMETERS -->
 
     <context-param>
         <description>Location of the freemarker templates</description>
         <param-name>freemarker.template.path</param-name>
         <param-value>/WEB-INF/templates/</param-value>
+    </context-param>
+
+    <context-param>
+        <description>Availability of the SPARQL endpoint</description>
+        <param-name>sparqlEnabled</param-name>
+        <param-value>${sparqlEnabled}</param-value>
     </context-param>
 
     <!-- SERVLETS -->

@@ -77,7 +77,11 @@ public class SparqlEndpointResource {
     @Produces(MediaType.TEXT_HTML)
     public Response htmlView(@QueryParam("query") String query, @QueryParam("type") String type) {
 
-        String enabled = wc.getInitParameter("sparqlEnabled");
+        //String enabled = wc.getInitParameter("sparqlEnabled");
+
+        String enabled = wc.getServletContext().getInitParameter("sparqlEnabled");
+
+        System.out.println("ENABLED: " + enabled);
 
         if (enabled == null || enabled.equals("false"))
             return Response.status(Response.Status.SERVICE_UNAVAILABLE)
@@ -96,7 +100,9 @@ public class SparqlEndpointResource {
             RdfMediaType.SPARQL_RESULTS_XML, RdfMediaType.TEXT_RDF_N3})
     public Response query(@QueryParam("query") String query) {
 
-        String enabled = wc.getInitParameter("sparqlEnabled");
+        //String enabled = wc.getInitParameter("sparqlEnabled");
+
+        String enabled = wc.getServletContext().getInitParameter("sparqlEnabled");
 
         if (enabled == null || enabled.equals("false"))
             return Response.status(Response.Status.SERVICE_UNAVAILABLE)
