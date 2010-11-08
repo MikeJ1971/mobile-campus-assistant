@@ -39,12 +39,15 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 import org.ilrt.mca.harvester.ResponseHandler;
+import org.jdom.Element;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -68,10 +71,31 @@ public class FeedResponseHandlerImpl implements ResponseHandler {
             // use the link as the URI.
             for (Object o : syndFeed.getEntries()) {
                 SyndEntry entry = (SyndEntry) o;
+
                 if (!entry.getUri().startsWith("http")) {
                     entry.setUri(entry.getLink());
                 }
+
             }
+
+            // remove foreign elements that cause icky RDF
+            // TODO: create a data wrangling class for this type of stuff that can be institutional specific
+            List elements = (List) syndFeed.getForeignMarkup();
+
+            Iterator i = elements.iterator();
+
+            while (i.hasNext()) {
+
+                Element element = (Element) i.next();
+
+                if (element.getNamespaceURI().equals("http://webns.net/mvcb/") ||
+                        element.getNamespaceURI().equals("http://www.w3.org/2005/Atom")) {
+                    i.remove();
+                }
+
+            }
+
+            syndFeed.setForeignMarkup(elements);
 
 
             // write the feed to a string
@@ -79,6 +103,8 @@ public class FeedResponseHandlerImpl implements ResponseHandler {
             SyndFeedOutput output = new SyndFeedOutput();
             output.output(syndFeed, writer);
             String feed = writer.getBuffer().toString();
+
+            //System.out.println(feed);
 
             // read into a model
             Model model = ModelFactory.createDefaultModel();
