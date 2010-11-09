@@ -71,12 +71,13 @@ public class Common {
 
     // TODO ICKY QUICK FIX - LOOK AT JODA TIME FOR XSD DATE FORMATS
     // For events, need to handle yyyy-mm-dd, yyyymmddThhmmss and yyyymmdd input formats
+
     public static Date parseDate(String date) throws ParseException {
         if (date.endsWith("Z")) {
             date = date.substring(0, date.length() - 1);
         }
         if (date.length() == 10) {
-            date = date+"T00:00:00";
+            date = date + "T00:00:00";
         }
         date = date.replaceAll("^(\\d{4})(\\d{2})(\\d{2})T(\\d{2})(\\d{2})(\\d{2})$", "$1-$2-$3T$4:$5:$6");
         date = date.replaceAll("^(\\d{4})(\\d{2})(\\d{2})$", "$1-$2-$3T00:00:00");
@@ -97,12 +98,11 @@ public class Common {
      * Designed for xhtml strings. Has an issue with non-xml tags such as &lt;br&gt;<br/>
      * as having and odd number will case an additional &lt;br&gt; to be added to the
      * end of the string.
-     * 
+     *
      * @param s string to be parsed
      * @return String with all opened tags closed
      */
-    public static String closeAllTags(String s)
-    {
+    public static String closeAllTags(String s) {
         // first clean up any unclosed tag
         s = s.replaceAll("<[^>]*$", "");
 
@@ -126,7 +126,7 @@ public class Common {
             // if this tag matches a closing tag, remove from stack
             if (!openTags.empty() && openTags.peek().toString().equals(tag)) openTags.pop();
 
-            // else add to stack
+                // else add to stack
             else openTags.push(tag);
         }
 

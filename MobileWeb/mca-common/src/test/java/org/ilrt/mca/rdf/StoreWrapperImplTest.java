@@ -1,14 +1,14 @@
 package org.ilrt.mca.rdf;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import java.sql.SQLException;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class StoreWrapperImplTest {

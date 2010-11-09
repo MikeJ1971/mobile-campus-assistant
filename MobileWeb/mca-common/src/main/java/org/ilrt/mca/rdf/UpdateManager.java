@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, University of Bristol
+ * Copyright (c) 2009, University of Bristol
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,52 +32,26 @@
 package org.ilrt.mca.rdf;
 
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.sdb.StoreDesc;
-import com.hp.hpl.jena.sdb.util.StoreUtils;
-
-import java.io.InputStream;
-import java.sql.SQLException;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public abstract class AbstractStoreWrapperManagerImpl implements StoreWrapperManager {
+public interface UpdateManager {
 
-    public AbstractStoreWrapperManagerImpl(String configLocation) {
-        this.storeDesc = getStoreDesc(configLocation);
-    }
+    //----- add and delete models
 
-    protected StoreDesc getStoreDesc(String configLocation) {
+    void add(Model model);
 
-        Model ttl = ModelFactory.createDefaultModel();
-        InputStream input = getClass().getResourceAsStream(configLocation);
+    void add(String graphUri, Model model);
 
-        if (input == null) {
-            throw new RuntimeException("Config file " + configLocation
-                    + " not found in classpath");
-        }
+    void delete(Model model);
 
-        ttl.read(input, null, "TTL");
+    void delete(String graphUri, Model model);
 
-        return StoreDesc.read(ttl);
-    }
+    void deleteAllInGraph(String graphUri);
 
-
-    protected void prepareDatabase(StoreWrapper wrapper) {
-        try {
-            if (!StoreUtils.isFormatted(wrapper.getStore())) {
-                wrapper.getStore().getTableFormatter().format();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        wrapper.close();
-    }
-
-
-    @Override
-    public abstract StoreWrapper getStoreWrapper();
-
-    protected StoreDesc storeDesc;
+    void updatePropertyInGraph(String graphUri, String uri,
+                               Property property, RDFNode object);
 }

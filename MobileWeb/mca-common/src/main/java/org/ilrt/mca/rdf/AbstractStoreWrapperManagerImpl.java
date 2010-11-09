@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009, University of Bristol
+ * Copyright (c) 2010, University of Bristol
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,28 +31,53 @@
  */
 package org.ilrt.mca.rdf;
 
-import com.hp.hpl.jena.query.QuerySolutionMap;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.sdb.StoreDesc;
+import com.hp.hpl.jena.sdb.util.StoreUtils;
+
+import java.io.InputStream;
+import java.sql.SQLException;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public interface UpdateManager {
+public abstract class AbstractStoreWrapperManagerImpl implements StoreWrapperManager {
 
-    //----- add and delete models
+    public AbstractStoreWrapperManagerImpl(String configLocation) {
+        this.storeDesc = getStoreDesc(configLocation);
+    }
 
-    void add(Model model);
+    protected StoreDesc getStoreDesc(String configLocation) {
 
-    void add(String graphUri, Model model);
+        Model ttl = ModelFactory.createDefaultModel();
+        InputStream input = getClass().getResourceAsStream(configLocation);
 
-    void delete(Model model);
+        if (input == null) {
+            throw new RuntimeException("Config file " + configLocation
+                    + " not found in classpath");
+        }
 
-    void delete(String graphUri, Model model);
+        ttl.read(input, null, "TTL");
 
-    void deleteAllInGraph(String graphUri);
+        return StoreDesc.read(ttl);
+    }
 
-    void updatePropertyInGraph(String graphUri, String uri,
-                               Property property, RDFNode object);
+
+    protected void prepareDatabase(StoreWrapper wrapper) {
+        try {
+            if (!StoreUtils.isFormatted(wrapper.getStore())) {
+                wrapper.getStore().getTableFormatter().format();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        wrapper.close();
+    }
+
+
+    @Override
+    public abstract StoreWrapper getStoreWrapper();
+
+    protected StoreDesc storeDesc;
 }

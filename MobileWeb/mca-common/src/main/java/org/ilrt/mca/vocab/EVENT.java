@@ -33,11 +33,10 @@ package org.ilrt.mca.vocab;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Resource;
 
 /**
- *
  * @author Chris Bailey (c.bailey@bristol.ac.uk)
  */
 public class EVENT {
@@ -51,7 +50,7 @@ public class EVENT {
     }
 
     public static final Resource NAMESPACE = model.createResource(NS);
-    
+
     public static final Resource event = model.createResource(NS + "Vevent");
 
     public static final Resource start = model.createResource(NS + "dtstart");
@@ -83,7 +82,7 @@ public class EVENT {
     public static final Property UID = model.createProperty(NS + "uid");
 
     public static final Property byMonth = model.createProperty(NS + "bymonth");
-    
+
     public static final Property byDay = model.createProperty(NS + "byday");
 
     public static final Property frequency = model.createProperty(NS + "freq");
