@@ -66,3 +66,11 @@
 <http://www.bris.ac.uk/news/news-feed.rss> rdf:type mca:FeedSource .
 
 <http://www.ubu.org.uk/rss.xml> rdf:type mca:FeedSource .
+
+<mca://geodata/osm/amenities> rdf:type mca:OSMGeoSource ;
+    mca:bb-left "-2.614"^^xsd:double ;
+    mca:bb-bottom "51.453"^^xsd:double ;
+    mca:bb-right "-2.595"^^xsd:double ;
+    mca:bb-top "51.462"^^xsd:double ;
+    mca:tag "amenities"
+    .
