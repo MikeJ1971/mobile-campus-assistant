@@ -33,13 +33,10 @@ package org.ilrt.mca.domain;
 
 import org.ilrt.mca.Common;
 
-import java.util.List;
 import java.util.ArrayList;
-
-import com.google.gson.annotations.Expose;
+import java.util.List;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 public class BaseItem implements Item, Comparable<Item> {
@@ -113,14 +110,14 @@ public class BaseItem implements Item, Comparable<Item> {
         return items;
     }
 
-    @Expose private String id;
-    @Expose private String label;
-    @Expose private Integer order = 1;  // set a fallback order
-    @Expose private String description;
+    private String id;
+    private String label;
+    private Integer order = 1;  // set a fallback order
+    private String description;
     private String template;
-    @Expose private String type;
-    @Expose private String style;
-    @Expose List<BaseItem> items = new ArrayList<BaseItem>();
+    private String type;
+    private String style;
+    List<BaseItem> items = new ArrayList<BaseItem>();
 
 
     @Override

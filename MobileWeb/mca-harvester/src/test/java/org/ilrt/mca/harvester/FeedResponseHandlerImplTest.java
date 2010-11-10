@@ -3,7 +3,6 @@ package org.ilrt.mca.harvester;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.sun.net.httpserver.HttpServer;
 import static junit.framework.Assert.assertFalse;
-import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.harvester.feeds.FeedResponseHandlerImpl;
 import org.junit.After;
 import static org.junit.Assert.assertNotNull;

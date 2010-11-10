@@ -51,6 +51,23 @@ import java.util.Collections;
  */
 public abstract class AbstractDao {
 
+
+    public String loadSparql(String path) throws IOException {
+
+        StringBuffer buffer = new StringBuffer();
+        InputStream is = getClass().getResourceAsStream(path);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+
+        String line;
+        while ((line = reader.readLine()) != null) {
+            buffer.append(line);
+            buffer.append("\n");
+        }
+
+        return buffer.toString();
+    }
+
+
     protected void getBasicDetails(Resource resource, BaseItem item) {
 
         if (resource == null) {
@@ -105,20 +122,4 @@ public abstract class AbstractDao {
 
         Collections.sort(item.getItems());
     }
-
-    public String loadSparql(String path) throws IOException {
-
-        StringBuffer buffer = new StringBuffer();
-        InputStream is = getClass().getResourceAsStream(path);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
-        String line;
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
-            buffer.append("\n");
-        }
-
-        return buffer.toString();
-    }
-
 }

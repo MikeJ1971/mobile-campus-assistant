@@ -29,34 +29,30 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ilrt.mca.domain.events;
+package org.ilrt.mca.harvester.events;
 
-import org.ilrt.mca.domain.BaseItem;
+import java.util.Date;
+import java.util.List;
+import org.ilrt.mca.domain.Item;
 
 /**
  * @author Chris Bailey (c.bailey@bristol.ac.uk)
  */
-public class EventSourceImpl extends BaseItem implements EventSource {
+public interface EventItem extends Item {
 
-    public EventSourceImpl(){}
+    Date getStartDate();
 
-    String htmlLocation;
-    String icalLocation;
+    Date getEndDate();
 
-    public void setHTMLLink(String s) {
-        this.htmlLocation = s;
-    }
+    String getLocation();
 
-    public String getHTMLLink() {
-        return this.htmlLocation;
-    }
+    String getOrganiser();
 
+    String getProvenance();
 
-    public void setiCalLink(String s) {
-        this.icalLocation = s;
-    }
+    boolean isRecurring();
 
-    public String getiCalLink() {
-        return this.icalLocation;
-    }
+    List<Date> getRecurringDatesUntil(Date endDate);
+
+    long getStartDateAsTimeStamp();
 }

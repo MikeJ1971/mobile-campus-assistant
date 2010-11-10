@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ilrt.mca.domain.events;
+package org.ilrt.mca.harvester.events;
 
 import java.util.ArrayList;
 import java.util.Calendar;

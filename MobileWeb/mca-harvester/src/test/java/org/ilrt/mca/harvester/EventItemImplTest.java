@@ -2,13 +2,14 @@
  *  © University of Bristol
  */
 
-package org.ilrt.mca.domain.events;
+package org.ilrt.mca.harvester;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import org.ilrt.mca.harvester.events.EventItemImpl;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

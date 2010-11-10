@@ -1,0 +1,68 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix mca:        <http://org.ilrt.mca/registry#> .
+@prefix dc:         <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix geo:        <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+
+<mca://registry/>  rdf:type mca:Registry ;
+    rdfs:label "Mobile Campus Assistant" ;
+    dc:description "Registry for the Mobile Campus Assistant, University of Bristol" ;
+    mca:hasItem <mca://registry/maps/> ;
+    mca:template <template://homepage.ftl> ;
+    .
+
+<mca://registry/maps/> rdf:type mca:Group ;
+    rdfs:label "Campus Maps" ;
+    dc:description "Useful maps of the campus" ;
+    mca:hasItem <mca://registry/maps/wireless/> ;
+    mca:hasItem <mca://registry/maps/precinct/> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://item.ftl> ;
+    .
+
+<mca://registry/maps/wireless/> rdf:type mca:KmlMapSource ;
+    rdfs:label "Wireless Hotspots" ;
+    dc:description "The location of wireless hotspots across the campus." ;
+    rdfs:seeAlso <http://wireless.bris.ac.uk/maps/wireless-core.kml> ;
+    mca:template <template://kmlMap.ftl> ;
+    mca:order "2"^^xsd:integer ;
+    geo:lat "51.4585695818037"^^xsd:double ;
+    geo:long "-2.60187349563486"^^xsd:double ;
+    .
+
+<mca://registry/maps/precinct/> rdf:type mca:KmlMapSource ;
+    rdfs:label "University Precinct and Residences" ;
+    dc:description "University precinct and residences." ;
+    rdfs:seeAlso <http://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&output=kml&msid=111005880056449945013.0004718d9aaef89003fc6> ;
+    mca:template <template://kmlMap.ftl> ;
+    mca:order "1"^^xsd:integer ;
+    geo:lat "51.4585695818037"^^xsd:double ;
+    geo:long "-2.60187349563486"^^xsd:double ;
+    .
+
+<mca://registry/news> rdf:type mca:Group ;
+    rdfs:label "News" ;
+    dc:description "University news items" ;
+    mca:hasItem <mca://registry/news/events/> ;
+    mca:order "2"^^xsd:integer ;
+    mca:template <template://item.ftl> ;
+    .
+
+<mca://registry/news/events/> rdf:type mca:News ;
+    rdfs:label "Latest news" ;
+    dc:description "Latest news from the University of Bristol" ;
+    rdfs:seeAlso <http://www.bris.ac.uk/news/news-feed.rss> ;
+    mca:order "1"^^xsd:integer ;
+    mca:template <template://newsList.ftl> ;
+    .
+
+<http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
+    mca:hasXslSource <xsl://xsl/weatherData.xsl>
+    .
+
+<http://www.bris.ac.uk/news/news-feed.rss> rdf:type mca:FeedSource .
+
+<http://www.ubu.org.uk/rss.xml> rdf:type mca:FeedSource .

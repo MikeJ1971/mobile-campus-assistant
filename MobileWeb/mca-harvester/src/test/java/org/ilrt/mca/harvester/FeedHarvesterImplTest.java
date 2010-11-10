@@ -8,9 +8,8 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.util.FileManager;
 import com.hp.hpl.jena.vocabulary.DC;
-import org.ilrt.mca.AbstractTest;
 import org.ilrt.mca.Common;
-import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
+import org.ilrt.mca.harvester.feeds.FeedHarvesterImpl;
 import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
@@ -28,7 +27,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class XmlSourceHarvesterImplTest extends AbstractTest {
+public class FeedHarvesterImplTest extends AbstractTest {
 
     @Before
     public void setUp() throws Exception {
@@ -66,7 +65,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
                 .getLexicalForm());
         storeWrapper.close();
 
-        Harvester harvester = new XmlSourceHarvesterImplImpl(dataManager);
+        Harvester harvester = new FeedHarvesterImpl(dataManager);
         harvester.harvest();
 
         storeWrapper = getStoreWrapper();
@@ -85,7 +84,7 @@ public class XmlSourceHarvesterImplTest extends AbstractTest {
     DataManager dataManager;
 
     // these need to be in the test-registry.ttl file
-    String feedUrl = "http://portal.bris.ac.uk/portal-weather/newXml";
+    String feedUrl = "http://www.bris.ac.uk/news/news-feed.rss";
     //String uri = "mca://registry/news/events/";
     String date;
 }

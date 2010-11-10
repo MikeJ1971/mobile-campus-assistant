@@ -18,8 +18,6 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.dao.AbstractDao;
-import org.ilrt.mca.dao.delegate.EventDelegateImpl;
-import org.ilrt.mca.domain.events.EventItemImpl;
 import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
@@ -99,7 +97,7 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
     }
 
     private void generateRepeatingEvents(Model model, String graphUri) {
-        Date oneMonthFromNow = EventDelegateImpl.getEndDate("ONEMONTH");
+        Date oneMonthFromNow = getEndDate("ONEMONTH");
 
         StmtIterator stmtiter = model.listStatements(null, RDF.type, EVENT.event);
 
@@ -341,6 +339,32 @@ public class EventHarvesterImpl extends AbstractDao implements Harvester {
         }
 
         return item;
+    }
+
+
+    private Date getStartDate() {
+        Calendar cal = Calendar.getInstance();
+
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+
+        return cal.getTime();
+    }
+
+    private Date getEndDate(String s) {
+        Calendar endCal = Calendar.getInstance();
+
+        if (s.equalsIgnoreCase("TODAY")) {
+            endCal.set(Calendar.HOUR_OF_DAY, 23);
+            endCal.set(Calendar.MINUTE, 59);
+            endCal.set(Calendar.SECOND, 59);
+            endCal.set(Calendar.MILLISECOND, 999);
+        }
+        if (s.equalsIgnoreCase("ONEMONTH")) endCal.add(Calendar.MONTH, 1);
+
+        return endCal.getTime();
     }
 
     private Resolver resolver;
