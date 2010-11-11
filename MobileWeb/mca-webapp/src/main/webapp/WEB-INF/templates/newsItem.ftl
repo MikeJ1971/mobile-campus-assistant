@@ -6,7 +6,7 @@
 
     <div class="newsItem">
         <#if resource['rss:title']??><h2>${resource['rss:title']?first}</h2></#if>
-        <#if resource['dc:date']?first??>
+        <#if resource['dc:date']??>
             <p class="publishDate">${resource['dc:date']?first?datetime("yyyy-MM-dd\'T\'HH:mm:ss'Z'")?string('dd MMMM yyyy')}</p>
         </#if>
         <#if resource['rss:description']??><p>${resource['rss:description']?first}</p></#if>
