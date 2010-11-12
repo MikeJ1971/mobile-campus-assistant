@@ -67,10 +67,6 @@
 
 <http://www.ubu.org.uk/rss.xml> rdf:type mca:FeedSource .
 
-<mca://geodata/osm/amenities> rdf:type mca:OSMGeoSource ;
-    mca:bb-left "-2.614"^^xsd:double ;
-    mca:bb-bottom "51.453"^^xsd:double ;
-    mca:bb-right "-2.595"^^xsd:double ;
-    mca:bb-top "51.462"^^xsd:double ;
-    mca:tag "amenities"
-    .
+<http://xapi.openstreetmap.org/api/0.6/node%5Bbbox=-2.614,51.453,-2.595,51.462%5D%5Bamenity=*%5D> rdf:type mca:OSMGeoSource .
+
+<http://xapi.openstreetmap.org/api/0.6/node%5Bbbox=-2.614,51.453,-2.595,51.462%5D%5Bshop=*%5D> rdf:type mca:OSMGeoSource .

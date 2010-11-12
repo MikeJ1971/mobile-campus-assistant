@@ -1,4 +1,4 @@
-package org.ilrt.mca.harvester;
+package org.ilrt.mca.harvester.xml;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.query.Dataset;
@@ -9,6 +9,8 @@ import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.util.FileManager;
 import com.hp.hpl.jena.vocabulary.DC;
 import org.ilrt.mca.Common;
+import org.ilrt.mca.harvester.AbstractTest;
+import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
 import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;

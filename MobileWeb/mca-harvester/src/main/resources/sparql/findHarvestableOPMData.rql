@@ -6,16 +6,6 @@ PREFIX dc:      <http://purl.org/dc/elements/1.1/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 CONSTRUCT {
     ?id rdf:type <http://org.ilrt.mca/registry#OSMGeoSource> .
-    ?id mca:bb-left ?left .
-    ?id mca:bb-bottom ?bottom .
-    ?id mca:bb-right ?right .
-    ?id mca:bb-top ?top .
-    ?id mca:tag ?tag .
 } WHERE {
     ?id rdf:type <http://org.ilrt.mca/registry#OSMGeoSource> .
-    ?id mca:bb-left ?left .
-    ?id mca:bb-bottom ?bottom .
-    ?id mca:bb-right ?right .
-    ?id mca:bb-top ?top .
-    ?id mca:tag ?tag.
 }

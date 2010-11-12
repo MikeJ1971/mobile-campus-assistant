@@ -1,6 +1,7 @@
-package org.ilrt.mca.harvester;
+package org.ilrt.mca.harvester.xml;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import org.ilrt.mca.harvester.ResponseHandler;
 import org.ilrt.mca.harvester.xml.XhtmlSourceResponseHandlerImpl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

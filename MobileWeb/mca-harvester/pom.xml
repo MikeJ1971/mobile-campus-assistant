@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <parent>
         <artifactId>mca</artifactId>
@@ -12,7 +13,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ilrt.mca</groupId>
     <artifactId>mca-harvester</artifactId>
-    <name>mca-harvester</name>
+    <name>mca-harvester (Harvesters for data sources)</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
@@ -40,6 +41,12 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.2.137</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.grizzly</groupId>
+            <artifactId>grizzly-servlet-webserver</artifactId>
+            <version>1.9.18-i</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

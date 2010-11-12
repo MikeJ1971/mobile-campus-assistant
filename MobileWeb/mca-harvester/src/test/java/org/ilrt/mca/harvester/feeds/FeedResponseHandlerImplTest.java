@@ -1,8 +1,13 @@
-package org.ilrt.mca.harvester;
+package org.ilrt.mca.harvester.feeds;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.sun.net.httpserver.HttpServer;
 import static junit.framework.Assert.assertFalse;
+
+import org.ilrt.mca.harvester.AbstractTest;
+import org.ilrt.mca.harvester.HttpResolverImpl;
+import org.ilrt.mca.harvester.Resolver;
+import org.ilrt.mca.harvester.Source;
 import org.ilrt.mca.harvester.feeds.FeedResponseHandlerImpl;
 import org.junit.After;
 import static org.junit.Assert.assertNotNull;

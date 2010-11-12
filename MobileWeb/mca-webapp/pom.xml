@@ -12,7 +12,7 @@
     <groupId>org.ilrt.mca</groupId>
     <artifactId>mca-webapp</artifactId>
     <packaging>war</packaging>
-    <name>Mobile Campus Assistant Web Application</name>
+    <name>mca-webapp (Web Application)</name>
     <url>http://maven.apache.org</url>
 
     <profiles>

@@ -13,7 +13,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ilrt.mca</groupId>
     <artifactId>mca-common</artifactId>
-    <name>mca-common</name>
+    <name>mca-common (Common classes and resources)</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>

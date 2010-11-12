@@ -2,7 +2,7 @@
  *  © University of Bristol
  */
 
-package org.ilrt.mca.harvester;
+package org.ilrt.mca.harvester.events;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -11,7 +11,7 @@
     </parent>
     <groupId>org.ilrt.mca</groupId>
     <artifactId>mca-jena-freemarker</artifactId>
-    <name>Freemarker objects for Jena</name>
+    <name>mca-jena-freemarker (Freemarker objects for Jena)</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>

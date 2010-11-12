@@ -1,0 +1,13 @@
+ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+ PREFIX mca: <http://org.ilrt.mca/registry#>
+ CONSTRUCT {
+     ?s ?p ?o
+ } WHERE {
+     ?s ?p ?o .
+     ?s rdf:type ?type .
+     OPTIONAL {
+         GRAPH $graph {
+             OPTIONAL { ?s mca:lastVisitedDate ?lastVisited } .
+         }
+     }
+ }

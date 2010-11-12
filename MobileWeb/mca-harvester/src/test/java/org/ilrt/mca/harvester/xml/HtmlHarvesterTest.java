@@ -1,4 +1,4 @@
-package org.ilrt.mca.harvester;
+package org.ilrt.mca.harvester.xml;
 
 import org.junit.Test;
 
