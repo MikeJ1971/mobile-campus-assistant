@@ -51,7 +51,7 @@ public class GEO {
 
     public static final Resource NAMESPACE = model.createResource(NS);
 
-    public static final Resource Position = model.createResource(NS + "Point");
+    public static final Resource Point = model.createResource(NS + "Point");
 
     public static final Property latitude = model.createProperty(NS + "lat");
 

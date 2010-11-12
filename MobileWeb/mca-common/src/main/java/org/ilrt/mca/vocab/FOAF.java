@@ -54,4 +54,6 @@ public class FOAF {
     public static final Property mbox = model.createProperty(NS + "mbox");
 
     public static final Property phone = model.createProperty(NS + "phone");
+
+    public static final Property homepage = model.createProperty(NS + "homepage");
 }

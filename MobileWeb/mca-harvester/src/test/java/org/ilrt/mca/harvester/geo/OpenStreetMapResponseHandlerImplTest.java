@@ -1,4 +1,4 @@
-package org.ilrt.mca.harvester.xml;
+package org.ilrt.mca.harvester.geo;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import org.ilrt.mca.harvester.AbstractTest;
@@ -13,28 +13,22 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-/**
- * @author Mike Jones (mike.a.jones@bristol.ac.uk)
- */
-public class XhtmlSourceResponseHandlerImplTest extends AbstractTest {
+public class OpenStreetMapResponseHandlerImplTest extends AbstractTest {
 
     @Before
     public void setUp() throws IOException {
-
         super.startServer(resourcePath, mediaType);
     }
 
     @After
     public void tearDown() {
-
         super.stopServer();
     }
 
     @Test
-    public void resolve() throws Exception {
+    public void test() throws IOException {
 
         // having an oldish last visited date
         GregorianCalendar lastVisited = new GregorianCalendar(2008, Calendar.SEPTEMBER, 24);
@@ -42,13 +36,14 @@ public class XhtmlSourceResponseHandlerImplTest extends AbstractTest {
         // resolve!
         Resolver resolver = new HttpResolverImpl();
         Source source = new Source(host + ":" + portNumber + resourcePath, lastVisited.getTime());
-        Model model = resolver.resolve(source, new XhtmlSourceResponseHandlerImpl(xslFilePath));
+        Model model = resolver.resolve(source, new OpenStreetMapResponseHandlerImpl());
 
-        assertNotNull("The model should not be null", model);
-        assertEquals("There should be 1 triple", 1, model.size());
+
+        assertTrue(true);
+
     }
 
-    private final String resourcePath = "/pcavailability.html";
-    private final String mediaType = "text/html";
-    private final String xslFilePath = "/xsl/pcavailability.xsl";
+    private final String resourcePath = "/data.osm.xml";
+    private final String mediaType = "application/xml?charset=UTF-8";
+
 }

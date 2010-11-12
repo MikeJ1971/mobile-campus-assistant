@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" version="2.0">
+    <channel>
+        <title>University of Bristol news</title>
+        <link>http://www.bris.ac.uk/news/</link>
+        <description>Latest news from the University of Bristol</description>
+            <item>
+            <title>Record turnout for David Attenborough lecture</title>
+            <link>http://www.bris.ac.uk/news/2009/6565.xml</link>
+            <description>Last night [24 September] Sir David Attenborough delivered a
+            lecture on Alfred Russel Wallace and the Birds of Paradise to a capacity
+            audience at the University. More than 850 people packed the Great Hall in
+            the Wills Memorial Building to hear the legendary and much-loved
+            broadcaster speak.</description>
+            <pubDate>Fri, 25 Sep 2009 06:00:00 +0000</pubDate>
+            <guid>http://www.bris.ac.uk/news/2009/6565.xml</guid>
+            <category>Press releases</category>
+        </item>
+    </channel>
+</rss>

@@ -11,18 +11,17 @@ import com.hp.hpl.jena.vocabulary.DC;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.harvester.AbstractTest;
 import org.ilrt.mca.harvester.Harvester;
-import org.ilrt.mca.harvester.feeds.FeedHarvesterImpl;
 import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import static junit.framework.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -54,6 +53,13 @@ public class FeedHarvesterImplTest extends AbstractTest {
         storeWrapper.close();
 
         dataManager = new SdbManagerImpl(manager);
+
+        super.startServer(resourcePath, mediaType);
+    }
+
+    @After
+    public void tearDown() {
+        super.stopServer();
     }
 
     @Test
@@ -75,18 +81,15 @@ public class FeedHarvesterImplTest extends AbstractTest {
                 Common.AUDIT_GRAPH_URI);
 
         assertTrue(afterModel.getResource(feedUrl).hasProperty(DC.date));
-        String newDate = afterModel.getResource(feedUrl).getProperty(DC.date).getLiteral()
-                .getLexicalForm();
-
-        assertFalse(date.equals(newDate));
 
         storeWrapper.close();
     }
 
     DataManager dataManager;
 
-    // these need to be in the test-registry.ttl file
-    String feedUrl = "http://www.bris.ac.uk/news/news-feed.rss";
-    //String uri = "mca://registry/news/events/";
     String date;
+
+    String resourcePath = "/feed.xml";
+    String mediaType = "application/xml";
+    String feedUrl = host + portNumber + resourcePath;
 }

@@ -59,13 +59,11 @@
     mca:template <template://newsList.ftl> ;
     .
 
-<http://portal.bris.ac.uk/portal-weather/newXml> rdf:type mca:XmlSource ;
+<http://localhost:9090/weather.xml> rdf:type mca:XmlSource ;
     mca:hasXslSource <xsl://xsl/weatherData.xsl>
     .
 
-<http://www.bris.ac.uk/news/news-feed.rss> rdf:type mca:FeedSource .
-
-<http://www.ubu.org.uk/rss.xml> rdf:type mca:FeedSource .
+<http://localhost:9090/feed.xml> rdf:type mca:FeedSource .
 
 <http://xapi.openstreetmap.org/api/0.6/node%5Bbbox=-2.614,51.453,-2.595,51.462%5D%5Bamenity=*%5D> rdf:type mca:OSMGeoSource .
 

@@ -1,0 +1,1295 @@
+<?xml version='1.0' standalone='no'?>
+<osm version='0.6' generator='xapi: OSM Extended API 2.0' attribution='http://wiki.openstreetmap.org/wiki/Attribution' xmlns:xapi='http://www.informationfreeway.org/xapi/0.6' xapi:uri='/api/0.6/node[bbox=-2.614,51.449,-2.595,51.462][amenity=*]' xapi:planetDate='20101112' xapi:copyright='2010 OpenStreetMap contributors' xapi:license='Creative commons CC-BY-SA 2.0' xapi:bugs='For assistance or to report bugs contact 80n80n@gmail.com' xapi:instance='zappyOsm'>
+  <node id='26262222' lat='51.4607114' lon='-2.6117873' user='Stuart WArd' xapi:users='Stuart WArd' timestamp='2007-10-14T16:43:40Z' uid='14841' version='3' changeset='168305'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='created_by' v='Potlatch 0.4a'/>
+  </node>
+  <node id='264772800' lat='51.4617479' lon='-2.6057019' user='xybot' timestamp='2008-10-20T11:32:08Z' uid='70696' version='2' changeset='476074'>
+    <tag k='amenity' v='place_of_worship'/>
+    <tag k='created_by' v='xybot'/>
+    <tag k='denomination' v='free_church'/>
+    <tag k='name' v='Woodlands Christian Centre'/>
+    <tag k='religion' v='christian'/>
+  </node>
+  <node id='840050520' lat='51.4616896' lon='-2.6085266' user='tiiiim' timestamp='2010-10-17T17:11:19Z' uid='142710' version='3' changeset='6069304'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='4'/>
+  </node>
+  <node id='859575375' lat='51.4615003' lon='-2.6083716' user='tiiiim' timestamp='2010-10-17T17:11:20Z' uid='142710' version='2' changeset='6069304'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='45'/>
+    <tag k='addr:postcode' v='BS8 2LS'/>
+    <tag k='addr:street' v='Whiteladies Road'/>
+    <tag k='amenity' v='cafe'/>
+    <tag k='email' v='Relax@CafeRetreat.co.uk'/>
+    <tag k='name' v='Café Retreat'/>
+    <tag k='website' v='http://www.caferetreat.co.uk/'/>
+  </node>
+  <node id='859575381' lat='51.4618512' lon='-2.6081745' user='Laurence' timestamp='2010-10-17T22:48:52Z' uid='2160' version='3' changeset='6072877'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='49a'/>
+    <tag k='addr:postcode' v='BS8 2LS'/>
+    <tag k='addr:street' v='Whiteladies Road'/>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Made Up'/>
+    <tag k='phone' v='+44 1179 738882'/>
+  </node>
+  <node id='954790020' lat='51.4617703' lon='-2.6085371' user='tiiiim' timestamp='2010-10-17T17:11:18Z' uid='142710' version='1' changeset='6069304'>
+    <tag k='amenity' v='waste_basket'/>
+  </node>
+  <node id='967108092' lat='51.4609589' lon='-2.604581' user='ndm' timestamp='2010-10-27T19:21:53Z' uid='14846' version='1' changeset='6200333'>
+    <tag k='amenity' v='bicycle_parking'/>
+  </node>
+  <node id='984254918' lat='51.4603844' lon='-2.6137016' user='Laurence' timestamp='2010-11-10T13:31:06Z' uid='2160' version='2' changeset='6335936'>
+    <tag k='addr:housenumber' v='17'/>
+    <tag k='addr:postcode' v='BS8 2AW'/>
+    <tag k='addr:street' v='Oakfield Road'/>
+    <tag k='amenity' v='kindergarten'/>
+    <tag k='name' v='Mama Bear&apos;s Day Nursery'/>
+    <tag k='phone' v='0800 328 8151'/>
+    <tag k='website' v='http://www.mamabear.co.uk/pages/clifton/clifton-intro.htm'/>
+  </node>
+  <node id='310388761' lat='51.4614254' lon='-2.6023810' user='GrooveBox' timestamp='2008-11-07T13:01:03Z' uid='55365' version='1' changeset='708787'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='Potlatch 0.10f'/>
+    <tag k='name' v='The Highbury Vaults'/>
+  </node>
+  <node id='435846020' lat='51.4605044' lon='-2.6015246' user='cunningPlan' timestamp='2009-07-07T00:53:05Z' uid='30669' version='1' changeset='1758147'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='White Bear'/>
+  </node>
+  <node id='514120008' lat='51.4611687' lon='-2.5990927' user='caffeinate' timestamp='2009-09-30T06:46:51Z' uid='168024' version='1' changeset='2684279'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='The Green Man'/>
+  </node>
+  <node id='577235530' lat='51.4616666' lon='-2.5966974' user='tiiiim' timestamp='2010-10-10T11:25:47Z' uid='142710' version='2' changeset='6000980'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Kingsdown Wine Vaults'/>
+  </node>
+  <node id='770694392' lat='51.4610424' lon='-2.6022401' user='ndm' timestamp='2010-08-22T19:39:25Z' uid='14846' version='2' changeset='5564869'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='operator' v='Royal Mail'/>
+    <tag k='ref' v='BS2 1302'/>
+  </node>
+  <node id='874378762' lat='51.4611765' lon='-2.6023973' user='ndm' timestamp='2010-08-22T19:39:24Z' uid='14846' version='1' changeset='5564869'>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='name' v='Rustic Vine'/>
+  </node>
+  <node id='979035296' lat='51.4612992' lon='-2.6023454' user='Smurphboy' timestamp='2010-11-06T14:08:45Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='26012121' lat='51.4579629' lon='-2.6086018' user='Laurence' timestamp='2010-10-27T14:43:00Z' uid='2160' version='3' changeset='6196906'>
+    <tag k='addr:postcode' v='BS8 1PX'/>
+    <tag k='amenity' v='arts_centre'/>
+    <tag k='email' v='info@rwa.org.uk'/>
+    <tag k='name' v='Royal West of England Academy'/>
+    <tag k='phone' v='0117 973 5129'/>
+    <tag k='website' v='http://www.rwa.org.uk/'/>
+  </node>
+  <node id='26070210' lat='51.4569024' lon='-2.6094972' user='cunningPlan' xapi:users='cunningPlan' timestamp='2009-06-28T15:39:41Z' uid='30669' version='2' changeset='1663693'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='Quinton House'/>
+    <tag k='note' v='closed'/>
+    <tag k='postal_code' v='BS8 1JW'/>
+  </node>
+  <node id='26103637' lat='51.4562367' lon='-2.6128499' user='Laurence' timestamp='2010-08-02T16:51:32Z' uid='2160' version='4' changeset='5382552'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Clifton Cow'/>
+    <tag k='old_name' v='Richmond Spring'/>
+    <tag k='postal_code' v='BS8 1AW'/>
+  </node>
+  <node id='26103638' lat='51.4569856' lon='-2.6129717' user='Laurence' xapi:users='Laurence' timestamp='2007-02-23T03:17:42Z' uid='2160' version='1' changeset='222432'>
+    <tag k='amenity' v='university'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='Bristol University Student Union'/>
+    <tag k='postal_code' v='BS8 1LN'/>
+    <tag k='website' v='http://www.ubu.org.uk/'/>
+  </node>
+  <node id='26103639' lat='51.4583713' lon='-2.6096403' user='tiiiim' timestamp='2010-08-14T14:25:08Z' uid='142710' version='3' changeset='5491240'>
+    <tag k='amenity' v='university'/>
+    <tag k='name' v='Victoria Rooms'/>
+    <tag k='website' v='http://www.bris.ac.uk/music/facilities/vicrooms/'/>
+  </node>
+  <node id='26200577' lat='51.4563754' lon='-2.6138353' user='Robert Whittaker' xapi:users='Robert Whittaker' timestamp='2009-11-10T19:10:33Z' uid='84263' version='3' changeset='3084443'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='created_by' v='JOSM'/>
+  </node>
+  <node id='26215537' lat='51.4595870' lon='-2.6111425' user='Stuart WArd' xapi:users='Stuart WArd' timestamp='2007-10-13T21:58:57Z' uid='14841' version='2' changeset='147362'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='Potlatch 0.4a'/>
+    <tag k='name' v='Victoria'/>
+    <tag k='postal_code' v='BS8 2BH'/>
+  </node>
+  <node id='26217860' lat='51.4596635' lon='-2.611357' user='Laurence' timestamp='2010-10-20T12:50:08Z' uid='2160' version='5' changeset='6113119'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Clifton Lido'/>
+    <tag k='postal_code' v='BS8 2BJ'/>
+    <tag k='sport' v='swimming'/>
+    <tag k='tourism' v='attraction'/>
+    <tag k='twitter' v='lidobristol'/>
+    <tag k='website' v='http://www.cliftonlido.com/'/>
+  </node>
+  <node id='26217863' lat='51.4589774' lon='-2.6112515' user='tiiiim' timestamp='2010-08-14T14:25:07Z' uid='142710' version='2' changeset='5491240'>
+    <tag k='amenity' v='place_of_worship'/>
+    <tag k='denomination' v='church_of_england'/>
+    <tag k='name' v='St. Paul&apos;s Church'/>
+    <tag k='postal_code' v='BS8 1LR'/>
+    <tag k='religion' v='christian'/>
+    <tag k='website' v='http://www.stpaulsclifton.bristol.anglican.org/'/>
+  </node>
+  <node id='246192219' lat='51.459754' lon='-2.6085789' user='ndm' timestamp='2010-08-07T23:14:43Z' uid='14846' version='2' changeset='5428734'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS8 389'/>
+  </node>
+  <node id='365094533' lat='51.454909' lon='-2.6103699' user='DaveF' timestamp='2010-11-09T00:14:02Z' uid='115894' version='4' changeset='6324721'>
+    <tag k='addr:housenumber' v='6'/>
+    <tag k='addr:postcode' v='BS8 1BT'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='food' v='yes'/>
+    <tag k='name' v='Eldon  House'/>
+    <tag k='operator' v='Bath Ales'/>
+    <tag k='phone' v='0117 922 1271'/>
+    <tag k='website' v='http://www.bathales.com/pubs/eldon-house.html'/>
+  </node>
+  <node id='430180911' lat='51.4553787' lon='-2.6089859' user='cunningPlan' timestamp='2009-06-28T12:48:14Z' uid='30669' version='1' changeset='1661770'>
+    <tag k='amenity' v='theatre'/>
+    <tag k='name' v='QEH Theatre'/>
+  </node>
+  <node id='465205497' lat='51.4579841' lon='-2.6092415' user='cunningPlan' timestamp='2009-08-14T08:22:29Z' uid='30669' version='1' changeset='2139340'>
+    <tag k='amenity' v='fountain'/>
+  </node>
+  <node id='472327215' lat='51.4553059' lon='-2.6037848' user='Laurence' timestamp='2010-10-20T03:35:50Z' uid='2160' version='3' changeset='6104559'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Starbucks'/>
+  </node>
+  <node id='509442204' lat='51.4551451' lon='-2.6038992' user='Laurence' timestamp='2010-10-20T03:35:46Z' uid='2160' version='4' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='75'/>
+    <tag k='addr:postcode' v='BS1 5PF'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='cafe'/>
+    <tag k='email' v='bristol@bostonteaparty.co.uk'/>
+    <tag k='name' v='Boston Tea Party'/>
+    <tag k='phone' v='+44 1179 298601'/>
+    <tag k='website' v='http://www.bostonteaparty.co.uk/'/>
+  </node>
+  <node id='836781901' lat='51.4570182' lon='-2.6081738' user='Smurphboy' timestamp='2010-08-09T12:48:05Z' uid='15344' version='3' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='8'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='836781905' lat='51.4577424' lon='-2.6085007' user='tiiiim' timestamp='2010-10-17T17:28:03Z' uid='142710' version='4' changeset='6069507'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='20'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='840050539' lat='51.4568986' lon='-2.608029' user='Smurphboy' timestamp='2010-08-09T12:48:06Z' uid='15344' version='2' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='16'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='840050545' lat='51.4560295' lon='-2.6059154' user='Smurphboy' timestamp='2010-08-09T12:48:08Z' uid='15344' version='2' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='18'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='840050547' lat='51.4569521' lon='-2.607793' user='Smurphboy' timestamp='2010-08-09T12:48:07Z' uid='15344' version='2' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='8'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='840050552' lat='51.4570857' lon='-2.6077885' user='Smurphboy' timestamp='2010-08-09T12:48:07Z' uid='15344' version='2' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='8'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='840050556' lat='51.4574735' lon='-2.608308' user='Smurphboy' timestamp='2010-08-09T12:48:07Z' uid='15344' version='2' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='10'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='840050557' lat='51.4568652' lon='-2.6081041' user='Smurphboy' timestamp='2010-08-09T12:48:08Z' uid='15344' version='2' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='841116083' lat='51.4591639' lon='-2.6042025' user='ndm' timestamp='2010-08-01T00:12:58Z' uid='14846' version='1' changeset='5366939'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS8 304'/>
+  </node>
+  <node id='843514365' lat='51.4556143' lon='-2.6046174' user='Laurence' timestamp='2010-08-02T17:57:50Z' uid='2160' version='2' changeset='5383164'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Boulangerie'/>
+  </node>
+  <node id='843514368' lat='51.4554559' lon='-2.6042999' user='Laurence' timestamp='2010-10-20T03:35:27Z' uid='2160' version='3' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='85'/>
+    <tag k='addr:postcode' v='BS1 5PJ'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='name' v='Café Rouge'/>
+    <tag k='phone' v='+44 1179 292571'/>
+    <tag k='website' v='http://www.caferouge.co.uk/'/>
+  </node>
+  <node id='843514371' lat='51.455635' lon='-2.6047616' user='Laurence' timestamp='2010-08-02T17:57:49Z' uid='2160' version='2' changeset='5383164'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Caffè Nero'/>
+  </node>
+  <node id='843514374' lat='51.4555324' lon='-2.6045812' user='Laurence' timestamp='2010-10-19T02:20:47Z' uid='2160' version='2' changeset='6089878'>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='pizza'/>
+    <tag k='name' v='Pizza Express'/>
+  </node>
+  <node id='843514386' lat='51.4556264' lon='-2.6046867' user='Laurence' timestamp='2010-08-02T17:57:50Z' uid='2160' version='2' changeset='5383164'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Caffe Gusto'/>
+  </node>
+  <node id='843524065' lat='51.4563117' lon='-2.6057182' user='Laurence' timestamp='2010-08-02T17:57:49Z' uid='2160' version='2' changeset='5383164'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:housenumber' v='38'/>
+    <tag k='addr:postcode' v='BS8 1RE'/>
+    <tag k='addr:street' v='Queens Road'/>
+    <tag k='amenity' v='bar'/>
+    <tag k='name' v='Brown&apos;s'/>
+    <tag k='phone' v='0117 930 4777'/>
+    <tag k='website' v='http://www.browns-restaurants.co.uk/menu-bristol.php'/>
+  </node>
+  <node id='843745230' lat='51.4557232' lon='-2.6051739' user='Laurence' timestamp='2010-08-02T17:57:43Z' uid='2160' version='1' changeset='5383164'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='sandwich'/>
+    <tag k='name' v='Subway'/>
+  </node>
+  <node id='843745304' lat='51.4557544' lon='-2.6053466' user='Laurence' timestamp='2010-08-02T17:57:47Z' uid='2160' version='1' changeset='5383164'>
+    <tag k='amenity' v='pub'/>
+    <tag k='food' v='yes'/>
+    <tag k='name' v='The Berkeley (Wetherspoons)'/>
+  </node>
+  <node id='849105867' lat='51.4578274' lon='-2.6086336' user='ndm' timestamp='2010-08-07T23:14:38Z' uid='14846' version='1' changeset='5428734'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS8 390'/>
+  </node>
+  <node id='849105880' lat='51.4585393' lon='-2.6085394' user='ndm' timestamp='2010-08-07T23:14:39Z' uid='14846' version='1' changeset='5428734'>
+    <tag k='amenity' v='place_of_worship'/>
+    <tag k='denomination' v='methodist'/>
+    <tag k='name' v='Victoria Methodist Church'/>
+    <tag k='religion' v='christian'/>
+  </node>
+  <node id='850766368' lat='51.4555909' lon='-2.6042348' user='Smurphboy' timestamp='2010-08-09T12:48:05Z' uid='15344' version='1' changeset='5443463'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='4'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='852216828' lat='51.4575294' lon='-2.6083053' user='Laurence' timestamp='2010-08-10T02:22:00Z' uid='2160' version='1' changeset='5450171'>
+    <tag k='amenity' v='bank'/>
+    <tag k='atm' v='yes'/>
+    <tag k='name' v='Barclays'/>
+  </node>
+  <node id='853556896' lat='51.4587753' lon='-2.6109344' user='tiiiim' timestamp='2010-08-10T19:09:00Z' uid='142710' version='1' changeset='5456769'>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='name' v='Racks'/>
+  </node>
+  <node id='896248213' lat='51.4596177' lon='-2.6076984' user='ndm' timestamp='2010-09-04T19:49:11Z' uid='14846' version='1' changeset='5682054'>
+    <tag k='amenity' v='parking'/>
+    <tag k='fee' v='no'/>
+  </node>
+  <node id='919562491' lat='51.4554376' lon='-2.6095426' user='tiiiim' timestamp='2010-09-20T12:42:35Z' uid='142710' version='1' changeset='5828868'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:postcode' v='BS8 1EH'/>
+    <tag k='addr:street' v='Berkeley Place'/>
+    <tag k='amenity' v='car_rental'/>
+    <tag k='name' v='Europcar'/>
+    <tag k='operator' v='Europcar'/>
+  </node>
+  <node id='927334127' lat='51.4573667' lon='-2.6113244' user='Smurphboy' timestamp='2010-09-26T22:15:23Z' uid='15344' version='2' changeset='5886447'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='4'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='927334128' lat='51.4573623' lon='-2.6112115' user='Smurphboy' timestamp='2010-09-26T22:15:23Z' uid='15344' version='2' changeset='5886447'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='4'/>
+    <tag k='covered' v='no'/>
+  </node>
+  <node id='954806727' lat='51.4568146' lon='-2.6080662' user='tiiiim' timestamp='2010-10-17T17:27:59Z' uid='142710' version='1' changeset='6069507'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housename' v='The Pavillion'/>
+    <tag k='addr:postcode' v='BS8 1ET'/>
+    <tag k='addr:street' v='Triangle West'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='asian'/>
+    <tag k='email' v='bristol@cosmo-restaurants.co.uk'/>
+    <tag k='fax' v='+44 01179 340 995'/>
+    <tag k='name' v='Cosmo'/>
+    <tag k='phone' v='+44 01179 340 999'/>
+    <tag k='website' v='http://www.cosmo-restaurants.co.uk/'/>
+  </node>
+  <node id='954806791' lat='51.4567485' lon='-2.6079983' user='tiiiim' timestamp='2010-10-17T17:28:01Z' uid='142710' version='1' changeset='6069507'>
+    <tag k='amenity' v='telephone'/>
+  </node>
+  <node id='954806803' lat='51.4574101' lon='-2.6081806' user='tiiiim' timestamp='2010-10-17T17:28:01Z' uid='142710' version='1' changeset='6069507'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='82'/>
+    <tag k='addr:postcode' v='BS8 1QU'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='amenity' v='bank'/>
+    <tag k='atm' v='yes'/>
+    <tag k='fax' v='+44 0117 973 7416'/>
+    <tag k='name' v='Skipton Building Society'/>
+    <tag k='phone' v='+44 0117 930 4293'/>
+  </node>
+  <node id='956219595' lat='51.4566258' lon='-2.6071652' user='tiiiim' timestamp='2010-10-19T20:27:31Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:postcode' v='BS8 1QL'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Papa Costa'/>
+    <tag k='phone' v='+44 117 929 1600'/>
+  </node>
+  <node id='956219640' lat='51.4565394' lon='-2.6069731' user='tiiiim' timestamp='2010-10-19T20:27:30Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='63'/>
+    <tag k='addr:postcode' v='BS8 1QL'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='japanese'/>
+    <tag k='name' v='Wagamama'/>
+    <tag k='phone' v='+44 117 922 1188'/>
+    <tag k='website' v='http://www.wagamama.com/'/>
+  </node>
+  <node id='956598341' lat='51.4566122' lon='-2.6049184' user='Laurence' timestamp='2010-10-19T02:20:46Z' uid='2160' version='1' changeset='6089878'>
+    <tag k='amenity' v='cafe'/>
+  </node>
+  <node id='957354717' lat='51.4564085' lon='-2.6066819' user='tiiiim' timestamp='2010-10-19T20:27:30Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='55'/>
+    <tag k='addr:postcode' v='BS8 1QQ'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='amenity' v='cafe'/>
+    <tag k='email' v='info@hermanos.co.uk'/>
+    <tag k='name' v='Hermanos Cafe-Bar'/>
+    <tag k='phone' v='+44 117 929 4323'/>
+    <tag k='website' v='http://www.hermanos.co.uk/'/>
+  </node>
+  <node id='957754278' lat='51.4549503' lon='-2.6038002' user='Laurence' timestamp='2010-10-20T03:35:22Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='71a'/>
+    <tag k='addr:postcode' v='BS1 5PB'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='pizza'/>
+    <tag k='name' v='Vincenzo&apos;s'/>
+    <tag k='phone' v='01179 260908'/>
+    <tag k='website' v='http://www.vincenzos-bristol.co.uk/'/>
+  </node>
+  <node id='26104487' lat='51.4557701' lon='-2.5988527' user='ndm' timestamp='2010-09-19T16:23:58Z' uid='14846' version='3' changeset='5821494'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='The Ship Inn'/>
+    <tag k='postal_code' v='BS1 5BJ'/>
+  </node>
+  <node id='26104494' lat='51.4553465' lon='-2.6034117' user='Laurence' xapi:users='Laurence' timestamp='2007-02-23T04:10:15Z' uid='2160' version='1' changeset='222432'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='The Woods'/>
+  </node>
+  <node id='26104495' lat='51.4554209' lon='-2.6029345' user='Laurence' xapi:users='Laurence' timestamp='2007-02-23T04:10:15Z' uid='2160' version='1' changeset='222432'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='White Harte'/>
+  </node>
+  <node id='242783050' lat='51.4585911' lon='-2.5994757' user='southglos' timestamp='2008-01-23T21:55:22Z' uid='3937' version='1' changeset='687065'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='Robin Hood'/>
+  </node>
+  <node id='242783065' lat='51.4589965' lon='-2.6003114' user='mjh' timestamp='2010-06-12T22:30:41Z' uid='7219' version='4' changeset='4974583'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='operator' v='Royal Mail'/>
+    <tag k='ref' v='BS2 301'/>
+  </node>
+  <node id='291584026' lat='51.4575059' lon='-2.5982949' user='GrooveBox' timestamp='2008-08-27T14:59:43Z' uid='55365' version='1' changeset='432249'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='Potlatch 0.10b'/>
+    <tag k='name' v='The Scotchman and His Pack'/>
+  </node>
+  <node id='291584246' lat='51.4571072' lon='-2.5982850' user='plikma' timestamp='2009-02-25T21:04:14Z' uid='11463' version='2' changeset='665537'>
+    <tag k='amenity' v='place_of_worship'/>
+    <tag k='created_by' v='Potlatch 0.10f'/>
+    <tag k='denomination' v='anglican'/>
+    <tag k='name' v='St Michael&apos;s on the Mount'/>
+    <tag k='religion' v='christian'/>
+  </node>
+  <node id='293170737' lat='51.4551926' lon='-2.5955903' user='Phil M' timestamp='2010-01-19T11:40:20Z' uid='220669' version='2' changeset='3658027'>
+    <tag k='amenity' v='pub'/>
+  </node>
+  <node id='293906023' lat='51.4558943' lon='-2.5950801' user='Laurence' timestamp='2010-08-02T16:40:12Z' uid='2160' version='3' changeset='5382461'>
+    <tag k='amenity' v='place_of_worship'/>
+    <tag k='name' v='St John in the Wall'/>
+  </node>
+  <node id='305079987' lat='51.4591909' lon='-2.5951956' user='mjh' timestamp='2010-06-12T22:30:41Z' uid='7219' version='4' changeset='4974583'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='operator' v='Royal Mail'/>
+    <tag k='ref' v='BS2 322'/>
+  </node>
+  <node id='305080088' lat='51.4554484' lon='-2.6018883' user='ndm' timestamp='2010-08-01T00:13:43Z' uid='14846' version='4' changeset='5366939'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS1 425'/>
+  </node>
+  <node id='358529200' lat='51.4583321' lon='-2.5964204' user='ndm' timestamp='2009-03-10T22:04:27Z' uid='14846' version='2' changeset='787031'>
+    <tag k='amenity' v='bicycle_parking'/>
+  </node>
+  <node id='358530354' lat='51.4583518' lon='-2.5966033' user='ndm' timestamp='2009-03-10T22:04:27Z' uid='14846' version='1' changeset='787031'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='postal_code' v='BS2'/>
+    <tag k='ref' v='BS2 323'/>
+  </node>
+  <node id='358538277' lat='51.4590563' lon='-2.5958153' user='ndm' timestamp='2009-03-10T22:34:00Z' uid='14846' version='1' changeset='787031'>
+    <tag k='amenity' v='telephone'/>
+  </node>
+  <node id='450835302' lat='51.4569999' lon='-2.5969641' user='Laurence' timestamp='2010-10-20T05:27:52Z' uid='2160' version='5' changeset='6106165'>
+    <tag k='addr:housenumber' v='90'/>
+    <tag k='addr:postcode' v='BS1 5BB'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='food' v='yes'/>
+    <tag k='myspace' v='thewildwoodbristol'/>
+    <tag k='name' v='The Urban Wood'/>
+    <tag k='old_name' v='The Wild Wood'/>
+    <tag k='phone' v='0117 9293627'/>
+    <tag k='website' v='http://www.theurbanwood.com/'/>
+  </node>
+  <node id='469205002' lat='51.4556347' lon='-2.6035682' user='theonhighgod' timestamp='2009-08-16T14:13:16Z' uid='120497' version='1' changeset='2165188'>
+    <tag k='amenity' v='telephone'/>
+  </node>
+  <node id='812411807' lat='51.4563937' lon='-2.5978419' user='Laurence' timestamp='2010-08-14T18:18:44Z' uid='2160' version='3' changeset='5493181'>
+    <tag k='amenity' v='bar'/>
+    <tag k='microbrewery' v='yes'/>
+    <tag k='name' v='Zero Degrees'/>
+  </node>
+  <node id='841116011' lat='51.4554248' lon='-2.601526' user='ndm' timestamp='2010-08-01T00:12:57Z' uid='14846' version='1' changeset='5366939'>
+    <tag k='amenity' v='toilets'/>
+    <tag k='disused' v='yes'/>
+  </node>
+  <node id='841116027' lat='51.4562506' lon='-2.6029505' user='ndm' timestamp='2010-08-01T00:12:57Z' uid='14846' version='1' changeset='5366939'>
+    <tag k='amenity' v='bicycle_parking'/>
+  </node>
+  <node id='841116050' lat='51.4561873' lon='-2.6030927' user='ndm' timestamp='2010-08-01T00:12:57Z' uid='14846' version='1' changeset='5366939'>
+    <tag k='amenity' v='bicycle_parking'/>
+  </node>
+  <node id='860176812' lat='51.4554722' lon='-2.6031632' user='Laurence' timestamp='2010-10-19T02:20:48Z' uid='2160' version='2' changeset='6089878'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='lebanese'/>
+    <tag k='name' v='The Cedars'/>
+    <tag k='takeaway' v='yes'/>
+  </node>
+  <node id='943619172' lat='51.4549711' lon='-2.6036592' user='Laurence' timestamp='2010-10-20T03:35:42Z' uid='2160' version='4' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='69'/>
+    <tag k='addr:postcode' v='BS1 5PB'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='restaurant;bar'/>
+    <tag k='email' v='info@goldbrickhouse.co.uk'/>
+    <tag k='fax' v='+44 1179 452664'/>
+    <tag k='name' v='Goldbrick House'/>
+    <tag k='phone' v='+44 1179 451950'/>
+    <tag k='website' v='http://www.goldbrickhouse.co.uk/'/>
+  </node>
+  <node id='957429427' lat='51.4549296' lon='-2.603547' user='tiiiim' timestamp='2010-10-19T21:03:47Z' uid='142710' version='1' changeset='6103338'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='67'/>
+    <tag k='addr:postcode' v='BS1 5PB'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='greek'/>
+    <tag k='name' v='yia mass'/>
+    <tag k='phone' v='+44 1179 299530'/>
+    <tag k='website' v='http://www.yiamass.co.uk/'/>
+  </node>
+  <node id='957429531' lat='51.4545778' lon='-2.6031308' user='Laurence' timestamp='2010-10-20T03:35:51Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='55'/>
+    <tag k='addr:postcode' v='BS1 5NT'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='bar'/>
+    <tag k='name' v='Agora'/>
+    <tag k='phone' v='+44 1179 294888'/>
+  </node>
+  <node id='957429562' lat='51.4544759' lon='-2.6029984' user='Laurence' timestamp='2010-10-20T03:35:50Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='51'/>
+    <tag k='addr:postcode' v='BS1 5NT'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='pizza'/>
+    <tag k='name' v='Ask'/>
+    <tag k='phone' v='+44 1179 349922'/>
+    <tag k='website' v='http://www.askcentral.co.uk/'/>
+  </node>
+  <node id='957754223' lat='51.4551373' lon='-2.6035514' user='Laurence' timestamp='2010-10-20T03:35:12Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='74'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='burger'/>
+    <tag k='fax' v='0117 929 3109'/>
+    <tag k='name' v='Gourmet Burger Kitchen'/>
+    <tag k='phone' v='0117 316 9162'/>
+    <tag k='website' v='http://www.gbk.co.uk/restaurant/bristol/'/>
+  </node>
+  <node id='957754230' lat='51.454469' lon='-2.6026689' user='Laurence' timestamp='2010-10-20T04:24:25Z' uid='2160' version='2' changeset='6105039'>
+    <tag k='addr:housenumber' v='50'/>
+    <tag k='addr:postcode' v='BS1 5JN'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='thai'/>
+    <tag k='name' v='Yum Yum Thai'/>
+    <tag k='phone' v='0117 9290987'/>
+    <tag k='website' v='http://www.yumyumthai.com/'/>
+  </node>
+  <node id='957754249' lat='51.4546583' lon='-2.6029209' user='Laurence' timestamp='2010-10-20T03:35:13Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='58'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='chinese'/>
+    <tag k='name' v='HK Diner'/>
+  </node>
+  <node id='957754254' lat='51.4544795' lon='-2.6026833' user='Laurence' timestamp='2010-10-20T04:24:23Z' uid='2160' version='2' changeset='6105039'>
+    <tag k='amenity' v='nightclub'/>
+    <tag k='email' v='info@escape-bristol.co.uk'/>
+    <tag k='name' v='Escape'/>
+    <tag k='phone' v='0117 9254500'/>
+    <tag k='website' v='http://www.escape-bristol.co.uk/'/>
+  </node>
+  <node id='957754284' lat='51.4548272' lon='-2.603139' user='Laurence' timestamp='2010-10-20T03:35:26Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='64'/>
+    <tag k='amenity' v='bar'/>
+    <tag k='billiards' v='pool'/>
+    <tag k='email' v='Bristol@theelbowroom.co.uk'/>
+    <tag k='name' v='The Elbow Room'/>
+    <tag k='phone' v='0117 930 0242'/>
+    <tag k='sport' v='billiards'/>
+    <tag k='website' v='http://theelbowroom.co.uk/bristol/'/>
+  </node>
+  <node id='979035254' lat='51.4582375' lon='-2.596415' user='Smurphboy' timestamp='2010-11-06T14:08:44Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='24'/>
+  </node>
+  <node id='979035259' lat='51.4589712' lon='-2.5955433' user='Smurphboy' timestamp='2010-11-06T14:08:44Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='22'/>
+  </node>
+  <node id='979035304' lat='51.4573819' lon='-2.5970963' user='Smurphboy' timestamp='2010-11-06T14:08:45Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='26070183' lat='51.4543636' lon='-2.6134830' user='Laurence' xapi:users='Laurence' timestamp='2007-02-22T03:38:53Z' uid='2160' version='1' changeset='221784'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='The Lansdown'/>
+    <tag k='postal_code' v='BS8 1AF'/>
+  </node>
+  <node id='26082519' lat='51.4533278' lon='-2.6097208' user='DaveF' timestamp='2010-11-09T00:14:02Z' uid='115894' version='5' changeset='6324721'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Hope &amp; Anchor'/>
+    <tag k='postal_code' v='BS8 1DR'/>
+  </node>
+  <node id='26190567' lat='51.4504201' lon='-2.6129659' user='Laurence' timestamp='2010-10-28T14:17:35Z' uid='2160' version='4' changeset='6209024'>
+    <tag k='addr:housenumber' v='19'/>
+    <tag k='addr:postcode' v='BS8 4TX'/>
+    <tag k='addr:street' v='Church Lane'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='food' v='yes'/>
+    <tag k='name' v='The Lion'/>
+    <tag k='phone' v='0117 9268492'/>
+    <tag k='postal_code' v='BS8 4TX'/>
+    <tag k='website' v='http://www.thelionclifton.com/'/>
+  </node>
+  <node id='284657084' lat='51.4494443' lon='-2.6122241' user='Laurence' timestamp='2010-11-10T03:16:46Z' uid='2160' version='5' changeset='6333130'>
+    <tag k='addr:postcode' v='BS8 4RU'/>
+    <tag k='addr:street' v='Mardyke Wharf, Hotwells Road'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='building' v='boat'/>
+    <tag k='email' v='gb@bristolbeerfactory.co.uk'/>
+    <tag k='food' v='yes'/>
+    <tag k='music' v='live'/>
+    <tag k='name' v='The Grain Barge'/>
+    <tag k='phone' v='01179 299 347'/>
+    <tag k='website' v='http://www.grainbarge.com/'/>
+  </node>
+  <node id='289540346' lat='51.4491384' lon='-2.6131602' user='DaveF' timestamp='2010-10-31T21:53:29Z' uid='115894' version='2' changeset='6247119'>
+    <tag k='amenity' v='ferry_terminal'/>
+    <tag k='name' v='Mardyke Ferry Stop'/>
+  </node>
+  <node id='289540617' lat='51.4492671' lon='-2.6059142' user='DaveF' timestamp='2010-10-31T22:51:04Z' uid='115894' version='3' changeset='6247119'>
+    <tag k='amenity' v='ferry_terminal'/>
+    <tag k='name' v='Harbour Inlet Ferry Stop'/>
+  </node>
+  <node id='302324800' lat='51.4519402' lon='-2.6118791' user='Robert Whittaker' timestamp='2009-11-10T19:10:25Z' uid='84263' version='3' changeset='3084443'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='created_by' v='Potlatch 0.10c'/>
+  </node>
+  <node id='302324909' lat='51.4505221' lon='-2.6127149' user='tiiiim' timestamp='2010-07-25T14:13:30Z' uid='142710' version='5' changeset='5312271'>
+    <tag k='amenity' v='post_box'/>
+  </node>
+  <node id='302325157' lat='51.4540570' lon='-2.6110947' user='Robert Whittaker' timestamp='2009-11-10T19:10:40Z' uid='84263' version='5' changeset='3084443'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='created_by' v='Potlatch 0.10e'/>
+  </node>
+  <node id='507031195' lat='51.4500243' lon='-2.6083135' user='DaveF' timestamp='2010-10-31T22:31:12Z' uid='115894' version='4' changeset='6247119'>
+    <tag k='amenity' v='ferry_terminal'/>
+    <tag k='name' v='Jacobs Wells landing stage'/>
+  </node>
+  <node id='867434472' lat='51.4495858' lon='-2.6133927' user='jwDave' timestamp='2010-08-18T21:36:24Z' uid='335367' version='1' changeset='5530994'>
+    <tag k='amenity' v='post_box'/>
+  </node>
+  <node id='867435050' lat='51.4495657' lon='-2.6132608' user='jwDave' timestamp='2010-08-18T21:37:07Z' uid='335367' version='1' changeset='5530994'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='The Mardyke'/>
+  </node>
+  <node id='979035053' lat='51.4507263' lon='-2.6074228' user='Smurphboy' timestamp='2010-11-06T14:08:39Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='2'/>
+  </node>
+  <node id='982910535' lat='51.4521411' lon='-2.6039441' user='DaveF' timestamp='2010-11-08T23:28:51Z' uid='115894' version='1' changeset='6324721'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='The Pineapple'/>
+    <tag k='postal_code' v='BS1 5UU'/>
+  </node>
+  <node id='21042460' lat='51.4491851' lon='-2.6000471' user='Laurence' timestamp='2010-08-13T21:06:40Z' uid='2160' version='7' changeset='5485895'>
+    <tag k='amenity' v='parking'/>
+    <tag k='name' v='Millennium Square'/>
+  </node>
+  <node id='21531878' lat='51.4493831' lon='-2.6025276' user='cunningPlan' xapi:users='cunningPlan' timestamp='2008-08-20T00:07:58Z' uid='30669' version='4' changeset='331068'>
+    <tag k='amenity' v='parking'/>
+    <tag k='created_by' v='Potlatch 0.10b'/>
+    <tag k='name' v='Harbourside'/>
+  </node>
+  <node id='26011600' lat='51.4517222' lon='-2.5980954' user='Laurence' timestamp='2010-10-22T09:14:39Z' uid='2160' version='7' changeset='6134279'>
+    <tag k='addr:housenumber' v='1'/>
+    <tag k='addr:postcode' v='BS1 5TX'/>
+    <tag k='addr:street' v='Canon&apos;s Road'/>
+    <tag k='amenity' v='cinema'/>
+    <tag k='email' v='info@watershed.co.uk'/>
+    <tag k='name' v='Watershed'/>
+    <tag k='note' v='Watershed Media Centre occupies the first floor of both the north and south Water Shed buildings'/>
+    <tag k='phone' v='0117 927 5100'/>
+    <tag k='twitter' v='wshed'/>
+    <tag k='website' v='http://www.watershed.co.uk/'/>
+  </node>
+  <node id='26104420' lat='51.4537364' lon='-2.6008611' user='Laurence' timestamp='2010-08-02T17:41:12Z' uid='2160' version='3' changeset='5382999'>
+    <tag k='amenity' v='nightclub'/>
+    <tag k='name' v='Queenshilling'/>
+    <tag k='postal_code' v='BS1 5NA'/>
+    <tag k='website' v='http://www.queenshilling.com/'/>
+  </node>
+  <node id='26104430' lat='51.4531786' lon='-2.5992294' user='Laurence' xapi:users='Laurence' timestamp='2007-02-23T03:44:28Z' uid='2160' version='1' changeset='222432'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='Encore'/>
+    <tag k='postal_code' v='BS1 6DQ'/>
+  </node>
+  <node id='26104431' lat='51.4529634' lon='-2.5988275' user='Laurence' xapi:users='Laurence' timestamp='2007-02-23T03:44:28Z' uid='2160' version='1' changeset='222432'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='Bunch of Grapes'/>
+    <tag k='postal_code' v='BS1 5DQ'/>
+    <tag k='website' v='http://www.thebunchofgrapes.co.uk/'/>
+  </node>
+  <node id='26104432' lat='51.4531965' lon='-2.5979965' user='DaveF' timestamp='2010-11-03T15:12:32Z' uid='115894' version='6' changeset='6274630'>
+    <tag k='amenity' v='theatre'/>
+    <tag k='name' v='Bristol Hippodrome'/>
+    <tag k='postal_code' v='BS1 4UZ'/>
+    <tag k='twitter' v='BristolHipp'/>
+    <tag k='website' v='http://www.LiveNation.co.uk/Bristol'/>
+  </node>
+  <node id='26104433' lat='51.4539743' lon='-2.6003935' user='tiiiim' timestamp='2010-10-24T21:32:24Z' uid='142710' version='8' changeset='6163746'>
+    <tag k='addr:street' v='Frogmore Street'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='facebook' v='http://www.facebook.com/group.php?gid=2388911147'/>
+    <tag k='name' v='The Hatchet'/>
+    <tag k='postal_code' v='BS1 5NA'/>
+    <tag k='start_date' v='1606'/>
+    <tag k='wikipedia' v='en:Hatchet Inn, Bristol'/>
+  </node>
+  <node id='26118317' lat='51.4532663' lon='-2.597969' user='DaveF' timestamp='2010-11-03T15:12:32Z' uid='115894' version='7' changeset='6274630'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='The Drawbridge'/>
+    <tag k='old_name' v='Horn &amp; Trumpet'/>
+    <tag k='postal_code' v='BS1 4UT'/>
+  </node>
+  <node id='26118318' lat='51.44964' lon='-2.5970206' user='DaveF' timestamp='2010-11-03T12:33:47Z' uid='115894' version='4' changeset='6274630'>
+    <tag k='addr:housenumber' v='68'/>
+    <tag k='addr:street' v='Prince Street'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Shakespeare'/>
+    <tag k='postal_code' v='BS1 4QD'/>
+  </node>
+  <node id='26118319' lat='51.449299' lon='-2.5973277' user='DaveF' timestamp='2010-11-03T12:33:47Z' uid='115894' version='6' changeset='6274630'>
+    <tag k='addr:housename' v='Bush House'/>
+    <tag k='addr:housenumber' v='16'/>
+    <tag k='addr:postcode' v='BS1 4QA'/>
+    <tag k='addr:street' v='Narrow Quay'/>
+    <tag k='amenity' v='arts_centre'/>
+    <tag k='architect' v='Richard Shackleton Pope'/>
+    <tag k='name' v='Arnolfini'/>
+    <tag k='phone' v='0117 917 2300'/>
+    <tag k='start_date' v='1830s'/>
+    <tag k='twitter' v='ArnolfiniArts'/>
+    <tag k='website' v='http://www.arnolfini.org.uk/'/>
+    <tag k='wikipedia' v='en:Arnolfini'/>
+  </node>
+  <node id='26118320' lat='51.4495912' lon='-2.5973461' user='Laurence' timestamp='2010-10-20T02:46:06Z' uid='2160' version='4' changeset='6104225'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='YHA Bristol'/>
+    <tag k='operator' v='YHA England &amp; Wales'/>
+    <tag k='postal_code' v='BS1 4QA'/>
+    <tag k='tourism' v='hostel'/>
+    <tag k='website' v='http://www.yha.org.uk/find-accommodation/south-west-england/hostels/bristol/index.aspx'/>
+  </node>
+  <node id='26118326' lat='51.4502059' lon='-2.5974076' user='Laurence' xapi:users='Laurence' timestamp='2007-02-26T01:46:09Z' uid='2160' version='1' changeset='224650'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='JOSM'/>
+    <tag k='name' v='Waterfront Pub'/>
+    <tag k='postal_code' v='BS1 4QF'/>
+  </node>
+  <node id='26122194' lat='51.4530453' lon='-2.5984924' user='Laurence' timestamp='2010-10-20T00:11:03Z' uid='2160' version='3' changeset='6104093'>
+    <tag k='addr:postcode' v='BS1 5DQ'/>
+    <tag k='amenity' v='stripclub'/>
+    <tag k='name' v='Platinum Club'/>
+    <tag k='phone' v='07961 012208'/>
+    <tag k='website' v='http://www.platinumclubbristol.com/'/>
+  </node>
+  <node id='26122195' lat='51.4542722' lon='-2.6022771' user='Laurence' timestamp='2010-11-10T03:16:48Z' uid='2160' version='7' changeset='6333130'>
+    <tag k='addr:housenumber' v='40a'/>
+    <tag k='addr:postcode' v='BS1 5JG'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='arts_centre;cafe;bar'/>
+    <tag k='music' v='live'/>
+    <tag k='name' v='Folk House'/>
+    <tag k='phone' v='0117 926 2987'/>
+    <tag k='website' v='http://www.bristolfolkhouse.co.uk/'/>
+  </node>
+  <node id='26174094' lat='51.4491834' lon='-2.5950879' user='stevboss' xapi:users='stevboss' timestamp='2008-08-06T12:26:55Z' uid='57551' version='3' changeset='113642'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='Potlatch 0.10b'/>
+    <tag k='name' v='Mud Dock'/>
+    <tag k='postal_code' v='BS1 4RB'/>
+    <tag k='shop' v='bicycle'/>
+    <tag k='website' v='http://www.mud-dock.co.uk/'/>
+  </node>
+  <node id='26174097' lat='51.449577' lon='-2.5987927' user='Laurence' timestamp='2010-10-20T02:46:06Z' uid='2160' version='3' changeset='6104225'>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='email' v='info@bordeaux-quay.co.uk'/>
+    <tag k='name' v='Bordeaux Quay'/>
+    <tag k='phone' v='0117 9065559'/>
+    <tag k='postal_code' v='BS1 5UH'/>
+    <tag k='shop' v='bakery'/>
+    <tag k='website' v='http://www.bordeaux-quay.co.uk/'/>
+  </node>
+  <node id='26174098' lat='51.4497775' lon='-2.5987391' user='Laurence' timestamp='2010-10-20T02:46:13Z' uid='2160' version='5' changeset='6104225'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Lloyds #1 V-Shed'/>
+    <tag k='postal_code' v='BS1 5UH'/>
+    <tag k='website' v='http://www.jdwetherspoon.co.uk/pubfinder/details.php?OutletNumber'/>
+  </node>
+  <node id='26174100' lat='51.4499823' lon='-2.5986626' user='Laurence' timestamp='2010-10-20T02:45:56Z' uid='2160' version='4' changeset='6104225'>
+    <tag k='addr:postcode' v='BS1 5UH'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Pitcher &amp; Piano'/>
+    <tag k='phone' v='0117 929 9652'/>
+    <tag k='website' v='http://www.pitcherandpiano.com/locations/bar.cfm?area=Bristol'/>
+  </node>
+  <node id='26200805' lat='51.4504702' lon='-2.598355' user='Laurence' timestamp='2010-09-05T10:22:19Z' uid='2160' version='3' changeset='5686159'>
+    <tag k='amenity' v='nightclub'/>
+    <tag k='disused' v='yes'/>
+    <tag k='postal_code' v='BS1 5UH'/>
+  </node>
+  <node id='26200806' lat='51.4507430' lon='-2.5982863' user='SteveC' xapi:users='SteveC' timestamp='2007-12-02T11:06:57Z' uid='682' version='2' changeset='41667'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='Potlatch 0.5d'/>
+    <tag k='name' v='BSB Waterside'/>
+    <tag k='postal_code' v='BS1 5UH'/>
+  </node>
+  <node id='26200815' lat='51.4510752' lon='-2.5982525' user='plikma' xapi:users='plikma' timestamp='2008-04-25T19:45:00Z' uid='11463' version='5' changeset='254208'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='Potlatch 0.8b'/>
+    <tag k='name' v='Mackenzies Café Bar'/>
+    <tag k='postal_code' v='BS1 5UH'/>
+    <tag k='website' v='http://www.mackenzies.co.uk/bindex.asp'/>
+  </node>
+  <node id='26200825' lat='51.4519684' lon='-2.5980294' user='Laurence' timestamp='2010-11-10T03:16:49Z' uid='2160' version='8' changeset='6333130'>
+    <tag k='amenity' v='pub'/>
+    <tag k='cuisine' v='oysters;tapas'/>
+    <tag k='food' v='yes'/>
+    <tag k='music' v='live'/>
+    <tag k='name' v='The Harbourside'/>
+    <tag k='old_name' v='The River'/>
+    <tag k='phone' v='0117 9272998'/>
+    <tag k='real_ale' v='yes'/>
+  </node>
+  <node id='289541597' lat='51.4500570' lon='-2.6018839' user='cunningPlan' timestamp='2008-08-20T00:11:29Z' uid='30669' version='3' changeset='331068'>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='created_by' v='Potlatch 0.10b'/>
+    <tag k='name' v='Pizza Express'/>
+  </node>
+  <node id='289542549' lat='51.4521289' lon='-2.5977019' user='DaveF' timestamp='2010-11-03T15:40:32Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='amenity' v='ferry_terminal'/>
+    <tag k='name' v='City Centre'/>
+  </node>
+  <node id='316418607' lat='51.4517443' lon='-2.5987487' user='DaveF' timestamp='2010-11-01T00:00:30Z' uid='115894' version='6' changeset='6247119'>
+    <tag k='addr:housename' v='Colston Hall'/>
+    <tag k='addr:postcode' v='BS1 5AR'/>
+    <tag k='addr:street' v='Colston Street'/>
+    <tag k='amenity' v='theatre'/>
+    <tag k='email' v='boxoffice@colstonhall.org'/>
+    <tag k='name' v='Colston Hall'/>
+    <tag k='phone' v='0117 922 3686'/>
+    <tag k='tourism' v='attraction'/>
+    <tag k='twitter' v='Colston_Hall'/>
+    <tag k='website' v='http://www.colstonhall.org/'/>
+    <tag k='wikipedia' v='en:Colston Hall'/>
+  </node>
+  <node id='469205299' lat='51.4522812' lon='-2.5980322' user='theonhighgod' timestamp='2009-08-16T14:14:52Z' uid='120497' version='1' changeset='2165188'>
+    <tag k='amenity' v='telephone'/>
+  </node>
+  <node id='472217135' lat='51.4532133' lon='-2.5964924' user='Phil M' timestamp='2010-01-21T01:23:00Z' uid='220669' version='2' changeset='3671865'>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='italian'/>
+    <tag k='name' v='Bella Italia'/>
+  </node>
+  <node id='533924618' lat='51.4502819' lon='-2.600242' user='DaveF' timestamp='2010-11-03T13:21:02Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Explore Cafe'/>
+  </node>
+  <node id='616646939' lat='51.453232' lon='-2.5962448' user='Laurence' timestamp='2010-10-20T01:17:59Z' uid='2160' version='2' changeset='6104143'>
+    <tag k='addr:postcode' v='BS1 1SA'/>
+    <tag k='amenity' v='post_office'/>
+    <tag k='name' v='Co-op with Post Office'/>
+    <tag k='phone' v='0117 930 0680'/>
+    <tag k='website' v='http://www.co-operative.coop/food/find-us/?sid=164336'/>
+  </node>
+  <node id='616757491' lat='51.4534032' lon='-2.5965895' user='Phil M' timestamp='2010-01-19T17:40:04Z' uid='220669' version='1' changeset='3660464'>
+    <tag k='amenity' v='post_box'/>
+  </node>
+  <node id='617438427' lat='51.4541981' lon='-2.5957713' user='Phil M' timestamp='2010-05-20T23:14:20Z' uid='220669' version='2' changeset='4762239'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='St. Stephens Cafe'/>
+  </node>
+  <node id='620993185' lat='51.4532867' lon='-2.5968459' user='Laurence' timestamp='2010-10-20T02:46:14Z' uid='2160' version='3' changeset='6104225'>
+    <tag k='amenity' v='bank'/>
+    <tag k='operator' v='Alliance &amp; Leicester'/>
+  </node>
+  <node id='841116123' lat='51.4526731' lon='-2.5975482' user='ndm' timestamp='2010-08-01T00:12:58Z' uid='14846' version='1' changeset='5366939'>
+    <tag k='amenity' v='fountain'/>
+  </node>
+  <node id='841116144' lat='51.4529067' lon='-2.5975098' user='ndm' timestamp='2010-08-01T00:12:58Z' uid='14846' version='1' changeset='5366939'>
+    <tag k='amenity' v='fountain'/>
+  </node>
+  <node id='841116184' lat='51.4531388' lon='-2.5974578' user='ndm' timestamp='2010-08-01T00:12:59Z' uid='14846' version='1' changeset='5366939'>
+    <tag k='amenity' v='fountain'/>
+  </node>
+  <node id='843524067' lat='51.4544183' lon='-2.6029266' user='Laurence' timestamp='2010-10-20T03:35:53Z' uid='2160' version='3' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='49'/>
+    <tag k='addr:postcode' v='BS1 5NT'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='chicken'/>
+    <tag k='name' v='Nando&apos;s'/>
+    <tag k='phone' v='+44 1179 299263'/>
+    <tag k='website' v='http://www.nandos.co.uk/restaurant_58/REST/Bristol_-_Park_Street.html'/>
+  </node>
+  <node id='843761615' lat='51.4535908' lon='-2.5960689' user='Laurence' timestamp='2010-11-10T03:16:46Z' uid='2160' version='2' changeset='6333130'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:housenumber' v='7-9'/>
+    <tag k='addr:postcode' v='BS1 1RU'/>
+    <tag k='addr:street' v='Baldwin Street'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='food' v='yes'/>
+    <tag k='music' v='live'/>
+    <tag k='name' v='Start the Bus'/>
+    <tag k='phone' v='0117 9304370'/>
+    <tag k='website' v='http://www.startthebus.tv/'/>
+  </node>
+  <node id='851390675' lat='51.4530629' lon='-2.600653' user='DaveF' timestamp='2010-11-03T15:12:36Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='addr:housenumber' v='24'/>
+    <tag k='addr:postcode' v='BS1 5TD'/>
+    <tag k='amenity' v='bank'/>
+    <tag k='atm' v='yes'/>
+    <tag k='name' v='HSBC'/>
+  </node>
+  <node id='855672365' lat='51.4527957' lon='-2.6004186' user='Laurence' timestamp='2010-10-20T02:46:01Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='amenity' v='clock'/>
+    <tag k='display' v='sundial'/>
+  </node>
+  <node id='855672367' lat='51.4528741' lon='-2.6003441' user='DaveF' timestamp='2010-11-03T15:12:37Z' uid='115894' version='4' changeset='6274630'>
+    <tag k='alt_name' v='St Mark&apos;s Church'/>
+    <tag k='amenity' v='place_of_worship'/>
+    <tag k='name' v='Lord Mayor&apos;s Chapel'/>
+    <tag k='religion' v='christian'/>
+    <tag k='wikipedia:en' v='St Mark&apos;s Church, Bristol'/>
+  </node>
+  <node id='860248335' lat='51.453612' lon='-2.5965228' user='Laurence' timestamp='2010-08-14T18:26:08Z' uid='2160' version='3' changeset='5493236'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Red'/>
+  </node>
+  <node id='860249147' lat='51.4538021' lon='-2.5960036' user='Laurence' timestamp='2010-08-14T18:26:08Z' uid='2160' version='2' changeset='5493236'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='sandwich'/>
+    <tag k='name' v='Subway'/>
+  </node>
+  <node id='860249372' lat='51.4539861' lon='-2.5951182' user='Laurence' timestamp='2010-08-14T18:26:09Z' uid='2160' version='2' changeset='5493236'>
+    <tag k='amenity' v='bar'/>
+    <tag k='name' v='Bar @30'/>
+  </node>
+  <node id='943619199' lat='51.4541024' lon='-2.6021703' user='Laurence' timestamp='2010-11-10T03:16:49Z' uid='2160' version='6' changeset='6333130'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='32'/>
+    <tag k='addr:postcode' v='BS1 5JA'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='amenity' v='pub'/>
+    <tag k='email' v='thebristolram@gmail.com'/>
+    <tag k='music' v='live'/>
+    <tag k='name' v='Bristol Ram'/>
+    <tag k='opening_hours' v='Mo-Th 11:00-00:00; Fr-Sa 11:00-02:30; Su 12:00-23:00'/>
+    <tag k='phone' v='+44 01179 268 654'/>
+    <tag k='website' v='http://www.bristolram.com/'/>
+  </node>
+  <node id='955490048' lat='51.4512869' lon='-2.5960639' user='Laurence' timestamp='2010-10-18T02:10:06Z' uid='2160' version='3' changeset='6074632'>
+    <tag k='addr:housenumber' v='63'/>
+    <tag k='addr:postcode' v='BS1 4JZ'/>
+    <tag k='addr:street' v='Queen Square'/>
+    <tag k='amenity' v='pub;restaurant'/>
+    <tag k='cuisine' v='meat'/>
+    <tag k='email' v='graze@bathales.co.uk'/>
+    <tag k='name' v='Graze Bar &amp; Chophouse'/>
+    <tag k='operator' v='Bath Ales'/>
+    <tag k='phone' v='0117 927 6706'/>
+    <tag k='website' v='http://www.bathales.com/pubs/graze-bar-and-chophouse.html'/>
+  </node>
+  <node id='956598291' lat='51.4525188' lon='-2.5998188' user='Laurence' timestamp='2010-10-19T02:20:43Z' uid='2160' version='1' changeset='6089878'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='956598321' lat='51.4524707' lon='-2.5998679' user='Laurence' timestamp='2010-10-19T02:20:45Z' uid='2160' version='1' changeset='6089878'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='957704259' lat='51.4533474' lon='-2.5978123' user='Laurence' timestamp='2010-10-20T02:46:13Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='covered' v='booth'/>
+    <tag k='operator' v='Spectrum Interactive'/>
+    <tag k='phone' v='0117 9300640'/>
+  </node>
+  <node id='957704262' lat='51.4534377' lon='-2.5967516' user='Laurence' timestamp='2010-10-20T00:10:57Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Caffe Gusto Siesta'/>
+  </node>
+  <node id='957704263' lat='51.4537075' lon='-2.597824' user='Laurence' timestamp='2010-10-20T00:10:57Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='clock'/>
+  </node>
+  <node id='957704264' lat='51.4534034' lon='-2.5978226' user='Laurence' timestamp='2010-10-20T00:10:57Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='957704266' lat='51.4535506' lon='-2.5978295' user='Laurence' timestamp='2010-10-20T00:10:57Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS1 406'/>
+  </node>
+  <node id='957704267' lat='51.4521478' lon='-2.5966858' user='Laurence' timestamp='2010-10-20T02:45:56Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='addr:housenumber' v='7'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='thai'/>
+    <tag k='name' v='Thai Edge'/>
+    <tag k='phone' v='0117 927 6088'/>
+    <tag k='website' v='http://www.thaiedge.co.uk/'/>
+  </node>
+  <node id='957704269' lat='51.4533492' lon='-2.5978417' user='Laurence' timestamp='2010-10-20T00:10:57Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='covered' v='booth'/>
+    <tag k='operator' v='BT'/>
+    <tag k='phone' v='0117 9277159'/>
+  </node>
+  <node id='957704271' lat='51.4534366' lon='-2.5979462' user='DaveF' timestamp='2010-11-03T15:12:32Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='amenity' v='pharmacy'/>
+    <tag k='name' v='Boots'/>
+  </node>
+  <node id='957704272' lat='51.453572' lon='-2.5978226' user='Laurence' timestamp='2010-10-20T00:10:58Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='covered' v='booth'/>
+    <tag k='operator' v='BT'/>
+  </node>
+  <node id='957704275' lat='51.4532185' lon='-2.5969258' user='Laurence' timestamp='2010-10-20T02:46:03Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Goodfillas'/>
+  </node>
+  <node id='957704279' lat='51.4539985' lon='-2.5980353' user='Laurence' timestamp='2010-10-20T00:10:58Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='cuisine' v='sandwich'/>
+    <tag k='name' v='OkiDokis'/>
+  </node>
+  <node id='957704283' lat='51.45333' lon='-2.5978182' user='Laurence' timestamp='2010-10-20T02:46:05Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='covered' v='booth'/>
+    <tag k='operator' v='Spectrum Interactive'/>
+  </node>
+  <node id='957704285' lat='51.4531488' lon='-2.5980012' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='amenity' v='bar'/>
+    <tag k='name' v='Cast'/>
+  </node>
+  <node id='957704288' lat='51.453198' lon='-2.5978703' user='Laurence' timestamp='2010-10-20T00:10:59Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='957704292' lat='51.4535577' lon='-2.5979248' user='DaveF' timestamp='2010-11-03T15:12:32Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='addr:postcode' v='BS1 4UL'/>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='cuisine' v='pizza'/>
+    <tag k='name' v='Pizza Hut'/>
+    <tag k='phone' v='0117 925 2755'/>
+  </node>
+  <node id='957704295' lat='51.4533328' lon='-2.5978461' user='Laurence' timestamp='2010-10-20T00:11:00Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='covered' v='booth'/>
+    <tag k='operator' v='BT'/>
+    <tag k='phone' v='0117 9277151'/>
+  </node>
+  <node id='957704297' lat='51.453077' lon='-2.596917' user='Laurence' timestamp='2010-10-20T02:46:14Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='addr:housenumber' v='5'/>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Lashings'/>
+    <tag k='phone' v='0117 929 4303'/>
+    <tag k='website' v='http://www.lashingshouse.co.uk/'/>
+  </node>
+  <node id='957704299' lat='51.4531478' lon='-2.5969222' user='Laurence' timestamp='2010-10-20T02:46:01Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='addr:housenumber' v='4'/>
+    <tag k='addr:postcode' v='BS1 4DA'/>
+    <tag k='amenity' v='stripclub'/>
+    <tag k='email' v='david@uybristol.co.uk'/>
+    <tag k='phone' v='01179 272181'/>
+    <tag k='website' v='http://www.urbantigerclub.co.uk/'/>
+  </node>
+  <node id='957706542' lat='51.4519583' lon='-2.5975256' user='Pink Duck' timestamp='2010-10-22T09:34:33Z' uid='91657' version='3' changeset='6134450'>
+    <tag k='addr:housename' v='Corinne Marin'/>
+    <tag k='addr:postcode' v='BS1 4QA'/>
+    <tag k='addr:street' v='Narrow Quay'/>
+    <tag k='amenity' v='cafe;bar'/>
+    <tag k='boat' v='yes'/>
+    <tag k='building' v='boat'/>
+    <tag k='email' v='under_the_stars@live.co.uk'/>
+    <tag k='name' v='Under the Stars'/>
+    <tag k='phone' v='0117 9298392'/>
+    <tag k='twitter' v='StarsBar'/>
+    <tag k='website' v='http://www.underthestarsbar.com/'/>
+  </node>
+  <node id='957706664' lat='51.4520365' lon='-2.5972317' user='Laurence' timestamp='2010-10-20T00:52:27Z' uid='2160' version='1' changeset='6104143'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='falafel'/>
+    <tag k='facebook' v='http://www.facebook.com/group.php?gid=10314990409'/>
+    <tag k='name' v='Falafel King'/>
+    <tag k='website' v='http://www.falafelkingbristol.co.uk/'/>
+  </node>
+  <node id='957739301' lat='51.4524565' lon='-2.5984315' user='DaveF' timestamp='2010-11-03T15:12:39Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='name' v='Royal Kebab House'/>
+    <tag k='takeaway' v='yes'/>
+  </node>
+  <node id='957739303' lat='51.4528359' lon='-2.6005762' user='Laurence' timestamp='2010-10-20T02:45:43Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS1 2405;BS1 2406'/>
+  </node>
+  <node id='957739317' lat='51.4509291' lon='-2.5983715' user='Laurence' timestamp='2010-10-20T02:45:44Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='957739324' lat='51.4522724' lon='-2.5967393' user='Laurence' timestamp='2010-10-20T02:45:44Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='sandwich'/>
+    <tag k='name' v='Subway'/>
+    <tag k='takeaway' v='yes'/>
+  </node>
+  <node id='957739328' lat='51.4527288' lon='-2.5981105' user='DaveF' timestamp='2010-11-03T15:12:30Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='chicken'/>
+    <tag k='name' v='BC Diner'/>
+  </node>
+  <node id='957739333' lat='51.4524605' lon='-2.5992895' user='DaveF' timestamp='2010-11-03T15:12:38Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='addr:housenumber' v='37'/>
+    <tag k='amenity' v='bar'/>
+    <tag k='name' v='Greenhouse'/>
+  </node>
+  <node id='957739335' lat='51.452317' lon='-2.5967565' user='Laurence' timestamp='2010-10-20T02:45:45Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Coffee Beach'/>
+  </node>
+  <node id='957739338' lat='51.451005' lon='-2.5983563' user='Laurence' timestamp='2010-10-20T02:45:45Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='6'/>
+  </node>
+  <node id='957739340' lat='51.4523905' lon='-2.5969808' user='Laurence' timestamp='2010-10-20T02:45:45Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='16'/>
+  </node>
+  <node id='957739345' lat='51.4526688' lon='-2.5981687' user='DaveF' timestamp='2010-11-03T15:12:30Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='kebab;burger'/>
+    <tag k='name' v='Bristol Kebab &amp; Burger House'/>
+  </node>
+  <node id='957739359' lat='51.4527883' lon='-2.5980616' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='chicken;burger;kebab'/>
+    <tag k='name' v='Quigley&apos;s'/>
+  </node>
+  <node id='957739361' lat='51.4532646' lon='-2.6012928' user='Laurence' timestamp='2010-10-20T04:24:25Z' uid='2160' version='2' changeset='6105039'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='covered' v='booth'/>
+    <tag k='operator' v='BT'/>
+  </node>
+  <node id='957739371' lat='51.4523065' lon='-2.5991829' user='Laurence' timestamp='2010-10-20T02:45:54Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='4'/>
+  </node>
+  <node id='957739373' lat='51.4509452' lon='-2.5980828' user='Laurence' timestamp='2010-10-20T02:45:54Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='14'/>
+  </node>
+  <node id='957739375' lat='51.4532771' lon='-2.6013148' user='Laurence' timestamp='2010-10-20T04:24:25Z' uid='2160' version='2' changeset='6105039'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='covered' v='booth'/>
+    <tag k='operator' v='BT'/>
+  </node>
+  <node id='957739379' lat='51.4528628' lon='-2.598029' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='pizza'/>
+    <tag k='name' v='Pizza Palace'/>
+  </node>
+  <node id='957754216' lat='51.4543681' lon='-2.6025289' user='Laurence' timestamp='2010-10-20T04:50:46Z' uid='2160' version='3' changeset='6105290'>
+    <tag k='amenity' v='bar;restaurant'/>
+  </node>
+  <node id='957754295' lat='51.4544443' lon='-2.6026317' user='Laurence' timestamp='2010-10-20T04:24:24Z' uid='2160' version='2' changeset='6105039'>
+    <tag k='addr:housenumber' v='48'/>
+    <tag k='addr:postcode' v='BS1 5JG'/>
+    <tag k='amenity' v='nightclub'/>
+    <tag k='email' v='ian@clubcooler.com'/>
+    <tag k='facebook' v='http://www.facebook.com/group.php?gid=2368819929'/>
+    <tag k='myspace' v='clubcooler'/>
+    <tag k='name' v='The Cooler'/>
+    <tag k='phone' v='0117 9450999'/>
+    <tag k='website' v='http://www.clubcooler.com/'/>
+  </node>
+  <node id='957768924' lat='51.4540455' lon='-2.6023545' user='Laurence' timestamp='2010-10-20T04:24:21Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='operator' v='BT'/>
+    <tag k='phone' v='0117 9277016'/>
+  </node>
+  <node id='957768927' lat='51.4544089' lon='-2.6025845' user='Laurence' timestamp='2010-10-20T04:24:21Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='addr:housenumber' v='46'/>
+    <tag k='addr:postcode' v='BS1 5JG'/>
+    <tag k='amenity' v='bar;restaurant'/>
+    <tag k='name' v='All in One'/>
+    <tag k='phone' v='0117 9265622'/>
+    <tag k='website' v='http://www.allinonebristol.co.uk/'/>
+  </node>
+  <node id='957768929' lat='51.4535147' lon='-2.601712' user='Laurence' timestamp='2010-10-20T04:50:46Z' uid='2160' version='3' changeset='6105290'>
+    <tag k='addr:housenumber' v='9'/>
+    <tag k='addr:postcode' v='BS1 5NF'/>
+    <tag k='amenity' v='bar;cafe;nightclub'/>
+    <tag k='email' v='info@javabristol.com'/>
+    <tag k='name' v='Java'/>
+    <tag k='phone' v='0117 930 4561'/>
+    <tag k='website' v='http://www.javabristol.com/'/>
+  </node>
+  <node id='957768930' lat='51.4542195' lon='-2.6024014' user='Laurence' timestamp='2010-10-20T04:24:21Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS1 2403'/>
+  </node>
+  <node id='957768931' lat='51.4537215' lon='-2.6016332' user='Laurence' timestamp='2010-10-20T04:24:21Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Woodes'/>
+  </node>
+  <node id='957768933' lat='51.4536724' lon='-2.601745' user='Laurence' timestamp='2010-10-20T04:24:22Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='amenity' v='taxi'/>
+    <tag k='capacity' v='3'/>
+  </node>
+  <node id='957768940' lat='51.4539954' lon='-2.6020206' user='Laurence' timestamp='2010-10-20T04:50:48Z' uid='2160' version='2' changeset='6105290'>
+    <tag k='amenity' v='fast_food'/>
+    <tag k='cuisine' v='kebab'/>
+    <tag k='name' v='Diamond Kebab'/>
+  </node>
+  <node id='957768942' lat='51.4542275' lon='-2.6024143' user='Laurence' timestamp='2010-10-20T04:24:22Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='amenity' v='post_box'/>
+    <tag k='ref' v='BS1 2404'/>
+  </node>
+  <node id='957778007' lat='51.4535888' lon='-2.6017063' user='Laurence' timestamp='2010-10-20T04:50:46Z' uid='2160' version='1' changeset='6105290'>
+    <tag k='amenity' v='taxi'/>
+    <tag k='capacity' v='3'/>
+  </node>
+  <node id='963961958' lat='51.4541301' lon='-2.6001701' user='tiiiim' timestamp='2010-10-24T21:32:13Z' uid='142710' version='1' changeset='6163746'>
+    <tag k='amenity' v='telephone'/>
+    <tag k='operator' v='British Telecom'/>
+  </node>
+  <node id='963961977' lat='51.4541502' lon='-2.6001308' user='tiiiim' timestamp='2010-10-24T21:32:14Z' uid='142710' version='1' changeset='6163746'>
+    <tag k='amenity' v='waste_basket'/>
+  </node>
+  <node id='969257437' lat='51.4538447' lon='-2.5951988' user='paulmhawkins' timestamp='2010-10-29T22:48:34Z' uid='360322' version='1' changeset='6223208'>
+    <tag k='amenity' v='bank'/>
+    <tag k='atm' v='yes'/>
+    <tag k='name' v='The Co-operative Bank'/>
+    <tag k='operator' v='The Co-operative Bank'/>
+  </node>
+  <node id='969257443' lat='51.4538859' lon='-2.5954715' user='paulmhawkins' timestamp='2010-10-29T22:48:35Z' uid='360322' version='1' changeset='6223208'>
+    <tag k='amenity' v='bank'/>
+    <tag k='atm' v='yes'/>
+    <tag k='name' v='Stroud and Swindon Building Society'/>
+    <tag k='operator' v='Stroud and Swindon Building Society'/>
+  </node>
+  <node id='975730982' lat='51.4491962' lon='-2.597486' user='DaveF' timestamp='2010-11-03T11:52:57Z' uid='115894' version='1' changeset='6274630'>
+    <tag k='amenity' v='cafe'/>
+    <tag k='name' v='Arnolfini Cafe Bar'/>
+    <tag k='website' v='http://www.arnolfini.org.uk/pages/cafe-bar/'/>
+  </node>
+  <node id='975866480' lat='51.4514816' lon='-2.598158' user='DaveF' timestamp='2010-11-03T15:29:57Z' uid='115894' version='1' changeset='6274630'>
+    <tag k='amenity' v='pub'/>
+    <tag k='name' v='Chicago Rock Café'/>
+    <tag k='postal_code' v='BS1 5UH'/>
+    <tag k='website' v='http://www.chicago-rock-cafe.co.uk/pages/content.asp?PageID'/>
+  </node>
+  <node id='979035019' lat='51.4501747' lon='-2.5983167' user='Smurphboy' timestamp='2010-11-06T14:08:39Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='12'/>
+  </node>
+  <node id='979035078' lat='51.4493172' lon='-2.5969676' user='Smurphboy' timestamp='2010-11-06T14:08:40Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='10'/>
+  </node>
+  <node id='979035086' lat='51.4492771' lon='-2.5969032' user='Smurphboy' timestamp='2010-11-06T14:08:40Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='10'/>
+  </node>
+  <node id='979035090' lat='51.4491635' lon='-2.5969139' user='Smurphboy' timestamp='2010-11-06T14:08:40Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='24'/>
+  </node>
+  <node id='979035093' lat='51.4490565' lon='-2.5971822' user='Smurphboy' timestamp='2010-11-06T14:08:40Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='12'/>
+  </node>
+  <node id='979035097' lat='51.4502249' lon='-2.598306' user='Smurphboy' timestamp='2010-11-06T14:08:40Z' uid='15344' version='1' changeset='6302692'>
+    <tag k='amenity' v='bicycle_parking'/>
+    <tag k='capacity' v='12'/>
+  </node>
+  <relation id='272778' user='cunningPlan' uid='30669' timestamp='2009-09-25T12:01:47Z' version='7' changeset='2616242'>
+  </relation>
+  <relation id='272780' user='cunningPlan' uid='30669' timestamp='2009-09-25T12:04:06Z' version='18' changeset='2616242'>
+  </relation>
+</osm>
