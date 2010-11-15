@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ilrt.mca.harvester.geo;
+package org.ilrt.mca.harvester.xml;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.query.Dataset;
@@ -41,6 +41,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import org.ilrt.mca.Common;
 import org.ilrt.mca.harvester.AbstractTest;
 import org.ilrt.mca.harvester.Harvester;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
@@ -49,8 +50,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -61,7 +60,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class OpenStreetMapHarvesterImplTest extends AbstractTest {
+public class XmlHarvesterImplTest extends AbstractTest {
 
     @Before
     public void setUp() throws Exception {
@@ -77,7 +76,9 @@ public class OpenStreetMapHarvesterImplTest extends AbstractTest {
         // add the harvest source details to the default graph (registry)
         Model m = dataset.getDefaultModel();
         Resource r = m.createResource(uri);
-        m.add(m.createStatement(r, RDF.type, MCA_REGISTRY.OSMGeoSource));
+        m.add(m.createStatement(r, RDF.type, MCA_REGISTRY.XmlSource));
+        m.add(m.createStatement(r, MCA_REGISTRY.hasXslSource,
+                m.createResource("xsl://xsl/weatherData.xsl")));
 
         // create a last visited date and add it to the audit graph
         Model audit = dataset.getNamedModel(Common.AUDIT_GRAPH_URI);
@@ -94,10 +95,17 @@ public class OpenStreetMapHarvesterImplTest extends AbstractTest {
 
         // data manager that can be used by the harvester
         dataManager = new SdbManagerImpl(manager);
+
+    }
+
+
+    @After
+    public void tearDown() {
+        super.stopServer();
     }
 
     @Test
-    public void testHarvest() throws IOException, ParseException {
+    public void harvest() throws Exception {
 
         // ---------- test the data before we harvest
 
@@ -107,8 +115,7 @@ public class OpenStreetMapHarvesterImplTest extends AbstractTest {
         Model registry = SDBFactory.connectDefaultModel(beforeWrapper.getStore());
         assertTrue("There should be a harvest source in the registry (default graph)",
                 registry.contains(registry.getResource(uri), RDF.type,
-                        MCA_REGISTRY.OSMGeoSource));
-
+                        MCA_REGISTRY.XmlSource));
 
         // check that the audit graph has a date
         Model auditModel = SDBFactory.connectNamedModel(beforeWrapper.getStore(),
@@ -120,7 +127,7 @@ public class OpenStreetMapHarvesterImplTest extends AbstractTest {
 
         // ---------- fire the harvester
 
-        Harvester harvester = new OpenStreetMapHarvesterImpl(dataManager);
+        Harvester harvester = new XmlHarvesterImpl(dataManager);
         harvester.harvest();
 
         // ---------- test the data after the harvest
@@ -142,15 +149,13 @@ public class OpenStreetMapHarvesterImplTest extends AbstractTest {
         afterWrapper.close();
     }
 
-    @After
-    public void tearDown() throws IOException, InstantiationException {
-        super.stopServer();
-    }
+    DataManager dataManager;
 
-    private final String resourcePath = "/data.osm.xml";
-    private final String mediaType = "application/xml";
-
-    String uri = host + ":" + portNumber + resourcePath;
+    // these need to be in the test-registry.ttl file
 
     String date;
+
+    private final String resourcePath = "/weather.xml";
+    private final String mediaType = "application/xml";
+    String uri = host + ":" + portNumber + resourcePath;
 }

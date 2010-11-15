@@ -67,6 +67,8 @@ public class MCA_REGISTRY {
 
     public static final Resource XmlSource = model.createProperty(NS + "XmlSource");
 
+    public static final Resource HtmlSource = model.createProperty(NS + "HtmlSource");
+
     public static final Resource HtmlFragment = model.createProperty(NS + "HtmlFragment");
 
     public static final Resource Contact = model.createProperty(NS + "Contact");
@@ -74,6 +76,8 @@ public class MCA_REGISTRY {
     public static final Resource Directory = model.createProperty(NS + "Directory");
 
     public static final Resource EventCalendar = model.createProperty(NS + "EventCalendar");
+
+    public static final Resource OSMGeoSource = model.createProperty(NS + "OSMGeoSource");
 
 
     // ----- Properties

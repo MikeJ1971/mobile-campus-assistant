@@ -31,30 +31,27 @@
  */
 package org.ilrt.mca.harvester.xml;
 
-import org.ilrt.mca.harvester.Source;
+import org.ilrt.mca.harvester.Harvester;
+import org.ilrt.mca.rdf.DataManager;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
-import java.util.Date;
+import java.io.IOException;
+
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class XmlSource extends Source {
+public class XhtmlHarvesterImpl extends AbstractXmlHarvesterImpl implements Harvester {
 
-    public XmlSource() {
+    public XhtmlHarvesterImpl(DataManager manager) throws IOException {
+        super(manager);
     }
 
-    public XmlSource(String url, String xsl, Date lastVisited) {
-        super(url, lastVisited);
-        this.xsl = xsl;
+    @Override
+    public void harvest() {
+
+        harvest(MCA_REGISTRY.HtmlSource.getURI());
+
     }
 
-    public String getXsl() {
-        return xsl;
-    }
-
-    public void setXsl(String xsl) {
-        this.xsl = xsl;
-    }
-
-    private String xsl;
 }

@@ -3,7 +3,7 @@ package org.ilrt.mca.harvester.events;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.util.FileManager;
 import org.ilrt.mca.harvester.ResponseHandler;
-import org.ilrt.mca.harvester.xml.AbstractXmlSourceResponseHandlerImpl;
+import org.ilrt.mca.harvester.xml.AbstractXmlResponseHandlerImpl;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -18,7 +18,7 @@ import java.io.StringReader;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class EventResponseHandlerImpl extends AbstractXmlSourceResponseHandlerImpl implements ResponseHandler {
+public class EventResponseHandlerImpl extends AbstractXmlResponseHandlerImpl implements ResponseHandler {
     private String xslFilePath;
 
     public EventResponseHandlerImpl(String xslFilePath) {

@@ -5,6 +5,7 @@ import com.sun.grizzly.http.embed.GrizzlyWebServer;
 import com.sun.grizzly.tcp.http11.GrizzlyAdapter;
 import com.sun.grizzly.tcp.http11.GrizzlyRequest;
 import com.sun.grizzly.tcp.http11.GrizzlyResponse;
+import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.rdf.StoreWrapperManagerImpl;
@@ -101,6 +102,7 @@ public abstract class AbstractTest {
     private String TEST_CONFIG = "/test-sdb.ttl";
     public String host = "http://localhost";
     GrizzlyWebServer ws;
+    public DataManager dataManager;
 
     public int portNumber = 9090;
 }

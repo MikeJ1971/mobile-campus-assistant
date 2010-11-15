@@ -19,17 +19,15 @@ import static org.junit.Assert.assertNotNull;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class XhtmlSourceResponseHandlerImplTest extends AbstractTest {
+public class XmlResponseHandlerImplTest extends AbstractTest {
 
     @Before
     public void setUp() throws IOException {
-
         super.startServer(resourcePath, mediaType);
     }
 
     @After
     public void tearDown() {
-
         super.stopServer();
     }
 
@@ -42,13 +40,13 @@ public class XhtmlSourceResponseHandlerImplTest extends AbstractTest {
         // resolve!
         Resolver resolver = new HttpResolverImpl();
         Source source = new Source(host + ":" + portNumber + resourcePath, lastVisited.getTime());
-        Model model = resolver.resolve(source, new XhtmlSourceResponseHandlerImpl(xslFilePath));
+        Model model = resolver.resolve(source, new XmlResponseHandlerImpl(xslFilePath));
 
         assertNotNull("The model should not be null", model);
         assertEquals("There should be 1 triple", 1, model.size());
     }
 
-    private final String resourcePath = "/pcavailability.html";
-    private final String mediaType = "text/html";
-    private final String xslFilePath = "/xsl/pcavailability.xsl";
+    private final String xslFilePath = "/xsl/weatherData.xsl";
+    private final String resourcePath = "/weather.xml";
+    private final String mediaType = "application/xml";
 }

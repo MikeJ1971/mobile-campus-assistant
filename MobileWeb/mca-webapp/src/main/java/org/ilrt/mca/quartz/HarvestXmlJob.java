@@ -33,7 +33,7 @@ package org.ilrt.mca.quartz;
 
 import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
-import org.ilrt.mca.harvester.xml.XmlSourceHarvesterImplImpl;
+import org.ilrt.mca.harvester.xml.XmlHarvesterImpl;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -51,7 +51,7 @@ public class HarvestXmlJob extends AbstractJob implements Job {
         try {
 
 
-            Harvester harvester = new XmlSourceHarvesterImplImpl(manager);
+            Harvester harvester = new XmlHarvesterImpl(manager);
             harvester.harvest();
 
         } catch (IOException ex) {

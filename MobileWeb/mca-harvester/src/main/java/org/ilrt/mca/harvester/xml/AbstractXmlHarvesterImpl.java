@@ -32,57 +32,97 @@
 package org.ilrt.mca.harvester.xml;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.Resource;
 import org.apache.log4j.Logger;
+import org.ilrt.mca.Common;
+import org.ilrt.mca.harvester.AbstractHarvesterImpl;
 import org.ilrt.mca.harvester.Harvester;
-import org.ilrt.mca.harvester.HttpResolverImpl;
-import org.ilrt.mca.harvester.Resolver;
+import org.ilrt.mca.harvester.Source;
 import org.ilrt.mca.rdf.DataManager;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
-
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class XhtmlSourceHarvesterImplImpl extends AbstractXmlSourceHarvesterImpl implements Harvester {
+public abstract class AbstractXmlHarvesterImpl extends AbstractHarvesterImpl
+        implements Harvester {
 
-    public XhtmlSourceHarvesterImplImpl(DataManager dataManager) throws IOException {
-        this.dataManager = dataManager;
-        resolver = new HttpResolverImpl();
-        findSources = loadSparql("/sparql/findHarvestableHtml.rql");
+    public AbstractXmlHarvesterImpl(DataManager manager) throws IOException {
+        super(manager);
     }
 
     @Override
-    public void harvest() {
+    public abstract void harvest();
+
+    protected void harvest(String type) {
 
         // new date to keep track of the visit
         Date lastVisited = new Date();
 
-        // query registry for list of feeds to harvest
-        // get the date that they were last updated
-        List<XmlSource> sources = findSources(findSources);
+        // find the sources to query
+        List<Source> sources = findSources(type);
 
         log.info("Found " + sources.size() + " sources to harvest");
 
         // harvest each source
-        for (XmlSource source : sources) {
+        for (Source source : sources) {
 
             log.info("Request to harvest: <" + source.getUrl() + ">");
 
-            String xsl = "/" + source.getXsl().substring(6, source.getXsl().length());
+            String xslPath = ((XmlSource) source).getXsl();
+            String xsl = "/" + xslPath.substring(6, xslPath.length());
 
             // harvest the data
-            Model model = resolver.resolve(source, new XhtmlSourceResponseHandlerImpl(xsl));
+            Model model = resolver.resolve(source,
+                    new XmlResponseHandlerImpl(xsl));
 
-            saveOrUpdate(source, lastVisited, model);
+            if (model != null) {
+
+                // delete the old data
+                manager.deleteAllInGraph(source.getUrl());
+
+                // add the harvested data
+                manager.add(source.getUrl(), model);
+
+                updateLastVisitedDate(lastVisited, source.getUrl());
+
+            } else {
+                log.info("Unable to cache " + source.getUrl());
+            }
+
         }
     }
 
-    final private Resolver resolver;
+    @Override
+    protected XmlSource getDetails(Resource resource) {
 
-    final private String findSources;
+        Date lastVisited = null;
+        String xsl = null;
 
-    final private Logger log = Logger.getLogger(XhtmlSourceHarvesterImplImpl.class);
+        String uri = resource.getURI();
+
+        if (resource.hasProperty(MCA_REGISTRY.lastVisitedDate)) {
+            try {
+                lastVisited = Common.parseXsdDate(resource.getProperty(MCA_REGISTRY.lastVisitedDate)
+                        .getLiteral().getLexicalForm());
+            } catch (ParseException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
+
+        if (resource.hasProperty(MCA_REGISTRY.hasXslSource)) {
+            xsl = resource.getProperty(MCA_REGISTRY.hasXslSource).getResource().getURI();
+        }
+
+        return new XmlSource(uri, xsl, lastVisited);
+    }
+
+
+    final private Logger log = Logger.getLogger(AbstractXmlHarvesterImpl.class);
+
 }

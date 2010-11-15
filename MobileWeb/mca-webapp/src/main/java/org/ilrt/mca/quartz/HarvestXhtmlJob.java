@@ -33,7 +33,7 @@ package org.ilrt.mca.quartz;
 
 import org.apache.log4j.Logger;
 import org.ilrt.mca.harvester.Harvester;
-import org.ilrt.mca.harvester.xml.XhtmlSourceHarvesterImplImpl;
+import org.ilrt.mca.harvester.xml.XhtmlHarvesterImpl;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -50,7 +50,7 @@ public class HarvestXhtmlJob extends AbstractJob implements Job {
         log.info("The HarvestXhtmlJob has started.");
         try {
 
-            Harvester harvester = new XhtmlSourceHarvesterImplImpl(manager);
+            Harvester harvester = new XhtmlHarvesterImpl(manager);
             harvester.harvest();
 
         } catch (IOException ex) {
