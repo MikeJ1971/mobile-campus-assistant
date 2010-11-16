@@ -58,11 +58,8 @@
         <repository>
             <id>oss.talisplatform.com</id>
             <name>Talis Platform Repository</name>
-            <url>http://oss.talisplatform.com/content/repositories/talis-snapshots</url>
+            <url>http://oss.talisplatform.com/content/repositories/talis-releases/</url>
             <layout>default</layout>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
         </repository>
     </repositories>
 
