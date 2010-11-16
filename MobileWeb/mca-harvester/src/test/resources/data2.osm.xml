@@ -1,0 +1,888 @@
+<?xml version='1.0' standalone='no'?>
+<osm version='0.6' generator='xapi: OSM Extended API 2.0' attribution='http://wiki.openstreetmap.org/wiki/Attribution' xmlns:xapi='http://www.informationfreeway.org/xapi/0.6' xapi:uri='/api/0.6/node[bbox=-2.614,51.449,-2.595,51.462][shop=*]' xapi:planetDate='20101116' xapi:copyright='2010 OpenStreetMap contributors' xapi:license='Creative commons CC-BY-SA 2.0' xapi:bugs='For assistance or to report bugs contact 80n80n@gmail.com' xapi:instance='zappyOsm'>
+  <node id='843945573' lat='51.4604585' lon='-2.6087903' user='tiiiim' timestamp='2010-08-02T19:29:47Z' uid='142710' version='1' changeset='5383991'>
+    <tag k='name' v='Tool Station'/>
+    <tag k='shop' v='hardware'/>
+  </node>
+  <node id='859575371' lat='51.4616797' lon='-2.608418' user='Laurence' timestamp='2010-10-17T22:48:53Z' uid='2160' version='4' changeset='6072877'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='48'/>
+    <tag k='addr:postcode' v='BS8 2LS'/>
+    <tag k='addr:street' v='Whiteladies Road'/>
+    <tag k='brand' v='Vespa;Piaggio;Gilera'/>
+    <tag k='name' v='Whiteladies Scooters'/>
+    <tag k='phone' v='+44 117 373 2589'/>
+    <tag k='shop' v='motorcycle'/>
+    <tag k='website' v='http://www.whiteladiesscooters.co.uk/'/>
+  </node>
+  <node id='859575379' lat='51.4618073' lon='-2.6083033' user='Laurence' timestamp='2010-10-17T22:48:50Z' uid='2160' version='3' changeset='6072877'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='49a'/>
+    <tag k='addr:postcode' v='BS8 2LS'/>
+    <tag k='addr:street' v='Whiteladies Road'/>
+    <tag k='name' v='Esquire'/>
+    <tag k='phone' v='+44 117 973 1866'/>
+    <tag k='shop' v='hairdresser'/>
+  </node>
+  <node id='859575384' lat='51.4616' lon='-2.6083947' user='Laurence' timestamp='2010-10-17T22:48:53Z' uid='2160' version='3' changeset='6072877'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='47'/>
+    <tag k='addr:postcode' v='BS8 2LS'/>
+    <tag k='addr:street' v='Whiteladies Road'/>
+    <tag k='email' v='info@oskarfurniture.co.uk'/>
+    <tag k='name' v='Oskar'/>
+    <tag k='phone' v='+44 117 973 4777'/>
+    <tag k='shop' v='furniture'/>
+    <tag k='website' v='http://www.oskarfurniture.co.uk/'/>
+  </node>
+  <node id='859575390' lat='51.4617793' lon='-2.6084319' user='tiiiim' timestamp='2010-10-17T17:11:19Z' uid='142710' version='2' changeset='6069304'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='49'/>
+    <tag k='addr:postcode' v='BS8 2LS'/>
+    <tag k='addr:street' v='Whiteladies Road'/>
+    <tag k='name' v='Movi'/>
+    <tag k='shop' v='sports'/>
+  </node>
+  <node id='874378761' lat='51.4612353' lon='-2.6021755' user='ndm' timestamp='2010-08-22T19:39:24Z' uid='14846' version='1' changeset='5564869'>
+    <tag k='name' v='Somerfield'/>
+    <tag k='shop' v='supermarket'/>
+  </node>
+  <node id='469207181' lat='51.4567738' lon='-2.6068384' user='theonhighgod' timestamp='2009-08-16T14:18:41Z' uid='120497' version='1' changeset='2165188'>
+    <tag k='name' v='Sainsbury'/>
+    <tag k='shop' v='supermarket'/>
+  </node>
+  <node id='469207186' lat='51.4570797' lon='-2.6082868' user='tiiiim' timestamp='2010-10-17T17:28:02Z' uid='142710' version='2' changeset='6069507'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housename' v='The Pavillion'/>
+    <tag k='addr:housenumber' v='85'/>
+    <tag k='addr:postcode' v='BS8 1QS'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Waitrose'/>
+    <tag k='phone' v='0800 188 884'/>
+    <tag k='shop' v='supermarket'/>
+    <tag k='website' v='http://www.waitrose.com/'/>
+  </node>
+  <node id='836781908' lat='51.4575764' lon='-2.6081257' user='Smurphboy' timestamp='2010-07-31T12:04:14Z' uid='15344' version='2' changeset='5362107'>
+    <tag k='name' v='Bike UK'/>
+    <tag k='shop' v='bicycle'/>
+  </node>
+  <node id='843514382' lat='51.4555109' lon='-2.6043775' user='Laurence' timestamp='2010-10-20T03:35:49Z' uid='2160' version='3' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='87'/>
+    <tag k='addr:postcode' v='BS1 5PW'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='fax' v='+44 117 925 1854'/>
+    <tag k='name' v='Blackwell'/>
+    <tag k='phone' v='+44 117 927 6602'/>
+    <tag k='shop' v='books'/>
+    <tag k='website' v='http://bookshop.blackwell.co.uk'/>
+  </node>
+  <node id='843514389' lat='51.455609' lon='-2.6045304' user='Laurence' timestamp='2010-10-19T02:20:48Z' uid='2160' version='2' changeset='6089878'>
+    <tag k='books' v='used'/>
+    <tag k='name' v='Oxfam Bookshop'/>
+    <tag k='shop' v='books'/>
+  </node>
+  <node id='843947324' lat='51.4578555' lon='-2.6081412' user='tiiiim' timestamp='2010-10-17T17:28:03Z' uid='142710' version='2' changeset='6069507'>
+    <tag k='name' v='Habitat'/>
+    <tag k='shop' v='furniture'/>
+  </node>
+  <node id='854509286' lat='51.4562753' lon='-2.6139368' user='Laurence' timestamp='2010-08-11T11:55:55Z' uid='2160' version='1' changeset='5462201'>
+    <tag k='name' v='20th Century Flicks'/>
+    <tag k='shop' v='video'/>
+    <tag k='website' v='http://www.20thcenturyflicks.co.uk/'/>
+  </node>
+  <node id='954806764' lat='51.4574696' lon='-2.6082399' user='tiiiim' timestamp='2010-10-17T17:28:00Z' uid='142710' version='1' changeset='6069507'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='84'/>
+    <tag k='addr:postcode' v='BS8 1QU'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Austin Reed'/>
+    <tag k='phone' v='+44 01179260910'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.austinreed.co.uk/'/>
+  </node>
+  <node id='954806778' lat='51.4567919' lon='-2.6076452' user='tiiiim' timestamp='2010-10-17T17:28:01Z' uid='142710' version='1' changeset='6069507'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='81'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Space.NK'/>
+    <tag k='phone' v='+44 01179 294 979'/>
+    <tag k='shop' v='cosmetics'/>
+    <tag k='website' v='http://www.spacenk.co.uk/'/>
+  </node>
+  <node id='956219604' lat='51.4566883' lon='-2.6073041' user='tiiiim' timestamp='2010-10-19T20:27:30Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='71'/>
+    <tag k='addr:postcode' v='BS8 1QP'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='WOMbat'/>
+    <tag k='phone' v='+44 1179 290852'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.wombatclothing.com/'/>
+  </node>
+  <node id='956219613' lat='51.4567701' lon='-2.6074861' user='tiiiim' timestamp='2010-10-19T20:27:32Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='77'/>
+    <tag k='addr:postcode' v='BS8 1QP'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='fax' v='+44 117 925 2996'/>
+    <tag k='name' v='Goatman &amp; Batham'/>
+    <tag k='phone' v='+44 117 926 2380'/>
+    <tag k='shop' v='optician'/>
+    <tag k='website' v='http://goatmanandbatham.com/'/>
+  </node>
+  <node id='956219614' lat='51.4567857' lon='-2.6075251' user='tiiiim' timestamp='2010-10-19T20:27:32Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='77a'/>
+    <tag k='addr:postcode' v='BS8 1QP'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='The Barber Shop'/>
+    <tag k='shop' v='hairdresser'/>
+  </node>
+  <node id='956219615' lat='51.4565869' lon='-2.6070786' user='tiiiim' timestamp='2010-10-19T20:27:30Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='65'/>
+    <tag k='addr:postcode' v='BS8 1QL'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Jack Wills'/>
+    <tag k='phone' v='+44 117 929 1600'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='956219628' lat='51.4567171' lon='-2.6073681' user='tiiiim' timestamp='2010-10-19T20:27:31Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='73'/>
+    <tag k='addr:postcode' v='BS8 1QP'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Essensuals Hairdressing'/>
+    <tag k='phone' v='08000 277834'/>
+    <tag k='shop' v='hairdresser'/>
+    <tag k='website' v='http://www.essensuals-bristol.co.uk/'/>
+  </node>
+  <node id='956219630' lat='51.4566614' lon='-2.6072444' user='tiiiim' timestamp='2010-10-19T20:27:31Z' uid='142710' version='2' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='69'/>
+    <tag k='addr:postcode' v='BS8 1QL'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='email' v='bristol@bang-olufsen.co.uk'/>
+    <tag k='fax' v='+44 117 9227499'/>
+    <tag k='name' v='Bang &amp; Olufsen'/>
+    <tag k='phone' v='+44 117 922 7522 ‎'/>
+    <tag k='shop' v='hifi'/>
+    <tag k='website' v='http://www.bang-olufsen.com/'/>
+  </node>
+  <node id='956598313' lat='51.455552' lon='-2.6044365' user='Laurence' timestamp='2010-10-20T03:35:54Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='old_name' v='Blackwells'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='956598327' lat='51.4550826' lon='-2.6038085' user='Laurence' timestamp='2010-10-20T03:35:28Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957354645' lat='51.4561715' lon='-2.6062644' user='tiiiim' timestamp='2010-10-19T20:27:27Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='43'/>
+    <tag k='addr:postcode' v='BS8 1QQ'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='STA'/>
+    <tag k='phone' v='0871 702 9808'/>
+    <tag k='shop' v='travel_agency'/>
+    <tag k='website' v='http://www.statravel.co.uk/'/>
+  </node>
+  <node id='957354662' lat='51.4562478' lon='-2.6063306' user='tiiiim' timestamp='2010-10-19T20:27:28Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='47'/>
+    <tag k='addr:postcode' v='BS8 1QQ'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='3 Store'/>
+    <tag k='phone' v='+44 1173 763553'/>
+    <tag k='shop' v='mobile_phone'/>
+    <tag k='website' v='http://www.three.co.uk/'/>
+  </node>
+  <node id='957354665' lat='51.4562928' lon='-2.6064245' user='tiiiim' timestamp='2010-10-19T20:27:28Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='51'/>
+    <tag k='addr:postcode' v='BS8 1QQ'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Jones Bootmaker'/>
+    <tag k='phone' v='+44 1179 220284'/>
+    <tag k='shop' v='shoes'/>
+  </node>
+  <node id='957354679' lat='51.4564941' lon='-2.6068723' user='tiiiim' timestamp='2010-10-19T20:27:28Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='59'/>
+    <tag k='addr:postcode' v='BS8 1QL'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Sweaty Betty'/>
+    <tag k='phone' v='+44 1179 299 179'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.sweatybetty.com/'/>
+  </node>
+  <node id='957354684' lat='51.45645' lon='-2.6067742' user='tiiiim' timestamp='2010-10-19T20:27:29Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='57'/>
+    <tag k='addr:postcode' v='BS8 1QL'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Patisserie Valerie'/>
+    <tag k='phone' v='+44 117 929 7486'/>
+    <tag k='shop' v='bakery'/>
+    <tag k='website' v='http://www.patisserie-valerie.co.uk/'/>
+  </node>
+  <node id='957354697' lat='51.4563686' lon='-2.6065932' user='tiiiim' timestamp='2010-10-19T20:27:29Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='53'/>
+    <tag k='addr:postcode' v='BS8 1QQ'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Reflections'/>
+    <tag k='phone' v='+44 117 926 0957'/>
+    <tag k='shop' v='hairdresser'/>
+    <tag k='website' v='http://www.reflectionshair.net/'/>
+  </node>
+  <node id='957354712' lat='51.4563272' lon='-2.6065012' user='tiiiim' timestamp='2010-10-19T20:27:29Z' uid='142710' version='1' changeset='6103070'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='51'/>
+    <tag k='addr:postcode' v='BS8 1QQ'/>
+    <tag k='addr:street' v='Queen&apos;s Road'/>
+    <tag k='name' v='Ryman'/>
+    <tag k='phone' v='+44 117 925 1758'/>
+    <tag k='shop' v='stationery'/>
+    <tag k='website' v='http://www.ryman.co.uk/'/>
+  </node>
+  <node id='957429381' lat='51.4552157' lon='-2.603988' user='Laurence' timestamp='2010-10-20T03:35:51Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='77'/>
+    <tag k='addr:postcode' v='BS1 5PF'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='email' v='info@topsixgroup.co.uk'/>
+    <tag k='fax' v='+44 1179 304507'/>
+    <tag k='name' v='Top Six'/>
+    <tag k='phone' v='+44 1179 264952'/>
+    <tag k='shop' v='hairdresser'/>
+    <tag k='website' v='http://www.topsixgroup.co.uk/'/>
+  </node>
+  <node id='957429449' lat='51.4553902' lon='-2.6042183' user='Laurence' timestamp='2010-10-20T03:35:46Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='83'/>
+    <tag k='addr:postcode' v='BS1 5PJ'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='fax' v='+44 117 316 9772'/>
+    <tag k='name' v='L K Bennett'/>
+    <tag k='phone' v='+44 117 316 9771'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.lkbennett.com/'/>
+  </node>
+  <node id='957429480' lat='51.4551958' lon='-2.6039672' user='Laurence' timestamp='2010-10-20T03:35:27Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='name' v='St-Martins'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957429493' lat='51.4553249' lon='-2.6041281' user='Laurence' timestamp='2010-10-20T03:35:27Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='81'/>
+    <tag k='addr:postcode' v='BS1 5PF'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='name' v='Levi Strauss'/>
+    <tag k='phone' v='+44 1179 277404'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957429501' lat='51.4552642' lon='-2.6040503' user='Laurence' timestamp='2010-10-20T05:26:30Z' uid='2160' version='3' changeset='6106122'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='79'/>
+    <tag k='addr:postcode' v='BS1 5PF'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='clothes' v='women'/>
+    <tag k='name' v='Cath Kidston'/>
+    <tag k='phone' v='+44 1179 304722'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.cathkidston.co.uk/findus.aspx?store=Bristol'/>
+  </node>
+  <node id='957754207' lat='51.4554079' lon='-2.6039388' user='Laurence' timestamp='2010-10-20T03:35:11Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:postcode' v='BS1 5LA'/>
+    <tag k='clothes' v='women'/>
+    <tag k='name' v='Whistles'/>
+    <tag k='phone' v='0117 927 9630'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.whistles.co.uk/'/>
+  </node>
+  <node id='957754217' lat='51.455515' lon='-2.6040821' user='Laurence' timestamp='2010-10-20T03:35:12Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='clothes' v='women'/>
+    <tag k='name' v='Fat Face'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.fatface.com/'/>
+  </node>
+  <node id='957754226' lat='51.4553579' lon='-2.6038672' user='Laurence' timestamp='2010-10-20T03:35:12Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='80'/>
+    <tag k='addr:postcode' v='BS1 5LA'/>
+    <tag k='clothes' v='women'/>
+    <tag k='name' v='Jigsaw'/>
+    <tag k='phone' v='01179 265 775'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.jigsaw-online.com/'/>
+  </node>
+  <node id='957754237' lat='51.4555619' lon='-2.6041587' user='Laurence' timestamp='2010-10-20T04:50:47Z' uid='2160' version='2' changeset='6105290'>
+    <tag k='addr:housenumber' v='88a'/>
+    <tag k='addr:postcode' v='BS1 5LA'/>
+    <tag k='email' v='sales@itsmarttalk.com'/>
+    <tag k='name' v='IT Smart Talk'/>
+    <tag k='phone' v='0117 9304304'/>
+    <tag k='shop' v='mobile_phone'/>
+    <tag k='website' v='http://www.itsmarttalk.com/'/>
+  </node>
+  <node id='957754238' lat='51.4554649' lon='-2.6040209' user='Laurence' timestamp='2010-10-20T03:35:13Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='84'/>
+    <tag k='addr:postcode' v='BS1 5LA'/>
+    <tag k='clothes' v='women'/>
+    <tag k='name' v='Reiss'/>
+    <tag k='phone' v='0117 927 6605'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957754250' lat='51.4556027' lon='-2.6042092' user='Laurence' timestamp='2010-10-20T03:35:13Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='name' v='L&apos;Occitane'/>
+    <tag k='old_name' v='Culpeper'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957754264' lat='51.4555418' lon='-2.6041279' user='Laurence' timestamp='2010-10-20T03:35:14Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='name' v='Lexie&apos;s News'/>
+    <tag k='shop' v='newsagent'/>
+  </node>
+  <node id='860139603' lat='51.456635' lon='-2.5972817' user='Laurence' timestamp='2010-09-28T20:07:29Z' uid='2160' version='4' changeset='5906892'>
+    <tag k='addr:housenumber' v='74'/>
+    <tag k='addr:postcode' v='BS1 5BB'/>
+    <tag k='name' v='Bloom &amp; Curll'/>
+    <tag k='shop' v='books'/>
+    <tag k='website' v='http://www.bloomandcurll.co.uk/'/>
+  </node>
+  <node id='860139609' lat='51.4567408' lon='-2.5972049' user='Laurence' timestamp='2010-09-28T20:07:29Z' uid='2160' version='3' changeset='5906892'>
+    <tag k='addr:housenumber' v='82'/>
+    <tag k='name' v='Booty'/>
+    <tag k='phone' v='0117 933 0909'/>
+    <tag k='shop' v='books;clothes;cards'/>
+  </node>
+  <node id='860405478' lat='51.4563485' lon='-2.5974207' user='Laurence' timestamp='2010-09-28T20:07:29Z' uid='2160' version='2' changeset='5906892'>
+    <tag k='addr:housenumber' v='60'/>
+    <tag k='addr:postcode' v='BS1 5AZ'/>
+    <tag k='name' v='Potters Antiques &amp; Coins'/>
+    <tag k='shop' v='antiques'/>
+  </node>
+  <node id='860561192' lat='51.4564454' lon='-2.5974011' user='Laurence' timestamp='2010-09-28T20:07:28Z' uid='2160' version='2' changeset='5906892'>
+    <tag k='addr:housenumber' v='64'/>
+    <tag k='name' v='The Handmade Shoe Co'/>
+    <tag k='phone' v='0117 9214247'/>
+    <tag k='shop' v='shoes'/>
+    <tag k='website' v='http://www.shoe-craft.co.uk/'/>
+  </node>
+  <node id='957429395' lat='51.4546318' lon='-2.6031958' user='Laurence' timestamp='2010-10-20T03:35:52Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='57'/>
+    <tag k='addr:postcode' v='BS1 5NU'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='email' v='sales@cooshti.com'/>
+    <tag k='name' v='Cooshti'/>
+    <tag k='phone' v='+44 1179 290850'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.cooshti.com/'/>
+  </node>
+  <node id='957429419' lat='51.4547938' lon='-2.6034172' user='Laurence' timestamp='2010-10-20T03:35:51Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='63'/>
+    <tag k='addr:postcode' v='BS1 5NU'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='email' v='info@stationeryworldonline.co.uk'/>
+    <tag k='name' v='Stationery World'/>
+    <tag k='phone' v='+44 1179 298099'/>
+    <tag k='shop' v='stationery'/>
+    <tag k='website' v='http://www.stationeryworldclifton.co.uk/'/>
+  </node>
+  <node id='957429468' lat='51.4548527' lon='-2.6035138' user='Laurence' timestamp='2010-10-20T03:35:27Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='65'/>
+    <tag k='addr:postcode' v='BS1 5PB'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='email' v='bristol@audio-t.co.uk'/>
+    <tag k='fax' v='+44 1179 251327'/>
+    <tag k='name' v='audio T'/>
+    <tag k='phone' v='+44 1179 264975'/>
+    <tag k='shop' v='hifi'/>
+    <tag k='website' v='http://www.audio-t.co.uk/'/>
+  </node>
+  <node id='957429508' lat='51.4547383' lon='-2.6033402' user='Laurence' timestamp='2010-10-20T03:35:46Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='61'/>
+    <tag k='addr:postcode' v='BS1 5NU'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='fax' v='+44 1179 221046'/>
+    <tag k='name' v='myshu'/>
+    <tag k='phone' v='+44 1179 225516'/>
+    <tag k='shop' v='shoes'/>
+    <tag k='website' v='http://www.mastershoe-sportshoe.co.uk/'/>
+  </node>
+  <node id='957429550' lat='51.4550108' lon='-2.6037136' user='Laurence' timestamp='2010-10-20T03:35:52Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='71'/>
+    <tag k='addr:postcode' v='BS1 5PB'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='name' v='T.M. Lewin'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.tmlewin.co.uk/'/>
+  </node>
+  <node id='957429579' lat='51.4546858' lon='-2.6032704' user='Laurence' timestamp='2010-10-20T03:35:27Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='59'/>
+    <tag k='addr:postcode' v='BS1 5NU'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='books' v='academic'/>
+    <tag k='name' v='Blackwell Academic Bookshop'/>
+    <tag k='shop' v='books'/>
+  </node>
+  <node id='957429584' lat='51.4545269' lon='-2.6030706' user='Laurence' timestamp='2010-10-20T03:35:52Z' uid='2160' version='2' changeset='6104559'>
+    <tag k='addr:city' v='Bristol'/>
+    <tag k='addr:country' v='GB'/>
+    <tag k='addr:housenumber' v='53'/>
+    <tag k='addr:postcode' v='BS1 5NT'/>
+    <tag k='addr:street' v='Park Street'/>
+    <tag k='name' v='The Store'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957754212' lat='51.454505' lon='-2.60272' user='Laurence' timestamp='2010-10-20T04:24:25Z' uid='2160' version='2' changeset='6105039'>
+    <tag k='name' v='Mastershoe'/>
+    <tag k='phone' v='01179 225516'/>
+    <tag k='shop' v='shoes'/>
+    <tag k='website' v='http://www.mastershoe-sportshoe.co.uk/'/>
+  </node>
+  <node id='957754234' lat='51.4547726' lon='-2.6030676' user='Laurence' timestamp='2010-10-20T03:35:12Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='name' v='Christoper Wray'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957754235' lat='51.4550967' lon='-2.6034989' user='Laurence' timestamp='2010-10-20T03:35:12Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='name' v='Beijing Noodle Bar'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957754252' lat='51.4546048' lon='-2.6028541' user='Laurence' timestamp='2010-10-20T03:35:13Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='name' v='Clothing Federation'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957754257' lat='51.4547197' lon='-2.6029988' user='Laurence' timestamp='2010-10-20T03:35:13Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='60'/>
+    <tag k='addr:postcode' v='BS1 5JN'/>
+    <tag k='books' v='religion'/>
+    <tag k='fax' v='0117 929 4068'/>
+    <tag k='music' v='religion'/>
+    <tag k='name' v='Wesley Owen'/>
+    <tag k='phone' v='0117 926 4426'/>
+    <tag k='religion' v='christian'/>
+    <tag k='shop' v='books;music'/>
+    <tag k='website' v='http://orders.wesleyowen.com/info/store/bristol.jsp'/>
+  </node>
+  <node id='957754261' lat='51.4549967' lon='-2.6033672' user='Laurence' timestamp='2010-10-20T03:35:13Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='68-70'/>
+    <tag k='addr:postcode' v='BS1 5JY'/>
+    <tag k='email' v='info@bristolguild.co.uk'/>
+    <tag k='fax' v='0117 925 5659'/>
+    <tag k='name' v='Bristol Guild'/>
+    <tag k='phone' v='0117 926 5548'/>
+    <tag k='shop' v='department_store'/>
+    <tag k='website' v='http://www.bristolguild.co.uk/'/>
+  </node>
+  <node id='957754270' lat='51.4545655' lon='-2.602804' user='Laurence' timestamp='2010-10-20T03:35:14Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='54a'/>
+    <tag k='clothes' v='vintage'/>
+    <tag k='name' v='Uncle Sams'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957754272' lat='51.455227' lon='-2.6036841' user='Laurence' timestamp='2010-10-20T03:35:14Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='76'/>
+    <tag k='addr:postcode' v='BS1 5LB'/>
+    <tag k='name' v='Moss'/>
+    <tag k='phone' v='0117 9265511'/>
+    <tag k='shop' v='suit_hire'/>
+  </node>
+  <node id='957754275' lat='51.4548838' lon='-2.6032187' user='Laurence' timestamp='2010-10-20T03:35:16Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='66'/>
+    <tag k='addr:postcode' v='BS1 5JN'/>
+    <tag k='clothes' v='women'/>
+    <tag k='name' v='Chandni Chowk'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.chandnichowk.co.uk/'/>
+  </node>
+  <node id='957754282' lat='51.4545445' lon='-2.6027733' user='Laurence' timestamp='2010-10-20T03:35:25Z' uid='2160' version='1' changeset='6104559'>
+    <tag k='addr:housenumber' v='54'/>
+    <tag k='name' v='Travel Mood'/>
+    <tag k='shop' v='travel_agency'/>
+  </node>
+  <node id='26104498' lat='51.451035' lon='-2.6077215' user='Laurence' timestamp='2010-10-18T02:27:16Z' uid='2160' version='3' changeset='6074762'>
+    <tag k='name' v='Bag o&apos;Nails'/>
+    <tag k='postal_code' v='BS1 5UW'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='843947331' lat='51.4538015' lon='-2.613622' user='Laurence' timestamp='2010-10-28T14:54:34Z' uid='2160' version='2' changeset='6209364'>
+    <tag k='name' v='Muset'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='955512397' lat='51.4512182' lon='-2.6077522' user='Laurence' timestamp='2010-10-18T02:29:16Z' uid='2160' version='1' changeset='6074784'>
+    <tag k='clothes' v='vintage'/>
+    <tag k='name' v='Recession'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='26174094' lat='51.4491834' lon='-2.5950879' user='stevboss' xapi:users='stevboss' timestamp='2008-08-06T12:26:55Z' uid='57551' version='3' changeset='113642'>
+    <tag k='amenity' v='pub'/>
+    <tag k='created_by' v='Potlatch 0.10b'/>
+    <tag k='name' v='Mud Dock'/>
+    <tag k='postal_code' v='BS1 4RB'/>
+    <tag k='shop' v='bicycle'/>
+    <tag k='website' v='http://www.mud-dock.co.uk/'/>
+  </node>
+  <node id='26174097' lat='51.449577' lon='-2.5987927' user='Laurence' timestamp='2010-10-20T02:46:06Z' uid='2160' version='3' changeset='6104225'>
+    <tag k='amenity' v='restaurant'/>
+    <tag k='email' v='info@bordeaux-quay.co.uk'/>
+    <tag k='name' v='Bordeaux Quay'/>
+    <tag k='phone' v='0117 9065559'/>
+    <tag k='postal_code' v='BS1 5UH'/>
+    <tag k='shop' v='bakery'/>
+    <tag k='website' v='http://www.bordeaux-quay.co.uk/'/>
+  </node>
+  <node id='472217137' lat='51.453485' lon='-2.5965921' user='Laurence' timestamp='2010-08-02T18:05:11Z' uid='2160' version='2' changeset='5383222'>
+    <tag k='name' v='Tesco Express'/>
+    <tag k='shop' v='supermarket'/>
+  </node>
+  <node id='475993896' lat='51.4543206' lon='-2.6024639' user='Laurence' timestamp='2010-10-20T04:50:47Z' uid='2160' version='5' changeset='6105290'>
+    <tag k='name' v='Spar'/>
+    <tag k='shop' v='convenience'/>
+  </node>
+  <node id='475998933' lat='51.4529459' lon='-2.6004871' user='DaveF' timestamp='2010-11-03T15:12:36Z' uid='115894' version='5' changeset='6274630'>
+    <tag k='addr:housenumber' v='27-29'/>
+    <tag k='addr:postcode' v='BS1 5TD'/>
+    <tag k='name' v='Fopp'/>
+    <tag k='shop' v='music;books'/>
+    <tag k='website' v='http://www.foppreturns.com/'/>
+  </node>
+  <node id='617438449' lat='51.4541225' lon='-2.5952589' user='Laurence' timestamp='2010-10-22T10:24:54Z' uid='2160' version='4' changeset='6134796'>
+    <tag k='addr:housenumber' v='29'/>
+    <tag k='addr:street' v='Corn Street'/>
+    <tag k='email' v='stanfordsbristol@gmail.com'/>
+    <tag k='fax' v='0117 927 7232'/>
+    <tag k='layer' v='2'/>
+    <tag k='name' v='Stanfords'/>
+    <tag k='opening_hours' v='Mo-Sa 09:00-18:00'/>
+    <tag k='phone' v='0117 929 9966'/>
+    <tag k='shop' v='books'/>
+    <tag k='website' v='http://www.stanfords.co.uk/info/bristol-store,11,GP.html'/>
+  </node>
+  <node id='687453801' lat='51.452602' lon='-2.5996729' user='DaveF' timestamp='2010-11-03T15:12:37Z' uid='115894' version='6' changeset='6274630'>
+    <tag k='addr:housenumber' v='33-34'/>
+    <tag k='addr:postcode' v='BS1 5SP'/>
+    <tag k='name' v='Tesco'/>
+    <tag k='shop' v='supermarket'/>
+  </node>
+  <node id='687453802' lat='51.4527703' lon='-2.5968845' user='Laurence' timestamp='2010-10-20T02:46:04Z' uid='2160' version='4' changeset='6104225'>
+    <tag k='addr:housenumber' v='9'/>
+    <tag k='addr:postcode' v='BS1 4DA'/>
+    <tag k='atm' v='yes'/>
+    <tag k='operator' v='Sainsbury&apos;s'/>
+    <tag k='shop' v='supermarket'/>
+  </node>
+  <node id='860248360' lat='51.4535601' lon='-2.5966879' user='Laurence' timestamp='2010-08-14T18:26:08Z' uid='2160' version='2' changeset='5493236'>
+    <tag k='name' v='ToteSport'/>
+    <tag k='shop' v='bookmaker'/>
+  </node>
+  <node id='860248935' lat='51.4537481' lon='-2.5961534' user='Laurence' timestamp='2010-08-14T18:26:08Z' uid='2160' version='3' changeset='5493236'>
+    <tag k='name' v='Skin'/>
+    <tag k='shop' v='beauty'/>
+  </node>
+  <node id='860251866' lat='51.4532689' lon='-2.5969237' user='Laurence' timestamp='2010-10-20T02:46:01Z' uid='2160' version='4' changeset='6104225'>
+    <tag k='addr:housenumber' v='1'/>
+    <tag k='addr:postcode' v='BS1 4DA'/>
+    <tag k='name' v='The Florist Ltd'/>
+    <tag k='phone' v='0117 9451820'/>
+    <tag k='shop' v='florist'/>
+    <tag k='website' v='http://www.thefloristltd.co.uk/'/>
+  </node>
+  <node id='957704258' lat='51.4537336' lon='-2.5978807' user='DaveF' timestamp='2010-11-03T15:12:33Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='addr:housenumber' v='26-28'/>
+    <tag k='addr:postcode' v='BS1 4UL'/>
+    <tag k='name' v='The Co-operative Food'/>
+    <tag k='phone' v='0117 929 7313'/>
+    <tag k='shop' v='supermarket'/>
+    <tag k='website' v='http://www.co-operative.coop/food/find-us/?sid=164721'/>
+  </node>
+  <node id='957704273' lat='51.4539613' lon='-2.5979665' user='Laurence' timestamp='2010-10-20T00:10:58Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='name' v='Maximum FX'/>
+    <tag k='shop' v='hairdresser'/>
+  </node>
+  <node id='957704276' lat='51.4538423' lon='-2.5978676' user='DaveF' timestamp='2010-11-03T15:12:33Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='addr:housenumber' v='29'/>
+    <tag k='name' v='City Barber Shop'/>
+    <tag k='shop' v='hairdresser'/>
+  </node>
+  <node id='957704281' lat='51.4538651' lon='-2.5978717' user='Laurence' timestamp='2010-10-20T00:10:58Z' uid='2160' version='1' changeset='6104093'>
+    <tag k='name' v='Seven/12 Convenience'/>
+    <tag k='shop' v='convenience'/>
+  </node>
+  <node id='957704286' lat='51.4533331' lon='-2.5979757' user='DaveF' timestamp='2010-11-03T15:12:32Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='name' v='Coral'/>
+    <tag k='shop' v='betting'/>
+  </node>
+  <node id='957704287' lat='51.4534885' lon='-2.5979363' user='DaveF' timestamp='2010-11-03T15:12:32Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='name' v='Lifestyle Express'/>
+    <tag k='shop' v='convenience'/>
+  </node>
+  <node id='957704290' lat='51.4531178' lon='-2.597957' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='name' v='Bristol Hippodrome Box Office'/>
+    <tag k='shop' v='tickets'/>
+  </node>
+  <node id='957704291' lat='51.4529973' lon='-2.5979836' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='addr:housenumber' v='8'/>
+    <tag k='addr:postcode' v='BS1 4UU'/>
+    <tag k='name' v='Mainline'/>
+    <tag k='office' v='employment_agency'/>
+    <tag k='phone' v='0117 3763647'/>
+    <tag k='shop' v='vacant'/>
+    <tag k='website' v='http://www.mainlineemployment.co.uk/'/>
+  </node>
+  <node id='957704296' lat='51.4530304' lon='-2.5969154' user='Laurence' timestamp='2010-10-20T02:46:11Z' uid='2160' version='2' changeset='6104225'>
+    <tag k='addr:housenumber' v='6'/>
+    <tag k='addr:postcode' v='BS1 4DA'/>
+    <tag k='email' v='bristol@printing.com'/>
+    <tag k='fax' v='0117 927 3822'/>
+    <tag k='name' v='Printing.com'/>
+    <tag k='phone' v='0117 927 3822'/>
+    <tag k='shop' v='copyshop'/>
+    <tag k='website' v='http://www.bristol-printing.com/'/>
+  </node>
+  <node id='957706489' lat='51.4529331' lon='-2.5980116' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='name' v='Vision Express'/>
+    <tag k='shop' v='optician'/>
+  </node>
+  <node id='957706514' lat='51.4530731' lon='-2.597965' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957706770' lat='51.453029' lon='-2.5979573' user='Laurence' timestamp='2010-10-20T00:57:15Z' uid='2160' version='1' changeset='6104143'>
+    <tag k='name' v='Dappa'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739297' lat='51.4523702' lon='-2.5986895' user='DaveF' timestamp='2010-11-03T15:12:39Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='addr:housenumber' v='42-43'/>
+    <tag k='addr:postcode' v='BS1 5SH'/>
+    <tag k='fax' v='0117 922 6376'/>
+    <tag k='name' v='Back in Action'/>
+    <tag k='phone' v='0117 922 6377'/>
+    <tag k='shop' v='furniture'/>
+    <tag k='website' v='http://www.backinaction.co.uk/bristol'/>
+  </node>
+  <node id='957739307' lat='51.4527474' lon='-2.6000527' user='DaveF' timestamp='2010-11-03T15:12:37Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='name' v='Sandwich Box'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739309' lat='51.4523827' lon='-2.5989262' user='DaveF' timestamp='2010-11-03T15:12:39Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739312' lat='51.4531205' lon='-2.6008947' user='Laurence' timestamp='2010-10-20T02:45:44Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='name' v='Sue Sheppard'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739320' lat='51.452401' lon='-2.5990913' user='DaveF' timestamp='2010-11-03T15:12:38Z' uid='115894' version='3' changeset='6274630'>
+    <tag k='addr:housenumber' v='39'/>
+    <tag k='addr:postcode' v='BS1 5SH'/>
+    <tag k='email' v='info@shoefixbristol.co.uk'/>
+    <tag k='name' v='Shoefix'/>
+    <tag k='phone' v='0117 927 3747'/>
+    <tag k='shop' v='cobbler;keys'/>
+    <tag k='website' v='http://www.shoefixbristol.co.uk/'/>
+  </node>
+  <node id='957739321' lat='51.4523934' lon='-2.5967873' user='Laurence' timestamp='2010-10-20T02:45:44Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739330' lat='51.4525702' lon='-2.5982705' user='DaveF' timestamp='2010-11-03T15:12:40Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='addr:housenumber' v='47'/>
+    <tag k='addr:postcode' v='BS1 5SH'/>
+    <tag k='email' v='cbrown@unigraph-design.com'/>
+    <tag k='fax' v='0117 9761245'/>
+    <tag k='name' v='Unigraph'/>
+    <tag k='office' v='graphic_design'/>
+    <tag k='phone' v='0117 9761234'/>
+    <tag k='shop' v='copyshop'/>
+    <tag k='website' v='http://www.unigraph-design.com/'/>
+  </node>
+  <node id='957739343' lat='51.4530364' lon='-2.5979731' user='DaveF' timestamp='2010-11-03T15:12:31Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='name' v='Chaplins Fancy Dress'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957739347' lat='51.4523919' lon='-2.5990216' user='DaveF' timestamp='2010-11-03T15:12:39Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739357' lat='51.4528039' lon='-2.6001948' user='DaveF' timestamp='2010-11-03T15:12:37Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='addr:housenumber' v='30'/>
+    <tag k='addr:postcode' v='BS1 5TB'/>
+    <tag k='fax' v='0117 929 0390'/>
+    <tag k='name' v='Music Room'/>
+    <tag k='phone' v='0117 929 0390'/>
+    <tag k='shop' v='musical_instruments'/>
+    <tag k='website' v='http://www.musicroom.com/bristol'/>
+  </node>
+  <node id='957739360' lat='51.4523559' lon='-2.5967734' user='Laurence' timestamp='2010-10-20T02:45:53Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739363' lat='51.4529858' lon='-2.596917' user='Laurence' timestamp='2010-10-20T02:45:54Z' uid='2160' version='1' changeset='6104225'>
+    <tag k='name' v='Dappa'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739365' lat='51.4524319' lon='-2.5992014' user='DaveF' timestamp='2010-11-03T15:12:38Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='name' v='City Job Shop'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957739366' lat='51.4525759' lon='-2.5982777' user='DaveF' timestamp='2010-11-03T15:12:30Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='addr:housenumber' v='1-2'/>
+    <tag k='name' v='Toni &amp; Guy'/>
+    <tag k='shop' v='hairdresser'/>
+  </node>
+  <node id='957739367' lat='51.4525033' lon='-2.5983564' user='DaveF' timestamp='2010-11-03T15:12:40Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='addr:housenumber' v='46'/>
+    <tag k='email' v='info@harboursidelettings.co.uk'/>
+    <tag k='name' v='Harbourside Property Group'/>
+    <tag k='phone' v='0117 928 1900'/>
+    <tag k='shop' v='estate_agent'/>
+    <tag k='website' v='http://www.harboursidelettings.co.uk/'/>
+  </node>
+  <node id='957739369' lat='51.4523944' lon='-2.5985478' user='DaveF' timestamp='2010-11-03T15:12:39Z' uid='115894' version='2' changeset='6274630'>
+    <tag k='access' v='0117 3169132'/>
+    <tag k='addr:housenumber' v='44'/>
+    <tag k='addr:postcode' v='BS1 5SH'/>
+    <tag k='clothes' v='bridal'/>
+    <tag k='email' v='infoCGB@collegegreenbridal.co.uk'/>
+    <tag k='name' v='College Green Bridal'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.collegegreenbridal.co.uk/'/>
+  </node>
+  <node id='957754210' lat='51.45424' lon='-2.6026912' user='DaveF' timestamp='2010-11-08T23:49:19Z' uid='115894' version='3' changeset='6324721'>
+    <tag k='addr:housenumber' v='47'/>
+    <tag k='addr:postcode' v='BS1 5NR'/>
+    <tag k='name' v='Mappin &amp; Webb'/>
+    <tag k='phone' v='0117 926 2916'/>
+    <tag k='shop' v='jewelry'/>
+    <tag k='website' v='http://www.mappinandwebb.com/showroom/bristol'/>
+  </node>
+  <node id='957754266' lat='51.4537873' lon='-2.6017241' user='Laurence' timestamp='2010-10-20T04:24:25Z' uid='2160' version='2' changeset='6105039'>
+    <tag k='addr:housenumber' v='20'/>
+    <tag k='name' v='Swinky&apos;s Sweets'/>
+    <tag k='shop' v='confectionery'/>
+    <tag k='website' v='http://www.swinkysweets.com/'/>
+  </node>
+  <node id='957768925' lat='51.454267' lon='-2.6023829' user='Laurence' timestamp='2010-10-20T04:50:47Z' uid='2160' version='2' changeset='6105290'>
+    <tag k='addr:housenumber' v='40'/>
+    <tag k='name' v='My Yard'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957768926' lat='51.4535901' lon='-2.6014443' user='Laurence' timestamp='2010-10-20T04:24:21Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='name' v='Specialized Concept Store'/>
+    <tag k='phone' v='0117 929 7368'/>
+    <tag k='shop' v='bicycle'/>
+    <tag k='website' v='http://www.specializedconceptstore.co.uk/stores/home.aspx?parent_id=0&amp;page_id=3'/>
+  </node>
+  <node id='957768928' lat='51.4541531' lon='-2.6022375' user='Laurence' timestamp='2010-10-20T04:50:48Z' uid='2160' version='2' changeset='6105290'>
+    <tag k='addr:housenumber' v='36'/>
+    <tag k='addr:postcode' v='BS1 5JG'/>
+    <tag k='email' v='sales@hobgoblinbristol.co.uk'/>
+    <tag k='name' v='Hobgoblin'/>
+    <tag k='phone' v='0117 929 0902'/>
+    <tag k='shop' v='musical_instruments'/>
+    <tag k='website' v='http://www.hobgoblin.com/bristol/'/>
+  </node>
+  <node id='957768932' lat='51.4540348' lon='-2.6024356' user='DaveF' timestamp='2010-11-08T23:49:19Z' uid='115894' version='3' changeset='6324721'>
+    <tag k='name' v='Chilli&apos;s'/>
+    <tag k='shop' v='vacant'/>
+  </node>
+  <node id='957768934' lat='51.4536575' lon='-2.6015433' user='Laurence' timestamp='2010-10-20T04:24:22Z' uid='2160' version='1' changeset='6105039'>
+    <tag k='name' v='Paul Stein'/>
+    <tag k='shop' v='hairdresser'/>
+  </node>
+  <node id='957768935' lat='51.4540495' lon='-2.6020949' user='Laurence' timestamp='2010-10-20T04:50:48Z' uid='2160' version='2' changeset='6105290'>
+    <tag k='clothes' v='erotic'/>
+    <tag k='name' v='Pomegranate'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957768936' lat='51.4538966' lon='-2.6018844' user='Laurence' timestamp='2010-10-20T04:28:41Z' uid='2160' version='2' changeset='6105127'>
+    <tag k='clothes' v='women'/>
+    <tag k='name' v='Motel'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.motelrocks.com/'/>
+  </node>
+  <node id='957768937' lat='51.4538379' lon='-2.6017959' user='Laurence' timestamp='2010-10-20T04:28:41Z' uid='2160' version='2' changeset='6105127'>
+    <tag k='addr:housenumber' v='22'/>
+    <tag k='facebook' v='http://www.facebook.com/pages/Bristol/The-Bootroom-Bristol/141396419236698'/>
+    <tag k='name' v='The Boot Room'/>
+    <tag k='phone' v='0117 9225455'/>
+    <tag k='shop' v='shoes'/>
+  </node>
+  <node id='957768938' lat='51.4539087' lon='-2.6022844' user='DaveF' timestamp='2010-11-08T23:49:19Z' uid='115894' version='3' changeset='6324721'>
+    <tag k='addr:housenumber' v='33'/>
+    <tag k='addr:postcode' v='BS1 5NH'/>
+    <tag k='name' v='Diana Porter'/>
+    <tag k='phone' v='0117 9090225'/>
+    <tag k='shop' v='jewelry'/>
+    <tag k='website' v='http://www.dianaporter.co.uk/'/>
+  </node>
+  <node id='957768939' lat='51.4542104' lon='-2.6023013' user='Laurence' timestamp='2010-10-20T04:50:47Z' uid='2160' version='2' changeset='6105290'>
+    <tag k='addr:housename' v='38'/>
+    <tag k='addr:postcode' v='BS1 5JG'/>
+    <tag k='email' v='bristol@nomadtravel.co.uk'/>
+    <tag k='name' v='Nomad'/>
+    <tag k='phone' v='0117 922 6567'/>
+    <tag k='shop' v='outdoor'/>
+    <tag k='website' v='http://www.nomadtravel.co.uk/pages/bristol-store'/>
+  </node>
+  <node id='957768941' lat='51.4540843' lon='-2.6025011' user='DaveF' timestamp='2010-11-08T23:49:19Z' uid='115894' version='3' changeset='6324721'>
+    <tag k='furniture' v='beds'/>
+    <tag k='name' v='Futon Company'/>
+    <tag k='shop' v='furniture'/>
+  </node>
+  <node id='957768943' lat='51.4539674' lon='-2.6023553' user='DaveF' timestamp='2010-11-08T23:49:19Z' uid='115894' version='3' changeset='6324721'>
+    <tag k='name' v='Bench'/>
+    <tag k='shop' v='clothes'/>
+  </node>
+  <node id='957768944' lat='51.4539466' lon='-2.601954' user='Laurence' timestamp='2010-10-20T04:50:47Z' uid='2160' version='2' changeset='6105290'>
+    <tag k='addr:housenumber' v='26'/>
+    <tag k='addr:postcode' v='BS1 5JA'/>
+    <tag k='name' v='Cara'/>
+    <tag k='phone' v='0117 925 7495'/>
+    <tag k='shop' v='clothes;shoes'/>
+    <tag k='website' v='http://www.carashoes.co.uk/storeindex_bristol.asp'/>
+  </node>
+  <node id='957768945' lat='51.4541712' lon='-2.6026098' user='DaveF' timestamp='2010-11-08T23:49:19Z' uid='115894' version='2' changeset='6324721'>
+    <tag k='addr:housenumber' v='43'/>
+    <tag k='addr:postcode' v='BS1 5NL'/>
+    <tag k='name' v='SuperDry Store'/>
+    <tag k='phone' v='0117 9291379'/>
+    <tag k='shop' v='clothes'/>
+    <tag k='website' v='http://www.superdry.com/'/>
+  </node>
+  <node id='975729528' lat='51.4498607' lon='-2.5970134' user='DaveF' timestamp='2010-11-03T11:47:36Z' uid='115894' version='1' changeset='6274630'>
+    <tag k='shop' v='convenience'/>
+  </node>
+</osm>

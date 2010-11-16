@@ -2,6 +2,7 @@ package org.ilrt.mca.vocab;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 
@@ -46,4 +47,6 @@ public class MCA_GEO {
     public static final Resource ArtsCentre = model.createResource(NS + "arts_centre");
 
     public static final Resource FastFood = model.createResource(NS + "fast_food");
+
+    public static final Property hasTag = model.createProperty(NS + "hasTag");
 }

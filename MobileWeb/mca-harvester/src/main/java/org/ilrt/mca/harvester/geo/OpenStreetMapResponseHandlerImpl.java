@@ -99,7 +99,7 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
                 }
             }
 
-            // model.write(System.out);
+            model.write(System.out);
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -117,6 +117,14 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
         return mediaType.startsWith("text/xml") || mediaType.startsWith("application/xml");
     }
 
+    /**
+     * The node id and the latitude and longitude are stored as attributes on the node
+     * element. We get these via a NamedNodeMap and create a URI and appropriate
+     * GEO properties.
+     *
+     * @param map NamedNodeMap that holds attributes of interest
+     * @return a Resource object that holds a URI and lat/long values
+     */
     private Resource createResource(NamedNodeMap map) {
 
         // create the URI
@@ -136,70 +144,104 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
     }
 
 
+    /**
+     * The OSM data is encapsulated in lots of Tag elements with key (k) and value (v)
+     * attribute values. We pull this lexical information and covert it to RDF types
+     * and literals.
+     *
+     * @param resource the Resource object we will add additional information.
+     * @param tag the XML node that holds the OSM data.
+     */
     private void parseTagElement(Resource resource, Node tag) {
 
+        // get the attributes in the tag element
         NamedNodeMap map = tag.getAttributes();
 
+        // a name becomes a label
         if (map.getNamedItem("k").getTextContent().equals("name")) {
             resource.addProperty(RDFS.label, map.getNamedItem("v").getTextContent(),
                     XSDDatatype.XSDstring);
         }
 
+        // we are interested in amenities
         if (map.getNamedItem("k").getTextContent().equals("amenity")) {
 
+            // values can be separated by semicolons
             String value = map.getNamedItem("v").getTextContent();
+            String[] values = value.split(";");
 
-            if (value.contains("restaurant")) {
-                resource.addProperty(RDF.type, MCA_GEO.Restaurant);
-            } else if (value.contains("cafe")) {
-                resource.addProperty(RDF.type, MCA_GEO.Cafe);
-            } else if (value.contains("pub")) {
-                resource.addProperty(RDF.type, MCA_GEO.Pub);
-            } else if (value.contains("bar")) {
-                resource.addProperty(RDF.type, MCA_GEO.Bar);
-            } else if (value.contains("post_box")) {
-                resource.addProperty(RDF.type, MCA_GEO.PostBox);
-            } else if (value.contains("bicycle_parking")) {
-                resource.addProperty(RDF.type, MCA_GEO.BicycleParking);
-            } else if (value.contains("waste_basket")) {
-                resource.addProperty(RDF.type, MCA_GEO.WasteBasket);
-            } else if (value.contains("bank")) {
-                resource.addProperty(RDF.type, MCA_GEO.Bank);
-            } else if (value.contains("post_office")) {
-                resource.addProperty(RDF.type, MCA_GEO.PostOffice);
-            } else if (value.contains("telephone")) {
-                resource.addProperty(RDF.type, MCA_GEO.Telephone);
-            } else if (value.contains("theatre")) {
-                resource.addProperty(RDF.type, MCA_GEO.Theatre);
-            } else if (value.contains("cinema")) {
-                resource.addProperty(RDF.type, MCA_GEO.Cinema);
-            } else if (value.contains("nightclub")) {
-                resource.addProperty(RDF.type, MCA_GEO.NightClub);
-            } else if (value.contains("arts_centre")) {
-                resource.addProperty(RDF.type, MCA_GEO.ArtsCentre);
-            } else if (value.contains("fast_food")) {
-                resource.addProperty(RDF.type, MCA_GEO.FastFood);
+            // for each value create a tag and type, if appropriate
+            for (String value1 : values) {
+                addTag(value1, resource);
+                addType(value1, resource);
             }
 
         }
 
+        // does the node have a website?
         if (map.getNamedItem("k").getTextContent().equals("website")) {
             resource.addProperty(FOAF.homepage, model.createResource(map.getNamedItem("v")
                     .getTextContent()));
         }
 
+        // does the node have an email address?
         if (map.getNamedItem("k").getTextContent().equals("email")) {
             resource.addProperty(FOAF.mbox, model.createResource("mailto:" + map.getNamedItem("v")
                     .getTextContent()));
         }
 
+        // does the node have a telephone number?
         if (map.getNamedItem("k").getTextContent().equals("phone")) {
             resource.addProperty(FOAF.phone, model.createResource("tel:" + map.getNamedItem("v")
                     .getTextContent()));
         }
+    }
 
+    /**
+     * Create a "hasTag" for values
+     * @param value the value that will become a Literal for the hasTag property.
+     * @param resource the resource that we will attach the hasTag property.
+     */
+    private void addTag(String value, Resource resource) {
+        resource.addProperty(MCA_GEO.hasTag, value);
+    }
+
+    private void addType(String value, Resource resource) {
+
+        if (value.contains("restaurant")) {
+            resource.addProperty(RDF.type, MCA_GEO.Restaurant);
+        } else if (value.contains("cafe")) {
+            resource.addProperty(RDF.type, MCA_GEO.Cafe);
+        } else if (value.contains("pub")) {
+            resource.addProperty(RDF.type, MCA_GEO.Pub);
+        } else if (value.contains("bar")) {
+            resource.addProperty(RDF.type, MCA_GEO.Bar);
+        } else if (value.contains("post_box")) {
+            resource.addProperty(RDF.type, MCA_GEO.PostBox);
+        } else if (value.contains("bicycle_parking")) {
+            resource.addProperty(RDF.type, MCA_GEO.BicycleParking);
+        } else if (value.contains("waste_basket")) {
+            resource.addProperty(RDF.type, MCA_GEO.WasteBasket);
+        } else if (value.contains("bank")) {
+            resource.addProperty(RDF.type, MCA_GEO.Bank);
+        } else if (value.contains("post_office")) {
+            resource.addProperty(RDF.type, MCA_GEO.PostOffice);
+        } else if (value.contains("telephone")) {
+            resource.addProperty(RDF.type, MCA_GEO.Telephone);
+        } else if (value.contains("theatre")) {
+            resource.addProperty(RDF.type, MCA_GEO.Theatre);
+        } else if (value.contains("cinema")) {
+            resource.addProperty(RDF.type, MCA_GEO.Cinema);
+        } else if (value.contains("nightclub")) {
+            resource.addProperty(RDF.type, MCA_GEO.NightClub);
+        } else if (value.contains("arts_centre")) {
+            resource.addProperty(RDF.type, MCA_GEO.ArtsCentre);
+        } else if (value.contains("fast_food")) {
+            resource.addProperty(RDF.type, MCA_GEO.FastFood);
+        }
 
     }
+
 
     private Model model;
 
