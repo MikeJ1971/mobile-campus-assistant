@@ -1,0 +1,34 @@
+@prefix dc:      <http://purl.org/dc/elements/1.1/>
+@prefix foaf:    <http://xmlns.com/foaf/0.1/>
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#>
+@prefix mca:     <http://vocab.bris.ac.uk/mca/registry#> .
+@prefix mcageo:  <http://vocab.bris.ac.uk/mca/geo#> .
+
+
+[rdfs5b: (?a rdf:type rdf:Property) -> (?a rdfs:subPropertyOf ?a)]
+[rdfs7:  (?a rdf:type rdfs:Class) -> (?a rdfs:subClassOf ?a)]
+[rdfs8:  (?a rdfs:subClassOf ?b), (?b rdfs:subClassOf ?c) -> (?a rdfs:subClassOf ?c)]
+[rdfs9:  (?x rdfs:subClassOf ?y), (?a rdf:type ?x) -> (?a rdf:type ?y)]
+
+# these related to labels used to describe amenities
+(?a mcageo:hasTag 'restaurant') -> (?a rdf:type mcageo:restaurant) .
+(?a mcageo:hasTag 'bar') -> (?a rdf:type mcageo:bar) .
+(?a mcageo:hasTag 'cafe') -> (?a rdf:type mcageo:cafe) .
+(?a mcageo:hasTag 'pub') -> (?a rdf:type mcageo:pub) .
+(?a mcageo:hasTag 'post_box') -> (?a rdf:type mcageo:post_box) .
+(?a mcageo:hasTag 'bicycle_parking') -> (?a rdf:type mcageo:bicycle_parking) .
+(?a mcageo:hasTag 'waste_basket') -> (?a rdf:type mcageo:waste_basket) .
+(?a mcageo:hasTag 'bank') -> (?a rdf:type mcageo:bank) .
+(?a mcageo:hasTag 'post_office') -> (?a rdf:type mcageo:post_office) .
+(?a mcageo:hasTag 'telephone') -> (?a rdf:type mcageo:telephone) .
+(?a mcageo:hasTag 'theatre') -> (?a rdf:type mcageo:theatre) .
+(?a mcageo:hasTag 'cinema') -> (?a rdf:type mcageo:cinema) .
+(?a mcageo:hasTag 'nightclub') -> (?a rdf:type mcageo:nightclub) .
+(?a mcageo:hasTag 'arts_centre') -> (?a rdf:type mcageo:arts_centre) .
+(?a mcageo:hasTag 'fast_food') -> (?a rdf:type mcageo:fast_food) .
+(?a mcageo:hasTag 'pharmacy') -> (?a rdf:type mcageo:pharmacy) .
+
+# these related to labels used to describe shops
+(?a mcageo:hasTag 'supermarket') -> (?a rdf:type mcageo:supermarket) .
+(?a mcageo:hasTag 'books') -> (?a rdf:type mcageo:books) .
+(?a mcageo:hasTag 'musical_instruments') -> (?a rdf:type mcageo:musical_instruments) .

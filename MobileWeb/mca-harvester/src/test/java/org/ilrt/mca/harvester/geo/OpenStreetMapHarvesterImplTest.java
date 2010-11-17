@@ -44,6 +44,7 @@ import org.ilrt.mca.harvester.Harvester;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rdf.StoreWrapper;
 import org.ilrt.mca.rdf.StoreWrapperManager;
+import org.ilrt.mca.vocab.MCA_GEO;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 import org.junit.After;
 import org.junit.Before;
@@ -130,6 +131,10 @@ public class OpenStreetMapHarvesterImplTest extends AbstractTest {
         // check that the harvest graph has got data
         Model harvestedData = SDBFactory.connectNamedModel(afterWrapper.getStore(), uri);
         assertFalse("The model shouldn't be empty", harvestedData.isEmpty());
+
+        // check we have some expected types
+        assertTrue(harvestedData.contains(null, RDF.type, MCA_GEO.Amenity));
+        assertTrue(harvestedData.contains(null, RDF.type, MCA_GEO.Shop));
 
         auditModel = SDBFactory.connectNamedModel(afterWrapper.getStore(),
                 Common.AUDIT_GRAPH_URI);

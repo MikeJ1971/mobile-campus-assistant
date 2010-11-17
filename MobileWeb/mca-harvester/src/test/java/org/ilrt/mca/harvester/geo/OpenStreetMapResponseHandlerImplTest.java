@@ -32,12 +32,13 @@
 package org.ilrt.mca.harvester.geo;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.vocabulary.RDF;
 import org.ilrt.mca.harvester.AbstractTest;
 import org.ilrt.mca.harvester.HttpResolverImpl;
 import org.ilrt.mca.harvester.Resolver;
 import org.ilrt.mca.harvester.Source;
+import org.ilrt.mca.vocab.MCA_GEO;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -51,33 +52,56 @@ import static org.junit.Assert.assertTrue;
  */
 public class OpenStreetMapResponseHandlerImplTest extends AbstractTest {
 
-    @Before
-    public void setUp() throws IOException {
-        super.startServer(resourcePath, mediaType);
-    }
-
     @After
     public void tearDown() {
         super.stopServer();
     }
 
     @Test
-    public void test() throws IOException {
+    public void testOSMDataOne() throws IOException {
 
-        // having an oldish last visited date
-        GregorianCalendar lastVisited = new GregorianCalendar(2008, Calendar.SEPTEMBER, 24);
+        super.startServer(resourcePathOne, mediaType);
 
         // resolve!
         Resolver resolver = new HttpResolverImpl();
-        Source source = new Source(host + ":" + portNumber + resourcePath, lastVisited.getTime());
+        Source source = new Source(host + ":" + portNumber + resourcePathOne, lastVisited.getTime());
         Model model = resolver.resolve(source, new OpenStreetMapResponseHandlerImpl());
 
+        assertTrue("The model shouldn't be empty", model.size() > 0);
 
-        assertTrue(true);
-
+        // check that are number of inferred types are available
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.Amenity));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.ArtsCentre));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.Bank));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.PostBox));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.BicycleParking));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.Pharmacy));
     }
 
-    private final String resourcePath = "/data.osm.xml";
+    @Test
+    public void testOSMDataTwo() throws IOException {
+
+        super.startServer(resourcePathTwo, mediaType);
+
+        // resolve!
+        Resolver resolver = new HttpResolverImpl();
+        Source source = new Source(host + ":" + portNumber + resourcePathTwo, lastVisited.getTime());
+        Model model = resolver.resolve(source, new OpenStreetMapResponseHandlerImpl());
+
+        assertTrue("The model shouldn't be empty", model.size() > 0);
+
+        // check that are number of inferred types are available
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.Shop));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.Supermarket));
+    }
+
+
+    private final String resourcePathOne = "/data.osm.xml";
+    private final String resourcePathTwo = "/data2.osm.xml";
     private final String mediaType = "application/xml?charset=UTF-8";
+
+    // having an oldish last visited date
+    GregorianCalendar lastVisited = new GregorianCalendar(2008, Calendar.SEPTEMBER, 24);
+
 
 }

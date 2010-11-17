@@ -18,6 +18,10 @@ public class MCA_GEO {
 
     public static final Resource NAMESPACE = model.createResource(NS);
 
+    public static final Resource Amenity = model.createResource(NS + "amenity");
+
+    public static final Resource Shop = model.createResource(NS + "shop");
+
     public static final Resource Bar = model.createResource(NS + "bar");
 
     public static final Resource Cafe = model.createResource(NS + "cafe");
@@ -47,6 +51,14 @@ public class MCA_GEO {
     public static final Resource ArtsCentre = model.createResource(NS + "arts_centre");
 
     public static final Resource FastFood = model.createResource(NS + "fast_food");
+
+    public static final Resource Pharmacy = model.createResource(NS + "pharmacy");
+
+    public static final Resource Supermarket = model.createResource(NS + "supermarket");
+
+    public static final Resource Books = model.createResource(NS + "books");
+
+    public static final Resource MusicalInstrument = model.createResource(NS + "musical_instruments");
 
     public static final Property hasTag = model.createProperty(NS + "hasTag");
 }

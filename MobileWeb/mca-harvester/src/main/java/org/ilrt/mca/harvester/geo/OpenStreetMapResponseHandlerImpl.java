@@ -35,6 +35,8 @@ import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.reasoner.rulesys.GenericRuleReasoner;
+import com.hp.hpl.jena.reasoner.rulesys.Rule;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
@@ -50,8 +52,11 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -60,6 +65,12 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
 
     public OpenStreetMapResponseHandlerImpl() {
         model = ModelFactory.createDefaultModel();
+
+        // get the rules
+        InputStream is = getClass().getResourceAsStream("/rules/osmdata.rules");
+        rules = Rule.parseRules(Rule.rulesParserFromReader(
+                new BufferedReader(new InputStreamReader(is))));
+
     }
 
     @Override
@@ -68,7 +79,6 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
 
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
-
             Document doc = db.parse(is);
 
             NodeList nodeList = doc.getFirstChild().getChildNodes();
@@ -78,7 +88,6 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
                 Node node = nodeList.item(i);
 
                 if (node.getNodeName().equals("node")) {
-
 
                     // the attributes on the node hold the id and lat/long; use these
                     // to create uri (id) and initial data (lot/long)
@@ -99,7 +108,7 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
                 }
             }
 
-            model.write(System.out);
+            fireRules();
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
@@ -150,7 +159,7 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
      * and literals.
      *
      * @param resource the Resource object we will add additional information.
-     * @param tag the XML node that holds the OSM data.
+     * @param tag      the XML node that holds the OSM data.
      */
     private void parseTagElement(Resource resource, Node tag) {
 
@@ -166,16 +175,19 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
         // we are interested in amenities
         if (map.getNamedItem("k").getTextContent().equals("amenity")) {
 
+            resource.addProperty(RDF.type, MCA_GEO.Amenity);
+
             // values can be separated by semicolons
-            String value = map.getNamedItem("v").getTextContent();
-            String[] values = value.split(";");
+            parseValue(map.getNamedItem("v").getTextContent(), resource);
+        }
 
-            // for each value create a tag and type, if appropriate
-            for (String value1 : values) {
-                addTag(value1, resource);
-                addType(value1, resource);
-            }
+        // we are interested in amenities
+        if (map.getNamedItem("k").getTextContent().equals("shop")) {
 
+            resource.addProperty(RDF.type, MCA_GEO.Shop);
+
+            // values can be separated by semicolons
+            parseValue(map.getNamedItem("v").getTextContent(), resource);
         }
 
         // does the node have a website?
@@ -197,52 +209,24 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
         }
     }
 
-    /**
-     * Create a "hasTag" for values
-     * @param value the value that will become a Literal for the hasTag property.
-     * @param resource the resource that we will attach the hasTag property.
-     */
-    private void addTag(String value, Resource resource) {
-        resource.addProperty(MCA_GEO.hasTag, value);
-    }
+    private void parseValue(String value, Resource resource) {
 
-    private void addType(String value, Resource resource) {
+        // values can be separated by semicolons
+        String[] values = value.split(";");
 
-        if (value.contains("restaurant")) {
-            resource.addProperty(RDF.type, MCA_GEO.Restaurant);
-        } else if (value.contains("cafe")) {
-            resource.addProperty(RDF.type, MCA_GEO.Cafe);
-        } else if (value.contains("pub")) {
-            resource.addProperty(RDF.type, MCA_GEO.Pub);
-        } else if (value.contains("bar")) {
-            resource.addProperty(RDF.type, MCA_GEO.Bar);
-        } else if (value.contains("post_box")) {
-            resource.addProperty(RDF.type, MCA_GEO.PostBox);
-        } else if (value.contains("bicycle_parking")) {
-            resource.addProperty(RDF.type, MCA_GEO.BicycleParking);
-        } else if (value.contains("waste_basket")) {
-            resource.addProperty(RDF.type, MCA_GEO.WasteBasket);
-        } else if (value.contains("bank")) {
-            resource.addProperty(RDF.type, MCA_GEO.Bank);
-        } else if (value.contains("post_office")) {
-            resource.addProperty(RDF.type, MCA_GEO.PostOffice);
-        } else if (value.contains("telephone")) {
-            resource.addProperty(RDF.type, MCA_GEO.Telephone);
-        } else if (value.contains("theatre")) {
-            resource.addProperty(RDF.type, MCA_GEO.Theatre);
-        } else if (value.contains("cinema")) {
-            resource.addProperty(RDF.type, MCA_GEO.Cinema);
-        } else if (value.contains("nightclub")) {
-            resource.addProperty(RDF.type, MCA_GEO.NightClub);
-        } else if (value.contains("arts_centre")) {
-            resource.addProperty(RDF.type, MCA_GEO.ArtsCentre);
-        } else if (value.contains("fast_food")) {
-            resource.addProperty(RDF.type, MCA_GEO.FastFood);
+        // for each value create a tag and type, if appropriate
+        for (String value1 : values) {
+            resource.addProperty(MCA_GEO.hasTag, value1);
         }
-
     }
 
+
+    void fireRules() {
+
+        model.add(ModelFactory.createInfModel(new GenericRuleReasoner(rules), model));
+    }
 
     private Model model;
 
+    private final List<Rule> rules;
 }
