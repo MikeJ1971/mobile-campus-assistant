@@ -2,7 +2,7 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-                xmlns:mca="http://org.ilrt.mca/registry#"
+                xmlns:mca="http://vocab.bris.ac.uk/mca/registry#"
                 xmlns:lookup="http://example.org/lookup"
                 extension-element-prefixes="lookup">
 

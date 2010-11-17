@@ -6,10 +6,10 @@ PREFIX rss:     <http://purl.org/rss/1.0/>
 PREFIX taxo:    <http://purl.org/rss/1.0/modules/taxonomy/>
 PREFIX content: <http://purl.org/rss/1.0/modules/content/>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
-PREFIX mca:     <http://org.ilrt.mca/registry#>
+PREFIX mca:     <http://vocab.bris.ac.uk/mca/registry#>
 CONSTRUCT {
     $id mca:hasNewsItem $itemId .
-    ?id rdf:type <http://org.ilrt.mca/registry#NewsItem> .
+    ?id rdf:type <http://vocab.bris.ac.uk/mca/registry#NewsItem> .
     $id rdfs:seeAlso $graph .
     $itemId dc:date $date .
     $itemId rss:description $description.

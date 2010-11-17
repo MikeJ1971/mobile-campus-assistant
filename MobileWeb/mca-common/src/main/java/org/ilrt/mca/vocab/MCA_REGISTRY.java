@@ -43,7 +43,7 @@ public class MCA_REGISTRY {
 
     private static final Model model = ModelFactory.createDefaultModel();
 
-    public static final String NS = "http://org.ilrt.mca/registry#";
+    public static final String NS = "http://vocab.bris.ac.uk/mca/registry#";
 
     public static String getURI() {
         return NS;

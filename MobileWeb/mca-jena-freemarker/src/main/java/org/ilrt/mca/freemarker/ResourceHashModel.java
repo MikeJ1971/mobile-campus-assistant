@@ -60,7 +60,7 @@ public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarMod
         prefixMapping.setNsPrefix("foaf", "http://xmlns.com/foaf/0.1/");
         prefixMapping.setNsPrefix("geo", "http://www.w3.org/2003/01/geo/wgs84_pos#");
         prefixMapping.setNsPrefix("dcterms", "http://purl.org/dc/terms/");
-        prefixMapping.setNsPrefix("mca", "http://org.ilrt.mca/registry#");
+        prefixMapping.setNsPrefix("mca", "http://vocab.bris.ac.uk/mca/registry#");
         prefixMapping.setNsPrefix("rss", "http://purl.org/rss/1.0/");
         prefixMapping.setNsPrefix("ical", "http://www.w3.org/2002/12/cal/ical#");
     }

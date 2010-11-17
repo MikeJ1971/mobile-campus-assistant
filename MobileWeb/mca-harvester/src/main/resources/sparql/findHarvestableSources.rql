@@ -1,5 +1,5 @@
  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
- PREFIX mca: <http://org.ilrt.mca/registry#>
+ PREFIX mca: <http://vocab.bris.ac.uk/mca/registry#>
  CONSTRUCT {
      ?s ?p ?o
  } WHERE {
