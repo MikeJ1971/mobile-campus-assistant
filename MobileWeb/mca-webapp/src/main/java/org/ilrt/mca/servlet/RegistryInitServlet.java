@@ -33,6 +33,7 @@ package org.ilrt.mca.servlet;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.util.FileManager;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.rdf.*;
@@ -93,6 +94,14 @@ public class RegistryInitServlet extends HttpServlet {
 
         repository.add(model);
         log.info("Added " + model.size() + " triples.");
+
+
+        // TODO - replace (just used for dev)
+        Model geoData = ModelFactory.createDefaultModel();
+        geoData.read(getClass().getResourceAsStream("/data/test-geodata.xml"), null);
+        repository.deleteAllInGraph("mca://testgeo");
+        repository.add("mca://testgeo", geoData);
+
     }
 
     @Override
