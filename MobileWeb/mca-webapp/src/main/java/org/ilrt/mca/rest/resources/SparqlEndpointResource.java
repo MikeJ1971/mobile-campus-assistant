@@ -40,6 +40,7 @@ import com.hp.hpl.jena.sdb.SDBFactory;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.container.servlet.WebConfig;
 import com.sun.jersey.spi.resource.Singleton;
+import org.apache.log4j.Logger;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.rest.ex.BadRequestException;
 import org.ilrt.mca.rdf.ConnPoolStoreWrapperManagerImpl;
@@ -77,11 +78,7 @@ public class SparqlEndpointResource {
     @Produces(MediaType.TEXT_HTML)
     public Response htmlView(@QueryParam("query") String query, @QueryParam("type") String type) {
 
-        //String enabled = wc.getInitParameter("sparqlEnabled");
-
         String enabled = wc.getServletContext().getInitParameter("sparqlEnabled");
-
-        System.out.println("ENABLED: " + enabled);
 
         if (enabled == null || enabled.equals("false"))
             return Response.status(Response.Status.SERVICE_UNAVAILABLE)
@@ -100,14 +97,16 @@ public class SparqlEndpointResource {
             RdfMediaType.SPARQL_RESULTS_XML, RdfMediaType.TEXT_RDF_N3})
     public Response query(@QueryParam("query") String query) {
 
-        //String enabled = wc.getInitParameter("sparqlEnabled");
-
         String enabled = wc.getServletContext().getInitParameter("sparqlEnabled");
 
-        if (enabled == null || enabled.equals("false"))
+        if (enabled == null || enabled.equals("false")) {
+
+            logger.info("The SPARQL Endpoint is not enabled");
+
             return Response.status(Response.Status.SERVICE_UNAVAILABLE)
                     .entity("The SPARQL endpoint is unavailable").type(MediaType.TEXT_PLAIN)
                     .build();
+        }
 
         // return a 404 if no query is provided
         if (query == null) throw new BadRequestException("No query string is provided");
@@ -119,16 +118,21 @@ public class SparqlEndpointResource {
 
     private Response query(String query, String type) {
 
+        logger.info("Querying the endpoint");
 
         // return a 404 if no query is provided
         if (query == null) throw new BadRequestException("No query string is provided");
 
         // compile the query
+        logger.debug("Creating the query");
         Query q = QueryFactory.create(query);
 
         // setup the query for execution
+        logger.debug("Getting a connection to the database");
         StoreWrapper storeWrapper = manager.getStoreWrapper();
+        logger.debug("Getting a dataset to query");
         Dataset dataset = SDBFactory.connectDataset(manager.getStoreWrapper().getStore());
+        logger.debug("Querying the dataset ...");
         QueryExecution qe = QueryExecutionFactory.create(q, dataset);
 
         // get the response
@@ -191,4 +195,6 @@ public class SparqlEndpointResource {
     final String CONFIG = "/sdb.ttl";
     StoreWrapperManager manager;
     private final String xml = "xml";
+
+    Logger logger = Logger.getLogger(SparqlEndpointResource.class);
 }
