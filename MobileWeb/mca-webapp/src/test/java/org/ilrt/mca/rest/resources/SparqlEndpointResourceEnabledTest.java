@@ -31,19 +31,17 @@
  */
 package org.ilrt.mca.rest.resources;
 
+import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.sun.jersey.api.client.Client;
+import com.hp.hpl.jena.sdb.SDBFactory;
+import com.hp.hpl.jena.sdb.Store;
+import com.hp.hpl.jena.sdb.sql.SDBConnection;
 import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 import com.sun.jersey.test.framework.WebAppDescriptor;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.ilrt.mca.RdfMediaType;
-import org.ilrt.mca.rest.providers.FreemarkerTemplateProvider;
-import org.ilrt.mca.rest.providers.JenaModelRdfProvider;
 import org.junit.Test;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -60,16 +58,16 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class SparqlEndpointResourceEnabledTest extends AbstractSparqlEndpointResourceTest {
+public class SparqlEndpointResourceEnabledTest extends AbstractResourceTest {
 
     public SparqlEndpointResourceEnabledTest() {
 
         super(new WebAppDescriptor.Builder("org.ilrt.mca.rest")
-                .initParam("sparqlEnabled", "true")
-                .build());
+                .initParam("sparqlEnabled", "true").build());
+
+        webResource = resource().path("/sparql"); // one request path for all tests
     }
 
     @Test
@@ -197,21 +195,26 @@ public class SparqlEndpointResourceEnabledTest extends AbstractSparqlEndpointRes
         validateJson(s);
     }
 
+    // ---------- Implement method that is abstract in the super class
 
-    // ---------- Override super class methods for client and web resource
+    protected void setUpDatabase() {
 
-    @Override
-    public Client client() {
+        // create a connection and store
+        SDBConnection conn = createConnection();
+        Store store = createStore(conn);
 
-        ClientConfig config = new DefaultClientConfig();
-        config.getClasses().add(JenaModelRdfProvider.class);
-        config.getClasses().add(FreemarkerTemplateProvider.class);
-        return Client.create(config);
-    }
+        // format the database
+        store.getTableFormatter().format();
+        store.getTableFormatter().truncate();
 
-    @Override
-    public WebResource resource() {
-        return client().resource("http://localhost:9998/");
+        // add the data
+        Dataset dataset = SDBFactory.connectDataset(store);
+        Model model = dataset.getDefaultModel();
+        model.read(getClass().getResourceAsStream(TEST_REGISTRY), null, "TTL");
+
+        // clean up
+        store.close();
+        conn.close();
     }
 
     private ClientResponse getClientResponse(String query, String mediaType) {

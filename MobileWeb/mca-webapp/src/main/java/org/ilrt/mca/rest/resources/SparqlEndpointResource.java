@@ -42,11 +42,8 @@ import com.sun.jersey.spi.container.servlet.WebConfig;
 import com.sun.jersey.spi.resource.Singleton;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.RdfMediaType;
-import org.ilrt.mca.rest.ex.BadRequestException;
-import org.ilrt.mca.rdf.ConnPoolStoreWrapperManagerImpl;
-import org.ilrt.mca.rdf.DataSourceManager;
 import org.ilrt.mca.rdf.StoreWrapper;
-import org.ilrt.mca.rdf.StoreWrapperManager;
+import org.ilrt.mca.rest.ex.BadRequestException;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -57,19 +54,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
 @Singleton
 @Path("/sparql")
-public class SparqlEndpointResource {
+public class SparqlEndpointResource extends AbstractResource {
 
     // ---------- Constructors
 
     public SparqlEndpointResource() {
-        DataSourceManager dataSourceManager = new DataSourceManager();
-        manager = new ConnPoolStoreWrapperManagerImpl(CONFIG,
-                dataSourceManager.getDataSource());
+        super();
     }
 
     // ---------- Public methods (Jersey)
@@ -192,8 +186,6 @@ public class SparqlEndpointResource {
     @Context
     WebConfig wc;
 
-    final String CONFIG = "/sdb.ttl";
-    StoreWrapperManager manager;
     private final String xml = "xml";
 
     Logger logger = Logger.getLogger(SparqlEndpointResource.class);

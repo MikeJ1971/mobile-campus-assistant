@@ -39,11 +39,8 @@ import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.ItemDao;
 import org.ilrt.mca.dao.ItemDaoImpl;
-import org.ilrt.mca.rdf.ConnPoolStoreWrapperManagerImpl;
-import org.ilrt.mca.rdf.DataSourceManager;
 import org.ilrt.mca.rdf.QueryManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
-import org.ilrt.mca.rdf.StoreWrapperManager;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.ws.rs.GET;
@@ -60,12 +57,10 @@ import javax.ws.rs.core.UriInfo;
  */
 @Singleton
 @Path("{path:.*}")
-public class MobileCampusResource {
+public class MobileCampusResource extends AbstractResource {
 
     public MobileCampusResource() throws Exception {
-
-        DataSourceManager dataSourceManager = new DataSourceManager();
-        StoreWrapperManager manager = new ConnPoolStoreWrapperManagerImpl(CONFIG, dataSourceManager.getDataSource());
+        super();
         QueryManager queryManager = new SdbManagerImpl(manager);
         itemDao = new ItemDaoImpl(queryManager);
     }
@@ -147,6 +142,5 @@ public class MobileCampusResource {
     }
 
     private ItemDao itemDao;
-    final String CONFIG = "/sdb.ttl";
     Logger log = Logger.getLogger(MobileCampusResource.class);
 }
