@@ -61,4 +61,10 @@ public class MCA_GEO {
     public static final Resource MusicalInstrument = model.createResource(NS + "musical_instruments");
 
     public static final Property hasTag = model.createProperty(NS + "hasTag");
+
+    public static final Resource EatingPlace = model.createResource(NS + "eating_place");
+
+    public static final Resource DrinkingPlace = model.createResource(NS + "drinking_place");
+
+    public static final Resource BuildingWithCashPoint = model.createResource(NS + "building_with_cashpoint");
 }

@@ -207,6 +207,13 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
             resource.addProperty(FOAF.phone, model.createResource("tel:" + map.getNamedItem("v")
                     .getTextContent()));
         }
+
+        // does the node have an atm
+        if (map.getNamedItem("k").getTextContent().equals("atm")) {
+            if (map.getNamedItem("v").getTextContent().equals("yes")) {
+                resource.addProperty(RDF.type, MCA_GEO.BuildingWithCashPoint);
+            }
+        }
     }
 
     private void parseValue(String value, Resource resource) {

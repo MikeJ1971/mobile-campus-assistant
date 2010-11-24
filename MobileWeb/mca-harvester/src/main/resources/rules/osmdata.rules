@@ -11,10 +11,14 @@
 [rdfs9:  (?x rdfs:subClassOf ?y), (?a rdf:type ?x) -> (?a rdf:type ?y)]
 
 # these related to labels used to describe amenities
-(?a mcageo:hasTag 'restaurant') -> (?a rdf:type mcageo:restaurant) .
-(?a mcageo:hasTag 'bar') -> (?a rdf:type mcageo:bar) .
-(?a mcageo:hasTag 'cafe') -> (?a rdf:type mcageo:cafe) .
-(?a mcageo:hasTag 'pub') -> (?a rdf:type mcageo:pub) .
+(?a mcageo:hasTag 'restaurant') -> (?a rdf:type mcageo:restaurant),
+                                   (?a rdf:type mcageo:eating_place) .
+(?a mcageo:hasTag 'bar') -> (?a rdf:type mcageo:bar),
+                            (?a rdf:type mcageo:drinking_place) .
+(?a mcageo:hasTag 'cafe') -> (?a rdf:type mcageo:cafe),
+                             (?a rdf:type mcageo:eating_place) .
+(?a mcageo:hasTag 'pub') -> (?a rdf:type mcageo:pub),
+                            (?a rdf:type mcageo:drinking_place) .
 (?a mcageo:hasTag 'post_box') -> (?a rdf:type mcageo:post_box) .
 (?a mcageo:hasTag 'bicycle_parking') -> (?a rdf:type mcageo:bicycle_parking) .
 (?a mcageo:hasTag 'waste_basket') -> (?a rdf:type mcageo:waste_basket) .
@@ -25,7 +29,8 @@
 (?a mcageo:hasTag 'cinema') -> (?a rdf:type mcageo:cinema) .
 (?a mcageo:hasTag 'nightclub') -> (?a rdf:type mcageo:nightclub) .
 (?a mcageo:hasTag 'arts_centre') -> (?a rdf:type mcageo:arts_centre) .
-(?a mcageo:hasTag 'fast_food') -> (?a rdf:type mcageo:fast_food) .
+(?a mcageo:hasTag 'fast_food') -> (?a rdf:type mcageo:fast_food),
+                                  (?a rdf:type mcageo:eating_place) .
 (?a mcageo:hasTag 'pharmacy') -> (?a rdf:type mcageo:pharmacy) .
 
 # these related to labels used to describe shops

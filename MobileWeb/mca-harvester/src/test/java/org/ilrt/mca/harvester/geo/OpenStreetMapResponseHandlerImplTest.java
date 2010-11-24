@@ -69,6 +69,8 @@ public class OpenStreetMapResponseHandlerImplTest extends AbstractTest {
 
         assertTrue("The model shouldn't be empty", model.size() > 0);
 
+        //model.write(System.out);
+
         // check that are number of inferred types are available
         assertTrue(model.contains(null, RDF.type, MCA_GEO.Amenity));
         assertTrue(model.contains(null, RDF.type, MCA_GEO.ArtsCentre));
@@ -76,6 +78,9 @@ public class OpenStreetMapResponseHandlerImplTest extends AbstractTest {
         assertTrue(model.contains(null, RDF.type, MCA_GEO.PostBox));
         assertTrue(model.contains(null, RDF.type, MCA_GEO.BicycleParking));
         assertTrue(model.contains(null, RDF.type, MCA_GEO.Pharmacy));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.EatingPlace));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.DrinkingPlace));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.BuildingWithCashPoint));
     }
 
     @Test
@@ -93,6 +98,7 @@ public class OpenStreetMapResponseHandlerImplTest extends AbstractTest {
         // check that are number of inferred types are available
         assertTrue(model.contains(null, RDF.type, MCA_GEO.Shop));
         assertTrue(model.contains(null, RDF.type, MCA_GEO.Supermarket));
+        assertTrue(model.contains(null, RDF.type, MCA_GEO.BuildingWithCashPoint));
     }
 
 
