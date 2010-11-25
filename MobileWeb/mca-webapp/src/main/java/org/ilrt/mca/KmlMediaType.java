@@ -29,58 +29,26 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ilrt.mca.rest.resources;
+package org.ilrt.mca;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.sun.jersey.spi.resource.Singleton;
-import org.apache.log4j.Logger;
-import org.ilrt.mca.KmlMediaType;
-import org.ilrt.mca.RdfMediaType;
-import org.ilrt.mca.dao.GeoDao;
-import org.ilrt.mca.rdf.SdbManagerImpl;
-import org.ilrt.mca.vocab.MCA_GEO;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-import java.io.IOException;
+import javax.ws.rs.core.MediaType;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-@Singleton
-@Path("/geo/")
-public class GeoResource extends AbstractResource {
+public class KmlMediaType {
 
-    // ---------- Constructors
-
-    public GeoResource() throws IOException {
-        super();
-        geoDao = new GeoDao(new SdbManagerImpl(manager));
+    private KmlMediaType() {
     }
 
-    @GET
-    @Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3, KmlMediaType.APPLICATION_KML})
-    @Path("places/{type}")
-    public Response places(@PathParam("type") String type) {
+    public final static String APPLICATION_KML = "application/vnd.google-earth.kml+xml";
 
-        String typeUri = MCA_GEO.NS + type;
+    public final static MediaType APPLICATION_KML_TYPE =
+            new MediaType("application", "vnd.google-earth.kml+xml");
 
-        log.debug("Request for type: " + typeUri);
+    public final static String APPLICATION_KMZ = "application/vnd.google-earth.kmz";
 
-        Model m = geoDao.findGeoPointByType(typeUri);
+    public final static MediaType APPLICATION_KMZ_TYPE =
+            new MediaType("application", "vnd.google-earth.kmz");
 
-        if (m == null || m.size() == 0) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            return Response.ok(m).build();
-        }
-    }
-
-    Logger log = Logger.getLogger(GeoResource.class);
-
-
-    private GeoDao geoDao;
 }

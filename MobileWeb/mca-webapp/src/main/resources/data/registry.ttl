@@ -98,6 +98,6 @@
 
 <http://www.bristol.ac.uk/is/news/news.rss> rdf:type mca:FeedSource .
 
-<http://xapi.openstreetmap.org/api/0.6/node%5Bbbox=-2.614,51.453,-2.595,51.462%5D%5Bamenity=*%5D> rdf:type mca:OSMGeoSource .
+<http://www.informationfreeway.org/api/0.6/node%5Bbbox=-2.614,51.453,-2.595,51.462%5D%5Bamenity=*%5D> rdf:type mca:OSMGeoSource .
 
-<http://xapi.openstreetmap.org/api/0.6/node%5Bbbox=-2.614,51.453,-2.595,51.462%5D%5Bshop=*%5D> rdf:type mca:OSMGeoSource .
+<http://www.informationfreeway.org/api/0.6/node%5Bbbox=-2.614,51.453,-2.595,51.462%5D%5Bshop=*%5D> rdf:type mca:OSMGeoSource .

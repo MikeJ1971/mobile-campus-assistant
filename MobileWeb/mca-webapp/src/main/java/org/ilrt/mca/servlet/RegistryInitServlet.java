@@ -33,11 +33,16 @@ package org.ilrt.mca.servlet;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.sdb.SDBFactory;
 import com.hp.hpl.jena.util.FileManager;
 import org.apache.log4j.Logger;
-import org.ilrt.mca.rdf.*;
+import org.ilrt.mca.harvester.Harvester;
+import org.ilrt.mca.harvester.geo.OpenStreetMapHarvesterImpl;
+import org.ilrt.mca.rdf.ConnPoolStoreWrapperManagerImpl;
+import org.ilrt.mca.rdf.DataManager;
+import org.ilrt.mca.rdf.DataSourceManager;
 import org.ilrt.mca.rdf.SdbManagerImpl;
+import org.ilrt.mca.rdf.StoreWrapper;
+import org.ilrt.mca.rdf.StoreWrapperManager;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -73,7 +78,7 @@ public class RegistryInitServlet extends HttpServlet {
         log.info("Database used: " + wrapper.getStore().getDatabaseType().getName());
         wrapper.close();
 
-        UpdateManager repository = new SdbManagerImpl(manager);
+        DataManager repository = new SdbManagerImpl(manager);
 
         // clear existing registry
         log.info("Clearing existing registry details");
@@ -96,11 +101,20 @@ public class RegistryInitServlet extends HttpServlet {
         log.info("Added " + model.size() + " triples.");
 
 
-        // TODO - replace (just used for dev)
-        Model geoData = ModelFactory.createDefaultModel();
-        geoData.read(getClass().getResourceAsStream("/data/test-geodata.xml"), null);
-        repository.deleteAllInGraph("mca://testgeo");
-        repository.add("mca://testgeo", geoData);
+        try {
+            log.info("Harvesting OSM geo data");
+            Harvester osm = new OpenStreetMapHarvesterImpl(repository);
+            osm.harvest();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        log.info("Registry servlet finished loading data");
+//        // TODO - replace (just used for dev)
+//        Model geoData = ModelFactory.createDefaultModel();
+//        geoData.read(getClass().getResourceAsStream("/data/test-geodata.xml"), null);
+//        repository.deleteAllInGraph("mca://testgeo");
+//        repository.add("mca://testgeo", geoData);
 
     }
 
