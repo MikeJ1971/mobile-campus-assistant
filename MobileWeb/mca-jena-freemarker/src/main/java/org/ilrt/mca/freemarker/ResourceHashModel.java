@@ -20,6 +20,7 @@ import freemarker.template.TemplateHashModelEx;
 import freemarker.template.TemplateModel;
 import freemarker.template.TemplateModelException;
 import freemarker.template.TemplateScalarModel;
+import org.ilrt.mca.Common;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,15 +55,7 @@ public class ResourceHashModel implements TemplateHashModelEx, TemplateScalarMod
     public ResourceHashModel(Resource resource) {
         this.resource = resource;
         this.prefixMapping = PrefixMapping.Factory.create();
-
-        // hard coded - not ideal
-        prefixMapping.setNsPrefixes(PrefixMapping.Standard);
-        prefixMapping.setNsPrefix("foaf", "http://xmlns.com/foaf/0.1/");
-        prefixMapping.setNsPrefix("geo", "http://www.w3.org/2003/01/geo/wgs84_pos#");
-        prefixMapping.setNsPrefix("dcterms", "http://purl.org/dc/terms/");
-        prefixMapping.setNsPrefix("mca", "http://vocab.bris.ac.uk/mca/registry#");
-        prefixMapping.setNsPrefix("rss", "http://purl.org/rss/1.0/");
-        prefixMapping.setNsPrefix("ical", "http://www.w3.org/2002/12/cal/ical#");
+        this.prefixMapping.setNsPrefixes(Common.getCommonPrefixes());
     }
 
     // ---------- TemplateModel interface methods

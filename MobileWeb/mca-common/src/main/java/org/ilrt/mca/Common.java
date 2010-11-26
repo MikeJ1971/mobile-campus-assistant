@@ -31,6 +31,8 @@
  */
 package org.ilrt.mca;
 
+import com.hp.hpl.jena.shared.PrefixMapping;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -134,5 +136,19 @@ public class Common {
         while (!openTags.empty()) s += "</" + openTags.pop().toString() + ">";
 
         return s;
+    }
+
+    public static PrefixMapping getCommonPrefixes() {
+
+        PrefixMapping prefixMapping = PrefixMapping.Factory.create();
+        prefixMapping.setNsPrefixes(PrefixMapping.Standard);
+        prefixMapping.setNsPrefix("foaf", "http://xmlns.com/foaf/0.1/");
+        prefixMapping.setNsPrefix("geo", "http://www.w3.org/2003/01/geo/wgs84_pos#");
+        prefixMapping.setNsPrefix("dcterms", "http://purl.org/dc/terms/");
+        prefixMapping.setNsPrefix("mca", "http://vocab.bris.ac.uk/mca/registry#");
+        prefixMapping.setNsPrefix("mcageo", "http://vocab.bris.ac.uk/mca/geo#");
+        prefixMapping.setNsPrefix("rss", "http://purl.org/rss/1.0/");
+        prefixMapping.setNsPrefix("ical", "http://www.w3.org/2002/12/cal/ical#");
+        return prefixMapping;
     }
 }
