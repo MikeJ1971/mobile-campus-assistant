@@ -100,7 +100,7 @@ public class RegistryInitServlet extends HttpServlet {
         repository.add(model);
         log.info("Added " + model.size() + " triples.");
 
-
+/*
         try {
             log.info("Harvesting OSM geo data");
             Harvester osm = new OpenStreetMapHarvesterImpl(repository);
@@ -108,7 +108,7 @@ public class RegistryInitServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
         log.info("Registry servlet finished loading data");
 //        // TODO - replace (just used for dev)
 //        Model geoData = ModelFactory.createDefaultModel();

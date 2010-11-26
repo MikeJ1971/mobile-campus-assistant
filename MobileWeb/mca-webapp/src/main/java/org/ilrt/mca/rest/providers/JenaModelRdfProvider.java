@@ -33,6 +33,7 @@ package org.ilrt.mca.rest.providers;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 
 import javax.ws.rs.Consumes;
@@ -76,6 +77,7 @@ public final class JenaModelRdfProvider implements MessageBodyWriter<Object>,
             WebApplicationException {
 
         Model model = (Model) o;
+        model.setNsPrefixes(Common.getCommonPrefixes());
 
         // defaults to N3
         if (mediaType.getType().equals("text") && mediaType.getSubtype().startsWith("n3")) {

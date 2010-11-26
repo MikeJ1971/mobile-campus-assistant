@@ -36,10 +36,13 @@ import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.ResultSetFormatter;
+import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.sdb.SDBFactory;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.container.servlet.WebConfig;
 import com.sun.jersey.spi.resource.Singleton;
+import com.talis.rdfwriters.json.JSONJenaWriter;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.rdf.StoreWrapper;
@@ -52,6 +55,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -103,7 +108,10 @@ public class SparqlEndpointResource extends AbstractResource {
         }
 
         // return a 404 if no query is provided
-        if (query == null) throw new BadRequestException("No query string is provided");
+        if (query == null || query == "") {
+            logger.info("There is no request, throw an exception");
+            throw new BadRequestException("No query string is provided");
+        }
 
         return query(query, null);
     }
@@ -115,78 +123,101 @@ public class SparqlEndpointResource extends AbstractResource {
         logger.info("Querying the endpoint");
 
         // return a 404 if no query is provided
-        if (query == null) throw new BadRequestException("No query string is provided");
+        if (query == null|| query == "") throw new BadRequestException("No query string is provided");
 
-        // compile the query
-        logger.debug("Creating the query");
         Query q = QueryFactory.create(query);
 
-        // setup the query for execution
-        logger.debug("Getting a connection to the database");
-        StoreWrapper storeWrapper = manager.getStoreWrapper();
-        logger.debug("Getting a dataset to query");
-        Dataset dataset = SDBFactory.connectDataset(manager.getStoreWrapper().getStore());
-        logger.debug("Querying the dataset ...");
-        QueryExecution qe = QueryExecutionFactory.create(q, dataset);
-
-        // get the response
-
-        Response.ResponseBuilder response;
-
-        if (type != null) {
-            response = getResponse(q, qe, type);
-        } else {
-            response = getResponse(q, qe);
+        if (q.isUnknownType()) {
+            throw new BadRequestException("Unexpected query");
         }
 
+        return Response.ok(new SparqlQueryResults(manager.getStoreWrapper(), query, type)).build();
 
-        // cleanup
-        storeWrapper.close();
-
-        return response.build();
     }
 
-
-    private Response.ResponseBuilder getResponse(Query q, QueryExecution qe) {
-        if (q.isAskType()) {
-            return Response.ok(qe.execAsk());
-        } else if (q.isDescribeType()) {
-            return Response.ok(qe.execDescribe());
-        } else if (q.isConstructType()) {
-            return Response.ok(qe.execConstruct());
-        } else if (q.isSelectType()) {
-            return Response.ok(qe.execSelect());
-        } else {
-            return null;
-        }
-    }
-
-
-    private Response.ResponseBuilder getResponse(Query q, QueryExecution qe, String type) {
-
-        Response.ResponseBuilder builder = getResponse(q, qe);
-
-        if (q.isAskType() || q.isSelectType()) {
-            if (type.equals(xml)) {
-                return builder.type(RdfMediaType.SPARQL_RESULTS_XML_TYPE);
-            } else {
-                return builder.type(RdfMediaType.SPARQL_RESULTS_JSON_TYPE);
-            }
-        } else if (q.isConstructType() || q.isDescribeType()) {
-            if (type.equals(xml)) {
-                return builder.type(RdfMediaType.APPLICATION_RDF_XML_TYPE);
-            } else {
-                return builder.type(MediaType.APPLICATION_JSON_TYPE);
-            }
-        } else {
-            return null;
-        }
-    }
 
     @Context
+    private
     WebConfig wc;
 
     private final String xml = "xml";
 
-    Logger logger = Logger.getLogger(SparqlEndpointResource.class);
+    private final Logger logger = Logger.getLogger(SparqlEndpointResource.class);
+
+    public class SparqlQueryResults {
+
+        public SparqlQueryResults(StoreWrapper wrapper, String query, String type) {
+            this.wrapper = wrapper;
+            this.query = query;
+            this.type = type;
+        }
+
+
+        public void executeAndStreamResults(OutputStream outputStream, MediaType mediaType) throws IOException {
+
+            // prepare the query and get access to the data
+            Query q = QueryFactory.create(query);
+            Dataset dataset = SDBFactory.connectDataset(manager.getStoreWrapper().getStore());
+
+            // execute the query
+            QueryExecution qe = QueryExecutionFactory.create(q, dataset);
+
+            if (q.isAskType()) {
+
+                if (mediaType.equals(RdfMediaType.SPARQL_RESULTS_XML_TYPE)) {
+                    ResultSetFormatter.outputAsXML(outputStream, qe.execAsk());
+                } else {
+                    ResultSetFormatter.outputAsJSON(outputStream, qe.execAsk());
+                }
+            } else if (q.isDescribeType()) {
+
+                Model m = qe.execDescribe();
+                streamModel(m, mediaType, outputStream);
+                m.close();
+
+            } else if (q.isConstructType()) {
+
+                Model m = qe.execConstruct();
+                streamModel(m, mediaType, outputStream);
+                m.close();
+
+            } else if (q.isSelectType()) {
+                if (mediaType.equals(RdfMediaType.SPARQL_RESULTS_XML_TYPE)) {
+                    ResultSetFormatter.outputAsXML(outputStream, qe.execSelect());
+                } else {
+                    ResultSetFormatter.outputAsJSON(outputStream, qe.execSelect());
+                }
+            }
+
+            outputStream.flush();
+            qe.close();
+            dataset.close();
+            wrapper.close();
+        }
+
+        private void streamModel(Model m, MediaType mediaType, OutputStream outputStream) {
+
+            if (type == null) {
+                if (mediaType.getType().equals("text") && mediaType.getSubtype().startsWith("n3")) {
+                    m.write(outputStream, "N3");
+                } else {
+                    m.write(outputStream, "RDF/XML-ABBREV");
+                }
+            } else {
+                if (type.equals(xml)) {
+                    m.write(outputStream, "RDF/XML-ABBREV");
+                } else {
+                    JSONJenaWriter jsonJenaWriter = new JSONJenaWriter();
+                    jsonJenaWriter.write(m, outputStream, null);
+                }
+            }
+        }
+
+
+        private final StoreWrapper wrapper;
+
+        private final String query;
+        private final String type;
+    }
+
 }
