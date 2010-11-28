@@ -108,7 +108,7 @@ public class SparqlEndpointResource extends AbstractResource {
         }
 
         // return a 404 if no query is provided
-        if (query == null || query == "") {
+        if (query == null || query.equals("")) {
             logger.info("There is no request, throw an exception");
             throw new BadRequestException("No query string is provided");
         }
@@ -123,7 +123,7 @@ public class SparqlEndpointResource extends AbstractResource {
         logger.info("Querying the endpoint");
 
         // return a 404 if no query is provided
-        if (query == null|| query == "") throw new BadRequestException("No query string is provided");
+        if (query == null|| query.equals("")) throw new BadRequestException("No query string is provided");
 
         Query q = QueryFactory.create(query);
 
@@ -155,9 +155,11 @@ public class SparqlEndpointResource extends AbstractResource {
 
         public void executeAndStreamResults(OutputStream outputStream, MediaType mediaType) throws IOException {
 
+            try {
+
             // prepare the query and get access to the data
             Query q = QueryFactory.create(query);
-            Dataset dataset = SDBFactory.connectDataset(manager.getStoreWrapper().getStore());
+            Dataset dataset = SDBFactory.connectDataset(wrapper.getStore());
 
             // execute the query
             QueryExecution qe = QueryExecutionFactory.create(q, dataset);
@@ -193,6 +195,10 @@ public class SparqlEndpointResource extends AbstractResource {
             qe.close();
             dataset.close();
             wrapper.close();
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
 
         private void streamModel(Model m, MediaType mediaType, OutputStream outputStream) {
