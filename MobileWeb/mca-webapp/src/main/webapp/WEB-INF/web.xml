@@ -8,6 +8,10 @@
     <display-name>Mobile Campus Assistant</display-name>
 
 
+    <listener>
+        <listener-class>net.sf.ehcache.constructs.web.ShutdownListener</listener-class>
+    </listener>
+
     <!-- CONTEXT PARAMETERS -->
 
     <context-param>
