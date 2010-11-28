@@ -59,7 +59,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 @Provider
-@Produces({KmlMediaType.APPLICATION_KML})
+@Produces({MediaType.WILDCARD, KmlMediaType.APPLICATION_KML})
 public class JenaModelKmlProvider implements MessageBodyWriter<Model> {
 
 
