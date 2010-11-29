@@ -32,12 +32,13 @@
 package org.ilrt.mca.rest.resources;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.sun.jersey.core.header.ContentDisposition;
 import com.sun.jersey.spi.resource.Singleton;
-import org.apache.log4j.Logger;
 import org.ilrt.mca.KmlMediaType;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.GeoDao;
 import org.ilrt.mca.rdf.SdbManagerImpl;
+import org.ilrt.mca.rest.ex.NotFoundException;
 import org.ilrt.mca.vocab.MCA_GEO;
 
 import javax.ws.rs.GET;
@@ -62,26 +63,35 @@ public class GeoResource extends AbstractResource {
         geoDao = new GeoDao(new SdbManagerImpl(manager));
     }
 
+
     @GET
-    @Produces({MediaType.WILDCARD, RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3, KmlMediaType.APPLICATION_KML})
+    @Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3})
     @Path("places/{type}")
-    public Response places(@PathParam("type") String type) {
+    public Response placesAsRdf(@PathParam("type") String type) {
 
-        String typeUri = MCA_GEO.NS + type;
-
-        log.debug("Request for type: " + typeUri);
-
-        Model m = geoDao.findGeoPointByType(typeUri);
-
-        if (m == null || m.size() == 0) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        } else {
-            return Response.ok(m).build();
-        }
+        return Response.ok(createModel(MCA_GEO.NS + type)).build();
     }
 
-    Logger log = Logger.getLogger(GeoResource.class);
+    @GET
+    @Produces({MediaType.WILDCARD, KmlMediaType.APPLICATION_KML})
+    @Path("places/{type}")
+    public Response placesAsKml(@PathParam("type") String type) {
 
+        ContentDisposition cd = ContentDisposition.type("file").fileName(type + ".kml").build();
+
+        return Response.ok(createModel(MCA_GEO.NS + type))
+                .type(KmlMediaType.APPLICATION_KML_TYPE).header("Content-Disposition", cd).build();
+    }
+
+    private Model createModel(String type) {
+
+        Model m = geoDao.findGeoPointByType(type);
+
+        if (m == null || m.size() == 0)
+            throw new NotFoundException("Unable to find the requested resource");
+
+        return geoDao.findGeoPointByType(type);
+    }
 
     private GeoDao geoDao;
 }
