@@ -32,13 +32,19 @@
 package org.ilrt.mca.rest.resources;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 import com.sun.jersey.core.header.ContentDisposition;
 import com.sun.jersey.spi.resource.Singleton;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONObject;
 import org.ilrt.mca.KmlMediaType;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.GeoDao;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rest.ex.NotFoundException;
+import org.ilrt.mca.vocab.GEO;
 import org.ilrt.mca.vocab.MCA_GEO;
 
 import javax.ws.rs.GET;
@@ -48,6 +54,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -72,6 +80,16 @@ public class GeoResource extends AbstractResource {
         return Response.ok(createModel(MCA_GEO.NS + type)).build();
     }
 
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("places/{type}")
+    public Response placesAsJson(@PathParam("type") String type) {
+
+        return Response.ok(jsonRepresentationOfModel(createModel(MCA_GEO.NS + type)))
+                .type(MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
     @GET
     @Produces({MediaType.WILDCARD, KmlMediaType.APPLICATION_KML})
     @Path("places/{type}")
@@ -92,6 +110,36 @@ public class GeoResource extends AbstractResource {
 
         return geoDao.findGeoPointByType(type);
     }
+
+    private JSONObject jsonRepresentationOfModel(Model m) {
+
+        ResIterator iter = m.listResourcesWithProperty(RDF.type, GEO.Point);
+
+        JSONArray jsonArray = new JSONArray();
+
+        while (iter.hasNext()) {
+
+            Resource resource = iter.nextResource();
+
+            Map<String, String> map = new HashMap<String, String>();
+
+            map.put("id", resource.getURI());
+
+            if (resource.hasProperty(GEO.longitude))
+                map.put("lng", resource.getProperty(GEO.longitude).getLiteral().getLexicalForm());
+
+            if (resource.hasProperty(GEO.latitude))
+                map.put("lat", resource.getProperty(GEO.latitude).getLiteral().getLexicalForm());
+
+            jsonArray.put(map);
+        }
+
+        Map<String, JSONArray> p = new HashMap<String, JSONArray>();
+        p.put("markers", jsonArray);
+
+        return new JSONObject(p);
+    }
+
 
     private GeoDao geoDao;
 }

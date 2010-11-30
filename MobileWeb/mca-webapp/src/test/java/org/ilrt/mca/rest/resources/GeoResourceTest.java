@@ -42,6 +42,7 @@ import org.ilrt.mca.KmlMediaType;
 import org.ilrt.mca.RdfMediaType;
 import org.junit.Test;
 
+import javax.ws.rs.core.MediaType;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
@@ -96,6 +97,17 @@ public class GeoResourceTest extends AbstractResourceTest {
         assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
     }
 
+    @Test
+    public void testJson() {
+
+        webResource = resource().path("/geo/places/cafe");
+
+        ClientResponse clientResponse = webResource.accept(MediaType.APPLICATION_JSON_TYPE)
+                .get(ClientResponse.class);
+
+        assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
+
+    }
 
     @Override
     protected void setUpDatabase() {
