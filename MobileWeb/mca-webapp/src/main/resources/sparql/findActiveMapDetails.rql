@@ -12,9 +12,9 @@ CONSTRUCT {
     $id geo:lat $latitude .
     $id geo:long $longitude .
 } WHERE {
-    $id mca:urlStem $urlStem .
-    $id mca:markers $markers .
-    $id mca:icon $icon .
+    OPTIONAL { $id mca:urlStem $urlStem  } .
+    OPTIONAL { $id mca:markers $markers } .
+    OPTIONAL { $id mca:icon $icon } .
     $id geo:lat $latitude .
     $id geo:long $longitude .
 }

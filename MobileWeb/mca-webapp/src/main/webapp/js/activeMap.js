@@ -315,10 +315,11 @@ var getMarkerData = function(url) {
 
         // code for IE6, IE5
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-
     }
 
     xmlhttp.onreadystatechange = function() {
+
+        
 
         if (xmlhttp.readyState == 4) {
 
@@ -329,8 +330,11 @@ var getMarkerData = function(url) {
 
     }
 
+
+
     // make the request
     xmlhttp.open("GET", url, true);
+    xmlhttp.setRequestHeader("accept", "application/json");
     xmlhttp.send(null);
 
 }
@@ -348,12 +352,23 @@ var createMarkers = function(markerJson) {
     for (var i = 0; i < markerData.length; i++) {
         var point = new google.maps.LatLng(markerData[i].lat, markerData[i].lng);
         var markerId = markerData[i].id;
-        var marker = new google.maps.Marker({
-            position: point,
-            icon: icon
-        });
+        var marker;
+
+        if (icon == undefined) {
+            marker = new google.maps.Marker({
+                position: point
+            });
+        } else {
+
+            marker = new google.maps.Marker({
+                position: point,
+                icon: icon
+            });
+        }
         // attach the click listener
-        attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
+        if (proxyUrl != undefined) {
+            attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
+        } 
         markers[i] = marker;
     }
 };
