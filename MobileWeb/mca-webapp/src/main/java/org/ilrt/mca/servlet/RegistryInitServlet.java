@@ -35,8 +35,6 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.util.FileManager;
 import org.apache.log4j.Logger;
-import org.ilrt.mca.harvester.Harvester;
-import org.ilrt.mca.harvester.geo.OpenStreetMapHarvesterImpl;
 import org.ilrt.mca.rdf.ConnPoolStoreWrapperManagerImpl;
 import org.ilrt.mca.rdf.DataManager;
 import org.ilrt.mca.rdf.DataSourceManager;
@@ -98,23 +96,22 @@ public class RegistryInitServlet extends HttpServlet {
         }
 
         repository.add(model);
-        log.info("Added " + model.size() + " triples.");
 
+        log.info("Loading OSM amenities data ...");
+        Model amenities = ModelFactory.createDefaultModel();
+        amenities.read(getClass().getResourceAsStream("/data/osm-amenities.rdf"), null);
+        repository.deleteAllInGraph("mca://osm-amenities");
+        repository.add("mca://osm-amenities", amenities);
+        log.info("added " + amenities.size() + " triples");
 
-//        try {
-//            log.info("Harvesting OSM geo data");
-//            Harvester osm = new OpenStreetMapHarvesterImpl(repository);
-//            osm.harvest();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        log.info("Loading OSM shop data ...");
+        Model shops = ModelFactory.createDefaultModel();
+        shops.read(getClass().getResourceAsStream("/data/osm-shops.rdf"), null);
+        repository.deleteAllInGraph("mca://osm-shops");
+        repository.add("mca://osm-shops", shops);
+        log.info("added " + shops.size() + " triples");
 
         log.info("Registry servlet finished loading data");
-//        // TODO - replace (just used for dev)
-        Model geoData = ModelFactory.createDefaultModel();
-        geoData.read(getClass().getResourceAsStream("/data/test-geodata.xml"), null);
-        repository.deleteAllInGraph("mca://testgeo");
-        repository.add("mca://testgeo", geoData);
 
     }
 

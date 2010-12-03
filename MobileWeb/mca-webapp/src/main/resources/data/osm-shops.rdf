@@ -1,0 +1,1144 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ical="http://www.w3.org/2002/12/cal/ical#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rss="http://purl.org/rss/1.0/"
+    xmlns:mcageo="http://vocab.bris.ac.uk/mca/geo#"
+    xmlns:mca="http://vocab.bris.ac.uk/mca/registry#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" >
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354662">
+    <foaf:homepage rdf:resource="http://www.three.co.uk/"/>
+    <mcageo:hasTag>mobile_phone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1173 763553"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3 Store</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6063306</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4562478</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957706489">
+    <mcageo:hasTag>optician</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vision Express</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980116</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4529331</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/475993896">
+    <mcageo:hasTag>convenience</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spar</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6024639</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4543206</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704291">
+    <foaf:homepage rdf:resource="http://www.mainlineemployment.co.uk/"/>
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 3763647"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mainline</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979836</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4529973</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754250">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">L'Occitane</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6042092</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4556027</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860251866">
+    <foaf:homepage rdf:resource="http://www.thefloristltd.co.uk/"/>
+    <mcageo:hasTag>florist</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9451820"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Florist Ltd</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969237</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4532689</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/859575390">
+    <mcageo:hasTag>sports</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Movi</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6084319</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4617793</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/687453802">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#supermarket"/>
+    <mcageo:hasTag>supermarket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#building_with_cashpoint"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5968845</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4527703</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429501">
+    <foaf:homepage rdf:resource="http://www.cathkidston.co.uk/findus.aspx?store=Bristol"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 304722"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cath Kidston</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6040503</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4552642</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/955512397">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Recession</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6077522</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4512182</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739365">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">City Job Shop</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5992014</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4524319</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739347">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5990216</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523919</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/954806778">
+    <foaf:homepage rdf:resource="http://www.spacenk.co.uk/"/>
+    <mcageo:hasTag>cosmetics</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 01179 294 979"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Space.NK</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6076452</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4567919</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704286">
+    <mcageo:hasTag>betting</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coral</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979757</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4533331</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104498">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bag o'Nails</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6077215</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.451035</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219613">
+    <foaf:homepage rdf:resource="http://goatmanandbatham.com/"/>
+    <mcageo:hasTag>optician</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 926 2380"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Goatman &amp; Batham</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6074861</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4567701</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843514389">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <mcageo:hasTag>books</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oxfam Bookshop</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6045304</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.455609</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768926">
+    <foaf:homepage rdf:resource="http://www.specializedconceptstore.co.uk/stores/home.aspx?parent_id=0&amp;page_id=3"/>
+    <mcageo:hasTag>bicycle</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 929 7368"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Specialized Concept Store</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6014443</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4535901</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754264">
+    <mcageo:hasTag>newsagent</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lexie's News</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6041279</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4555418</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739312">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sue Sheppard</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6008947</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4531205</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768925">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">My Yard</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6023829</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.454267</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768934">
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paul Stein</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6015433</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4536575</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754282">
+    <mcageo:hasTag>travel_agency</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Travel Mood</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6027733</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4545445</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354712">
+    <foaf:homepage rdf:resource="http://www.ryman.co.uk/"/>
+    <mcageo:hasTag>stationery</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 925 1758"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ryman</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6065012</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4563272</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956598327">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6038085</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4550826</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429449">
+    <foaf:homepage rdf:resource="http://www.lkbennett.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 316 9771"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">L K Bennett</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6042183</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4553902</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754212">
+    <foaf:homepage rdf:resource="http://www.mastershoe-sportshoe.co.uk/"/>
+    <mcageo:hasTag>shoes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:01179 225516"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mastershoe</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.60272</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.454505</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/854509286">
+    <foaf:homepage rdf:resource="http://www.20thcenturyflicks.co.uk/"/>
+    <mcageo:hasTag>video</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">20th Century Flicks</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6139368</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4562753</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739307">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sandwich Box</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6000527</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4527474</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739363">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dappa</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.596917</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4529858</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843947331">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Muset</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.613622</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538015</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956598313">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6044365</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.455552</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754257">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wesley Owen</rdfs:label>
+    <foaf:homepage rdf:resource="http://orders.wesleyowen.com/info/store/bristol.jsp"/>
+    <foaf:phone rdf:resource="tel:0117 926 4426"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6029988</geo:long>
+    <mcageo:hasTag>music</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <mcageo:hasTag>books</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4547197</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704287">
+    <mcageo:hasTag>convenience</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lifestyle Express</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979363</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4534885</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26174094">
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5950879</geo:long>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mud Dock</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.mud-dock.co.uk/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <mcageo:hasTag>bicycle</mcageo:hasTag>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4491834</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768935">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pomegranate</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6020949</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4540495</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957706770">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dappa</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979573</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.453029</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354697">
+    <foaf:homepage rdf:resource="http://www.reflectionshair.net/"/>
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 926 0957"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reflections</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6065932</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4563686</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429579">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <mcageo:hasTag>books</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blackwell Academic Bookshop</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6032704</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4546858</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768945">
+    <foaf:homepage rdf:resource="http://www.superdry.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9291379"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperDry Store</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6026098</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4541712</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704273">
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maximum FX</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979665</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539613</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429584">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Store</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6030706</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4545269</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957706514">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.597965</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4530731</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754266">
+    <foaf:homepage rdf:resource="http://www.swinkysweets.com/"/>
+    <mcageo:hasTag>confectionery</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Swinky's Sweets</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6017241</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4537873</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768928">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hobgoblin</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 929 0902"/>
+    <mcageo:hasTag>musical_instruments</mcageo:hasTag>
+    <foaf:homepage rdf:resource="http://www.hobgoblin.com/bristol/"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6022375</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#musical_instruments"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4541531</geo:lat>
+    <foaf:mbox rdf:resource="mailto:sales@hobgoblinbristol.co.uk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739320">
+    <foaf:homepage rdf:resource="http://www.shoefixbristol.co.uk/"/>
+    <mcageo:hasTag>cobbler</mcageo:hasTag>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shoefix</rdfs:label>
+    <foaf:phone rdf:resource="tel:0117 927 3747"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5990913</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.452401</geo:lat>
+    <foaf:mbox rdf:resource="mailto:info@shoefixbristol.co.uk"/>
+    <mcageo:hasTag>keys</mcageo:hasTag>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/469207186">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#supermarket"/>
+    <foaf:homepage rdf:resource="http://www.waitrose.com/"/>
+    <mcageo:hasTag>supermarket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0800 188 884"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Waitrose</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6082868</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4570797</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843945573">
+    <mcageo:hasTag>hardware</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tool Station</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6087903</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4604585</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739297">
+    <foaf:homepage rdf:resource="http://www.backinaction.co.uk/bristol"/>
+    <mcageo:hasTag>furniture</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 922 6377"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Back in Action</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5986895</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523702</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219615">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 929 1600"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jack Wills</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6070786</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4565869</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/975729528">
+    <mcageo:hasTag>convenience</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5970134</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4498607</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768936">
+    <foaf:homepage rdf:resource="http://www.motelrocks.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Motel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6018844</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538966</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754270">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Uncle Sams</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.602804</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4545655</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739330">
+    <foaf:homepage rdf:resource="http://www.unigraph-design.com/"/>
+    <mcageo:hasTag>copyshop</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9761234"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unigraph</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:cbrown@unigraph-design.com"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5982705</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4525702</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219628">
+    <foaf:homepage rdf:resource="http://www.essensuals-bristol.co.uk/"/>
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:08000 277834"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Essensuals Hairdressing</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6073681</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4567171</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739309">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5989262</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523827</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429468">
+    <foaf:homepage rdf:resource="http://www.audio-t.co.uk/"/>
+    <mcageo:hasTag>hifi</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 264975"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">audio T</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:bristol@audio-t.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6035138</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4548527</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429508">
+    <foaf:homepage rdf:resource="http://www.mastershoe-sportshoe.co.uk/"/>
+    <mcageo:hasTag>shoes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 225516"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">myshu</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6033402</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4547383</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860139603">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <foaf:homepage rdf:resource="http://www.bloomandcurll.co.uk/"/>
+    <mcageo:hasTag>books</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bloom &amp; Curll</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5972817</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.456635</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754275">
+    <foaf:homepage rdf:resource="http://www.chandnichowk.co.uk/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chandni Chowk</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6032187</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4548838</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739321">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5967873</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523934</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754234">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Christoper Wray</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6030676</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4547726</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754207">
+    <foaf:homepage rdf:resource="http://www.whistles.co.uk/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 927 9630"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Whistles</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6039388</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554079</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/472217137">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#supermarket"/>
+    <mcageo:hasTag>supermarket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tesco Express</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5965921</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.453485</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429480">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">St-Martins</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6039672</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4551958</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219614">
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Barber Shop</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6075251</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4567857</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768943">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bench</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6023553</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539674</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860405478">
+    <mcageo:hasTag>antiques</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Potters Antiques &amp; Coins</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5974207</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4563485</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768937">
+    <mcageo:hasTag>shoes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9225455"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Boot Room</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6017959</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538379</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704296">
+    <foaf:homepage rdf:resource="http://www.bristol-printing.com/"/>
+    <mcageo:hasTag>copyshop</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 927 3822"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Printing.com</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:bristol@printing.com"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969154</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4530304</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/859575371">
+    <foaf:homepage rdf:resource="http://www.whiteladiesscooters.co.uk/"/>
+    <mcageo:hasTag>motorcycle</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 373 2589"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Whiteladies Scooters</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.608418</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4616797</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843947324">
+    <mcageo:hasTag>furniture</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Habitat</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6081412</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4578555</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/954806764">
+    <foaf:homepage rdf:resource="http://www.austinreed.co.uk/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 01179260910"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Austin Reed</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6082399</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4574696</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739360">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5967734</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523559</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354679">
+    <foaf:homepage rdf:resource="http://www.sweatybetty.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 299 179"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sweaty Betty</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6068723</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4564941</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754235">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beijing Noodle Bar</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6034989</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4550967</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739369">
+    <foaf:homepage rdf:resource="http://www.collegegreenbridal.co.uk/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">College Green Bridal</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:infoCGB@collegegreenbridal.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5985478</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523944</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/475998933">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <foaf:homepage rdf:resource="http://www.foppreturns.com/"/>
+    <mcageo:hasTag>books</mcageo:hasTag>
+    <mcageo:hasTag>music</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fopp</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6004871</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4529459</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704281">
+    <mcageo:hasTag>convenience</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Seven/12 Convenience</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978717</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538651</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704276">
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">City Barber Shop</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978676</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538423</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768944">
+    <foaf:homepage rdf:resource="http://www.carashoes.co.uk/storeindex_bristol.asp"/>
+    <mcageo:hasTag>shoes</mcageo:hasTag>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 925 7495"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cara</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.601954</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539466</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739357">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#musical_instruments"/>
+    <foaf:homepage rdf:resource="http://www.musicroom.com/bristol"/>
+    <mcageo:hasTag>musical_instruments</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 929 0390"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Music Room</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6001948</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4528039</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768938">
+    <foaf:homepage rdf:resource="http://www.dianaporter.co.uk/"/>
+    <mcageo:hasTag>jewelry</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9090225"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diana Porter</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6022844</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539087</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429550">
+    <foaf:homepage rdf:resource="http://www.tmlewin.co.uk/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T.M. Lewin</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6037136</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4550108</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843514382">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <foaf:homepage rdf:resource="http://bookshop.blackwell.co.uk"/>
+    <mcageo:hasTag>books</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 927 6602"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blackwell</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6043775</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4555109</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739343">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chaplins Fancy Dress</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979731</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4530364</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26174097">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <mcageo:hasTag>bakery</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5987927</geo:long>
+    <foaf:phone rdf:resource="tel:0117 9065559"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.449577</geo:lat>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bordeaux Quay</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@bordeaux-quay.co.uk"/>
+    <foaf:homepage rdf:resource="http://www.bordeaux-quay.co.uk/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860139609">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5972049</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <mcageo:hasTag>books</mcageo:hasTag>
+    <foaf:phone rdf:resource="tel:0117 933 0909"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4567408</geo:lat>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <mcageo:hasTag>cards</mcageo:hasTag>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Booty</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354665">
+    <mcageo:hasTag>shoes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 220284"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jones Bootmaker</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6064245</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4562928</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354645">
+    <foaf:homepage rdf:resource="http://www.statravel.co.uk/"/>
+    <mcageo:hasTag>travel_agency</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0871 702 9808"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">STA</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6062644</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4561715</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429395">
+    <foaf:homepage rdf:resource="http://www.cooshti.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 290850"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cooshti</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:sales@cooshti.com"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6031958</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4546318</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754226">
+    <foaf:homepage rdf:resource="http://www.jigsaw-online.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:01179 265 775"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jigsaw</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6038672</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4553579</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/469207181">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#supermarket"/>
+    <mcageo:hasTag>supermarket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sainsbury</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6068384</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4567738</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768939">
+    <foaf:homepage rdf:resource="http://www.nomadtravel.co.uk/pages/bristol-store"/>
+    <mcageo:hasTag>outdoor</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 922 6567"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nomad</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:bristol@nomadtravel.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6023013</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4542104</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754252">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clothing Federation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6028541</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4546048</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768941">
+    <mcageo:hasTag>furniture</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Futon Company</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6025011</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4540843</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429419">
+    <foaf:homepage rdf:resource="http://www.stationeryworldclifton.co.uk/"/>
+    <mcageo:hasTag>stationery</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 298099"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stationery World</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@stationeryworldonline.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6034172</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4547938</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/874378761">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#supermarket"/>
+    <mcageo:hasTag>supermarket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Somerfield</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6021755</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4612353</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704258">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#supermarket"/>
+    <foaf:homepage rdf:resource="http://www.co-operative.coop/food/find-us/?sid=164721"/>
+    <mcageo:hasTag>supermarket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 929 7313"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Co-operative Food</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978807</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4537336</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/836781908">
+    <mcageo:hasTag>bicycle</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bike UK</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6081257</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4575764</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754237">
+    <foaf:homepage rdf:resource="http://www.itsmarttalk.com/"/>
+    <mcageo:hasTag>mobile_phone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9304304"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IT Smart Talk</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:sales@itsmarttalk.com"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6041587</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4555619</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429493">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 277404"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Levi Strauss</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6041281</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4553249</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739367">
+    <foaf:homepage rdf:resource="http://www.harboursidelettings.co.uk/"/>
+    <mcageo:hasTag>estate_agent</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 928 1900"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harbourside Property Group</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@harboursidelettings.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5983564</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4525033</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754272">
+    <mcageo:hasTag>suit_hire</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9265511"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moss</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6036841</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.455227</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860561192">
+    <foaf:homepage rdf:resource="http://www.shoe-craft.co.uk/"/>
+    <mcageo:hasTag>shoes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 9214247"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Handmade Shoe Co</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5974011</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4564454</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860248360">
+    <mcageo:hasTag>bookmaker</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ToteSport</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5966879</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4535601</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860248935">
+    <mcageo:hasTag>beauty</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Skin</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5961534</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4537481</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/859575384">
+    <foaf:homepage rdf:resource="http://www.oskarfurniture.co.uk/"/>
+    <mcageo:hasTag>furniture</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 973 4777"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oskar</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@oskarfurniture.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6083947</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4616</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754210">
+    <foaf:homepage rdf:resource="http://www.mappinandwebb.com/showroom/bristol"/>
+    <mcageo:hasTag>jewelry</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 926 2916"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mappin &amp; Webb</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6026912</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.45424</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704290">
+    <mcageo:hasTag>tickets</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bristol Hippodrome Box Office</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.597957</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4531178</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768932">
+    <mcageo:hasTag>vacant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chilli's</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6024356</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4540348</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/859575379">
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 973 1866"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Esquire</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6083033</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4618073</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219630">
+    <foaf:homepage rdf:resource="http://www.bang-olufsen.com/"/>
+    <mcageo:hasTag>hifi</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 922 7522 ‎"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bang &amp; Olufsen</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:bristol@bang-olufsen.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6072444</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4566614</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354684">
+    <foaf:homepage rdf:resource="http://www.patisserie-valerie.co.uk/"/>
+    <mcageo:hasTag>bakery</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 117 929 7486"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Patisserie Valerie</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6067742</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.45645</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754238">
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 927 6605"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reiss</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6040209</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554649</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754261">
+    <foaf:homepage rdf:resource="http://www.bristolguild.co.uk/"/>
+    <mcageo:hasTag>department_store</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:0117 926 5548"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bristol Guild</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@bristolguild.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6033672</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4549967</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429381">
+    <foaf:homepage rdf:resource="http://www.topsixgroup.co.uk/"/>
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 264952"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Top Six</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@topsixgroup.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.603988</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4552157</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754217">
+    <foaf:homepage rdf:resource="http://www.fatface.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fat Face</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6040821</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.455515</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219604">
+    <foaf:homepage rdf:resource="http://www.wombatclothing.com/"/>
+    <mcageo:hasTag>clothes</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <foaf:phone rdf:resource="tel:+44 1179 290852"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">WOMbat</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6073041</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4566883</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739366">
+    <mcageo:hasTag>hairdresser</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Toni &amp; Guy</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5982777</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4525759</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/617438449">
+    <foaf:homepage rdf:resource="http://www.stanfords.co.uk/info/bristol-store,11,GP.html"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stanfords</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:stanfordsbristol@gmail.com"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4541225</geo:lat>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:phone rdf:resource="tel:0117 929 9966"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#books"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5952589</geo:long>
+    <mcageo:hasTag>books</mcageo:hasTag>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/687453801">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#supermarket"/>
+    <mcageo:hasTag>supermarket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tesco</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5996729</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.452602</geo:lat>
+  </rdf:Description>
+</rdf:RDF>

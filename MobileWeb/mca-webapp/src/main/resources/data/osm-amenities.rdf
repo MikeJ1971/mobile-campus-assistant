@@ -1,0 +1,2119 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ical="http://www.w3.org/2002/12/cal/ical#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rss="http://purl.org/rss/1.0/"
+    xmlns:mcageo="http://vocab.bris.ac.uk/mca/geo#"
+    xmlns:mca="http://vocab.bris.ac.uk/mca/registry#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" >
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704271">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pharmacy"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boots</rdfs:label>
+    <mcageo:hasTag>pharmacy</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979462</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4534366</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/289542549">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">City Centre</rdfs:label>
+    <mcageo:hasTag>ferry_terminal</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5977019</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4521289</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957706542">
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4519583</geo:lat>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:phone rdf:resource="tel:0117 9298392"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5975256</geo:long>
+    <foaf:homepage rdf:resource="http://www.underthestarsbar.com/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <foaf:mbox rdf:resource="mailto:under_the_stars@live.co.uk"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Under the Stars</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26122194">
+    <foaf:homepage rdf:resource="http://www.platinumclubbristol.com/"/>
+    <foaf:phone rdf:resource="tel:07961 012208"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Platinum Club</rdfs:label>
+    <mcageo:hasTag>stripclub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5984924</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4530453</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26200577">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6138353</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4563754</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/954806791">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6079983</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4567485</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/867434472">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6133927</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4495858</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035090">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969139</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4491635</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739375">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6013148</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4532771</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754278">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6038002</geo:long>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:phone rdf:resource="tel:01179 260908"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vincenzo's</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4549503</geo:lat>
+    <foaf:homepage rdf:resource="http://www.vincenzos-bristol.co.uk/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104487">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Ship Inn</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5988527</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4557701</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768940">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diamond Kebab</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6020206</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539954</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/943619199">
+    <foaf:phone rdf:resource="tel:+44 01179 268 654"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4541024</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6021703</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <foaf:mbox rdf:resource="mailto:thebristolram@gmail.com"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bristol Ram</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.bristolram.com/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/841116011">
+    <mcageo:hasTag>toilets</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.601526</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554248</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429531">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:phone rdf:resource="tel:+44 1179 294888"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Agora</rdfs:label>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6031308</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4545778</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739373">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980828</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4509452</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704272">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978226</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.453572</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035078">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969676</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4493172</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/358529200">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5964204</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4583321</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/289541597">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pizza Express</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6018839</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4500570</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/975730982">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:homepage rdf:resource="http://www.arnolfini.org.uk/pages/cafe-bar/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arnolfini Cafe Bar</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.597486</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4491962</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26122195">
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4542722</geo:lat>
+    <foaf:phone rdf:resource="tel:0117 926 2987"/>
+    <mcageo:hasTag>arts_centre</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Folk House</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6022771</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#arts_centre"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <foaf:homepage rdf:resource="http://www.bristolfolkhouse.co.uk/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26118319">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#arts_centre"/>
+    <foaf:homepage rdf:resource="http://www.arnolfini.org.uk/"/>
+    <foaf:phone rdf:resource="tel:0117 917 2300"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arnolfini</rdfs:label>
+    <mcageo:hasTag>arts_centre</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5973277</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.449299</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/533924618">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Explore Cafe</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.600242</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4502819</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/316418607">
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4517443</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#theatre"/>
+    <foaf:homepage rdf:resource="http://www.colstonhall.org/"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5987487</geo:long>
+    <mcageo:hasTag>theatre</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Colston Hall</rdfs:label>
+    <foaf:phone rdf:resource="tel:0117 922 3686"/>
+    <foaf:mbox rdf:resource="mailto:boxoffice@colstonhall.org"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/984254918">
+    <foaf:homepage rdf:resource="http://www.mamabear.co.uk/pages/clifton/clifton-intro.htm"/>
+    <foaf:phone rdf:resource="tel:0800 328 8151"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mama Bear's Day Nursery</rdfs:label>
+    <mcageo:hasTag>kindergarten</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6137016</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4603844</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/836781905">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6085007</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4577424</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/472217135">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bella Italia</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5964924</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4532133</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/358538277">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5958153</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4590563</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/469205002">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6035682</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4556347</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704283">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978182</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.45333</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26174094">
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5950879</geo:long>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mud Dock</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.mud-dock.co.uk/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <mcageo:hasTag>bicycle</mcageo:hasTag>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4491834</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/896248213">
+    <mcageo:hasTag>parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6076984</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4596177</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26118318">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shakespeare</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5970206</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.44964</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957778007">
+    <mcageo:hasTag>taxi</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6017063</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4535888</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/963961958">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6001701</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4541301</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739359">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Quigley's</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980616</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4527883</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/927334128">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6112115</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4573623</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035304">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5970963</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4573819</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739328">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BC Diner</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5981105</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4527288</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739338">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5983563</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.451005</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/919562491">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Europcar</rdfs:label>
+    <mcageo:hasTag>car_rental</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6095426</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554376</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843514374">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pizza Express</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6045812</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4555324</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739361">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6012928</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4532646</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/264772800">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Woodlands Christian Centre</rdfs:label>
+    <mcageo:hasTag>place_of_worship</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6057019</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4617479</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704275">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Goodfillas</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969258</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4532185</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26118317">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Drawbridge</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.597969</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4532663</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956598321">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5998679</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4524707</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/851390675">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bank"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HSBC</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#building_with_cashpoint"/>
+    <mcageo:hasTag>bank</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.600653</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4530629</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26118320">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:homepage rdf:resource="http://www.yha.org.uk/find-accommodation/south-west-england/hostels/bristol/index.aspx"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">YHA Bristol</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5973461</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4495912</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704285">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cast</rdfs:label>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980012</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4531488</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104495">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">White Harte</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6029345</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554209</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26200825">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:phone rdf:resource="tel:0117 9272998"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Harbourside</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980294</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4519684</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754254">
+    <foaf:mbox rdf:resource="mailto:info@escape-bristol.co.uk"/>
+    <mcageo:hasTag>nightclub</mcageo:hasTag>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4544795</geo:lat>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Escape</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:homepage rdf:resource="http://www.escape-bristol.co.uk/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:phone rdf:resource="tel:0117 9254500"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#nightclub"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6026833</geo:long>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/927334127">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6113244</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4573667</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843514365">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boulangerie</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6046174</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4556143</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26200815">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:homepage rdf:resource="http://www.mackenzies.co.uk/bindex.asp"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mackenzies Café Bar</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5982525</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4510752</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/302324909">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6127149</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4505221</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/840050539">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.608029</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4568986</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/616757491">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5965895</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4534032</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739379">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pizza Palace</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.598029</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4528628</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104494">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Woods</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6034117</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4553465</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26011600">
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980954</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cinema"/>
+    <mcageo:hasTag>cinema</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:homepage rdf:resource="http://www.watershed.co.uk/"/>
+    <foaf:phone rdf:resource="tel:0117 927 5100"/>
+    <foaf:mbox rdf:resource="mailto:info@watershed.co.uk"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Watershed</rdfs:label>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4517222</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957354717">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:phone rdf:resource="tel:+44 117 929 4323"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6066819</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:homepage rdf:resource="http://www.hermanos.co.uk/"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4564085</geo:lat>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hermanos Cafe-Bar</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@hermanos.co.uk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704295">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <foaf:phone rdf:resource="tel:0117 9277151"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978461</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4533328</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26215537">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6111425</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4595870</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/840050552">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6077885</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4570857</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754216">
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4543681</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6025289</geo:long>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704297">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lashings</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.lashingshouse.co.uk/"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:phone rdf:resource="tel:0117 929 4303"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.453077</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.596917</geo:long>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/874378762">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rustic Vine</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6023973</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4611765</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/849105880">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria Methodist Church</rdfs:label>
+    <mcageo:hasTag>place_of_worship</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6085394</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4585393</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/867435050">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Mardyke</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6132608</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4495657</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/840050520">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6085266</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4616896</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/982910535">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Pineapple</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6039441</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4521411</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843514386">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Caffe Gusto</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6046867</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4556264</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26174097">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <mcageo:hasTag>bakery</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5987927</geo:long>
+    <foaf:phone rdf:resource="tel:0117 9065559"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.449577</geo:lat>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bordeaux Quay</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@bordeaux-quay.co.uk"/>
+    <foaf:homepage rdf:resource="http://www.bordeaux-quay.co.uk/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#shop"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860249372">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bar @30</rdfs:label>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5951182</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539861</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26190567">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:phone rdf:resource="tel:0117 9268492"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Lion</rdfs:label>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4504201</geo:lat>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6129659</geo:long>
+    <foaf:homepage rdf:resource="http://www.thelionclifton.com/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/812411807">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zero Degrees</rdfs:label>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978419</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4563937</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956598291">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5998188</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4525188</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219595">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:phone rdf:resource="tel:+44 117 929 1600"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Papa Costa</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6071652</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4566258</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739335">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coffee Beach</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5967565</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.452317</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26174098">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:homepage rdf:resource="http://www.jdwetherspoon.co.uk/pubfinder/details.php?OutletNumber"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lloyds #1 V-Shed</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5987391</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4497775</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/242783050">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Robin Hood</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5994757</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4585911</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/514120008">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Green Man</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5990927</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4611687</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704288">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978703</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.453198</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768924">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <foaf:phone rdf:resource="tel:0117 9277016"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6023545</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4540455</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/365094533">
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.454909</geo:lat>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:phone rdf:resource="tel:0117 922 1271"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eldon  House</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <foaf:homepage rdf:resource="http://www.bathales.com/pubs/eldon-house.html"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6103699</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739324">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subway</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5967393</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4522724</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/841116027">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6029505</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4562506</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/284657084">
+    <foaf:mbox rdf:resource="mailto:gb@bristolbeerfactory.co.uk"/>
+    <foaf:phone rdf:resource="tel:01179 299 347"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Grain Barge</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:homepage rdf:resource="http://www.grainbarge.com/"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4494443</geo:lat>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6122241</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704299">
+    <foaf:homepage rdf:resource="http://www.urbantigerclub.co.uk/"/>
+    <foaf:phone rdf:resource="tel:01179 272181"/>
+    <foaf:mbox rdf:resource="mailto:david@uybristol.co.uk"/>
+    <mcageo:hasTag>stripclub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969222</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4531478</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/975866480">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:homepage rdf:resource="http://www.chicago-rock-cafe.co.uk/pages/content.asp?PageID"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chicago Rock Café</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.598158</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4514816</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843514368">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:homepage rdf:resource="http://www.caferouge.co.uk/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Café Rouge</rdfs:label>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554559</geo:lat>
+    <foaf:phone rdf:resource="tel:+44 1179 292571"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6042999</geo:long>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754230">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yum Yum Thai</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.yumyumthai.com/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6026689</geo:long>
+    <foaf:phone rdf:resource="tel:0117 9290987"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.454469</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035019">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5983167</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4501747</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/954790020">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#waste_basket"/>
+    <mcageo:hasTag>waste_basket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6085371</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4617703</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/21042460">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Millennium Square</rdfs:label>
+    <mcageo:hasTag>parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6000471</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4491851</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704259">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <foaf:phone rdf:resource="tel:0117 9300640"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978123</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4533474</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/841116050">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6030927</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4561873</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26174100">
+    <foaf:phone rdf:resource="tel:0117 929 9652"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4499823</geo:lat>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5986626</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pitcher &amp; Piano</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.pitcherandpiano.com/locations/bar.cfm?area=Bristol"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/291584246">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">St Michael's on the Mount</rdfs:label>
+    <mcageo:hasTag>place_of_worship</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5982850</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4571072</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704279">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OkiDokis</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980353</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539985</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704269">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <foaf:phone rdf:resource="tel:0117 9277159"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978417</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4533492</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26082519">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hope &amp; Anchor</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6097208</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4533278</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/969257437">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bank"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Co-operative Bank</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#building_with_cashpoint"/>
+    <mcageo:hasTag>bank</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5951988</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538447</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/841116184">
+    <mcageo:hasTag>fountain</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5974578</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4531388</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/855672367">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lord Mayor's Chapel</rdfs:label>
+    <mcageo:hasTag>place_of_worship</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6003441</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4528741</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/859575375">
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6083716</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Café Retreat</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.caferetreat.co.uk/"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4615003</geo:lat>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:mbox rdf:resource="mailto:Relax@CafeRetreat.co.uk"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768933">
+    <mcageo:hasTag>taxi</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.601745</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4536724</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/841116123">
+    <mcageo:hasTag>fountain</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5975482</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4526731</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704267">
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5966858</geo:long>
+    <foaf:homepage rdf:resource="http://www.thaiedge.co.uk/"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4521478</geo:lat>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:phone rdf:resource="tel:0117 927 6088"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thai Edge</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26103639">
+    <foaf:homepage rdf:resource="http://www.bris.ac.uk/music/facilities/vicrooms/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Victoria Rooms</rdfs:label>
+    <mcageo:hasTag>university</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6096403</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4583713</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/21531878">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harbourside</rdfs:label>
+    <mcageo:hasTag>parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6025276</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4493831</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035097">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.598306</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4502249</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/954806803">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bank"/>
+    <foaf:phone rdf:resource="tel:+44 0117 930 4293"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Skipton Building Society</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#building_with_cashpoint"/>
+    <mcageo:hasTag>bank</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6081806</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4574101</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/435846020">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">White Bear</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6015246</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4605044</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/293906023">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">St John in the Wall</rdfs:label>
+    <mcageo:hasTag>place_of_worship</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5950801</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4558943</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/617438427">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">St. Stephens Cafe</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5957713</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4541981</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26118326">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Waterfront Pub</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5974076</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4502059</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429427">
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4549296</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">yia mass</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.603547</geo:long>
+    <foaf:phone rdf:resource="tel:+44 1179 299530"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <foaf:homepage rdf:resource="http://www.yiamass.co.uk/"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860176812">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Cedars</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6031632</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554722</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843745304">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Berkeley (Wetherspoons)</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6053466</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4557544</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104432">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#theatre"/>
+    <foaf:homepage rdf:resource="http://www.LiveNation.co.uk/Bristol"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bristol Hippodrome</rdfs:label>
+    <mcageo:hasTag>theatre</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979965</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4531965</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/840050556">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.608308</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4574735</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/465205497">
+    <mcageo:hasTag>fountain</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6092415</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4579841</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704266">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978295</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4535506</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704292">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:phone rdf:resource="tel:0117 925 2755"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pizza Hut</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5979248</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4535577</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26262222">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6117873</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4607114</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957706664">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:homepage rdf:resource="http://www.falafelkingbristol.co.uk/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Falafel King</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5972317</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4520365</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/954806727">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:phone rdf:resource="tel:+44 01179 340 999"/>
+    <foaf:homepage rdf:resource="http://www.cosmo-restaurants.co.uk/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cosmo</rdfs:label>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6080662</geo:long>
+    <foaf:mbox rdf:resource="mailto:bristol@cosmo-restaurants.co.uk"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4568146</geo:lat>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754284">
+    <foaf:mbox rdf:resource="mailto:Bristol@theelbowroom.co.uk"/>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Elbow Room</rdfs:label>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4548272</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.603139</geo:long>
+    <foaf:phone rdf:resource="tel:0117 930 0242"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:homepage rdf:resource="http://theelbowroom.co.uk/bristol/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/509442204">
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6038992</geo:long>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4551451</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <foaf:homepage rdf:resource="http://www.bostonteaparty.co.uk/"/>
+    <foaf:mbox rdf:resource="mailto:bristol@bostonteaparty.co.uk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:phone rdf:resource="tel:+44 1179 298601"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Boston Tea Party</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860249147">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subway</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5960036</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538021</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/840050547">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.607793</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4569521</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/943619172">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:homepage rdf:resource="http://www.goldbrickhouse.co.uk/"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4549711</geo:lat>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Goldbrick House</rdfs:label>
+    <foaf:mbox rdf:resource="mailto:info@goldbrickhouse.co.uk"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6036592</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <foaf:phone rdf:resource="tel:+44 1179 451950"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/853556896">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Racks</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6109344</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4587753</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739333">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Greenhouse</rdfs:label>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5992895</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4524605</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104431">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:homepage rdf:resource="http://www.thebunchofgrapes.co.uk/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bunch of Grapes</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5988275</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4529634</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/450835302">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:phone rdf:resource="tel:0117 9293627"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Urban Wood</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:homepage rdf:resource="http://www.theurbanwood.com/"/>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4569999</geo:lat>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969641</geo:long>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/841116144">
+    <mcageo:hasTag>fountain</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5975098</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4529067</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/840050557">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6081041</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4568652</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956598341">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6049184</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4566122</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035254">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.596415</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4582375</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/305080088">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6018883</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4554484</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/956219640">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wagamama</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4565394</geo:lat>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:phone rdf:resource="tel:+44 117 922 1188"/>
+    <foaf:homepage rdf:resource="http://www.wagamama.com/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6069731</geo:long>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754295">
+    <foaf:phone rdf:resource="tel:0117 9450999"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Cooler</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.clubcooler.com/"/>
+    <mcageo:hasTag>nightclub</mcageo:hasTag>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6026317</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:mbox rdf:resource="mailto:ian@clubcooler.com"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#nightclub"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4544443</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26103637">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clifton Cow</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6128499</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4562367</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/302324800">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6118791</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4519402</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/616646939">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_office"/>
+    <foaf:homepage rdf:resource="http://www.co-operative.coop/food/find-us/?sid=164336"/>
+    <foaf:phone rdf:resource="tel:0117 930 0680"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Co-op with Post Office</rdfs:label>
+    <mcageo:hasTag>post_office</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5962448</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.453232</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/836781901">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6081738</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4570182</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/955490048">
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Graze Bar &amp; Chophouse</rdfs:label>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5960639</geo:long>
+    <foaf:phone rdf:resource="tel:0117 927 6706"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <foaf:homepage rdf:resource="http://www.bathales.com/pubs/graze-bar-and-chophouse.html"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:mbox rdf:resource="mailto:graze@bathales.co.uk"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4512869</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035296">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6023454</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4612992</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/469205299">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#telephone"/>
+    <mcageo:hasTag>telephone</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5980322</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4522812</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/850766368">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6042348</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4555909</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26103638">
+    <foaf:homepage rdf:resource="http://www.ubu.org.uk/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bristol University Student Union</rdfs:label>
+    <mcageo:hasTag>university</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6129717</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4569856</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104433">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Hatchet</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6003935</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4539743</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704264">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5978226</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4534034</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/860248335">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Red</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5965228</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.453612</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26070183">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Lansdown</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6134830</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4543636</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843761615">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Start the Bus</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:phone rdf:resource="tel:0117 9304370"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5960689</geo:long>
+    <foaf:homepage rdf:resource="http://www.startthebus.tv/"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4535908</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/852216828">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bank"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Barclays</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#building_with_cashpoint"/>
+    <mcageo:hasTag>bank</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6083053</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4575294</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/305079987">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5951956</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4591909</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739301">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Royal Kebab House</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5984315</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4524565</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/770694392">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6022401</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4610424</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768927">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <foaf:homepage rdf:resource="http://www.allinonebristol.co.uk/"/>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6025845</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:phone rdf:resource="tel:0117 9265622"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4544089</geo:lat>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All in One</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739340">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969808</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523905</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035093">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5971822</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4490565</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/302325157">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6110947</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4540570</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704263">
+    <mcageo:hasTag>clock</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.597824</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4537075</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/859575381">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <foaf:phone rdf:resource="tel:+44 1179 738882"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Made Up</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6081745</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4618512</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/963961977">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#waste_basket"/>
+    <mcageo:hasTag>waste_basket</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6001308</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4541502</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/291584026">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Scotchman and His Pack</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5982949</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4575059</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/289540346">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mardyke Ferry Stop</rdfs:label>
+    <mcageo:hasTag>ferry_terminal</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6131602</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4491384</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/472327215">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Starbucks</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6037848</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4553059</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843745230">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Subway</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6051739</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4557232</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/293170737">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5955903</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4551926</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957704262">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Caffe Gusto Siesta</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5967516</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4534377</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26217863">
+    <foaf:homepage rdf:resource="http://www.stpaulsclifton.bristol.anglican.org/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">St. Paul's Church</rdfs:label>
+    <mcageo:hasTag>place_of_worship</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6112515</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4589774</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/849105867">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6086336</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4578274</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/289540617">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harbour Inlet Ferry Stop</rdfs:label>
+    <mcageo:hasTag>ferry_terminal</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6059142</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4492671</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26012121">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Royal West of England Academy</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6086018</geo:long>
+    <foaf:phone rdf:resource="tel:0117 973 5129"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4579629</geo:lat>
+    <foaf:homepage rdf:resource="http://www.rwa.org.uk/"/>
+    <mcageo:hasTag>arts_centre</mcageo:hasTag>
+    <foaf:mbox rdf:resource="mailto:info@rwa.org.uk"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#arts_centre"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768930">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6024014</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4542195</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/246192219">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6085789</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.459754</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035259">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5955433</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4589712</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26070210">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Quinton House</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6094972</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4569024</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/969257443">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bank"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stroud and Swindon Building Society</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#building_with_cashpoint"/>
+    <mcageo:hasTag>bank</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5954715</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4538859</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768929">
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:phone rdf:resource="tel:0117 930 4561"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.601712</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4535147</geo:lat>
+    <foaf:mbox rdf:resource="mailto:info@javabristol.com"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#nightclub"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Java</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:homepage rdf:resource="http://www.javabristol.com/"/>
+    <mcageo:hasTag>nightclub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843524067">
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4544183</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nando's</rdfs:label>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6029266</geo:long>
+    <foaf:phone rdf:resource="tel:+44 1179 299263"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <foaf:homepage rdf:resource="http://www.nandos.co.uk/restaurant_58/REST/Bristol_-_Park_Street.html"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/242783065">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6003114</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4589965</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/507031195">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jacobs Wells landing stage</rdfs:label>
+    <mcageo:hasTag>ferry_terminal</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6083135</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4500243</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/841116083">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6042025</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4591639</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/620993185">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bank"/>
+    <mcageo:hasTag>bank</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5968459</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4532867</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739317">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5983715</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4509291</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739303">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6005762</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4528359</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104420">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#nightclub"/>
+    <foaf:homepage rdf:resource="http://www.queenshilling.com/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Queenshilling</rdfs:label>
+    <mcageo:hasTag>nightclub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6008611</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4537364</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843514371">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Caffè Nero</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6047616</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.455635</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768931">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#cafe"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Woodes</rdfs:label>
+    <mcageo:hasTag>cafe</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6016332</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4537215</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/855672365">
+    <mcageo:hasTag>clock</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6004186</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4527957</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26104430">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Encore</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5992294</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4531786</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/358530354">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5966033</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4583518</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754223">
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6035514</geo:long>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Gourmet Burger Kitchen</rdfs:label>
+    <foaf:phone rdf:resource="tel:0117 316 9162"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <foaf:homepage rdf:resource="http://www.gbk.co.uk/restaurant/bristol/"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4551373</geo:lat>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26200806">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BSB Waterside</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5982863</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4507430</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/430180911">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#theatre"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">QEH Theatre</rdfs:label>
+    <mcageo:hasTag>theatre</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6089859</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4553787</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957429562">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <foaf:phone rdf:resource="tel:+44 1179 349922"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4544759</geo:lat>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ask</rdfs:label>
+    <foaf:homepage rdf:resource="http://www.askcentral.co.uk/"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6029984</geo:long>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/967108092">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.604581</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4609589</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957768942">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#post_box"/>
+    <mcageo:hasTag>post_box</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6024143</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4542275</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/840050545">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6059154</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4560295</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739345">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#fast_food"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bristol Kebab &amp; Burger House</rdfs:label>
+    <mcageo:hasTag>fast_food</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5981687</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4526688</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/577235530">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kingsdown Wine Vaults</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5966974</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4616666</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/843524065">
+    <foaf:homepage rdf:resource="http://www.browns-restaurants.co.uk/menu-bristol.php"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brown's</rdfs:label>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <foaf:phone rdf:resource="tel:0117 930 4777"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bar"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4563117</geo:lat>
+    <mcageo:hasTag>bar</mcageo:hasTag>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6057182</geo:long>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957754249">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#restaurant"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#eating_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HK Diner</rdfs:label>
+    <mcageo:hasTag>restaurant</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6029209</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4546583</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26217860">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <foaf:homepage rdf:resource="http://www.cliftonlido.com/"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clifton Lido</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.611357</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4596635</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/310388761">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#pub"/>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#drinking_place"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Highbury Vaults</rdfs:label>
+    <mcageo:hasTag>pub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6023810</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4614254</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/957739371">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5991829</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4523065</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035086">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.5969032</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4492771</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/26200805">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#nightclub"/>
+    <mcageo:hasTag>nightclub</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.598355</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4504702</geo:lat>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.openstreetmap.org/api/0.6/node/979035053">
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#bicycle_parking"/>
+    <mcageo:hasTag>bicycle_parking</mcageo:hasTag>
+    <rdf:type rdf:resource="http://vocab.bris.ac.uk/mca/geo#amenity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+    <geo:long rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-2.6074228</geo:long>
+    <geo:lat rdf:datatype="http://www.w3.org/2001/XMLSchema#double">51.4507263</geo:lat>
+  </rdf:Description>
+</rdf:RDF>
