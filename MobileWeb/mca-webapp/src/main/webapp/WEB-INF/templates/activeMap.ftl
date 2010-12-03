@@ -16,7 +16,7 @@
 <#if resource['mca:icon']??>
     <#assign mcaIcon>${contextPath}/${resource['mca:icon']?first}</#assign>
 <#else>
-    <#assign mcaIcon>${contextPath}/images/bicycleparking.png</#assign>
+    <#assign mcaIcon>${contextPath}/images/blackblank.png</#assign>
 </#if>
 
 

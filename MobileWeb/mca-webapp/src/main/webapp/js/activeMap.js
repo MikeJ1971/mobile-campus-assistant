@@ -366,7 +366,7 @@ var createMarkers = function(markerJson) {
             });
         }
         // attach the click listener
-        if (proxyUrl != undefined) {
+        if (proxyUrl != 'undefined') {
             attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
         } 
         markers[i] = marker;
