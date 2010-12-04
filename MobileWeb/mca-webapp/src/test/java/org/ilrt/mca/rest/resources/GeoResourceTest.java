@@ -123,7 +123,7 @@ public class GeoResourceTest extends AbstractResourceTest {
         // add the data
         Dataset dataset = SDBFactory.connectDataset(store);
         Model model = dataset.getNamedModel("geo://test_geo_graph1");
-        model.read(getClass().getResourceAsStream("/test-geodata.xml"), null);
+        model.read(getClass().getResourceAsStream("/data/osm-amenities.rdf"), null);
 
         // clean up
         store.close();
