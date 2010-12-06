@@ -44,7 +44,7 @@ import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.dao.GeoDao;
 import org.ilrt.mca.rdf.SdbManagerImpl;
 import org.ilrt.mca.rest.ex.NotFoundException;
-import org.ilrt.mca.vocab.GEO;
+import org.ilrt.mca.vocab.WGS84;
 import org.ilrt.mca.vocab.MCA_GEO;
 
 import javax.ws.rs.GET;
@@ -113,7 +113,7 @@ public class GeoResource extends AbstractResource {
 
     private JSONObject jsonRepresentationOfModel(Model m) {
 
-        ResIterator iter = m.listResourcesWithProperty(RDF.type, GEO.Point);
+        ResIterator iter = m.listResourcesWithProperty(RDF.type, WGS84.Point);
 
         JSONArray jsonArray = new JSONArray();
 
@@ -125,11 +125,11 @@ public class GeoResource extends AbstractResource {
 
             map.put("id", resource.getURI());
 
-            if (resource.hasProperty(GEO.longitude))
-                map.put("lng", resource.getProperty(GEO.longitude).getLiteral().getLexicalForm());
+            if (resource.hasProperty(WGS84.longitude))
+                map.put("lng", resource.getProperty(WGS84.longitude).getLiteral().getLexicalForm());
 
-            if (resource.hasProperty(GEO.latitude))
-                map.put("lat", resource.getProperty(GEO.latitude).getLiteral().getLexicalForm());
+            if (resource.hasProperty(WGS84.latitude))
+                map.put("lat", resource.getProperty(WGS84.latitude).getLiteral().getLexicalForm());
 
             jsonArray.put(map);
         }

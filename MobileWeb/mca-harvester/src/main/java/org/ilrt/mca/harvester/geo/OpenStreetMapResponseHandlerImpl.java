@@ -41,7 +41,7 @@ import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import org.ilrt.mca.harvester.ResponseHandler;
-import org.ilrt.mca.vocab.GEO;
+import org.ilrt.mca.vocab.WGS84;
 import org.ilrt.mca.vocab.MCA_GEO;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -129,7 +129,7 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
     /**
      * The node id and the latitude and longitude are stored as attributes on the node
      * element. We get these via a NamedNodeMap and create a URI and appropriate
-     * GEO properties.
+     * WGS84 properties.
      *
      * @param map NamedNodeMap that holds attributes of interest
      * @return a Resource object that holds a URI and lat/long values
@@ -141,13 +141,13 @@ public class OpenStreetMapResponseHandlerImpl implements ResponseHandler {
                 + map.getNamedItem("id").getTextContent());
 
         // add the latitude and longitude
-        resource.addProperty(GEO.latitude, map.getNamedItem("lat").getTextContent(),
+        resource.addProperty(WGS84.latitude, map.getNamedItem("lat").getTextContent(),
                 XSDDatatype.XSDdouble);
-        resource.addProperty(GEO.longitude, map.getNamedItem("lon").getTextContent(),
+        resource.addProperty(WGS84.longitude, map.getNamedItem("lon").getTextContent(),
                 XSDDatatype.XSDdouble);
 
         // add type
-        resource.addProperty(RDF.type, GEO.Point);
+        resource.addProperty(RDF.type, WGS84.Point);
 
         return resource;
     }

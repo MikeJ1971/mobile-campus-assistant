@@ -38,7 +38,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
-import org.ilrt.mca.vocab.GEO;
+import org.ilrt.mca.vocab.WGS84;
 import org.junit.Test;
 import org.xml.sax.InputSource;
 
@@ -67,15 +67,15 @@ public class JenaModelKmlProviderTest {
         Model m = ModelFactory.createDefaultModel();
 
         Resource point1 = m.createResource("http://www.openstreetmap.org/api/0.6/node/943619199");
-        point1.addProperty(GEO.latitude, "51.4541024", XSDDatatype.XSDdouble);
-        point1.addProperty(GEO.longitude, "-2.6021703", XSDDatatype.XSDdouble);
-        point1.addProperty(RDF.type, GEO.Point);
+        point1.addProperty(WGS84.latitude, "51.4541024", XSDDatatype.XSDdouble);
+        point1.addProperty(WGS84.longitude, "-2.6021703", XSDDatatype.XSDdouble);
+        point1.addProperty(RDF.type, WGS84.Point);
         point1.addProperty(RDFS.label, "Bristol Ram");
 
         Resource point2 = m.createResource("http://www.openstreetmap.org/api/0.6/node/26122195");
-        point2.addProperty(GEO.latitude, "51.4542722", XSDDatatype.XSDdouble);
-        point2.addProperty(GEO.longitude, "-2.6022771", XSDDatatype.XSDdouble);
-        point2.addProperty(RDF.type, GEO.Point);
+        point2.addProperty(WGS84.latitude, "51.4542722", XSDDatatype.XSDdouble);
+        point2.addProperty(WGS84.longitude, "-2.6022771", XSDDatatype.XSDdouble);
+        point2.addProperty(RDF.type, WGS84.Point);
         point2.addProperty(RDFS.label, "Folk House");
 
 

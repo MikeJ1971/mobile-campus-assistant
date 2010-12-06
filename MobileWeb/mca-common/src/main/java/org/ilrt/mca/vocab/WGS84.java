@@ -39,7 +39,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public class GEO {
+public class WGS84 {
 
     private static final Model model = ModelFactory.createDefaultModel();
 

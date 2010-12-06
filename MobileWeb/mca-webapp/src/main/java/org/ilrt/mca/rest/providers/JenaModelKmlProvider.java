@@ -37,7 +37,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import org.ilrt.mca.KmlMediaType;
-import org.ilrt.mca.vocab.GEO;
+import org.ilrt.mca.vocab.WGS84;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -94,7 +94,7 @@ public class JenaModelKmlProvider implements MessageBodyWriter<Model> {
             Element document = doc.createElement("Document");
 
             // find the points
-            ResIterator iter = model.listResourcesWithProperty(RDF.type, GEO.Point);
+            ResIterator iter = model.listResourcesWithProperty(RDF.type, WGS84.Point);
 
             while (iter.hasNext()) {
                 Resource resource = iter.nextResource();
@@ -131,13 +131,13 @@ public class JenaModelKmlProvider implements MessageBodyWriter<Model> {
         }
 
         // create the point with coordinates
-        if (resource.hasProperty(GEO.longitude) && resource.hasProperty(GEO.latitude)) {
+        if (resource.hasProperty(WGS84.longitude) && resource.hasProperty(WGS84.latitude)) {
 
             Element point = doc.createElement("Point");
             Element coord = doc.createElement("coordinates");
 
-            String val = resource.getProperty(GEO.longitude).getLiteral().getLexicalForm() + ","
-                    + resource.getProperty(GEO.latitude).getLiteral().getLexicalForm();
+            String val = resource.getProperty(WGS84.longitude).getLiteral().getLexicalForm() + ","
+                    + resource.getProperty(WGS84.latitude).getLiteral().getLexicalForm();
             coord.setTextContent(val);
 
             point.appendChild(coord);
