@@ -35,6 +35,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 import com.sun.jersey.core.header.ContentDisposition;
 import com.sun.jersey.spi.resource.Singleton;
 import org.codehaus.jettison.json.JSONArray;
@@ -74,7 +75,7 @@ public class GeoResource extends AbstractResource {
 
     @GET
     @Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3})
-    @Path("places/{type}")
+    @Path("type/{type}")
     public Response placesAsRdf(@PathParam("type") String type) {
 
         return Response.ok(createModel(MCA_GEO.NS + type)).build();
@@ -83,7 +84,7 @@ public class GeoResource extends AbstractResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("places/{type}")
+    @Path("type/{type}")
     public Response placesAsJson(@PathParam("type") String type) {
 
         return Response.ok(jsonRepresentationOfModel(createModel(MCA_GEO.NS + type)))
@@ -92,7 +93,7 @@ public class GeoResource extends AbstractResource {
 
     @GET
     @Produces({MediaType.WILDCARD, KmlMediaType.APPLICATION_KML})
-    @Path("places/{type}")
+    @Path("type/{type}")
     public Response placesAsKml(@PathParam("type") String type) {
 
         ContentDisposition cd = ContentDisposition.type("file").fileName(type + ".kml").build();
@@ -130,6 +131,10 @@ public class GeoResource extends AbstractResource {
 
             if (resource.hasProperty(WGS84.latitude))
                 map.put("lat", resource.getProperty(WGS84.latitude).getLiteral().getLexicalForm());
+
+            if (resource.hasProperty(RDFS.label)) {
+                map.put("label", resource.getProperty(RDFS.label).getLiteral().getLexicalForm());
+            }
 
             jsonArray.put(map);
         }

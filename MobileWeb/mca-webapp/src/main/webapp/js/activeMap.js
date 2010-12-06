@@ -227,7 +227,7 @@ var initializeMap = function(mapElementId, defaultLatitude, defaultLongitude, ma
 };
 
 // listener for stop markers
-var attachMarkerListener = function(map, mark, infowindow, id, url) {
+var attachMarkerListenerWithProxy = function(map, mark, infowindow, id, url) {
 
     google.maps.event.addListener(mark, 'click', function() {
 
@@ -239,6 +239,19 @@ var attachMarkerListener = function(map, mark, infowindow, id, url) {
         // start the process of fetching the live info
         getDepartureInfo(infowindow, id, url);
 
+    });
+
+}
+
+// listener for markers
+var attachMarkerListener = function(map, mark, infowindow, content) {
+
+    google.maps.event.addListener(mark, 'click', function() {
+
+        // the style should ensure the autopan pans far enough to allow
+        // space for later dynamic content
+        infowindow.setContent("<div>" + content + "</div>");
+        infowindow.open(map, mark);
     });
 
 }
@@ -352,23 +365,29 @@ var createMarkers = function(markerJson) {
     for (var i = 0; i < markerData.length; i++) {
         var point = new google.maps.LatLng(markerData[i].lat, markerData[i].lng);
         var markerId = markerData[i].id;
-        var marker;
+        var title =  markerData[i].label;
 
-        if (icon == undefined) {
-            marker = new google.maps.Marker({
+        var marker =  marker = new google.maps.Marker({
                 position: point
             });
-        } else {
 
-            marker = new google.maps.Marker({
-                position: point,
-                icon: icon
-            });
+        if (icon != undefined) {
+            marker.icon = icon;
         }
+
+        if (title != undefined) {
+            marker.title = title;
+        }
+
         // attach the click listener
         if (proxyUrl != 'undefined') {
-            attachMarkerListener(map, marker, infowindow, markerId, proxyUrl);
-        } 
+            attachMarkerListenerWithProxy(map, marker, infowindow, markerId, proxyUrl);
+        } else {
+            if (title != undefined) {
+                var content = "<p><strong>" + title + "</strong></p>";
+                attachMarkerListener(map, marker, infowindow, content);
+            }
+        }
         markers[i] = marker;
     }
 };
