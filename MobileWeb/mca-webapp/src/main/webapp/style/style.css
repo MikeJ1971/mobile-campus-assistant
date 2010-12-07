@@ -394,3 +394,12 @@ It's height value should ensure that the map pans enough to allow for later dyna
 #iw_kml img {
     display: none;
 }
+
+/* Feedback form */
+#feedback-form {
+    padding: 0em 0.8em 0em 0.8em;
+}
+
+#form_email, #form_comments {
+    width: 100%;
+}

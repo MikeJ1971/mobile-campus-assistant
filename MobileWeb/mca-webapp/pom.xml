@@ -226,6 +226,11 @@
             <artifactId>rdf-json</artifactId>
             <version>0.2</version>
         </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.3</version>
+        </dependency>
     </dependencies>
 
 </project>
