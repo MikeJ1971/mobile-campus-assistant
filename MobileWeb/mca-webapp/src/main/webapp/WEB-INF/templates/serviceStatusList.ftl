@@ -10,7 +10,7 @@
     <ul class="nav-list">
         <#list resource['mca:hasNewsItem'] as item>
             <#assign label=item['rss:title']?first/>
-            <li><a href="./?item=${item?url("UTF8")}"><span class="servicestatus"></span><@NavLabel label="${label}"/></a></li>
+            <li><a href="./?item=${item?url("UTF8")}"><span class="servicestatus"></span>${label}<span class="arrow"></span></a></li>
         </#list>
     </ul>
 <#else>

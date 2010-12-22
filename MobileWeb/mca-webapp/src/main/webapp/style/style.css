@@ -1,8 +1,14 @@
-body {
+
+html, body {
     font-family: Helvetica, Arial, sans-serif, serif;
-    padding: 0px;
-    margin: 0px;
-    max-width: 320px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    height: 100%;
 }
 
 h1 {
@@ -39,10 +45,11 @@ p {
     background-image: url(../images/bristol/backarrow.png);
     width: 56px;
     height: 55px;
-    margin: 0px 0px 0px 10px;
-    padding: 0px 0px 0px 0px;
+    margin: 0 0 0 10px;
+    padding: 0 0 0 0;
     position: absolute;
     top: 0;
+    left: 0;
 }
 
 #header a:hover, #back a:active {
@@ -55,8 +62,8 @@ p {
 
 #title {
     background-image: url(../images/bristol/pagetitle-bkgd.png);
-    padding: 3px 0px 0px 0px;
-    margin: 0px 0px 0px 0px;
+    padding: 3px 0 0 0;
+    margin: 0 0 0 0;
     height: 16px;
     border-top: solid 1px #E6E6E6;
     border-bottom: solid 1px #FFFFFF;
@@ -68,25 +75,40 @@ p {
 }
 
 .nav-list {
-    margin: 0px;
-    padding: 0px;
-    background: url(../images/bristol/nav-list-bkgd.png);
+    margin: 0;
+    padding: 0;
 }
 
 .nav-list li {
     border-bottom: 1px solid #ffffff;
     font-size: 16px;
     font-weight: bold;
+    background: url(../images/bristol/nav-list-item-bg.png) repeat-x;
+    width: 100%;
 }
 
 .nav-list li > a {
+    position:relative;
     display: block;
-    width: 320px;
     height: 48px;
-    background: url(../images/bristol/nav-list-item-bkgd.png) no-repeat;
-    padding: 10px 0px 0px 10px;
+    background: url(../images/bristol/nav-list-item-background.png);
+    padding: 10px 20px 0 10px;
     text-decoration: none;
     color: #171717;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.nav-list li .arrow {
+    position:absolute;
+    right: 0;
+    width: 12px;
+    height: 100%;
+    background: url(../images/bristol/disclosure-arrow.png) no-repeat 0 24px;
+    margin-right: 10px;
+    top: 0;
 }
 
 .nav-list li:last-child > a {
@@ -96,6 +118,10 @@ p {
 .nav-list li > a:hover, li > a:active {
     background-position: 0 -58px;
     color: #333333;
+}
+
+.nav-list li > a:hover .arrow, li > a:active .arrow {
+    background-position: -12px 24px;
 }
 
 #information {
@@ -149,8 +175,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle;
 }
 
@@ -159,8 +185,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle
 }
 
@@ -169,8 +195,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle
 }
 
@@ -179,8 +205,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle;
 }
 
@@ -189,8 +215,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle;
 }
 
@@ -199,8 +225,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle;
 }
 
@@ -209,8 +235,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle
 }
 
@@ -219,8 +245,8 @@ p {
     display: inline-block;
     width: 52px;
     height: 41px;
-    margin: 0px;
-    padding: 0px 10px 0px 0px;
+    margin: 0;
+    padding: 0 10px 0 0;
     vertical-align: middle
 }
 
@@ -362,9 +388,8 @@ p {
 }
 
 #map {
-    width: 320px;
-    height: 300px;
-    padding-bottom: 5px;
+    height: 100%;
+    height: 90%
 }
 
 #searching {
