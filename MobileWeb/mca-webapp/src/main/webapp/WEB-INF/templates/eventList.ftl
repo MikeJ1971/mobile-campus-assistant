@@ -11,7 +11,7 @@
         <ul class="nav-list">
             <#list resource['mca:hasEventItem'] as item>
                 <#assign label=item['ical:summary']?first/>
-                <li><a href="./?item=${item['ical:uid']?first?url("UTF8")}"><span class="events"></span><@NavLabel label="${label}"/><br/><span class="startdate"><@EventDate item['ical:dtstart']?first /></a></li>
+                <li><a href="./?item=${item['ical:uid']?first?url("UTF8")}"><span class="events"></span>${label}<br/><span class="startdate"><@EventDate item['ical:dtstart']?first /></a></li>
             </#list>
         </ul>
     </div>
