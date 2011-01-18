@@ -180,6 +180,16 @@ p {
     vertical-align: middle;
 }
 
+.transport {
+    background: url(../images/bristol/icon-transport.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0;
+    padding: 0 10px 0 0;
+    vertical-align: middle;
+}
+
 .today {
     background: url(../images/bristol/icon-flag.png) no-repeat;
     display: inline-block;
@@ -222,6 +232,16 @@ p {
 
 .contacts {
     background: url(../images/bristol/icon-contacts.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0;
+    padding: 0 10px 0 0;
+    vertical-align: middle;
+}
+
+.feedback {
+    background: url(../images/bristol/icon-feedback.png) no-repeat;
     display: inline-block;
     width: 52px;
     height: 41px;
