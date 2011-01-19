@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<rdf:RDF
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xml:base="http://vocab.bris.ac.uk/mca/registry#">
+
+    <!-- Resources that represent pages and navigation in the application -->
+
+    <rdfs:Class rdf:ID="Page">
+        <rdfs:label xml:lang="en">Page</rdfs:label>
+        <rdfs:comment>A resource that would render as a page in a browser.</rdfs:comment>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:ID="Group">
+        <rdfs:label xml:lang="en">Group</rdfs:label>
+        <rdfs:comment>Provides a group of items that provide content (usually navigation
+            links) within a page.
+        </rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#Page"/>
+    </rdfs:Class>
+
+    <!-- Data sources -->
+
+    <rdfs:Class rdf:ID="Source">
+        <rdfs:label xml:lang="en">Data Source</rdfs:label>
+        <rdfs:comment>A data source that can be used by the application.</rdfs:comment>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:ID="KmlSource">
+        <rdfs:label xml:lang="en">KML Source</rdfs:label>
+        <rdfs:comment>A Keyhole Markup Language (KML) data source.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#Source"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:ID="ActiveMapSource">
+        <rdfs:label xml:lang="en">Active Map Source</rdfs:label>
+        <rdfs:comment>A JSON source that is used by the maps.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#Source"/>
+    </rdfs:Class>
+
+    <!-- Data sources used by harvesters -->
+
+    <rdfs:Class rdf:ID="HarvestSource">
+        <rdfs:label xml:lang="en">Harvest Source</rdfs:label>
+        <rdfs:comment>A source of data that can be harvested.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#Source"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:ID="FeedSource">
+        <rdfs:label xml:lang="en">Feed Source</rdfs:label>
+        <rdfs:comment>An RSS or Atom feed that can be harvested.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#HarvestSource"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:ID="XmlSource">
+        <rdfs:label xml:lang="en">XML Source</rdfs:label>
+        <rdfs:comment>An XML data source that can be harvested.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#HarvestSource"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:ID="HtmlSource">
+        <rdfs:label xml:lang="en">HTML Source</rdfs:label>
+        <rdfs:comment>An HTML page that can be harvested as a data source.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#HarvestSource"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:ID="OSMGeoSource">
+        <rdfs:label xml:lang="en">OpenStreetMap Geo Data Source</rdfs:label>
+        <rdfs:comment>An source that can provide OpenStreetMap geo data that
+            can be harvested.
+        </rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://vocab.bris.ac.uk/mca/registry#HarvestSource"/>
+    </rdfs:Class>
+
+</rdf:RDF>
