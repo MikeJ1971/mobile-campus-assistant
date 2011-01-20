@@ -11,10 +11,12 @@ CONSTRUCT {
     $id mca:icon $icon .
     $id geo:lat $latitude .
     $id geo:long $longitude .
+    $id mca:mapZoom ?mapZoom .
 } WHERE {
     OPTIONAL { $id mca:urlStem $urlStem  } .
     OPTIONAL { $id mca:markers $markers } .
     OPTIONAL { $id mca:icon $icon } .
+    OPTIONAL { $id mca:mapZoom $mapZoom } .
     $id geo:lat $latitude .
     $id geo:long $longitude .
 }
