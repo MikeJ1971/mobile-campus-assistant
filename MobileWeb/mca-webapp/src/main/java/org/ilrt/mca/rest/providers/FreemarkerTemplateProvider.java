@@ -79,6 +79,8 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
     private String rootPath;
     private ServletContext servletContext;
 
+    private String googleAnalyticsKey;
+
 //    @Context
 //    UriInfo uriInfo;
 
@@ -203,6 +205,11 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
         // added by Mike - help avoid absolute paths for finding static resources
         vars.put("contextPath", servletContext.getContextPath());
 
+        // added by Mike - handle google analytics key
+        if (googleAnalyticsKey != null && googleAnalyticsKey.length() > 0) {
+            vars.put("googleAnalyticsKey", googleAnalyticsKey);
+        }
+
         //String contextPath = uriInfo.getBaseUri().getPath();
 
         //if (contextPath.endsWith("/")) {
@@ -235,6 +242,9 @@ public class FreemarkerTemplateProvider implements TemplateProcessor {
             rootPath = "/WEB-INF/templates";
         }
         rootPath = rootPath.replaceAll("/$", "");
+
+
+        googleAnalyticsKey = context.getInitParameter("googleAnalyticsKey");
 
         freemarkerConfig.setTemplateLoader(new WebappTemplateLoader(context, rootPath));
 
