@@ -130,6 +130,11 @@
             <version>0.7-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>org.ilrt.mca</groupId>
+            <artifactId>mca-services</artifactId>
+            <version>0.7-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.4</version>
@@ -172,7 +177,7 @@
             <artifactId>gson</artifactId>
             <version>1.3</version>
         </dependency>
-      <dependency>
+        <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>1.8.4</version>

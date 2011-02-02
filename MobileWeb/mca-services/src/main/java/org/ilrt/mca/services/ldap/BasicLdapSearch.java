@@ -3,93 +3,87 @@ package org.ilrt.mca.services.ldap;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.VCARD;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.vocab.FOAF;
 
-import javax.naming.Context;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
+import javax.naming.SizeLimitExceededException;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
+import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
 
 public class BasicLdapSearch {
 
-    public static void main(String[] args) {
 
-        String filter = "(cn=Mike Jones)";
-
-        Hashtable<String, String> env = new Hashtable<String, String>();
-        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, "ldaps://ldap-srv.bris.ac.uk:636");
-        env.put(Context.SECURITY_PROTOCOL, "SSL");
-        env.put(Context.SECURITY_AUTHENTICATION, "simple");
-
-
-        try {
-            BasicLdapSearch basicLdapSearch = new BasicLdapSearch(env);
-            basicLdapSearch.search(filter);
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public BasicLdapSearch(Hashtable<String, String> env) throws NamingException {
+    public BasicLdapSearch(Hashtable<Object, Object> env) {
 
         this.env = env;
-
-
     }
 
 
-    private Model search(String filter) throws NamingException {
-
+    public Model search(String filter) {
 
         Model m = ModelFactory.createDefaultModel();
 
-        log.info("Connecting to LDAP server.");
-        DirContext ctx = new InitialDirContext(env);
+        try {
+            log.info("Connecting to LDAP server.");
+            DirContext ctx = new InitialDirContext(env);
 
+            SearchControls ctls = new SearchControls();
+            ctls.setCountLimit(10);
 
-        NamingEnumeration<SearchResult> results =
-                ctx.search("cn=Users,dc=bris,dc=ac,dc=uk", filter, null);
+            NamingEnumeration<SearchResult> results =
+                    ctx.search("cn=Users,dc=bris,dc=ac,dc=uk", filter, ctls);
 
-
-        while (results.hasMore()) {
-
-            SearchResult result = results.nextElement();
-
-            Resource resource = createContact(result);
-
-            if (resource != null) {
-                m.add(resource.getModel());
+            while (results.hasMore()) {
+                createContact(m, results.nextElement());
             }
 
-
+        } catch (SizeLimitExceededException ex) {
+            log.info("Search results are limited");
+        } catch (NamingException ex) {
+            ex.printStackTrace();
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
         }
 
 
-        m.write(System.out);
-
-        return null;
+        return m;
     }
 
-    private Resource createContact(SearchResult result) throws NamingException {
 
+    private void createContact(Model m, SearchResult result) throws NamingException,
+            NoSuchAlgorithmException {
+
+        // get the attributes from the directory
         Attributes attributes = result.getAttributes();
 
+
+        // get the unique identifier for the user
         String uid = (String) attributes.get("uid").get();
 
-        System.out.println(result.getName());
+        // In Bristol, policy dictates we can't advertise the UID externally.
+        // I'd like a unique identifier, so hash the UID. Performance issues?
+        MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+        digest.update(uid.getBytes());
+        byte hash[] = digest.digest();
+        char[] hex = Hex.encodeHex(hash); // create a hex value of the hash
+
+        // TODO - look at creating a URI that can be dereferenced
+        String personUri = "person://" + new String(hex);
 
 
-        Resource resource = ModelFactory.createDefaultModel().createResource();
+        // TOO - URI for the person?
+        Resource resource = m.createResource(personUri);
 
         // name
         if (attributes.get("displayName") != null) {
@@ -102,7 +96,6 @@ public class BasicLdapSearch {
             String title = (String) attributes.get("title").get();
             resource.addLiteral(VCARD.TITLE, title);
         }
-
 
         // organizational unit
         if (attributes.get("ou") != null) {
@@ -124,30 +117,27 @@ public class BasicLdapSearch {
         // email
         if (attributes.get("mail") != null) {
             String mail = (String) attributes.get("mail").get();
-            resource.addLiteral(VCARD.EMAIL, mail);
+            resource.addLiteral(FOAF.mbox, mail);
         }
 
         // telephone number
         if (attributes.get("telephoneNumber") != null) {
             String tel = (String) attributes.get("telephoneNumber").get();
-            handleTelephone(tel);
-            resource.addLiteral(VCARD.TEL, tel);
-            resource.addProperty(FOAF.phone, handleTelephone(tel));
+            resource.addProperty(FOAF.phone, handleTelephone(m, tel));
         }
-        
-        return resource;
+
     }
 
-    private Resource handleTelephone(String telNumber) {
+    private Resource handleTelephone(Model m, String telNumber) {
 
-        telNumber = telNumber.replace(" ", "");
-        telNumber = telNumber.replace("(0)", "");
+        // create format that can be used by phones
+        String telNumberUri = "tel:" + telNumber.replace(" ", "");
+        telNumberUri = telNumberUri.replace("(0)", "");
 
-        Resource r = ResourceFactory.createProperty("tel:" + telNumber);
+        Resource r = m.createResource(telNumberUri);
         r.addProperty(RDFS.label, telNumber);
 
-
-        return null;
+        return r;
     }
 
 
