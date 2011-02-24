@@ -458,3 +458,27 @@ It's height value should ensure that the map pans enough to allow for later dyna
 #form_email, #form_comments {
     width: 100%;
 }
+
+
+/*
+LDAP Search
+*/
+
+#search-results {
+    margin: 1em 1.5em 1em 1.5em;
+}
+
+.contact > p {
+    font-size: 0.8em;
+    margin: 0;
+}
+
+.contact-phone {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.contact-email {
+    padding-top: 1em;
+
+}

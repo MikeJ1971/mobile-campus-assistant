@@ -42,3 +42,13 @@ ${value?substring(0, length?number - 3)}${value?substring(length?number - 2, len
 ${temp?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string('E, d MMM yyyy')}&nbsp;<#if temp?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string('HH:mm') != "00:00">${temp?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string('HH:mm')}</#if>
 </#compress>
 </#macro>
+
+<#-- Email address with mailto link -->
+<#macro Email value><a href="mailto:${value}">${value}</a></#macro>
+
+<#-- Phone number with tel link and label -->
+<#macro Phone value>
+<#compress>
+<a href="${value}>"><#if value['rdfs:label']??>${value['rdfs:label']?first}<#else>${value}</#if></a>
+</#compress>
+</#macro>

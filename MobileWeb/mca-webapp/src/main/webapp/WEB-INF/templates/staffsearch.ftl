@@ -4,13 +4,12 @@
 <#assign label><@Label resource/></#assign>
 <@Title label="${label}" />
 
-<div id="feedback-form">
-    <form accept="." method="get">
-        <p><strong>Search Term:</strong></p>
-        <p><input id="search" type="text" name="search"/>
-        <input type="submit" value="Submit" /></p>
-    </form>
-</div>
+<#include "includes/staffSearchForm.ftl"/>
+
+<p>Search terms can be surname only, initials and surname or first-name and surname.</p>
+
+<p>To search for students, job titles, or organisational titles see
+the Contact Directory (not optimised for mobiles).</p>
 
 <#include "includes/footer.ftl"/>
 </#compress>

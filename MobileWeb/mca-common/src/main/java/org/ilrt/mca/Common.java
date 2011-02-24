@@ -149,6 +149,7 @@ public class Common {
         prefixMapping.setNsPrefix("mcageo", "http://vocab.bris.ac.uk/mca/geo#");
         prefixMapping.setNsPrefix("rss", "http://purl.org/rss/1.0/");
         prefixMapping.setNsPrefix("ical", "http://www.w3.org/2002/12/cal/ical#");
+        prefixMapping.setNsPrefix("vcard", "http://www.w3.org/2001/vcard-rdf/3.0#");
         return prefixMapping;
     }
 }

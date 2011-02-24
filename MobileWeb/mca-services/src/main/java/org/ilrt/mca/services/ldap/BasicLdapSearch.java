@@ -4,6 +4,10 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import com.hp.hpl.jena.vocabulary.DC;
+>>>>>>> 3d4abc5... work on searching ldap and displaying results
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.VCARD;
 import org.apache.commons.codec.binary.Hex;
@@ -56,7 +60,7 @@ public class BasicLdapSearch {
             DirContext ctx = new InitialDirContext(env);
 
             SearchControls ctls = new SearchControls();
-            ctls.setCountLimit(10);
+            ctls.setCountLimit(RESULT_LIMIT);
 
             NamingEnumeration<SearchResult> results =
                     ctx.search("cn=Users,dc=bris,dc=ac,dc=uk", filter, ctls);
@@ -66,6 +70,9 @@ public class BasicLdapSearch {
             }
 
         } catch (SizeLimitExceededException ex) {
+            r.addProperty(DC.description, "Your search returned more than " + RESULT_LIMIT +
+                    " results. To refine your search, try entering more details (e.g. " +
+                    "forename and surname).");                    
             log.info("Search results are limited");
         } catch (NamingException ex) {
             ex.printStackTrace();
@@ -262,4 +269,5 @@ public class BasicLdapSearch {
     Logger log = Logger.getLogger(org.ilrt.mca.services.ldap.BasicLdapSearch.class);
 
     private final Hashtable env;
+    private final int RESULT_LIMIT = 10;
 }

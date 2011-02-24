@@ -38,6 +38,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.DC;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.RSS;
+import com.hp.hpl.jena.vocabulary.VCARD;
 import freemarker.template.TemplateModel;
 import org.ilrt.mca.vocab.EVENT;
 import org.ilrt.mca.vocab.MCA_REGISTRY;
@@ -160,6 +161,8 @@ public class McaJenaResourceComparator implements Comparator<TemplateModel> {
             return r.getProperty(RSS.title).getLiteral();
         } else if (r.hasProperty(EVENT.subject)) {
             return (r.getProperty(EVENT.subject)).getLiteral();
+        } else if (r.hasProperty(VCARD.NAME)) {
+            return (r.getProperty(VCARD.NAME)).getLiteral();
         }
 
         return null;
