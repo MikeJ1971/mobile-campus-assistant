@@ -468,6 +468,12 @@ LDAP Search
     margin: 1em 1.5em 1em 1.5em;
 }
 
+.contact {
+    border-bottom: solid 1px silver;
+    padding-top: 1em;
+}
+
+
 .contact > p {
     font-size: 0.8em;
     margin: 0;

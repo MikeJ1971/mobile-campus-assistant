@@ -152,4 +152,6 @@ public class Common {
         prefixMapping.setNsPrefix("vcard", "http://www.w3.org/2001/vcard-rdf/3.0#");
         return prefixMapping;
     }
+
+    public static String MCA_REGISTRY_PREFIX = "mca://registry";
 }

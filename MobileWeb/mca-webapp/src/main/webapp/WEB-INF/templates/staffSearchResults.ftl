@@ -40,6 +40,7 @@
             <p class="contact-phone"><@Phone item['foaf:phone']?first/></p>
         </#if>
         </div>
+
     </#list>
 </div>
 <#else>

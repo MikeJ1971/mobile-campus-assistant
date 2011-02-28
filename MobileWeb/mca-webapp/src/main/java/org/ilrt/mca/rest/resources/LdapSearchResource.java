@@ -6,6 +6,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.resource.Singleton;
+import org.ilrt.mca.Common;
 import org.ilrt.mca.RdfMediaType;
 import org.ilrt.mca.services.ldap.BasicLdapSearch;
 
@@ -35,10 +36,9 @@ public class LdapSearchResource {
         ldapSearchProperties.load(this.getClass().getResourceAsStream("/ldap.search.properties"));
 
         // service for handling searches
-        ldapSearch = new BasicLdapSearch(ldapProperties);
+        ldapSearch = new BasicLdapSearch(ldapProperties, ldapSearchProperties);
 
         m = ModelFactory.createDefaultModel();
-
     }
 
     @GET
@@ -49,11 +49,11 @@ public class LdapSearchResource {
         if (search == null || search.isEmpty()) {
             r = m.createResource();
             r.addProperty(RDFS.label, "Staff Search");
-            return Response.ok(new Viewable("/staffsearch", r)).build();
+            return Response.ok(new Viewable(FORM_VIEW, r)).build();
         }
 
         // create a URI for the results
-        String path = "mca://registry" + uriInfo.getRequestUri().getPath();
+        String path = Common.MCA_REGISTRY_PREFIX + uriInfo.getRequestUri().getPath();
 
 
         if (uriInfo.getRequestUri().getQuery() != null) {
@@ -66,9 +66,7 @@ public class LdapSearchResource {
         Resource results = ldapSearch.search(resultUri, createFilter(search));
         results.addProperty(RDFS.label, "Staff Search Results");
 
-        results.getModel().write(System.out);
-
-        return Response.ok(new Viewable("/staffsearchResults", results)).build();
+        return Response.ok(new Viewable(RESULTS_VIEW, results)).build();
     }
 
 
@@ -77,7 +75,7 @@ public class LdapSearchResource {
     public Response processFormAsRDF(@QueryParam("search") String search) {
 
         // create a URI for the results
-        String path = "mca://registry" + uriInfo.getRequestUri().getPath();
+        String path = Common.MCA_REGISTRY_PREFIX + uriInfo.getRequestUri().getPath();
 
 
         if (uriInfo.getRequestUri().getQuery() != null) {
@@ -95,9 +93,10 @@ public class LdapSearchResource {
 
     private String createFilter(String searchString) {
 
-        // TODO - we need to sanitise the input string
-
         String searchQuery = ldapSearchProperties.getProperty("searchQuery");
+
+        // sanitise the input string
+        searchString = searchString.replaceAll("\\W+", " ");
 
         searchQuery = searchQuery.replace("{0}", searchString);
 
@@ -110,6 +109,9 @@ public class LdapSearchResource {
     private BasicLdapSearch ldapSearch;
 
     private Properties ldapSearchProperties;
+
+    private final String FORM_VIEW = "/staffsearch";
+    private final String RESULTS_VIEW = "/staffsearchResults";
 
     @Context
     private
