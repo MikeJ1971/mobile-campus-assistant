@@ -131,7 +131,7 @@
         </dependency>
         <dependency>
             <groupId>org.ilrt.mca</groupId>
-            <artifactId>mca-services</artifactId>
+            <artifactId>mca-services-ldap</artifactId>
             <version>0.7-SNAPSHOT</version>
         </dependency>
         <dependency>

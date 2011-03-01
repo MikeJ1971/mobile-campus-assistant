@@ -12,8 +12,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ilrt.mca</groupId>
-    <artifactId>mca-services</artifactId>
-    <name>mca-services</name>
+    <artifactId>mca-services-ldap</artifactId>
+    <name>mca-services-ldap</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
@@ -33,8 +33,16 @@
             <artifactId>commons-codec</artifactId>
             <version>1.3</version>
         </dependency>
+<<<<<<< HEAD:MobileWeb/mca-services/pom.xml
 =======
 >>>>>>> 3749458... Added service module and started support for LDAP
+=======
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.4</version>
+        </dependency>
+>>>>>>> 305d93a... moved the ldap service into a seperate module:MobileWeb/mca-services-ldap/pom.xml
     </dependencies>
 
     <properties>
