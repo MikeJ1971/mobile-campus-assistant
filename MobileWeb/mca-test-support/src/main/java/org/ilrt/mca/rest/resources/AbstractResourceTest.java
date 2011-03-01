@@ -43,13 +43,12 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.test.framework.JerseyTest;
 import com.sun.jersey.test.framework.WebAppDescriptor;
-import org.ilrt.mca.rest.providers.FreemarkerTemplateProvider;
-import org.ilrt.mca.rest.providers.JenaModelRdfProvider;
 import org.junit.Before;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mock.jndi.SimpleNamingContextBuilder;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -70,12 +69,10 @@ public abstract class AbstractResourceTest extends JerseyTest {
 
     // ---------- Override super class methods for client and web resource
 
-    @Override
     public Client client() {
 
         ClientConfig config = new DefaultClientConfig();
-        config.getClasses().add(JenaModelRdfProvider.class);
-        config.getClasses().add(FreemarkerTemplateProvider.class);
+        config.getClasses().addAll(supportedClasses);
         return Client.create(config);
     }
 
@@ -83,6 +80,11 @@ public abstract class AbstractResourceTest extends JerseyTest {
     public WebResource resource() {
         return client().resource("http://localhost:9998/");
     }
+
+    public void setSupportedClasses(List<? extends Class<?>> supportedClasses) {
+        this.supportedClasses = supportedClasses;
+    }
+
 
     // ---------- protected methods
 
@@ -128,11 +130,13 @@ public abstract class AbstractResourceTest extends JerseyTest {
     }
 
 
-    WebResource webResource = null;
+    public WebResource webResource = null;
 
     final String CONFIG = "/sdb.ttl";
-    final String TEST_REGISTRY = "/test-registry.ttl";
+    final public String TEST_REGISTRY = "/test-registry.ttl";
 
     final String TEST_DATABASE_URL = "jdbc:h2:target/mca-dev";
     final String TEST_CONTEXT = "java:comp/env/jdbc/mca";
+
+    List<? extends Class<?>> supportedClasses;
 }

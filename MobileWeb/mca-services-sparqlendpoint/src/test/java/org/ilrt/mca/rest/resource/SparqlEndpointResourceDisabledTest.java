@@ -29,26 +29,52 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ilrt.mca.rest.resources.mapper;
+package org.ilrt.mca.rest.resource;
 
-import com.hp.hpl.jena.query.QueryParseException;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.test.framework.WebAppDescriptor;
+import org.ilrt.mca.rest.providers.FreemarkerTemplateProvider;
+import org.ilrt.mca.rest.providers.JenaModelRdfProvider;
+import org.ilrt.mca.rest.resources.AbstractResourceTest;
+import org.junit.Test;
 
 import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 /**
- * Catches SPARQL parsing errors.
- *
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-@Provider
-public class QueryParseMapper
-        implements ExceptionMapper<com.hp.hpl.jena.query.QueryParseException> {
+public class SparqlEndpointResourceDisabledTest extends AbstractResourceTest {
 
-    @Override
-    public Response toResponse(QueryParseException ex) {
-        return Response.status(Response.Status.BAD_REQUEST)
-                .entity(ex.getMessage()).type("text/plain").build();
+    public SparqlEndpointResourceDisabledTest() {
+
+        super(new WebAppDescriptor.Builder("org.ilrt.mca.rest")
+                .initParam("sparqlEnabled", "false").build());
+
+        List supportedClasses = new ArrayList();
+        supportedClasses.add(JenaModelRdfProvider.class);
+        supportedClasses.add(FreemarkerTemplateProvider.class);
+
+        this.setSupportedClasses(supportedClasses);
+
+    }
+
+    @Test
+    public void test() {
+
+        WebResource webResource = super.resource().path("/sparql");
+        assertEquals(Response.Status.SERVICE_UNAVAILABLE.getStatusCode(),
+                webResource.head().getStatus());
+
+    }
+
+
+
+    protected void setUpDatabase() {
+        // do nothing
     }
 }

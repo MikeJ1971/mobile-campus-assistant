@@ -1,0 +1,176 @@
+############################################################################
+#         THIS FILE HOLDS THE DETAILS OF CONTACTS AND AND HOW              #
+#            THEY SHOULD BE DISPLAYED IN THE NAVIGATION                    #
+############################################################################
+
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix mca:        <http://vocab.bris.ac.uk/mca/registry#> .
+@prefix dc:         <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix geo:        <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+
+
+<mca://registry/contacts/directory/> rdf:type mca:Group ;
+    rdfs:label "Search University Staff" ;
+    dc:description "Search University Staff" ;
+    mca:template <template://navigation.ftl> ;
+    mca:order "4"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<mca://registry/contacts/emergency/> rdf:type mca:Group ;
+    rdfs:label "Emergency and Security" ;
+    mca:template <template://navigation.ftl> ;
+    dc:description "Emergency contact information,";
+    mca:hasItem <mca://registry/contacts/emergency/services/> ;
+    mca:hasItem <mca://registry/contacts/emergency/security/> ;
+    mca:hasItem <mca://registry/contacts/emergency/police/> ;
+    mca:order "1"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<mca://registry/contacts/emergency/services/> rdf:type mca:Contact ;
+    rdfs:label "Fire, Police, Ambulance" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:999> ;
+    mca:order "1"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:999> rdfs:label "999" .
+
+<mca://registry/contacts/emergency/police/> rdf:type mca:Contact ;
+    rdfs:label "Police (non-emergency)" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+448454567000> ;
+    mca:order "3"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+448454567000> rdfs:label "+44 (0)845 4567000" .
+
+<mca://registry/contacts/emergency/security/> rdf:type mca:Group ;
+    rdfs:label "University Security" ;
+    mca:template <template://navigation.ftl> ;
+    mca:hasItem <mca://registry/contacts/emergency/security/emergency/> ;
+    mca:hasItem <mca://registry/contacts/emergency/security/control/> ;
+    mca:order "2"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<mca://registry/contacts/emergency/security/emergency/> rdf:type mca:Contact ;
+    rdfs:label "Emergencies (24 Hours)" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+4411733112233> ;
+    mca:order "1"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+4411733112233> rdfs:label "+44 (0)117 33112233" .
+
+<mca://registry/contacts/emergency/security/control/> rdf:type mca:Contact ;
+    rdfs:label "Control Room" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+4401179287848> ;
+    mca:order "2"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+4401179287848> rdfs:label "+44 (0)117 9287848" .
+
+
+<mca://registry/contacts/university/> rdf:type mca:Group ;
+    rdfs:label "University Contacts" ;
+    mca:template <template://navigation.ftl> ;
+    mca:hasItem <mca://registry/contacts/university/switchboard/> ;
+    mca:hasItem <mca://registry/contacts/university/ithelpdesk/> ;
+    mca:hasItem <mca://registry/contacts/university/libraryhelpdesk/> ;
+    mca:order "2"^^xsd:integer;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<mca://registry/contacts/university/switchboard/> rdf:type mca:Contact ;
+    rdfs:label "Main Switch Board" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+441179289000> ;
+    mca:order "1"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+441179289000> rdfs:label "+44 (0)117 9289000" .
+
+<mca://registry/contacts/university/ithelpdesk/> rdf:type mca:Contact ;
+    rdfs:label "IT Help Desk" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+441179287870> ;
+    foaf:mbox "help-desk@bristol.ac.uk" ;
+    mca:order "2"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+441179287870> rdfs:label "+44 (0)117 9287870" .
+
+<mca://registry/contacts/university/libraryhelpdesk/> rdf:type mca:Contact ;
+    rdfs:label "Library Help Desk" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+441179288000> ;
+    foaf:mbox "library-enquiries@bristol.ac.uk" ;
+    mca:order "3"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+441179288000> rdfs:label "+44 (0)117 9288000" .
+
+<mca://registry/contacts/welfare/> rdf:type mca:Group ;
+    rdfs:label "Health and Welfare" ;
+    mca:template <template://navigation.ftl> ;
+    mca:hasItem <mca://registry/contacts/welfare/nhs/> ;
+    mca:hasItem <mca://registry/contacts/welfare/samaritans/> ;
+    mca:hasItem <mca://registry/contacts/welfare/counselling/> ;
+    mca:HasItem <mca://registry/contacts/welfare/health/> ;
+    mca:order "3"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<mca://registry/contacts/welfare/nhs/> rdf:type mca:Contact ;
+    rdfs:label "NHS Direct" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+448454647> ;
+    mca:order "1"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+448454647> rdfs:label "+44 (0)845 4647" .
+
+<mca://registry/contacts/welfare/samaritans/> rdf:type mca:Contact ;
+    rdfs:label "Bristol Samaritans" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+441179831000> ;
+    mca:order "2"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+441179831000> rdfs:label "+44 (0)117 9831000" .
+
+<mca://registry/contacts/welfare/counselling/> rdf:type mca:Contact ;
+    rdfs:label "Student Counselling" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+441179546655> ;
+    mca:order "3"^^xsd:integer;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+441179546655> rdfs:label "+44 (0)117 9546655" .
+
+<mca://registry/contacts/welfare/health/> rdf:type mca:Contact ;
+    rdfs:label "Students' Health Service" ;
+    mca:template <template://contacts.ftl> ;
+    foaf:phone <tel:+448454647> ;
+    mca:order "4"^^xsd:integer ;
+    mca:style "contacts"^^xsd:string ;
+    .
+
+<tel:+441173302720> rdfs:label "+44 (0)117 3302720" .

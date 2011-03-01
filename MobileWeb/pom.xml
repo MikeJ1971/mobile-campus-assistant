@@ -12,9 +12,11 @@
 
     <!-- modules -->
     <modules>
+        <module>mca-test-support</module>
         <module>mca-common</module>
         <module>mca-harvester</module>
         <module>mca-services-ldap</module>
+        <module>mca-services-sparqlendpoint</module>
         <module>mca-jena-freemarker</module>
         <module>mca-webapp</module>
     </modules>
@@ -73,6 +75,11 @@
             <artifactId>junit</artifactId>
             <version>4.4</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
         </dependency>
         <dependency>
             <groupId>org.easymock</groupId>

@@ -13,7 +13,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ilrt.mca</groupId>
     <artifactId>mca-services-ldap</artifactId>
-    <name>mca-services-ldap</name>
+    <name>mca-services-ldap (LDAP query support)</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009, University of Bristol
+ * Copyright (c) 2010, University of Bristol
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,23 +29,26 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ilrt.mca.domain.directory;
+package org.ilrt.mca.rest.resource.mapper;
 
-import java.util.List;
-import java.util.Properties;
+import com.hp.hpl.jena.query.QueryParseException;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
 
 /**
- * @author Jasper Tredgold (jasper.tredgold@bristol.ac.uk)
+ * Catches SPARQL parsing errors.
+ *
+ * @author Mike Jones (mike.a.jones@bristol.ac.uk)
  */
-public interface DirectoryService {
+@Provider
+public class QueryParseMapper
+        implements ExceptionMapper<com.hp.hpl.jena.query.QueryParseException> {
 
-    public static final String PROXY_QUERY_URL_KEY = "org.ilrt.mca.directory.query.url";
-    public static final String PROXY_DETAILS_URL_KEY = "org.ilrt.mca.directory.details.url";
-
-    void init(Properties props);
-
-    PersonInfo getDetails(String personKey) throws Exception;
-
-    List<PersonInfo> getList(String query, StringBuilder countMesasge) throws Exception;
-
+    @Override
+    public Response toResponse(QueryParseException ex) {
+        return Response.status(Response.Status.BAD_REQUEST)
+                .entity(ex.getMessage()).type("text/plain").build();
+    }
 }

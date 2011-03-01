@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Singleton
-@Path("/ldap/")
+@Path("/contacts/directory/")
 public class LdapSearchResource {
 
     public LdapSearchResource() throws IOException {

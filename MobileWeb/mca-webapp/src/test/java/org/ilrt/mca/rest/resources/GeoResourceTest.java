@@ -40,12 +40,18 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.test.framework.WebAppDescriptor;
 import org.ilrt.mca.KmlMediaType;
 import org.ilrt.mca.RdfMediaType;
+import org.ilrt.mca.rest.providers.FreemarkerTemplateProvider;
+import org.ilrt.mca.rest.providers.JenaModelKmlProvider;
+import org.ilrt.mca.rest.providers.JenaModelRdfProvider;
 import org.junit.Test;
 
 import javax.ws.rs.core.MediaType;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -59,6 +65,12 @@ public class GeoResourceTest extends AbstractResourceTest {
 
         super(new WebAppDescriptor.Builder("org.ilrt.mca.rest")
                 .initParam("sparqlEnabled", "true").build());
+
+               List supportedClasses = new ArrayList();
+        supportedClasses.add(JenaModelRdfProvider.class);
+        supportedClasses.add(JenaModelKmlProvider.class);
+
+        this.setSupportedClasses(supportedClasses);
     }
 
     @Test

@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  */
-package org.ilrt.mca.rest.resources;
+package org.ilrt.mca.rest.resource;
 
 import com.hp.hpl.jena.query.Dataset;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -42,6 +42,9 @@ import com.sun.jersey.test.framework.WebAppDescriptor;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.ilrt.mca.RdfMediaType;
+import org.ilrt.mca.rest.providers.FreemarkerTemplateProvider;
+import org.ilrt.mca.rest.providers.JenaModelRdfProvider;
+import org.ilrt.mca.rest.resources.AbstractResourceTest;
 import org.junit.Test;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -52,6 +55,8 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -66,6 +71,12 @@ public class SparqlEndpointResourceEnabledTest extends AbstractResourceTest {
 
         super(new WebAppDescriptor.Builder("org.ilrt.mca.rest")
                 .initParam("sparqlEnabled", "true").build());
+
+        List supportedClasses = new ArrayList();
+        supportedClasses.add(JenaModelRdfProvider.class);
+        supportedClasses.add(FreemarkerTemplateProvider.class);
+
+        this.setSupportedClasses(supportedClasses);
 
         webResource = resource().path("/sparql"); // one request path for all tests
     }
