@@ -16,8 +16,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 @Provider
-@Produces({RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3, MediaType.APPLICATION_JSON,
-        RdfMediaType.SPARQL_RESULTS_JSON, RdfMediaType.SPARQL_RESULTS_XML})
+@Produces({MediaType.WILDCARD, RdfMediaType.APPLICATION_RDF_XML, RdfMediaType.TEXT_RDF_N3,
+        MediaType.APPLICATION_JSON, RdfMediaType.SPARQL_RESULTS_JSON,
+        RdfMediaType.SPARQL_RESULTS_XML})
 public class SparqlQueryResultsProvider
         implements MessageBodyWriter<SparqlEndpointResource.SparqlQueryResults>{
 
