@@ -17,6 +17,7 @@
         <module>mca-harvester</module>
         <module>mca-services-ldap</module>
         <module>mca-services-sparqlendpoint</module>
+        <module>mca-services-feedback</module>
         <module>mca-jena-freemarker</module>
         <module>mca-webapp</module>
     </modules>
@@ -36,6 +37,11 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
             </plugin>
         </plugins>
     </build>
@@ -116,6 +122,7 @@
             <version>3.0.4.RELEASE</version>
             <scope>test</scope>
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
@@ -123,6 +130,8 @@
             <scope>provided</scope>
         </dependency>
 >>>>>>> 305d93a... moved the ldap service into a seperate module
+=======
+>>>>>>> 9cefc98... moved the feedback to its own module, updated the war plugin to ommit noise about (incorrect) dependency changes
     </dependencies>
 
     <!-- project information -->

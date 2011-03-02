@@ -146,10 +146,17 @@
             <version>0.7-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>org.ilrt.mca</groupId>
+            <artifactId>mca-services-feedback</artifactId>
+            <version>0.7-SNAPSHOT</version>
+        </dependency>
+        <!--
+        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
             <version>1.4</version>
         </dependency>
+        -->
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
