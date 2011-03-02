@@ -21,12 +21,12 @@
         <dependency>
             <groupId>org.ilrt.mca</groupId>
             <artifactId>mca-test-support</artifactId>
-            <version>0.7-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.ilrt.mca</groupId>
             <artifactId>mca-common</artifactId>
-            <version>0.7-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -55,12 +55,12 @@
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
-            <version>1.4</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.2.137</version>
+            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

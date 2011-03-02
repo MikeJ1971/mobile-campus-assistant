@@ -74,6 +74,15 @@
         </profile>
     </profiles>
 
+    <repositories>
+        <repository>
+            <id>google-gson.googlecode.com</id>
+            <name>Google GSON repository</name>
+            <url>http://google-gson.googlecode.com/svn/mavenrepo</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
     <build>
         <finalName>${warName}</finalName>
         <filters>
@@ -160,7 +169,7 @@
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
-            <version>1.4</version>
+            <version>${jersey.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -186,17 +195,12 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.2.145</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-web</artifactId>
             <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.3</version>
         </dependency>
     </dependencies>
 

@@ -22,12 +22,17 @@
             <artifactId>mca-common</artifactId>
             <version>0.7-SNAPSHOT</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.16</version>
         </dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        -->
+>>>>>>> 1a3fd0c... rationalised the dependencies in the poms
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
