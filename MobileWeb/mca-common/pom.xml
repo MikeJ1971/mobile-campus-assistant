@@ -86,6 +86,11 @@
             <artifactId>sdb</artifactId>
             <version>${sdb.version}</version>
         </dependency>
+        <dependency>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+            <version>2.7.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
