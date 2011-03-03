@@ -180,8 +180,18 @@ p {
     vertical-align: middle;
 }
 
-.transport {
-    background: url(../images/bristol/icon-transport.png) no-repeat;
+.bus {
+    background: url(../images/bristol/icon-bus.png) no-repeat;
+    display: inline-block;
+    width: 52px;
+    height: 41px;
+    margin: 0;
+    padding: 0 10px 0 0;
+    vertical-align: middle;
+}
+
+.bike {
+    background: url(../images/bristol/icon-bike.png) no-repeat;
     display: inline-block;
     width: 52px;
     height: 41px;
