@@ -18,6 +18,7 @@
         <module>mca-services-ldap</module>
         <module>mca-services-sparqlendpoint</module>
         <module>mca-services-feedback</module>
+        <module>mca-services-geo</module>
         <module>mca-jena-freemarker</module>
         <module>mca-webapp</module>
     </modules>

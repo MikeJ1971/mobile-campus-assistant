@@ -40,20 +40,20 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.test.framework.WebAppDescriptor;
 import org.ilrt.mca.KmlMediaType;
 import org.ilrt.mca.RdfMediaType;
-import org.ilrt.mca.rest.providers.FreemarkerTemplateProvider;
 import org.ilrt.mca.rest.providers.JenaModelKmlProvider;
 import org.ilrt.mca.rest.providers.JenaModelRdfProvider;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.ws.rs.core.MediaType;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Mike Jones (mike.a.jones@bristol.ac.uk)
@@ -66,11 +66,31 @@ public class GeoResourceTest extends AbstractResourceTest {
         super(new WebAppDescriptor.Builder("org.ilrt.mca.rest")
                 .initParam("sparqlEnabled", "true").build());
 
-               List supportedClasses = new ArrayList();
+        List supportedClasses = new ArrayList();
         supportedClasses.add(JenaModelRdfProvider.class);
         supportedClasses.add(JenaModelKmlProvider.class);
 
         this.setSupportedClasses(supportedClasses);
+    }
+
+    @Before
+    public void setUp() throws Exception {
+
+        super.setUp();
+
+        // create a connection and store
+        SDBConnection conn = createConnection();
+        Store store = createStore(conn);
+
+        // add the data
+        Dataset dataset = SDBFactory.connectDataset(store);
+
+        assertTrue("We don't have data in the graph " + GRAPH_URI,
+                dataset.containsNamedModel(GRAPH_URI));
+
+        // clean up
+        store.close();
+        conn.close();
     }
 
     @Test
@@ -81,7 +101,7 @@ public class GeoResourceTest extends AbstractResourceTest {
         ClientResponse clientResponse = webResource.accept(RdfMediaType.APPLICATION_RDF_XML)
                 .get(ClientResponse.class);
 
-        assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
+        Assert.assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
     }
 
 
@@ -93,7 +113,7 @@ public class GeoResourceTest extends AbstractResourceTest {
         ClientResponse clientResponse = webResource.accept(RdfMediaType.APPLICATION_RDF_XML)
                 .get(ClientResponse.class);
 
-        assertEquals("Unexpected response from the server.", 404, clientResponse.getStatus());
+        Assert.assertEquals("Unexpected response from the server.", 404, clientResponse.getStatus());
     }
 
 
@@ -106,7 +126,7 @@ public class GeoResourceTest extends AbstractResourceTest {
         ClientResponse clientResponse = webResource.accept(KmlMediaType.APPLICATION_KML)
                 .get(ClientResponse.class);
 
-        assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
+        Assert.assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
     }
 
     @Test
@@ -117,7 +137,7 @@ public class GeoResourceTest extends AbstractResourceTest {
         ClientResponse clientResponse = webResource.accept(MediaType.APPLICATION_JSON_TYPE)
                 .get(ClientResponse.class);
 
-        assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
+        Assert.assertEquals("Unexpected response from the server.", 200, clientResponse.getStatus());
 
     }
 
@@ -134,11 +154,13 @@ public class GeoResourceTest extends AbstractResourceTest {
 
         // add the data
         Dataset dataset = SDBFactory.connectDataset(store);
-        Model model = dataset.getNamedModel("geo://test_geo_graph1");
-        model.read(getClass().getResourceAsStream("/data/osm-amenities.rdf"), null);
+        Model model = dataset.getNamedModel(GRAPH_URI);
+        model.read(getClass().getResourceAsStream("/geodata.rdf"), null);
 
         // clean up
         store.close();
         conn.close();
     }
+
+    private String GRAPH_URI = "geo://test_geo_graph1";
 }
