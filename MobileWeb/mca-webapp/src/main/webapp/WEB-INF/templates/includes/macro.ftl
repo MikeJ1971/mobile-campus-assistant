@@ -49,6 +49,6 @@ ${temp?datetime("yyyy-MM-dd\'T\'HH:mm:ssZ")?string('E, d MMM yyyy')}&nbsp;<#if t
 <#-- Phone number with tel link and label -->
 <#macro Phone value>
 <#compress>
-<a href="${value}>"><#if value['rdfs:label']??>${value['rdfs:label']?first}<#else>${value}</#if></a>
+<a href="${value}"><#if value['rdfs:label']??>${value['rdfs:label']?first}<#else>${value}</#if></a>
 </#compress>
 </#macro>
