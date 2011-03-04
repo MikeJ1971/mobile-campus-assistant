@@ -2,17 +2,14 @@ package org.ilrt.mca.services.ldap;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import com.hp.hpl.jena.vocabulary.DC;
->>>>>>> 3d4abc5... work on searching ldap and displaying results
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.VCARD;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.log4j.Logger;
 import org.ilrt.mca.services.SearchService;
 import org.ilrt.mca.vocab.FOAF;
+import org.ilrt.mca.vocab.MCA_REGISTRY;
 
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
@@ -24,26 +21,10 @@ import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-=======
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.vocabulary.RDFS;
-import com.hp.hpl.jena.vocabulary.VCARD;
-import org.apache.log4j.Logger;
-import org.ilrt.mca.vocab.FOAF;
-
-import javax.naming.Context;
-import javax.naming.NamingEnumeration;
-import javax.naming.NamingException;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import javax.naming.directory.SearchResult;
->>>>>>> 3749458... Added service module and started support for LDAP
 import java.util.Hashtable;
 
 public class BasicLdapSearch implements SearchService {
 
-<<<<<<< HEAD
 
     /**
      * Constructor for the ldap search service. Two hash tables need to be provided. First,
@@ -88,18 +69,12 @@ public class BasicLdapSearch implements SearchService {
     @Override
     public Resource search(Object... args) {
 
-<<<<<<< HEAD
-    public Model search(String filter) {
-
-        Model m = ModelFactory.createDefaultModel();
-=======
         if (args.length != 2) {
             throw new RuntimeException("Received " + args.length + " arguments. Expected 2");
         }
 
         Resource r = (Resource) args[0];
         String filter = (String) args[1];
->>>>>>> c2236f4... moved configureable stuff out to properties files. update the UI
 
         try {
 
@@ -112,12 +87,9 @@ public class BasicLdapSearch implements SearchService {
             NamingEnumeration<SearchResult> results =
                     ctx.search(baseDN, filter, ctls);
 
-<<<<<<< HEAD
-=======
 
->>>>>>> c2236f4... moved configureable stuff out to properties files. update the UI
             while (results.hasMore()) {
-                createContact(m, results.nextElement());
+                createContact(r, results.nextElement());
             }
 
         } catch (SizeLimitExceededException ex) {
@@ -131,16 +103,11 @@ public class BasicLdapSearch implements SearchService {
             ex.printStackTrace();
         }
 
-<<<<<<< HEAD
-
-        return m;
-=======
         return r;
->>>>>>> c2236f4... moved configureable stuff out to properties files. update the UI
     }
 
 
-    private void createContact(Model m, SearchResult result) throws NamingException,
+    private void createContact(Resource r, SearchResult result) throws NamingException,
             NoSuchAlgorithmException {
 
         // get the attributes from the directory
@@ -151,96 +118,8 @@ public class BasicLdapSearch implements SearchService {
         String uid = (String) attributes.get(uidMapping).get();
         String personUri = generateUri(uid);
 
-<<<<<<< HEAD
-        // In Bristol, policy dictates we can't advertise the UID externally.
-        // I'd like a unique identifier, so hash the UID. Performance issues?
-        MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
-        digest.update(uid.getBytes());
-        byte hash[] = digest.digest();
-        char[] hex = Hex.encodeHex(hash); // create a hex value of the hash
-
-        // TODO - look at creating a URI that can be dereferenced
-        String personUri = "person://" + new String(hex);
-
-
-        // TOO - URI for the person?
-        Resource resource = m.createResource(personUri);
-=======
-    public static void main(String[] args) {
-
-        String filter = "(cn=Mike Jones)";
-
-        Hashtable<String, String> env = new Hashtable<String, String>();
-        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, "ldaps://ldap-srv.bris.ac.uk:636");
-        env.put(Context.SECURITY_PROTOCOL, "SSL");
-        env.put(Context.SECURITY_AUTHENTICATION, "simple");
-
-
-        try {
-            BasicLdapSearch basicLdapSearch = new BasicLdapSearch(env);
-            basicLdapSearch.search(filter);
-        } catch (NamingException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public BasicLdapSearch(Hashtable<String, String> env) throws NamingException {
-
-        this.env = env;
-
-
-    }
-
-
-    private Model search(String filter) throws NamingException {
-
-
-        Model m = ModelFactory.createDefaultModel();
-
-        log.info("Connecting to LDAP server.");
-        DirContext ctx = new InitialDirContext(env);
-
-
-        NamingEnumeration<SearchResult> results =
-                ctx.search("cn=Users,dc=bris,dc=ac,dc=uk", filter, null);
-
-
-        while (results.hasMore()) {
-
-            SearchResult result = results.nextElement();
-
-            Resource resource = createContact(result);
-
-            if (resource != null) {
-                m.add(resource.getModel());
-            }
-
-
-        }
-
-
-        m.write(System.out);
-
-        return null;
-    }
-
-    private Resource createContact(SearchResult result) throws NamingException {
-
-        Attributes attributes = result.getAttributes();
-
-        String uid = (String) attributes.get("uid").get();
-
-        System.out.println(result.getName());
-
-
-        Resource resource = ModelFactory.createDefaultModel().createResource();
->>>>>>> 3749458... Added service module and started support for LDAP
-=======
         // TODO - URI for the person?
         Resource resource = r.getModel().createResource(personUri);
->>>>>>> c2236f4... moved configureable stuff out to properties files. update the UI
 
         // name
         if (displayNameMapping != null) {
@@ -258,10 +137,6 @@ public class BasicLdapSearch implements SearchService {
             }
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3749458... Added service module and started support for LDAP
         // organizational unit
         if (ouMapping != null) {
             if (attributes.get(ouMapping) != null) {
@@ -286,22 +161,6 @@ public class BasicLdapSearch implements SearchService {
         }
 
         // email
-<<<<<<< HEAD
-        if (attributes.get("mail") != null) {
-            String mail = (String) attributes.get("mail").get();
-<<<<<<< HEAD
-            resource.addLiteral(FOAF.mbox, mail);
-=======
-            resource.addLiteral(VCARD.EMAIL, mail);
->>>>>>> 3749458... Added service module and started support for LDAP
-        }
-
-        // telephone number
-        if (attributes.get("telephoneNumber") != null) {
-            String tel = (String) attributes.get("telephoneNumber").get();
-<<<<<<< HEAD
-            resource.addProperty(FOAF.phone, handleTelephone(m, tel));
-=======
         if (mailMapping != null) {
             if (attributes.get(mailMapping) != null) {
                 String mail = (String) attributes.get(mailMapping).get();
@@ -315,8 +174,9 @@ public class BasicLdapSearch implements SearchService {
                 String tel = (String) attributes.get(telephoneNumberMapping).get();
                 resource.addProperty(FOAF.phone, handleTelephone(r.getModel(), tel));
             }
->>>>>>> c2236f4... moved configureable stuff out to properties files. update the UI
         }
+
+        r.addProperty(MCA_REGISTRY.hasItem, resource);
 
     }
 
@@ -330,26 +190,6 @@ public class BasicLdapSearch implements SearchService {
         r.addProperty(RDFS.label, telNumber);
 
         return r;
-=======
-            handleTelephone(tel);
-            resource.addLiteral(VCARD.TEL, tel);
-            resource.addProperty(FOAF.phone, handleTelephone(tel));
-        }
-        
-        return resource;
-    }
-
-    private Resource handleTelephone(String telNumber) {
-
-        telNumber = telNumber.replace(" ", "");
-        telNumber = telNumber.replace("(0)", "");
-
-        Resource r = ResourceFactory.createProperty("tel:" + telNumber);
-        r.addProperty(RDFS.label, telNumber);
-
-
-        return null;
->>>>>>> 3749458... Added service module and started support for LDAP
     }
 
     /**
