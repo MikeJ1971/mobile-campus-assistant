@@ -111,7 +111,7 @@ public class LdapSearchResource {
     private Properties ldapSearchProperties;
 
     private final String FORM_VIEW = "/staffsearch";
-    private final String RESULTS_VIEW = "/staffsearchResults";
+    private final String RESULTS_VIEW = "/staffSearchResults";
 
     @Context
     private
